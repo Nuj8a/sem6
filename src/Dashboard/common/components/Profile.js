@@ -9,7 +9,6 @@ import {
   ListboxSection,
   Avatar,
 } from "@nextui-org/react";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import PersonIcon from "@mui/icons-material/Person";
 import HomeIcon from "@mui/icons-material/Home";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
@@ -42,7 +41,7 @@ export default function Profile(props) {
     listBtnRef.current.click();
     switchAccountRef.current.click();
   };
-
+  console.log(isLogin);
   return (
     <>
       <Popover

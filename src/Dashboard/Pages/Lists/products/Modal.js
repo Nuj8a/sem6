@@ -13,7 +13,7 @@ import {
   SelectItem,
   Progress,
 } from "@nextui-org/react";
-import { PlusIcon } from "@/app/dashboard/common/components/Tables/Icons/PlusIcon";
+import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 import { CKEditor } from "ckeditor4-react";
 
 const metal = [
@@ -27,7 +27,7 @@ function getMetalName(id) {
   return metalItem ? metalItem.name : "";
 }
 
-export default function modalApp(props) {
+export default function ModalApp(props) {
   const {
     handelpostproduct,
     handelUpdate,

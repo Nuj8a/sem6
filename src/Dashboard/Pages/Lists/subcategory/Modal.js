@@ -13,7 +13,7 @@ import {
   Textarea,
   Progress,
 } from "@nextui-org/react";
-import { PlusIcon } from "@/app/dashboard/common/components/Tables/Icons/PlusIcon";
+import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 
 export default function ModalApp(props) {
   const {

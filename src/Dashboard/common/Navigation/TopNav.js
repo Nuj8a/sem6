@@ -22,14 +22,12 @@ const TopNav = (props) => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   // !==========================================
 
   const [isLogin, setIsLogin] = useState({ data: "", isLogged: false });
-  const { userData, authToken, loading } = useSelector(
-    (state) => state.authReducer
-  );
+  const { userData, authToken } = useSelector((state) => state.authReducer);
 
   useEffect(() => {
     if (userData !== null && authToken !== null) {
@@ -57,11 +55,12 @@ const TopNav = (props) => {
     }
   }, [dataLocalstorage, userData]);
 
-  useEffect(() => {
-    if (Number(isLogin.data.privilege) < 1) {
-      push("/");
-    }
-  }, [isLogin, userData]);
+  console.log(push);
+  // useEffect(() => {
+  //   if (Number(isLogin.data.privilege) < 1) {
+  //     push("/");
+  //   }
+  // }, [isLogin, userData]);
 
   // !==========================================
 

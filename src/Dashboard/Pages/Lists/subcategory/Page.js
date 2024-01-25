@@ -7,13 +7,13 @@ import {
   getsubcategorys,
   deletesubcategory,
   updatesubcategory,
-} from "@/redux/slices/subCategorySlice";
+} from "../../../../redux/slices/subCategorySlice";
 
-import { getCategorys } from "@/redux/slices/categorySlice";
+import { getCategorys } from "../../../../redux/slices/categorySlice";
 import {
   // percentCompletedValue,
   setOnProgressChangeCallback,
-} from "@/redux/slices/subCategorySlice";
+} from "../../../../redux/slices/subCategorySlice";
 import { toast } from "sonner";
 
 const Page = () => {

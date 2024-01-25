@@ -14,7 +14,7 @@ import {
   Checkbox,
   Progress,
 } from "@nextui-org/react";
-import { PlusIcon } from "@/app/dashboard/common/components/Tables/Icons/PlusIcon";
+import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 
 const bannerCategoryData = [
   { _id: 1, bannerCategoryName: "Banner Cat A" },

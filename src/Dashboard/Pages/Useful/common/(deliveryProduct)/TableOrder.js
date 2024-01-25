@@ -121,7 +121,7 @@ export default function TableOrder(props) {
     }
 
     return filteredUsers;
-  }, [orderData, filterValue]);
+  }, [orderData, filterValue, hasSearchFilter]);
 
   let Pages = Math.ceil(filteredItems.length / rowsPerPage);
   Pages = Pages > 0 ? Pages : 1;
@@ -318,7 +318,9 @@ export default function TableOrder(props) {
     onRowsPerPageChange,
     orderData.length,
     onSearchChange,
-    hasSearchFilter,
+
+    PageFrom,
+    onClear,
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -336,7 +338,7 @@ export default function TableOrder(props) {
         />
       </div>
     );
-  }, [items.length, Page, Pages, hasSearchFilter]);
+  }, [Page, Pages]);
 
   return (
     <>

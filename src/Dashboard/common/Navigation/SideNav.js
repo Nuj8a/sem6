@@ -38,7 +38,7 @@ const SideNav = (props) => {
             >
               MAIN
             </p>
-            <Link href="/dashboard" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc === "/dashboard"
@@ -57,7 +57,7 @@ const SideNav = (props) => {
             >
               USEFUL
             </p>
-            <Link href="/dashboard/message" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/message" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/message")
@@ -72,7 +72,7 @@ const SideNav = (props) => {
               </li>
             </Link>
             {/* <Link
-              href="/dashboard/notification"
+              to="/dashboard/notification"
               style={{ textDecoration: "none" }}
             >
               <li
@@ -87,7 +87,7 @@ const SideNav = (props) => {
               </li>
             </Link> */}
 
-            <Link href="/dashboard/orders" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/orders" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/orders")
@@ -101,7 +101,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/delivery" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/delivery" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/delivery")
@@ -115,7 +115,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/finished" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/finished" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/finished")
@@ -135,7 +135,7 @@ const SideNav = (props) => {
               LISTS
             </p>
 
-            <Link href="/dashboard/category" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/category" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/category")
@@ -150,7 +150,7 @@ const SideNav = (props) => {
               </li>
             </Link>
             <Link
-              href="/dashboard/subcategory"
+              to="/dashboard/subcategory"
               style={{ textDecoration: "none" }}
             >
               <li
@@ -166,7 +166,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/banner" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/banner" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/banner")
@@ -180,7 +180,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/products" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/products" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/products")
@@ -200,7 +200,7 @@ const SideNav = (props) => {
               STATS
             </p>
             <Link
-              href="/dashboard/filledchart"
+              to="/dashboard/filledchart"
               style={{ textDecoration: "none" }}
             >
               <li
@@ -216,10 +216,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link
-              href="/dashboard/linechart"
-              style={{ textDecoration: "none" }}
-            >
+            <Link to="/dashboard/linechart" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/linechart")
@@ -233,7 +230,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/barchart" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/barchart" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/barchart")
@@ -252,7 +249,7 @@ const SideNav = (props) => {
             >
               USER
             </p>
-            <Link href="/dashboard/users" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/users" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/users")
@@ -266,7 +263,7 @@ const SideNav = (props) => {
                 </span>
               </li>
             </Link>
-            <Link href="/dashboard/profile" style={{ textDecoration: "none" }}>
+            <Link to="/dashboard/profile" style={{ textDecoration: "none" }}>
               <li
                 className={
                   loc.includes("/dashboard/profile")

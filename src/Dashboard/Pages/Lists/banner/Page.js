@@ -7,11 +7,11 @@ import {
   getcarousels,
   deletecarousel,
   updatecarousel,
-} from "@/redux/slices/carouselSlice";
+} from "../../../../redux/slices/carouselSlice";
 import {
   // percentCompletedValue,
   setOnProgressChangeCallback,
-} from "@/redux/slices/carouselSlice";
+} from "../../../../redux/slices/carouselSlice";
 import { toast } from "sonner";
 
 const Page = () => {

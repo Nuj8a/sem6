@@ -17,14 +17,14 @@ import {
   Pagination,
   Tooltip,
 } from "@nextui-org/react";
-import { SearchIcon } from "@/app/dashboard/common/components/Tables/Icons/SearchIcon";
-import { ChevronDownIcon } from "@/app/dashboard/common/components/Tables/Icons/ChevronDownIcon";
-import { capitalize } from "@/app/dashboard/common/components/Tables/utils";
-import { EditIcon } from "@/app/dashboard/common/components/Tables/Icons/EditIcons";
-import { DeleteIcon } from "@/app/dashboard/common/components/Tables/Icons/DeleteIcon";
+import { SearchIcon } from "../../../common/components/Tables/Icons/SearchIcon";
+import { ChevronDownIcon } from "../../../common/components/Tables/Icons/ChevronDownIcon";
+import { capitalize } from "../../../common/components/Tables/utils";
+import { EditIcon } from "../../../common/components/Tables/Icons/EditIcons";
+import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import ModalApp from "./Modal";
-import ConFirm from "@/app/dashboard/common/components/ConFirm";
-import { PlusIcon } from "@/app/dashboard/common/components/Tables/Icons/PlusIcon";
+import ConFirm from "../../../common/components/ConFirm";
+import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 
 const INITIAL_VISIBLE_COLUMNS = [
   "sn",
