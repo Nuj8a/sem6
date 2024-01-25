@@ -1,10 +1,32 @@
-import React from "react";
+// App.js
+
+import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import makeStore from "./redux/store";
+import LoadingBar from "react-top-loading-bar";
+import PageUser from "./User/PageUser";
+import PageDashboard from "./Dashboard/PageDashboard";
+
+const loadingBarColor = "#3b82f6";
 
 function App() {
+  const [progress, setProgress] = useState(10);
+
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <React.Fragment>
+      <Provider store={makeStore()}>
+        <BrowserRouter>
+          <LoadingBar
+            color={loadingBarColor}
+            progress={progress}
+            onLoaderFinished={() => setProgress(0)}
+          />
+          <PageUser setProgress={setProgress} />
+          <PageDashboard setProgress={setProgress} />
+        </BrowserRouter>
+      </Provider>
+    </React.Fragment>
   );
 }
 
