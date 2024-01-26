@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSixMonthDataChartThreeDiff } from "@/redux/slices/statisticsSlice";
+import { getSixMonthDataChartThreeDiff } from "../../../../redux/slices/statisticsSlice";
 import Barchart from "./Barchart";
 
 const Page = () => {
@@ -20,7 +20,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

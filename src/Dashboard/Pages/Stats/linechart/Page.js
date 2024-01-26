@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import Linechart from "./Linechart";
 import { useDispatch, useSelector } from "react-redux";
-import { getSixMonthDataChartThreeDiff } from "@/redux/slices/statisticsSlice";
+import { getSixMonthDataChartThreeDiff } from "../../../../redux/slices/statisticsSlice";
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <Linechart data={sixMonthDataThreeDiff} />

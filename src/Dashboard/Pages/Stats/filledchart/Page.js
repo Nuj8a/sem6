@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import FilledChart from "./Filledchart";
 import { useDispatch, useSelector } from "react-redux";
-import { getSixMonthDataChart } from "@/redux/slices/statisticsSlice";
+import { getSixMonthDataChart } from "../../../../redux/slices/statisticsSlice";
 
 const Page = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
   return (
     <>
       <FilledChart

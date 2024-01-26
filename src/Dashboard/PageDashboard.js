@@ -6,6 +6,9 @@ import Subcategory from "./Pages/Lists/subcategory/Page";
 import Banner from "./Pages/Lists/banner/Page";
 import Products from "./Pages/Lists/products/Page";
 import TopNav from "./common/Navigation/TopNav";
+import BarChart from "./Pages/Stats/barchart/Page";
+import FilledChart from "./Pages/Stats/filledchart/Page";
+import LineChart from "./Pages/Stats/linechart/Page";
 
 const PageDashboard = ({ setProgress }) => {
   const [hamClick, setHamClick] = useState(false);
@@ -40,6 +43,18 @@ const PageDashboard = ({ setProgress }) => {
               <Route
                 path="/dashboard/products"
                 element={<Products setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/filledchart"
+                element={<FilledChart setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/linechart"
+                element={<LineChart setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/barchart"
+                element={<BarChart setProgress={setProgress} />}
               />
             </Routes>
           </div>

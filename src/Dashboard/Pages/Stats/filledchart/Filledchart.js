@@ -11,7 +11,7 @@ import {
 
 export default class Example extends PureComponent {
   render() {
-    const { aspect, title, data, colors } = this.props;
+    const { aspect, title, data } = this.props;
     return (
       <div className="chart !max-w-[1300px] min-w-[400px]">
         <div className="font-semibold tracking-wide opacity-60">{title}</div>
