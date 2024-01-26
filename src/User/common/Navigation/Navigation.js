@@ -33,7 +33,7 @@ const Navigation = () => {
   const pathname = useLocation().pathname;
   const isDashboard = pathname.includes("dashboard");
   return !isDashboard ? (
-    <nav className="max-w-[1550px] relative">
+    <nav className="max-w-[1600px] relative">
       <TopNav scrollY={scrollY} />
       <BottomNav />
       {Math.ceil(scrollY) > 600 && (

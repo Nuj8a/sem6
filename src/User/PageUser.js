@@ -15,7 +15,7 @@ const PageUser = () => {
   return (
     <>
       {!Location.includes("/dashboard") && (
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           {!Location.includes("/login") && !Location.includes("/register") && (
             <Navigation />
           )}

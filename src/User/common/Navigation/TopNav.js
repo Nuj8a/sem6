@@ -53,11 +53,11 @@ const TopNav = (props) => {
   const { scrollY } = props;
   return (
     <div
-      className={` top-0 h-[50px] w-full max-w-[1550px] z-50 ${
+      className={` top-0 h-[50px] w-full max-w-[1600px] z-50 ${
         Math.ceil(scrollY) > 50 ? "fixed bg-blue-100" : "static bg-white"
       }`}
     >
-      <div className="flex py-2  max-w-[1550px] mx-auto w-full h-[50px] justify-center items-center">
+      <div className="flex py-2  max-w-[1600px] mx-auto w-full h-[50px] justify-center items-center">
         <div className="w-1/4 flex items-center justify-around gap-5">
           <div className=" text-xl font-semibold  tracking-wide flex justify-center items-center">
             LOGO

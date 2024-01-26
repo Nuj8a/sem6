@@ -3,7 +3,7 @@ import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
 
 export default function CardCollection() {
   return (
-    <div className="max-w-[1550px] gap-2 grid grid-cols-12 grid-rows-2 px-1 my-5">
+    <div className="max-w-[1600px] gap-2 grid grid-cols-12 grid-rows-2 px-1 my-5">
       <Card
         radius="none"
         className="round-sm col-span-12 bg-black sm:col-span-5 h-[300px] "
