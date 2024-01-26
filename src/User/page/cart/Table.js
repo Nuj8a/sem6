@@ -17,12 +17,15 @@ import {
   Pagination,
   Tooltip,
 } from "@nextui-org/react";
-import { capitalize } from "@/app/dashboard/common/components/Tables/utils";
-import { EyeIcon } from "@/app/dashboard/common/components/Tables/Icons/EyeIcon";
-import { EditIcon } from "@/app/dashboard/common/components/Tables/Icons/EditIcons";
-import { DeleteIcon } from "@/app/dashboard/common/components/Tables/Icons/DeleteIcon";
-import { ChevronDownIcon } from "@/app/dashboard/common/components/Tables/Icons/ChevronDownIcon";
-import { columns, users } from "@/app/dashboard/common/components/Tables/data";
+import { capitalize } from "../../../Dashboard/common/components/Tables/utils";
+import { EyeIcon } from "../../../Dashboard/common/components/Tables/Icons/EyeIcon";
+import { EditIcon } from "../../../Dashboard/common/components/Tables/Icons/EditIcons";
+import { DeleteIcon } from "../../../Dashboard/common/components/Tables/Icons/DeleteIcon";
+import { ChevronDownIcon } from "../../../Dashboard/common/components/Tables/Icons/ChevronDownIcon";
+import {
+  columns,
+  users,
+} from "../../../Dashboard/common/components/Tables/data";
 
 const statusColorMap = {
   active: "success",
@@ -57,7 +60,7 @@ export default function TablePage() {
     const end = start + rowsPerPage;
 
     return users.slice(start, end);
-  }, [Page, rowsPerPage]);
+  }, [Page]);
 
   const sortedItems = React.useMemo(() => {
     return [...items].sort((a, b) => {
@@ -116,7 +119,7 @@ export default function TablePage() {
         </div>
       </div>
     );
-  }, [visibleColumns, users.length, items.length, Page, Pages]);
+  }, [visibleColumns, Page, Pages]);
 
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];

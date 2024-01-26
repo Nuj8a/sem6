@@ -14,8 +14,7 @@ import {
   FaLinkedin,
 } from "react-icons/fa";
 import { Button, Card } from "@nextui-org/react";
-import contentImage from "@/public/profile.jpg";
-import Image from "next/image";
+import contentImage from "../../../assets/images/scrollImage.gif";
 
 const ShopDetails = () => {
   const [contentValue, setcontentValue] = useState(0);
@@ -31,7 +30,7 @@ const ShopDetails = () => {
               radius="none"
               className="flex justify-center items-center rounded-sm h-[400px] "
             >
-              <Image
+              <img
                 className="max-h-[400px] min-h-[200px] object-contain max-w-full min-w-[200px]"
                 src={contentImage}
                 alt="Product"
@@ -43,21 +42,21 @@ const ShopDetails = () => {
               radius="none"
               className="!rounded-sm w-full flex !flex-row item-center gap-1 h-[50px]"
             >
-              <Image
+              <img
                 className="m-[1px] hover:scale-105 duration-100 object-cover rounded-sm cursor-pointer"
                 src={contentImage}
                 alt="Product"
                 width={50}
                 height={50}
               />
-              <Image
+              <img
                 className="m-[1px] hover:scale-105 duration-100 object-cover rounded-sm cursor-pointer"
                 src={contentImage}
                 alt="Product"
                 width={50}
                 height={50}
               />
-              <Image
+              <img
                 className="m-[1px] hover:scale-105 duration-100 object-cover rounded-sm cursor-pointer"
                 src={contentImage}
                 alt="Product"
@@ -79,7 +78,7 @@ const ShopDetails = () => {
                 className="mt-1"
                 value={contentValue}
                 onChange={(event, newValue) => {
-                  setValue(newValue);
+                  setcontentValue(newValue);
                 }}
               />
               <small className="font-semibold text-sm">(99 Reviews)</small>

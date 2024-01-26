@@ -2,7 +2,7 @@
 import React from "react";
 import Breadcrumb from "../../common/Components/Breadcrumb";
 import ShopDetails from "./ShopDetails";
-import Product from "../(home)/Product";
+import Product from "../Home/Product";
 
 const Page = () => {
   return (
