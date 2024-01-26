@@ -29,7 +29,8 @@ export const postCategory = createAsyncThunk(
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        "auth-token": JSON.parse(localStorage.getItem("token")),
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7…zMX0.5jljYCiVLPMupKusABmqcwGwV7oRxc_lBqf77YBT9eY",
       },
       onUploadProgress: (progressEvent) => {
         percentCompletedValue = Math.round(
@@ -61,7 +62,8 @@ export const updateCategory = createAsyncThunk(
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
-        "auth-token": JSON.parse(localStorage.getItem("token")),
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7…zMX0.5jljYCiVLPMupKusABmqcwGwV7oRxc_lBqf77YBT9eY",
       },
       onUploadProgress: (progressEvent) => {
         percentCompletedValue = Math.round(
@@ -87,7 +89,8 @@ export const deleteCategory = createAsyncThunk(
   async (postId, thunkApi) => {
     const config = {
       headers: {
-        "auth-token": JSON.parse(localStorage.getItem("token")),
+        "auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7…zMX0.5jljYCiVLPMupKusABmqcwGwV7oRxc_lBqf77YBT9eY",
       },
     };
 

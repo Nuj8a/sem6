@@ -5,14 +5,15 @@ import SideNav from "./SideNav";
 import TopNavContent from "./TopNavContent";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnreadMsg } from "../../../redux/slices/messageSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 
 const TopNav = (props) => {
   const pathname = useLocation().pathname;
   const isDashboard = pathname.includes("dashboard");
   const { hamClick, setHamClick } = props;
   const dispatch = useDispatch();
-  const push = useNavigate();
+  // const push = useNavigate();
   const { unreadMsg } = useSelector((state) => state.messageReducer);
   const userRef = useRef(false);
   useEffect(() => {
@@ -55,7 +56,6 @@ const TopNav = (props) => {
     }
   }, [dataLocalstorage, userData]);
 
-  console.log(push);
   // useEffect(() => {
   //   if (Number(isLogin.data.privilege) < 1) {
   //     push("/");

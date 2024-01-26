@@ -41,7 +41,7 @@ export default function TablePage() {
     column: "age",
     direction: "ascending",
   });
-  const [Page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(1);
   const headerColumns = React.useMemo(() => {
     if (visibleColumns === "all") return columns;
 
@@ -53,11 +53,11 @@ export default function TablePage() {
   const Pages = Math.ceil(users.length / rowsPerPage);
 
   const items = React.useMemo(() => {
-    const start = (Page - 1) * rowsPerPage;
+    const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
     return users.slice(start, end);
-  }, [Page, rowsPerPage]);
+  }, [page, rowsPerPage]);
 
   const sortedItems = React.useMemo(() => {
     return [...items].sort((a, b) => {
@@ -107,7 +107,7 @@ export default function TablePage() {
               showControls
               showShadow
               color="primary"
-              Page={Page}
+              Page={page}
               total={Pages}
               onChange={setPage}
               radius="sm"
@@ -116,7 +116,7 @@ export default function TablePage() {
         </div>
       </div>
     );
-  }, [visibleColumns, users.length, items.length, Page, Pages]);
+  }, [visibleColumns, users.length, items.length, page, Pages]);
 
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];

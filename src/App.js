@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import makeStore from "./redux/store";
 import LoadingBar from "react-top-loading-bar";
-import PageUser from "./User/PageUser";
+// import PageUser from "./User/PageUser";
 import PageDashboard from "./Dashboard/PageDashboard";
 
 const loadingBarColor = "#3b82f6";
@@ -22,7 +22,7 @@ function App() {
             progress={progress}
             onLoaderFinished={() => setProgress(0)}
           />
-          <PageUser setProgress={setProgress} />
+          {/* <PageUser setProgress={setProgress} /> */}
           <PageDashboard setProgress={setProgress} />
         </BrowserRouter>
       </Provider>
