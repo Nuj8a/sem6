@@ -86,3 +86,13 @@ body {
   opacity: 0 !important;
   scale: 1.03;
 }
+.font-gruppo {
+  font-family: "Gruppo", sans-serif;
+}
+.font-Orbitron {
+  font-family: "Orbitron", sans-serif;
+}
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.05rem;
+}

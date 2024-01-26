@@ -200,7 +200,7 @@ export default function Tablepage(props) {
             isClearable
             radius="sm"
             size="sm"
-            className="max-w-[300px]"
+            className="max-w-[350px]"
             placeholder="Search by category name..."
             startContent={<SearchIcon />}
             value={filterValue}
