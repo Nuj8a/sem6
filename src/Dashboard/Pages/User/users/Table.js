@@ -18,13 +18,13 @@ import {
   Pagination,
   Tooltip,
 } from "@nextui-org/react";
-import { SearchIcon } from "@/app/dashboard/common/components/Tables/Icons/SearchIcon";
-import { ChevronDownIcon } from "@/app/dashboard/common/components/Tables/Icons/ChevronDownIcon";
-import { capitalize } from "@/app/dashboard/common/components/Tables/utils";
-import { EyeIcon } from "@/app/dashboard/common/components/Tables/Icons/EyeIcon";
-import { DeleteIcon } from "@/app/dashboard/common/components/Tables/Icons/DeleteIcon";
+import { SearchIcon } from "../../../common/components/Tables/Icons/SearchIcon";
+import { ChevronDownIcon } from "../../../common/components/Tables/Icons/ChevronDownIcon";
+import { capitalize } from "../../../common/components/Tables/utils";
+import { EyeIcon } from "../../../common/components/Tables/Icons/EyeIcon";
+import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import UserModal from "./UserModal";
-import ConFirm from "@/app/dashboard/common/components/ConFirm";
+import ConFirm from "../../../common/components/ConFirm";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ConFirmAddadmin from "./ConFirmAddadmin";
@@ -54,7 +54,7 @@ const getStatus = (id) => {
 const INITIAL_VISIBLE_COLUMNS = ["sn", "name", "email", "privilege", "actions"];
 
 export default function TablePage(props) {
-  const { contentData, handelPost, handelDelete, handelUpdate } = props;
+  const { contentData, handelDelete, handelUpdate } = props;
   const [filterValue, setFilterValue] = React.useState("");
   const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
@@ -132,7 +132,7 @@ export default function TablePage(props) {
     }
 
     return filteredUsers;
-  }, [contentData, filterValue, statusFilter]);
+  }, [contentData, filterValue, statusFilter, hasSearchFilter]);
 
   let Pages = Math.ceil(filteredItems.length / rowsPerPage);
   Pages = Pages > 0 ? Pages : 1;
@@ -357,7 +357,7 @@ export default function TablePage(props) {
     onRowsPerPageChange,
     contentData.length,
     onSearchChange,
-    hasSearchFilter,
+    onClear,
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -375,7 +375,7 @@ export default function TablePage(props) {
         />
       </div>
     );
-  }, [items.length, Page, Pages, hasSearchFilter]);
+  }, [Page, Pages]);
 
   return (
     <>

@@ -9,6 +9,8 @@ import TopNav from "./common/Navigation/TopNav";
 import BarChart from "./Pages/Stats/barchart/Page";
 import FilledChart from "./Pages/Stats/filledchart/Page";
 import LineChart from "./Pages/Stats/linechart/Page";
+import Profile from "./Pages/User/profile/Page";
+import Users from "./Pages/User/users/Page";
 
 const PageDashboard = ({ setProgress }) => {
   const [hamClick, setHamClick] = useState(false);
@@ -55,6 +57,14 @@ const PageDashboard = ({ setProgress }) => {
               <Route
                 path="/dashboard/barchart"
                 element={<BarChart setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/users"
+                element={<Users setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/profile"
+                element={<Profile setProgress={setProgress} />}
               />
             </Routes>
           </div>

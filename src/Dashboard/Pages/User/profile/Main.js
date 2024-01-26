@@ -2,11 +2,14 @@
 import Single from "./Single";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "@/redux/slices/authSlice";
-import { getdetail } from "@/redux/slices/userDetailSlice";
-import { getOrders, updateOrderSuccess } from "@/redux/slices/orderSlice";
-import { getproducts } from "@/redux/slices/productSlice";
-import { getSixMonthDataChartTwoDiffUser } from "@/redux/slices/statisticsSlice";
+import { getUser } from "../../../../redux/slices/authSlice";
+import { getdetail } from "../../../../redux/slices/userDetailSlice";
+import {
+  getOrders,
+  updateOrderSuccess,
+} from "../../../../redux/slices/orderSlice";
+import { getproducts } from "../../../../redux/slices/productSlice";
+import { getSixMonthDataChartTwoDiffUser } from "../../../../redux/slices/statisticsSlice";
 
 const Page = ({ userId }) => {
   const dispatch = useDispatch();
@@ -22,7 +25,7 @@ const Page = ({ userId }) => {
     }
   }, [dispatch, userId]);
 
-  const { oneUserData, loading } = useSelector((state) => state.authReducer);
+  const { oneUserData } = useSelector((state) => state.authReducer);
   const { detailData } = useSelector((state) => state.userDetailReducer);
   const { orderData } = useSelector((state) => state.orderReducer);
   const { productData } = useSelector((state) => state.productReducer);
@@ -64,14 +67,7 @@ const Page = ({ userId }) => {
       user: oneUserData,
     }));
     setFinalData(finalorderData);
-  }, [
-    orderData.length > 0,
-    productData.length > 0,
-    finalOrder.length > 0,
-    userDetail,
-    oneUserData,
-    userId,
-  ]);
+  }, [orderData, productData, userDetail, oneUserData, userId, finalOrder]);
 
   return (
     <>

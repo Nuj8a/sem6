@@ -7,16 +7,14 @@ import {
   getUsers,
   deleteUser,
   updateAdmin,
-} from "@/redux/slices/authSlice";
+} from "../../../../redux/slices/authSlice";
 import { toast } from "sonner";
 
 const Page = () => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { allUserData, posts, loading } = useSelector(
-    (state) => state.authReducer
-  );
+  const { allUserData } = useSelector((state) => state.authReducer);
 
   useEffect(() => {
     if (userRef.current === false) {
@@ -25,7 +23,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let finalCategoryData = allUserData.map((item, index) => ({
@@ -33,7 +31,7 @@ const Page = () => {
       sn: index + 1,
     }));
     setFinalData(finalCategoryData);
-  }, [allUserData]);
+  }, [allUserData, dispatch]);
 
   const handelregisterUser = async (data) => {
     try {
@@ -68,7 +66,7 @@ const Page = () => {
   const handelUpdate = async (data) => {
     try {
       const response = await dispatch(updateAdmin(data));
-      if (response.payload?.user?.privilege == 1) {
+      if (Number(response.payload?.user?.privilege) === 1) {
         toast.success("User update admin");
       } else {
         toast.warning("User remove admin");
