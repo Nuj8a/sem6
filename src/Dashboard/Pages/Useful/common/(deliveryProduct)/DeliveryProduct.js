@@ -7,7 +7,6 @@ import {
   getOrders,
   deleteOrder,
   updateOrderSuccess,
-  updateOrdernotify,
 } from "../../../../../redux/slices/orderSlice";
 
 import { toast } from "sonner";
@@ -19,9 +18,7 @@ const DeliveryProduct = ({ PageFrom }) => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { orderData, posts, loading } = useSelector(
-    (state) => state.orderReducer
-  );
+  const { orderData } = useSelector((state) => state.orderReducer);
   const { productData } = useSelector((state) => state.productReducer);
   const { allUserData } = useSelector((state) => state.authReducer);
   const { detailData } = useSelector((state) => state.userDetailReducer);
@@ -48,7 +45,7 @@ const DeliveryProduct = ({ PageFrom }) => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   const handelpostOrder = async (data) => {
     try {
@@ -98,14 +95,14 @@ const DeliveryProduct = ({ PageFrom }) => {
       toast.error("Some error occurred");
     }
   };
-  const handelUpdatenotify = async (data) => {
-    try {
-      const response = await dispatch(updateOrdernotify(data));
-      // console.log(response);
-    } catch (error) {
-      console.error("Error creating post:", error);
-    }
-  };
+  // const handelUpdatenotify = async (data) => {
+  //   try {
+  //     const response = await dispatch(updateOrdernotify(data));
+  //     // console.log(response);
+  //   } catch (error) {
+  //     console.error("Error creating post:", error);
+  //   }
+  // };
 
   const finalPageData =
     PageFrom.toLowerCase() === "order"
@@ -119,13 +116,7 @@ const DeliveryProduct = ({ PageFrom }) => {
       sn: index + 1,
     }));
     setFinalData(finalorderData);
-  }, [
-    finalPageData.length > 0,
-    allUserData.length > 0,
-    detailData.length > 0,
-    productData.length > 0,
-    orderData,
-  ]);
+  }, [finalPageData, allUserData, detailData, productData, orderData]);
 
   return (
     <>

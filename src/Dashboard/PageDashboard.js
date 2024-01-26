@@ -12,6 +12,9 @@ import LineChart from "./Pages/Stats/linechart/Page";
 import Profile from "./Pages/User/profile/Page";
 import Users from "./Pages/User/users/Page";
 import Message from "./Pages/Useful/message/Page";
+import Orders from "./Pages/Useful/orders/Page";
+import Delivery from "./Pages/Useful/delivery/Page";
+import Finished from "./Pages/Useful/finished/Page";
 
 const PageDashboard = ({ setProgress }) => {
   const [hamClick, setHamClick] = useState(false);
@@ -70,6 +73,18 @@ const PageDashboard = ({ setProgress }) => {
               <Route
                 path="/dashboard/message"
                 element={<Message setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/orders"
+                element={<Orders setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/delivery"
+                element={<Delivery setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/finished"
+                element={<Finished setProgress={setProgress} />}
               />
             </Routes>
           </div>
