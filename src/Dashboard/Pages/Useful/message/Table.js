@@ -18,13 +18,13 @@ import {
   Pagination,
   Tooltip,
 } from "@nextui-org/react";
-import { SearchIcon } from "@/app/dashboard/common/components/Tables/Icons/SearchIcon";
-import { ChevronDownIcon } from "@/app/dashboard/common/components/Tables/Icons/ChevronDownIcon";
-import { capitalize } from "@/app/dashboard/common/components/Tables/utils";
-import { EyeIcon } from "@/app/dashboard/common/components/Tables/Icons/EyeIcon";
-import { DeleteIcon } from "@/app/dashboard/common/components/Tables/Icons/DeleteIcon";
+import { SearchIcon } from "../../../common/components/Tables/Icons/SearchIcon";
+import { ChevronDownIcon } from "../../../common/components/Tables/Icons/ChevronDownIcon";
+import { capitalize } from "../../../common/components/Tables/utils";
+import { EyeIcon } from "../../../common/components/Tables/Icons/EyeIcon";
+import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import Modal from "./Modal";
-import ConFirm from "@/app/dashboard/common/components/ConFirm";
+import ConFirm from "../../../common/components/ConFirm";
 
 const getStatus = (id) => {
   if (id === 2) return "Superadmin";
@@ -118,7 +118,7 @@ export default function TablePage(props) {
     }
 
     return filteredUsers;
-  }, [contentData, filterValue]);
+  }, [contentData, filterValue, hasSearchFilter]);
 
   // const Pages = Math.ceil(filteredItems.length / rowsPerPage);
   let Pages = Math.ceil(filteredItems.length / rowsPerPage);
@@ -193,7 +193,7 @@ export default function TablePage(props) {
         return (
           <Chip
             className="capitalize"
-            color={statusColorMap[user.status]}
+            color={"success"}
             size="sm"
             variant="flat"
           >
@@ -314,7 +314,7 @@ export default function TablePage(props) {
     onRowsPerPageChange,
     contentData.length,
     onSearchChange,
-    hasSearchFilter,
+    onClear,
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -332,7 +332,7 @@ export default function TablePage(props) {
         />
       </div>
     );
-  }, [items.length, Page, Pages, hasSearchFilter]);
+  }, [Page, Pages]);
 
   return (
     <>

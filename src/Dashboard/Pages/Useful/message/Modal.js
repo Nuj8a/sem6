@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 
 import {
   Modal,
@@ -27,7 +27,7 @@ export default function ModalFun(props) {
       handelUpdate(msgData._id);
       updateURLWithoutSegment(window.location.href, "message");
     }
-  }, [msgData._id]);
+  }, [msgData._id, handelUpdate]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const clearCategoryData = () => {
     setMsgData({});

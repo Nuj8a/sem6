@@ -8,18 +8,16 @@ import {
   deleteContacts,
   updateunreadcontent,
   getUnreadMsg,
-} from "@/redux/slices/messageSlice";
-import { getUsers } from "@/redux/slices/authSlice";
-import { tToasteroast } from "sonner";
+} from "../../../../redux/slices/messageSlice";
+import { getUsers } from "../../../../redux/slices/authSlice";
+import { toast } from "sonner";
 
 const Page = (props) => {
   const { MsgId } = props;
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { contactData, posts, loading, unreadMsg } = useSelector(
-    (state) => state.messageReducer
-  );
+  const { contactData } = useSelector((state) => state.messageReducer);
   const { allUserData } = useSelector((state) => state.authReducer);
 
   const joinedData = finalData.map((contact) => {
@@ -45,7 +43,7 @@ const Page = (props) => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let finalCategoryData = contactData.map((item, index) => ({
@@ -88,7 +86,7 @@ const Page = (props) => {
   const handelUpdate = async (data) => {
     try {
       const response = await dispatch(updateunreadcontent(data));
-      // console.log(response);
+      console.log(response);
     } catch (error) {
       console.error("Error creating post:", error);
     }
