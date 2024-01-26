@@ -16,7 +16,6 @@ import {
   Chip,
   Pagination,
   Tooltip,
-  Avatar,
   User,
 } from "@nextui-org/react";
 import { SearchIcon } from "../../../common/components/Tables/Icons/SearchIcon";
@@ -99,7 +98,7 @@ export default function Tablepage(props) {
       );
     }
     return filteredUsers;
-  }, [categoryData, filterValue]);
+  }, [categoryData, filterValue, hasSearchFilter]);
 
   // const pages = Math.ceil(filteredItems.length / rowsPerpage);
   let pages = 1;
@@ -272,7 +271,7 @@ export default function Tablepage(props) {
     onRowsPerpageChange,
     categoryData.length,
     onSearchChange,
-    hasSearchFilter,
+    onClear,
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -290,7 +289,7 @@ export default function Tablepage(props) {
         />
       </div>
     );
-  }, [items.length, page, pages, hasSearchFilter]);
+  }, [page, pages]);
 
   return (
     <>

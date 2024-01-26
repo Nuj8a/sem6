@@ -19,9 +19,7 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { data, posts, loading } = useSelector(
-    (state) => state.categoryReducer
-  );
+  const { data } = useSelector((state) => state.categoryReducer);
 
   useEffect(() => {
     if (userRef.current === false) {
@@ -30,7 +28,7 @@ const CategoryPage = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (postUpload >= 100) {
