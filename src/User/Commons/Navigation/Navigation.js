@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
-import Logo from "../assets/js/Logo";
+// import Logo from "../assets/js/Logo";
 import { Card } from "@nextui-org/react";
-import ThemeChange from "../../../ThemeChange";
+// import ThemeChange from "../../../ThemeChange";
 
 const Navigation = ({ setColorChange, colorChange }) => {
   const Location = useLocation().pathname;
@@ -29,12 +29,13 @@ const Navigation = ({ setColorChange, colorChange }) => {
 
   return (
     <>
-      <div className="sticky bg-color-primary font-poppins top-0 z-50">
+      <div className="sticky bg-white shadow font-poppins top-0 z-50">
         <div className="h-[60px] w-full border-b border-dark-color">
           <div className="flex w-[95%] mx-auto justify-between items-center h-full">
-            <div className="flex gap-20">
-              <div className="logo">
-                <Logo height={45} width={115} />
+            <div className="flex gap-20 h-full">
+              <div className="logo flex justify-center items-center h-full">
+                {/* <Logo height={45} width={115} /> */}
+                <h1>LOGO</h1>
               </div>
               <ul className="flex text-sm justify-center gap-5 items-center">
                 <li>
@@ -81,14 +82,14 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     )}
                   </Link>
                   <div className="hidden group-hover:block">
-                    <ul className="absolute rounded-sm overflow-hidden bg-[#1C1D2E] text-xs top-9 text-[var(--text-light-color)] py-1 flex flex-col">
+                    <ul className="absolute rounded-sm overflow-hidden bg-white shadow text-xs top-9 text-[var(--text-light-color)] py-1 flex flex-col">
                       <li>
                         <Link
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/e-commerce"
-                            ) && "bg-[#27272A] text-[var(--text-dark-color)]"
-                          } hover:bg-[#27272A] hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
+                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/e-commerce"}
                         >
                           E-Commerce
@@ -99,8 +100,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/educational"
-                            ) && "bg-[#27272A] text-[var(--text-dark-color)]"
-                          } hover:bg-[#27272A] hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
+                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/educational"}
                         >
                           Educational
@@ -111,8 +112,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/news-and-media"
-                            ) && "bg-[#27272A] text-[var(--text-dark-color)]"
-                          } hover:bg-[#27272A] hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
+                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/news-and-media"}
                         >
                           News and Media
@@ -123,8 +124,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/social-media"
-                            ) && "bg-[#27272A] text-[var(--text-dark-color)]"
-                          } hover:bg-[#27272A] hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
+                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/social-media"}
                         >
                           Social Media
@@ -152,10 +153,10 @@ const Navigation = ({ setColorChange, colorChange }) => {
             </div>
             <div className="profile text-sm flex justify-center items-center gap-5">
               <div className="scale-75">
-                <ThemeChange
+                {/* <ThemeChange
                   setColorChange={setColorChange}
                   colorChange={colorChange}
-                />
+                /> */}
               </div>
               <div className="h-[20px] w-[1px] border-r border-light-color" />
               <Link
