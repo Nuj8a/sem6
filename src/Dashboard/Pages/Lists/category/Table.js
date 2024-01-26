@@ -26,6 +26,7 @@ import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import ModalApp from "./Modal";
 import ConFirm from "../../../common/components/ConFirm";
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
+import BredCrumbFun from "../../../common/Navigation/BredCrumb";
 
 const INITIAL_VISIBLE_COLUMNS = [
   "sn",
@@ -199,7 +200,7 @@ export default function Tablepage(props) {
             isClearable
             radius="sm"
             size="sm"
-            className="w-[300px]"
+            className="max-w-[300px]"
             placeholder="Search by category name..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -244,13 +245,12 @@ export default function Tablepage(props) {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <div className="flex gap-8 items-center justify-center">
+          <div className="flex gap-5 items-center justify-center">
             <span className="text-default-400 text-small">
               Total {categoryData.length} categories
             </span>
-            <span className="tracking-wide font-semibold text-slate-600 dark:text-slate-300">
-              Dashboard/Categories
-            </span>
+            <div className="h-[20px] w-[1px] border-r border-black/30"></div>
+            <BredCrumbFun category={"Categories"} />
           </div>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:

@@ -29,6 +29,7 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ConFirmAddadmin from "./ConFirmAddadmin";
 import { VerifiedUser } from "@mui/icons-material";
+import BredCrumbFun from "../../../common/Navigation/BredCrumb";
 
 const statusOptions = [
   { name: "Superadmin", uid: 2 },
@@ -265,7 +266,8 @@ export default function TablePage(props) {
           <Input
             isClearable
             radius="sm"
-            className="w-full sm:max-w-[44%]"
+            size="sm"
+            className="max-w-[350px]"
             placeholder="Search by name..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -332,9 +334,8 @@ export default function TablePage(props) {
             <span className="text-default-400 text-small">
               Total {contentData.length} users
             </span>
-            <span className="tracking-wide font-semibold text-slate-600 dark:text-slate-300">
-              Dashboard/Users
-            </span>
+            <div className="h-[20px] w-[1px] border-r border-black/30"></div>
+            <BredCrumbFun category={"Users"} />
           </div>
           <label className="flex items-center text-default-400 text-small">
             Rows per Page:

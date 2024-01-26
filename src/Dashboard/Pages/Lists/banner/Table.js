@@ -26,6 +26,7 @@ import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import ModalApp from "./Modal";
 import ConFirm from "../../../common/components/ConFirm";
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
+import BredCrumbFun from "../../../common/Navigation/BredCrumb";
 
 const INITIAL_VISIBLE_COLUMNS = [
   "sn",
@@ -195,7 +196,8 @@ export default function Tablepage(props) {
           <Input
             isClearable
             radius="sm"
-            className="w-full sm:max-w-[44%]"
+            size="sm"
+            className="max-w-[350px]"
             placeholder="Search by banner title..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -244,9 +246,8 @@ export default function Tablepage(props) {
             <span className="text-default-400 text-small">
               Total {catouselData.length} Banners
             </span>
-            <span className="tracking-wide font-semibold text-slate-600 dark:text-slate-300">
-              Dashboard/Banners
-            </span>
+            <div className="h-[20px] w-[1px] border-r border-black/30"></div>
+            <BredCrumbFun category={"Banner"} />
           </div>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:

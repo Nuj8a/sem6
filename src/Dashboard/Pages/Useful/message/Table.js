@@ -25,6 +25,7 @@ import { EyeIcon } from "../../../common/components/Tables/Icons/EyeIcon";
 import { DeleteIcon } from "../../../common/components/Tables/Icons/DeleteIcon";
 import Modal from "./Modal";
 import ConFirm from "../../../common/components/ConFirm";
+import BredCrumbFun from "../../../common/Navigation/BredCrumb";
 
 const getStatus = (id) => {
   if (id === 2) return "Superadmin";
@@ -249,7 +250,8 @@ export default function TablePage(props) {
           <Input
             isClearable
             radius="sm"
-            className="w-full sm:max-w-[44%]"
+            size="sm"
+            className="max-w-[350px]"
             placeholder="Search by name..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -286,13 +288,12 @@ export default function TablePage(props) {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <div className="flex gap-8 items-center justify-center">
+          <div className="flex gap-5 items-center justify-center">
             <span className="text-default-400 text-small">
               Total {contentData.length} message
             </span>
-            <span className="tracking-wide font-semibold text-slate-600 dark:text-slate-300">
-              Dashboard/Message
-            </span>
+            <div className="h-[20px] w-[1px] border-r border-black/30"></div>
+            <BredCrumbFun category={"Message"} />
           </div>
           <label className="flex items-center text-default-400 text-small">
             Rows per Page:

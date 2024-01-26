@@ -25,6 +25,7 @@ import { EyeIcon } from "../../../../common/components/Tables/Icons/EyeIcon";
 import { DeleteIcon } from "../../../../common/components/Tables/Icons/DeleteIcon";
 import ConFirm from "../../../../common/components/ConFirm";
 import ModalFun from "../Modal";
+import BredCrumbFun from "../../../../common/Navigation/BredCrumb";
 
 const statusColorMap = {
   active: "success",
@@ -243,7 +244,8 @@ export default function TableOrder(props) {
           <Input
             isClearable
             radius="sm"
-            className="w-full sm:max-w-[44%]"
+            size={"sm"}
+            className="max-w-[350px]"
             placeholder="Search by product name..."
             startContent={<SearchIcon />}
             value={filterValue}
@@ -280,7 +282,7 @@ export default function TableOrder(props) {
           </div>
         </div>
         <div className="flex justify-between items-center">
-          <div className="flex gap-8 items-center justify-center">
+          <div className="flex gap-5 items-center justify-center">
             <span className="text-default-400 text-small">
               Total {orderData.length}{" "}
               {PageFrom.toLowerCase() === "order"
@@ -289,14 +291,16 @@ export default function TableOrder(props) {
                   ? "delivery"
                   : "finished"}
             </span>
-            <span className="tracking-wide font-semibold text-slate-600 dark:text-slate-300">
-              Dashboard/
-              {PageFrom.toLowerCase() === "order"
-                ? "orders"
-                : PageFrom.toLowerCase() === "delivery"
-                  ? "delivery"
-                  : "finished"}
-            </span>
+            <div className="h-[20px] w-[1px] border-r border-black/30"></div>
+            <BredCrumbFun
+              category={
+                PageFrom.toLowerCase() === "order"
+                  ? "orders"
+                  : PageFrom.toLowerCase() === "delivery"
+                    ? "delivery"
+                    : "finished"
+              }
+            />
           </div>
           <label className="flex items-center text-default-400 text-small">
             Rows per Page:
