@@ -95,7 +95,7 @@ export default function Tablepage(props) {
       );
     }
     return filteredUsers;
-  }, [catouselData, filterValue]);
+  }, [catouselData, filterValue, hasSearchFilter]);
 
   // const pages = Math.ceil(filteredItems.length / rowsPerpage);
   let pages = 1;
@@ -268,7 +268,7 @@ export default function Tablepage(props) {
     onRowsPerpageChange,
     catouselData.length,
     onSearchChange,
-    hasSearchFilter,
+    onClear,
   ]);
 
   const bottomContent = React.useMemo(() => {
@@ -286,7 +286,7 @@ export default function Tablepage(props) {
         />
       </div>
     );
-  }, [items.length, page, pages, hasSearchFilter]);
+  }, [page, pages]);
 
   return (
     <>

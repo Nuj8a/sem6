@@ -19,9 +19,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { carData, posts, loading } = useSelector(
-    (state) => state.carouselReducer
-  );
+  const { carData } = useSelector((state) => state.carouselReducer);
 
   useEffect(() => {
     if (userRef.current === false) {
@@ -30,7 +28,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (postUpload >= 100) {
       setTimeout(() => {

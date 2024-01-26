@@ -65,3 +65,24 @@ body {
   margin-left: 4px;
   margin-bottom: -4px;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+.mainImage2 {
+  opacity: 0 !important;
+}
+.mainImage1 {
+  opacity: 1 !important;
+}
+#mainCardLink:hover .mainImage2 {
+  transition: 1s !important;
+  opacity: 1 !important;
+  scale: 1.03;
+}
+#mainCardLink:hover .mainImage1 {
+  transition: 1s !important;
+  opacity: 0 !important;
+  scale: 1.03;
+}

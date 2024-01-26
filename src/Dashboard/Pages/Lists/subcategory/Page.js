@@ -21,9 +21,7 @@ const Page = () => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
-  const { subcatData, posts, loading } = useSelector(
-    (state) => state.subcategoryReducer
-  );
+  const { subcatData } = useSelector((state) => state.subcategoryReducer);
   const { data } = useSelector((state) => state.categoryReducer);
 
   const joinedData = finalData.map((subcategory) => {
@@ -44,7 +42,7 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (postUpload >= 100) {
       setTimeout(() => {

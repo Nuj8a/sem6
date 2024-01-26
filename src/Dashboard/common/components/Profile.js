@@ -41,7 +41,7 @@ export default function Profile(props) {
     listBtnRef.current.click();
     switchAccountRef.current.click();
   };
-  // console.log(isLogin);
+  console.log(isLogin);
   return (
     <>
       <Popover

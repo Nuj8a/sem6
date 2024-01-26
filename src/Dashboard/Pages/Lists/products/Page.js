@@ -23,9 +23,7 @@ const Page = () => {
   const [finalData, setFinalData] = useState([]);
   const { data } = useSelector((state) => state.categoryReducer);
   const { subcatData } = useSelector((state) => state.subcategoryReducer);
-  const { productData, posts, loading } = useSelector(
-    (state) => state.productReducer
-  );
+  const { productData } = useSelector((state) => state.productReducer);
 
   const joinedData = finalData.map((product) => {
     const matchingCategory = data.find(
@@ -50,14 +48,14 @@ const Page = () => {
     return () => {
       userRef.current = true;
     };
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (postUpload >= 100) {
       setTimeout(() => {
         setPostUpload(0);
       }, 1000);
     }
-  }, [postUpload]);
+  }, [postUpload, dispatch]);
 
   useEffect(() => {
     let finalsubcategoryData = productData.map((item, index) => ({
