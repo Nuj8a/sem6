@@ -1,15 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { Input, Link, Button, Card, CardBody } from "@nextui-org/react";
+import { Input, Button, Card, CardBody } from "@nextui-org/react";
 import { EyeFilledIcon } from "./EyeFilledIcon";
 import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
 import { MailIcon } from "./MailIcon";
 import { useDispatch } from "react-redux";
-import { loginUser } from "@/redux/slices/authSlice";
-import { useRouter } from "next/navigation";
+import { loginUser } from "../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
-export default function login() {
-  const router = useRouter();
+export default function Login() {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = React.useState(false);
   const dispatch = useDispatch();
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
@@ -18,7 +18,7 @@ export default function login() {
     try {
       const response = await dispatch(loginUser(data));
       if (response.payload.token) {
-        router.push("/");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error creating post:", error);
@@ -36,10 +36,10 @@ export default function login() {
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className="flex flex-col w-full min-h-[70vh]  justify-center items-center">
+    <div className="flex flex-col w-full h-screen  justify-center items-center">
       <Card
         radius="none"
-        className="rounded-sm max-w-full w-[340px] overflow-visible h-full relative"
+        className="rounded-sm max-w-full w-[340px] inline-block overflow-visible relative"
       >
         <CardBody className="overflow-hidden">
           <h4 className="uppercase text-slate-600 mb-1 tracking-wide text-base">
@@ -90,7 +90,7 @@ export default function login() {
               Need to create an account?{" "}
               <span
                 className="cursor-pointer text-sm text-blue-700"
-                onClick={() => router.push("/register")}
+                onClick={() => navigate("/register")}
               >
                 Sign up
               </span>

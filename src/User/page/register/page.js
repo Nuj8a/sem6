@@ -6,12 +6,12 @@ import { EyeSlashFilledIcon } from "../login/EyeSlashFilledIcon";
 import { MailIcon } from "../login/MailIcon";
 import PersonIcon from "@mui/icons-material/Person";
 import { useDispatch } from "react-redux";
-import { registerUser } from "@/redux/slices/authSlice";
-import { useRouter } from "next/navigation";
+import { registerUser } from "../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
-export default function register() {
+export default function Register() {
   const dispatch = useDispatch();
-  const router = useRouter();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = React.useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -38,7 +38,7 @@ export default function register() {
     try {
       const response = await dispatch(registerUser(data));
       if (response.payload.token) {
-        router.push("/");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error creating post:", error);
@@ -51,13 +51,13 @@ export default function register() {
   };
 
   return (
-    <div className="flex flex-col w-full min-h-[75vh]  justify-center items-center">
+    <div className="flex flex-col w-full h-screen  justify-center items-center">
       <Card
         radius="none"
-        className="rounded-sm max-w-full w-[340px] overflow-visible h-full relative"
+        className="rounded-sm max-w-full w-[340px] overflow-visible relative"
       >
         <CardBody className="overflow-hidden">
-          <h4 className="uppercase text-slate-600 mb-1 tracking-wide text-base">
+          <h4 className="uppercase text-slate-600 mb-3 tracking-wide text-base">
             Register:
           </h4>
           <form className="flex flex-col gap-4 h-[370px]" onSubmit={formSubmit}>
@@ -127,7 +127,7 @@ export default function register() {
               <Link size="sm" href="/login" className="cursor-pointer"></Link>
               <span
                 className="cursor-pointer text-sm text-blue-700"
-                onClick={() => router.push("/login")}
+                onClick={() => navigate("/login")}
               >
                 Sign in
               </span>
