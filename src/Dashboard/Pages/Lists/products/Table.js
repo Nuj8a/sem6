@@ -68,7 +68,7 @@ function getMetalName(id) {
   return metalItem ? metalItem.name : "";
 }
 
-export default function TablePage(props) {
+export default function Tablepage(props) {
   const {
     handelpostproduct,
     productData,
@@ -83,12 +83,12 @@ export default function TablePage(props) {
   const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
   );
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerpage, setRowsPerpage] = React.useState(5);
   const [sortDescriptor, setSortDescriptor] = React.useState({
     column: "age",
     direction: "ascending",
   });
-  const [Page, setPage] = React.useState(1);
+  const [page, setpage] = React.useState(1);
 
   const btnRef = useRef();
   const [deleteId, setDeleteId] = useState("");
@@ -124,16 +124,16 @@ export default function TablePage(props) {
     }
     return filteredUsers;
   }, [productData, filterValue]);
-  let Pages = 1;
-  Pages = Math.ceil(filteredItems.length / rowsPerPage);
-  Pages = Pages > 0 ? Pages : 1;
+  let pages = 1;
+  pages = Math.ceil(filteredItems.length / rowsPerpage);
+  pages = pages > 0 ? pages : 1;
 
   const items = React.useMemo(() => {
-    const start = (Page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
+    const start = (page - 1) * rowsPerpage;
+    const end = start + rowsPerpage;
 
     return filteredItems.slice(start, end);
-  }, [Page, filteredItems, rowsPerPage]);
+  }, [page, filteredItems, rowsPerpage]);
 
   const sortedItems = React.useMemo(() => {
     return [...items].sort((a, b) => {
@@ -186,7 +186,7 @@ export default function TablePage(props) {
           <div
             dangerouslySetInnerHTML={{
               __html:
-                user.description.length > 22
+                user.description?.length > 22
                   ? user.description.slice(0, 22) + "..."
                   : user.description,
             }}
@@ -212,15 +212,15 @@ export default function TablePage(props) {
     }
   }, []);
 
-  const onRowsPerPageChange = React.useCallback((e) => {
-    setRowsPerPage(Number(e.target.value));
-    setPage(1);
+  const onRowsPerpageChange = React.useCallback((e) => {
+    setRowsPerpage(Number(e.target.value));
+    setpage(1);
   }, []);
 
   const onSearchChange = React.useCallback((value) => {
     if (value) {
       setFilterValue(value);
-      setPage(1);
+      setpage(1);
     } else {
       setFilterValue("");
     }
@@ -228,7 +228,7 @@ export default function TablePage(props) {
 
   const onClear = React.useCallback(() => {
     setFilterValue("");
-    setPage(1);
+    setpage(1);
   }, []);
 
   const topContent = React.useMemo(() => {
@@ -295,10 +295,10 @@ export default function TablePage(props) {
             </span>
           </div>
           <label className="flex items-center text-default-400 text-small">
-            Rows per Page:
+            Rows per page:
             <select
               className="bg-transparent outline-none text-default-400 text-small"
-              onChange={onRowsPerPageChange}
+              onChange={onRowsPerpageChange}
             >
               <option value="5">5</option>
               <option value="10">10</option>
@@ -311,7 +311,7 @@ export default function TablePage(props) {
   }, [
     filterValue,
     visibleColumns,
-    onRowsPerPageChange,
+    onRowsPerpageChange,
     productData.length,
     onSearchChange,
     hasSearchFilter,
@@ -325,14 +325,14 @@ export default function TablePage(props) {
           showControls
           showShadow
           color="primary"
-          Page={Page}
-          total={Pages}
-          onChange={setPage}
+          page={page}
+          total={pages}
+          onChange={setpage}
           radius="sm"
         />
       </div>
     );
-  }, [items.length, Page, Pages, hasSearchFilter]);
+  }, [items.length, page, pages, hasSearchFilter]);
 
   return (
     <>
