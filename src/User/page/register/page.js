@@ -5,6 +5,7 @@ import { EyeFilledIcon } from "../../common/assets/jsx/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../../common/assets/jsx/EyeSlashFilledIcon";
 import { MailIcon } from "../../common/assets/jsx/MailIcon";
 import PersonIcon from "@mui/icons-material/Person";
+import { IoArrowForwardOutline } from "react-icons/io5";
 // import { useDispatch } from "react-redux";
 // import { registerUser } from "../../../redux/slices/authSlice";
 // import { useNavigate } from "react-router-dom";
@@ -168,6 +169,7 @@ const Register = () => {
               radius="none"
               className="rounded-sm"
               type="submit"
+              endContent={<IoArrowForwardOutline />}
             >
               Sign up
             </Button>
