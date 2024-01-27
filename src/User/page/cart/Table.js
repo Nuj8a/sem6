@@ -7,21 +7,13 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Button,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
   Chip,
   User,
-  Pagination,
   Tooltip,
 } from "@nextui-org/react";
-import { capitalize } from "../../../Dashboard/common/components/Tables/utils";
 import { EyeIcon } from "../../../Dashboard/common/components/Tables/Icons/EyeIcon";
 import { EditIcon } from "../../../Dashboard/common/components/Tables/Icons/EditIcons";
 import { DeleteIcon } from "../../../Dashboard/common/components/Tables/Icons/DeleteIcon";
-import { ChevronDownIcon } from "../../../Dashboard/common/components/Tables/Icons/ChevronDownIcon";
 import {
   columns,
   users,
@@ -34,9 +26,9 @@ const statusColorMap = {
 };
 
 const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
-const rowsPerPage = 7;
 
 export default function TablePage() {
+  // eslint-disable-next-line
   const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
   );
@@ -44,7 +36,6 @@ export default function TablePage() {
     column: "age",
     direction: "ascending",
   });
-  const [Page, setPage] = React.useState(1);
   const headerColumns = React.useMemo(() => {
     if (visibleColumns === "all") return columns;
 
@@ -53,14 +44,9 @@ export default function TablePage() {
     );
   }, [visibleColumns]);
 
-  const Pages = Math.ceil(users.length / rowsPerPage);
-
   const items = React.useMemo(() => {
-    const start = (Page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    return users.slice(start, end);
-  }, [Page]);
+    return users;
+  }, []);
 
   const sortedItems = React.useMemo(() => {
     return [...items].sort((a, b) => {
