@@ -43,8 +43,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     className={`${
                       Location.toLowerCase() === "/"
                         ? "text-black"
-                        : "text-black/70"
-                    } relative hover:text-black py-2`}
+                        : "text-slate-700"
+                    } relative hover:text-black py-2 `}
                     to={"/"}
                   >
                     Home
@@ -58,8 +58,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     className={` ${
                       Location.toLowerCase() === "/about-us"
                         ? "text-black"
-                        : "text-black/70"
-                    } hover:text-black relative py-2`}
+                        : "text-slate-700"
+                    } hover:text-black relative py-2 `}
                     to={"/about-us"}
                   >
                     About
@@ -73,8 +73,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     className={` ${
                       Location.toLowerCase().includes("/services")
                         ? "text-black"
-                        : "text-black/70"
-                    } hover:text-black flex relative justify-start py-2 items-center gap-[1px] itemHover`}
+                        : "text-slate-700"
+                    } hover:text-black flex relative justify-start py-2  items-center gap-[1px] itemHover`}
                   >
                     Services <IoIosArrowDown className="mt-[3px] text-base" />
                     {Location.toLowerCase().includes("/services") && (
@@ -82,7 +82,7 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     )}
                   </Link>
                   <div className="hidden group-hover:block">
-                    <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-black/70 py-1 flex flex-col">
+                    <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-slate-700 py-1 flex flex-col">
                       <li>
                         <Link
                           className={`text-nowrap ${
@@ -139,8 +139,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                     className={` ${
                       Location.toLowerCase() === "/contact"
                         ? "text-black"
-                        : "text-black/70"
-                    } hover:text-black relative py-2`}
+                        : "text-slate-700"
+                    } hover:text-black relative py-2 `}
                     to={"/contact"}
                   >
                     Contact
@@ -205,7 +205,7 @@ const Navigation = ({ setColorChange, colorChange }) => {
           isPressable
           onClick={scrollUP}
         >
-          <div className="flex text-primary-color justify-center gap-1 border-dark-color font-semibold duration-150 items-center">
+          <div className="flex text-primary-color justify-center gap-1 border-dark-color  duration-150 items-center">
             <IoIosArrowDown className="text-xl" />
           </div>
         </Card>

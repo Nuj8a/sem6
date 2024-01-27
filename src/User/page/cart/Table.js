@@ -72,55 +72,6 @@ export default function TablePage() {
     });
   }, [sortDescriptor, items]);
 
-  const topContent = React.useMemo(() => {
-    return (
-      <div className="flex flex-col gap-4">
-        <div className="flex justify-between gap-3 items-end">
-          <div className="flex gap-3">
-            <Dropdown radius="sm">
-              <DropdownTrigger className="hidden sm:flex" radius="sm">
-                <Button
-                  endContent={<ChevronDownIcon className="text-small" />}
-                  variant="flat"
-                  radius="sm"
-                >
-                  Columns
-                </Button>
-              </DropdownTrigger>
-              <DropdownMenu
-                radius="sm"
-                disallowEmptySelection
-                aria-label="Table Columns"
-                closeOnSelect={false}
-                selectedKeys={visibleColumns}
-                selectionMode="multiple"
-                onSelectionChange={setVisibleColumns}
-              >
-                {columns.map((column) => (
-                  <DropdownItem key={column.uid} className="capitalize">
-                    {capitalize(column.name)}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </Dropdown>
-          </div>
-          <div className="py-2 px-2 flex justify-end items-center">
-            <Pagination
-              isCompact
-              showControls
-              showShadow
-              color="primary"
-              Page={Page}
-              total={Pages}
-              onChange={setPage}
-              radius="sm"
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }, [visibleColumns, Page, Pages]);
-
   const renderCell = React.useCallback((user, columnKey) => {
     const cellValue = user[columnKey];
 
@@ -190,7 +141,6 @@ export default function TablePage() {
       }}
       sortDescriptor={sortDescriptor}
       topContentPlacement="outside"
-      topContent={topContent}
       onSortChange={setSortDescriptor}
     >
       <TableHeader
