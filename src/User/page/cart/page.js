@@ -4,8 +4,10 @@ import Breadcrumb from "../../common/Components/Breadcrumb";
 import { Button, Divider } from "@nextui-org/react";
 import TablePage from "./Table";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { useNavigate } from "react-router-dom";
 
 const Page = () => {
+  const navigate = useNavigate();
   return (
     <div className="px-2">
       <Breadcrumb />
@@ -36,6 +38,7 @@ const Page = () => {
             radius="none"
             color="primary"
             className="mt-5 w-full rounded-sm"
+            onClick={() => navigate("/checkout")}
           >
             Proceed To Checkout{" "}
             <ArrowForwardIcon className="text-base -ml-1 mt-[2px]" />
