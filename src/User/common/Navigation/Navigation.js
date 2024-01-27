@@ -1,55 +1,217 @@
 import React, { useEffect, useState } from "react";
-import TopNav from "./TopNav";
-import BottomNav from "./BottomNav";
+import { Link, useLocation } from "react-router-dom";
+import { IoMdCart } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
+// import Logo from "../assets/js/Logo";
 import { Card } from "@nextui-org/react";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { useLocation } from "react-router-dom";
+// import ThemeChange from "../../../ThemeChange";
 
-const Navigation = () => {
-  const scrollUp = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+const Navigation = ({ setColorChange, colorChange }) => {
+  const Location = useLocation().pathname;
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    if (window.screenY > 0) {
-      setScrollY(window.screenY);
-    }
-  }, []);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
-  };
-
-  useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const pathname = useLocation().pathname;
-  const isDashboard = pathname.includes("dashboard");
-  return !isDashboard ? (
-    <nav className="max-w-[1600px] relative">
-      <TopNav scrollY={scrollY} />
-      <BottomNav />
-      {Math.ceil(scrollY) > 600 && (
-        <div className="fixed z-50 right-5 bottom-[40vh] ">
-          <Card
-            isPressable
-            radius="none"
-            onClick={scrollUp}
-            className=" shadow rounded-sm bg-blue-500 hover:bg-blue-800 text-white flex justify-center items-center !w-[35px] !h-[35px]"
-          >
-            <KeyboardArrowUpIcon className="scale-110" />
-          </Card>
+  const scrollUP = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <>
+      <div className="sticky bg-slate-50 shadow font-poppins top-0 z-50">
+        <div className="h-[55px] w-full border-b border-dark-color">
+          <div className="flex w-[95%] pt-1 mx-auto justify-between items-center h-full">
+            <div className="flex gap-20  h-full">
+              <div className="logo flex justify-center items-center h-full">
+                {/* <Logo height={45} width={115} /> */}
+                <h1>LOGO</h1>
+              </div>
+              <ul className="flex text-sm justify-center gap-5 items-center">
+                <li>
+                  <Link
+                    className={`${
+                      Location.toLowerCase() === "/"
+                        ? "text-black"
+                        : "text-black/70"
+                    } relative hover:text-black py-2`}
+                    to={"/"}
+                  >
+                    Home
+                    {Location.toLowerCase() === "/" && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className={` ${
+                      Location.toLowerCase() === "/about-us"
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black relative py-2`}
+                    to={"/about-us"}
+                  >
+                    About
+                    {Location.toLowerCase() === "/about-us" && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                </li>
+                <li className="relative group">
+                  <Link
+                    className={` ${
+                      Location.toLowerCase().includes("/services")
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black flex relative justify-start py-2 items-center gap-[1px] itemHover`}
+                  >
+                    Services <IoIosArrowDown className="mt-[3px] text-base" />
+                    {Location.toLowerCase().includes("/services") && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                  <div className="hidden group-hover:block">
+                    <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-black/70 py-1 flex flex-col">
+                      <li>
+                        <Link
+                          className={`text-nowrap ${
+                            Location.toLowerCase().includes(
+                              "/services/e-commerce"
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                          to={"/services/e-commerce"}
+                        >
+                          E-Commerce
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={`text-nowrap ${
+                            Location.toLowerCase().includes(
+                              "/services/educational"
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                          to={"/services/educational"}
+                        >
+                          Educational
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={`text-nowrap ${
+                            Location.toLowerCase().includes(
+                              "/services/news-and-media"
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                          to={"/services/news-and-media"}
+                        >
+                          News and Media
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className={`text-nowrap ${
+                            Location.toLowerCase().includes(
+                              "/services/social-media"
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                          to={"/services/social-media"}
+                        >
+                          Social Media
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li>
+                  <Link
+                    className={` ${
+                      Location.toLowerCase() === "/contact"
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black relative py-2`}
+                    to={"/contact"}
+                  >
+                    Contact
+                    {Location.toLowerCase() === "/contact" && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div className="profile text-sm flex justify-center items-center gap-5">
+              <div className="scale-75">
+                {/* <ThemeChange
+                  setColorChange={setColorChange}
+                  colorChange={colorChange}
+                /> */}
+              </div>
+              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <Link
+                to={"/login"}
+                className={`login !text-xs w-1/3 ${
+                  Location.toLowerCase().includes("login")
+                    ? "text-full-dark"
+                    : "text-light-color"
+                } `}
+              >
+                Login
+              </Link>
+              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <Link
+                to={"/register"}
+                className={`login !text-xs w-1/3 ${
+                  Location.toLowerCase().includes("register")
+                    ? "text-full-dark"
+                    : "text-light-color"
+                } `}
+              >
+                Signup
+              </Link>
+              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <Link to={"/cart"} className="w-1/3">
+                <IoMdCart
+                  className={`login text-xl ${
+                    Location.toLowerCase().includes("cart")
+                      ? "text-full-dark"
+                      : "text-light-color"
+                  } `}
+                />
+              </Link>
+            </div>
+          </div>
         </div>
+      </div>
+      <div></div>
+      {scrollY > 700 && (
+        <Card
+          variant="ghost"
+          color="primary"
+          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] bg-[var(--border-light-color)] hover:bg-transparent right-[6%] font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-full-dark hover:border-[var(--border-light-color)] text-sm tracking-wider hover:tracking-widest"
+          radius="none"
+          shadow="none"
+          isPressable
+          onClick={scrollUP}
+        >
+          <div className="flex text-primary-color justify-center gap-1 border-dark-color font-semibold duration-150 items-center">
+            <IoIosArrowDown className="text-xl" />
+          </div>
+        </Card>
       )}
-    </nav>
-  ) : null;
+    </>
+  );
 };
 
 export default Navigation;

@@ -19,15 +19,15 @@ const Footer = () => {
         <div className="container mx-auto px-5 pt-5 mb-2">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className={`col-span-4 lg:col-span-4 mb-2 pr-3 lg:pr-5`}>
-              <h5 className="text-[var(--text-dark-color)] font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
+              <h5 className="text-black font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
                 Get In Touch
               </h5>
-              <p className="mb-1 text-sm font-poppins text-[var(--text-light-color)] w-[80%]">
+              <p className="mb-1 text-sm font-poppins text-black/80 w-[80%]">
                 Have questions or feedback? We&apos;re here to help! Contact us
                 using the info below or our contact form. Well respond promptly.
               </p>
               <div>
-                <h6 className="text-[var(--text-dark-color)] font-Orbitron font-semibold text-sm tracking-wide text-uppercase mt-2 mb-3">
+                <h6 className="text-black font-Orbitron font-semibold text-sm tracking-wide text-uppercase mt-2 mb-3">
                   Follow Us:
                 </h6>
                 <div className="flex space-x-3 -mt-2 ">
@@ -37,20 +37,20 @@ const Footer = () => {
                     }
                     target="blank"
                   >
-                    <AiFillFacebook className="text-2xl text-[var(--primary-color)] cursor-pointer" />
+                    <AiFillFacebook className="text-2xl text-blue-600 cursor-pointer" />
                   </Link>
 
                   <Link
                     href={"https://www.instagram.com/desnepal2080/"}
                     target="blank"
                   >
-                    <FaInstagramSquare className="text-2xl text-[var(--primary-color)] cursor-pointer" />
+                    <FaInstagramSquare className="text-2xl text-blue-600 cursor-pointer" />
                   </Link>
                   <Link
                     href={"https://www.youtube.com/@DESNepal."}
                     target="blank"
                   >
-                    <FaYoutubeSquare className="text-2xl text-[var(--primary-color)] cursor-pointer" />
+                    <FaYoutubeSquare className="text-2xl text-blue-600 cursor-pointer" />
                   </Link>
                   <Link
                     href={
@@ -58,7 +58,7 @@ const Footer = () => {
                     }
                     target="blank"
                   >
-                    <FaLinkedin className="text-2xl text-[var(--primary-color)] cursor-pointer" />
+                    <FaLinkedin className="text-2xl text-blue-600 cursor-pointer" />
                   </Link>
                 </div>
               </div>
@@ -66,27 +66,27 @@ const Footer = () => {
             <div className={`col-span-4 lg:col-span-8`}>
               <div className="lg:grid lg:grid-cols-3">
                 <div className="mb-5">
-                  <h5 className="text-[var(--text-dark-color)] font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
+                  <h5 className="text-black font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
                     Explore
                   </h5>
                   <div className="flex flex-col">
                     <Link
                       href="/our-mission"
-                      className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
+                      className={`flex w-[160px] font-poppins text-sm  text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1" />
                       Our Initiatives
                     </Link>
                     <Link
                       href="/news-and-events"
-                      className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
+                      className={`flex w-[160px] font-poppins text-sm  text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs  mr-1" />
                       Digital Programs
                     </Link>
                     <Link
                       href="/projects"
-                      className={` flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
+                      className={` flex w-[160px] font-poppins text-sm  text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1" />
                       Projects
@@ -94,27 +94,27 @@ const Footer = () => {
                   </div>
                 </div>
                 <div className="mb-5">
-                  <h5 className="text-[var(--text-dark-color)] font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
+                  <h5 className="text-black font-Orbitron font-semibold text-sm tracking-wide text-uppercase mb-1">
                     Connect
                   </h5>
                   <div className="flex flex-col">
                     <Link
                       href="/contact"
-                      className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
+                      className={`flex w-[160px] font-poppins text-sm  text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
                       Contact Us
                     </Link>
                     <Link
                       href="/leadership"
-                      className={` flex w-[200px] text-sm font-poppins text-[var(--text-light-color)] items-center`}
+                      className={` flex w-[200px] text-sm font-poppins text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
                       Leadership
                     </Link>
                     <Link
                       href="/news-and-events"
-                      className={` flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
+                      className={` flex w-[160px] font-poppins text-sm  text-black/80 items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
                       News and Events
@@ -122,23 +122,23 @@ const Footer = () => {
                   </div>
                 </div>
                 <div>
-                  <h5 className="text-[var(--text-dark-color)] font-Orbitron font-semibold text-sm tracking-wide text-uppercase">
+                  <h5 className="text-black font-Orbitron font-semibold text-sm tracking-wide text-uppercase">
                     Contact Us:
                   </h5>
                   <div className="flex flex-col space-y-1 ml-1 mt-1">
-                    <p className=" flex font-poppins text-sm text-[var(--text-light-color)] items-center">
-                      <MdEmail className="text-[var(--primary-color)] mr-3" />
+                    <p className=" flex font-poppins text-sm text-black/80 items-center">
+                      <MdEmail className="text-blue-600 mr-3" />
                       info@webupaya.org.np
                     </p>
-                    <p className="mb-0 flex font-poppins text-sm text-[var(--text-light-color)] items-center">
-                      <BsTelephoneFill className="text-[var(--primary-color)] scale-90 mr-3" />
+                    <p className="mb-0 flex font-poppins text-sm text-black/80 items-center">
+                      <BsTelephoneFill className="text-blue-600 scale-90 mr-3" />
                       +977 9767485800
                     </p>
                     <Link
                       href="https://www.google.com/maps/place/Suvalaav+Jewellers/@27.7410232,85.3101737,49m/data=!3m1!1e3!4m14!1m7!3m6!1s0x39eb1924434e767b:0x50b0d5a9db419ade!2sSuvalaav+Jewellers!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc!3m5!1s0x39eb1924434e767b:0x50b0d5a9db419ade!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc?entry=ttu"
-                      className={`tracking-wide font-poppins flex text-sm text-[var(--text-light-color)] items-center`}
+                      className={`tracking-wide font-poppins flex text-sm text-black/80 items-center`}
                     >
-                      <ImLocation className="text-[var(--primary-color)] mr-3" />
+                      <ImLocation className="text-blue-600 mr-3" />
                       kupandol-10 Lalitpur, Nepal
                     </Link>
                   </div>
@@ -150,7 +150,7 @@ const Footer = () => {
         <div
           className={`w-full flex justify-center items-center border-t border-dashed border-[var(--border-light-color)] mt-4 mx-auto`}
         >
-          <p className="pt-2 pb-4 text-center font-poppins !py-5 text-sm text-[var(--text-light-color)] tracking-wide">
+          <p className="pt-2 pb-4 text-center font-poppins !py-5 text-sm text-black/80 tracking-wide">
             Copyright © {date.getFullYear()} WebUpaya. All rights reserved.
           </p>
         </div>
