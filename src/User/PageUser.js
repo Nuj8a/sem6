@@ -10,6 +10,7 @@ import Cart from "./page/cart/page";
 import Checkout from "./page/checkout/page";
 import EachPage from "./page/detail/page";
 import EachSite from "./page/EachSite/EachSite";
+import Contact from "./page/Contact/Contact";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -26,9 +27,11 @@ const PageUser = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/about-us" element={<About />} />
+            <Route path="/:category/:subcategory" element={<About />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/eachpage" element={<EachPage />} />
+            <Route path="/contact" element={<Contact />} />
             <Route
               path="/each/:category/:subcategory/:id"
               element={<EachSite />}
