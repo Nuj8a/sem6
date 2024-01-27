@@ -36,7 +36,7 @@ export default function CardsService() {
           Ecommerce Site
         </p>
         <Button
-          className="rounded bg-black/25 border border-black/5 tracking-wide !p-3 font-semibold font-poppins text-[.65rem] -mr-2 scale-95"
+          className="rounded bg-white/40 border border-black/20 tracking-wide !p-3 font-semibold font-poppins text-[.65rem] -mr-2 scale-95"
           variant="flat"
           color="default"
           radius="none"

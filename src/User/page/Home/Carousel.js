@@ -22,7 +22,7 @@ const Carousel = () => {
       <div className="container-fluid mb-3">
         <div className="h-[500px] w-full grid grid-cols-12 bg-[#0f1019]">
           <div className="col-span-7 flex justify-center items-center h-full">
-            <div className="w-[80%] ml-[10%] flex gap-2 flex-col">
+            <div className="w-[80%] mt-4 ml-[10%] flex gap-1 flex-col">
               <h3 className="font-Orbitron tracking-wider text-white text-base font-semibold">
                 Power Your Online Presence with,
               </h3>

@@ -35,7 +35,7 @@ const EachSiteDescription = () => {
           <Button
             isPressable
             radius="none"
-            className="font-poppins flex justify-center items-center rounded-sm duration-300 px-5 font-semibold"
+            className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
             startContent={<BsBagCheckFill />}
             color="primary"
           >
@@ -45,7 +45,7 @@ const EachSiteDescription = () => {
             radius="none"
             isPressable
             color="primary"
-            className="font-poppins flex justify-center items-center rounded-sm duration-300 px-5 font-semibold"
+            className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
             variant="bordered"
             startContent={<IoMdCart className="scale-110" />}
           >
