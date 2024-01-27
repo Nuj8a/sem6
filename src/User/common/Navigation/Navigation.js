@@ -88,8 +88,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/e-commerce"
-                            ) && "bg-slate-300 text-black"
-                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-blue-200 text-black"
+                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/e-commerce"}
                         >
                           E-Commerce
@@ -100,8 +100,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/educational"
-                            ) && "bg-slate-300 text-black"
-                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-blue-200 text-black"
+                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/educational"}
                         >
                           Educational
@@ -112,8 +112,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/news-and-media"
-                            ) && "bg-slate-300 text-black"
-                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-blue-200 text-black"
+                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/news-and-media"}
                         >
                           News and Media
@@ -124,8 +124,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/social-media"
-                            ) && "bg-slate-300 text-black"
-                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-blue-200 text-black"
+                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/social-media"}
                         >
                           Social Media

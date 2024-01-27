@@ -26,16 +26,16 @@ const Products = ({ heading }) => {
             </div>
             <div className="absolute z-50 top-[37px] bg-slate-50 border border-black/15 rounded-sm hidden group-hover:block w-full right-0">
               <ul>
-                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                <li className="p-2 px-3 cursor-pointer hover:bg-blue-200">
                   Apple
                 </li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                <li className="p-2 px-3 cursor-pointer hover:bg-blue-200">
                   Ball
                 </li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                <li className="p-2 px-3 cursor-pointer hover:bg-blue-200">
                   Cat
                 </li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                <li className="p-2 px-3 cursor-pointer hover:bg-blue-200">
                   Dog
                 </li>
               </ul>
