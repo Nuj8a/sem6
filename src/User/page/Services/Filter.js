@@ -19,7 +19,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">1000</div>
             </Chip>
@@ -33,7 +33,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">20</div>
             </Chip>
@@ -47,7 +47,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">200</div>
             </Chip>
@@ -61,7 +61,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">500</div>
             </Chip>
@@ -75,7 +75,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">150</div>
             </Chip>
@@ -89,7 +89,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">100</div>
             </Chip>
@@ -103,7 +103,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">200</div>
             </Chip>
@@ -125,7 +125,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">1000</div>
             </Chip>
@@ -137,7 +137,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">100</div>
             </Chip>
@@ -149,7 +149,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">200</div>
             </Chip>
@@ -163,7 +163,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">150</div>
             </Chip>
@@ -175,7 +175,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">500</div>
             </Chip>
@@ -197,7 +197,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">1000</div>
             </Chip>
@@ -209,7 +209,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">300</div>
             </Chip>
@@ -221,7 +221,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">200</div>
             </Chip>
@@ -233,7 +233,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">150</div>
             </Chip>
@@ -245,7 +245,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">250</div>
             </Chip>
@@ -257,7 +257,7 @@ const Filter = () => {
             <Chip
               size="sm"
               radius="none"
-              className=" rounded-sm scale-75 -mr-1"
+              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
             >
               <div className="font-poppins font-semibold">100</div>
             </Chip>

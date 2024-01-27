@@ -24,16 +24,20 @@ const Products = ({ heading }) => {
             <div className="h-[35px] flex justify-between px-3 cursor-pointer border  border-black/20 rounded-sm items-center w-full">
               Latest Items <IoIosArrowDown />
             </div>
-            <div className="absolute z-50 top-[37px] bg-[var(--background-color)] border border-black/15 rounded-sm hidden group-hover:block w-full right-0">
+            <div className="absolute z-50 top-[37px] bg-slate-50 border border-black/15 rounded-sm hidden group-hover:block w-full right-0">
               <ul>
-                <li className="p-2 px-3 cursor-pointer hover:bg-[#222]">
+                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
                   Apple
                 </li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-[#222]">
+                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
                   Ball
                 </li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-[#222]">Cat</li>
-                <li className="p-2 px-3 cursor-pointer hover:bg-[#222]">Dog</li>
+                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                  Cat
+                </li>
+                <li className="p-2 px-3 cursor-pointer hover:bg-slate-200">
+                  Dog
+                </li>
               </ul>
             </div>
           </div>

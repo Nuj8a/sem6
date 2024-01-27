@@ -16,7 +16,7 @@ const Services = () => {
   const datas = useParams();
   return (
     <div className="min-h-[70vh] px-3">
-      <div className="-mb-3 mt-7 text-[var(--text-dark-color)] capitalize font-semibold font-poppins text-3xl">
+      <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
         {datas.category} Websites
       </div>
       <div className="flex my-5 justify-between items-center">
