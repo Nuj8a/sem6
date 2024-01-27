@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import About from "./About";
-import Breadcrumb from "../../common/Components/Breadcrumb";
+import Services from "../Services/Services";
 
 const Page = () => {
   return (
     <div className="mx-2">
-      <Breadcrumb />
-      <About />
+      <Services />
     </div>
   );
 };

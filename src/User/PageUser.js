@@ -9,6 +9,7 @@ import About from "./page/about-us/page";
 import Cart from "./page/cart/page";
 import Checkout from "./page/checkout/page";
 import EachPage from "./page/detail/page";
+import EachSite from "./page/EachSite/EachSite";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -16,9 +17,9 @@ const PageUser = () => {
     <>
       {!Location.includes("/dashboard") && (
         <div className="max-w-[1600px] mx-auto">
-          {!Location.includes("/login") && !Location.includes("/register") && (
-            <Navigation />
-          )}
+          {/* {!Location.includes("/login") && !Location.includes("/register") && (
+            )} */}
+          <Navigation />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -28,10 +29,14 @@ const PageUser = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/eachpage" element={<EachPage />} />
+            <Route
+              path="/each/:category/:subcategory/:id"
+              element={<EachSite />}
+            />
           </Routes>
-          {!Location.includes("/login") && !Location.includes("/register") && (
-            <Footer />
-          )}
+          {/* {!Location.includes("/login") && !Location.includes("/register") && (
+            )} */}
+          <Footer />
         </div>
       )}
     </>

@@ -36,7 +36,7 @@ export default function Login() {
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className="flex flex-col w-full h-screen  justify-center items-center">
+    <div className="flex flex-col w-full min-h-[550px]  justify-center items-center">
       <Card
         radius="none"
         className="rounded-sm max-w-full w-[340px] inline-block overflow-visible relative"

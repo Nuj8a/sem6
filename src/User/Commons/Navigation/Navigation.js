@@ -29,10 +29,10 @@ const Navigation = ({ setColorChange, colorChange }) => {
 
   return (
     <>
-      <div className="sticky bg-white shadow font-poppins top-0 z-50">
-        <div className="h-[60px] w-full border-b border-dark-color">
-          <div className="flex w-[95%] mx-auto justify-between items-center h-full">
-            <div className="flex gap-20 h-full">
+      <div className="sticky bg-slate-50 shadow font-poppins top-0 z-50">
+        <div className="h-[55px] w-full border-b border-dark-color">
+          <div className="flex w-[95%] pt-1 mx-auto justify-between items-center h-full">
+            <div className="flex gap-20  h-full">
               <div className="logo flex justify-center items-center h-full">
                 {/* <Logo height={45} width={115} /> */}
                 <h1>LOGO</h1>
@@ -42,14 +42,14 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   <Link
                     className={`${
                       Location.toLowerCase() === "/"
-                        ? "text-[var(--text-full-dark)]"
-                        : "text-[var(--text-light-color)]"
-                    } relative hover:text-[var(--text-full-dark)] py-2`}
+                        ? "text-black"
+                        : "text-black/70"
+                    } relative hover:text-black py-2`}
                     to={"/"}
                   >
                     Home
                     {Location.toLowerCase() === "/" && (
-                      <div className="h-[2px] absolute bottom-1 bg-[var(--text-dark-color)] rounded-r w-[20px]"></div>
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
                 </li>
@@ -57,14 +57,14 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   <Link
                     className={` ${
                       Location.toLowerCase() === "/about-us"
-                        ? "text-[var(--text-full-dark)]"
-                        : "text-[var(--text-light-color)]"
-                    } hover:text-[var(--text-full-dark)] relative py-2`}
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black relative py-2`}
                     to={"/about-us"}
                   >
                     About
                     {Location.toLowerCase() === "/about-us" && (
-                      <div className="h-[2px] absolute bottom-1 bg-[var(--text-dark-color)] rounded-r w-[20px]"></div>
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
                 </li>
@@ -72,24 +72,24 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   <Link
                     className={` ${
                       Location.toLowerCase().includes("/services")
-                        ? "text-[var(--text-full-dark)]"
-                        : "text-[var(--text-light-color)]"
-                    } hover:text-[var(--text-full-dark)] flex relative justify-start py-2 items-center gap-[1px] itemHover`}
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black flex relative justify-start py-2 items-center gap-[1px] itemHover`}
                   >
                     Services <IoIosArrowDown className="mt-[3px] text-base" />
                     {Location.toLowerCase().includes("/services") && (
-                      <div className="h-[2px] absolute bottom-1 bg-[var(--text-dark-color)] rounded-r w-[20px]"></div>
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
                   <div className="hidden group-hover:block">
-                    <ul className="absolute rounded-sm overflow-hidden bg-white shadow text-xs top-9 text-[var(--text-light-color)] py-1 flex flex-col">
+                    <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-black/70 py-1 flex flex-col">
                       <li>
                         <Link
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/e-commerce"
-                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
-                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/e-commerce"}
                         >
                           E-Commerce
@@ -100,8 +100,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/educational"
-                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
-                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/educational"}
                         >
                           Educational
@@ -112,8 +112,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/news-and-media"
-                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
-                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/news-and-media"}
                         >
                           News and Media
@@ -124,8 +124,8 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           className={`text-nowrap ${
                             Location.toLowerCase().includes(
                               "/services/social-media"
-                            ) && "bg-gray-100 text-[var(--text-dark-color)]"
-                          } hover:bg-gray-100 hover:text-[var(--text-dark-color)] duration-200 w-full inline-block py-[.6rem] px-4`}
+                            ) && "bg-slate-300 text-black"
+                          } hover:bg-slate-300 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
                           to={"/services/social-media"}
                         >
                           Social Media
@@ -138,14 +138,14 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   <Link
                     className={` ${
                       Location.toLowerCase() === "/contact"
-                        ? "text-[var(--text-full-dark)]"
-                        : "text-[var(--text-light-color)]"
-                    } hover:text-[var(--text-full-dark)] relative py-2`}
+                        ? "text-black"
+                        : "text-black/70"
+                    } hover:text-black relative py-2`}
                     to={"/contact"}
                   >
                     Contact
                     {Location.toLowerCase() === "/contact" && (
-                      <div className="h-[2px] absolute bottom-1 bg-[var(--text-dark-color)] rounded-r w-[20px]"></div>
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
                 </li>
