@@ -1,72 +1,97 @@
-"use client";
 import React, { useState } from "react";
-import { Input, Button, Card, CardBody } from "@nextui-org/react";
+import { Link } from "react-router-dom";
+import { IoArrowForwardOutline } from "react-icons/io5";
+import { Input, Button, Card } from "@nextui-org/react";
 import { EyeFilledIcon } from "../../common/assets/jsx/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../../common/assets/jsx/EyeSlashFilledIcon";
 import { MailIcon } from "../../common/assets/jsx/MailIcon";
-import { useDispatch } from "react-redux";
-import { loginUser } from "../../../redux/slices/authSlice";
-import { useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
+// import { loginUser } from "../../../redux/slices/authSlice";
+// import { useNavigate } from "react-router-dom";
 
-export default function Login() {
-  const navigate = useNavigate();
+const Login = () => {
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
   const [isVisible, setIsVisible] = React.useState(false);
-  const dispatch = useDispatch();
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
 
-  const handelLogin = async (data) => {
-    try {
-      const response = await dispatch(loginUser(data));
-      if (response.payload.token) {
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error creating post:", error);
-    }
-  };
+  // const handelLogin = async (data) => {
+  //   try {
+  //     const response = await dispatch(loginUser(data));
+  //     if (response.payload.token) {
+  //       navigate("/");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error creating post:", error);
+  //   }
+  // };
 
   const formInputFieldChange = (e) => {
     setUserFormData({ ...userFormData, [e.target.name]: e.target.value });
   };
 
-  const formsubmit = (e) => {
-    e.preventDefault();
-    handelLogin(userFormData);
-  };
+  // const formsubmit = (e) => {
+  //   e.preventDefault();
+  //   handelLogin(userFormData);
+  // };
 
   const toggleVisibility = () => setIsVisible(!isVisible);
   return (
-    <div className="flex flex-col w-full min-h-[550px]  justify-center items-center">
-      <Card
-        radius="none"
-        className="rounded-sm max-w-full w-[340px] inline-block overflow-visible relative"
-      >
-        <CardBody className="overflow-hidden">
-          <h4 className="uppercase text-slate-600 mb-1 tracking-wide text-base">
-            Login:
-          </h4>
-          <form
-            className="flex flex-col gap-4 py-5"
-            method="post"
-            onSubmit={formsubmit}
-          >
+    <div className="min-h-[70vh] flex justify-center items-center">
+      <div className="min-h-[200px] w-[400px] my-20 rounded ">
+        <Card
+          radius="none"
+          className="rounded-sm flex gap-5 flex-col p-8 font-poppins"
+        >
+          <div className="flex justify-between pb-2 items-center">
+            <h3 className="text-black font-semibold tracking-wider text-2xl font-Orbitron">
+              Sign In
+            </h3>
+            {/* <Logo height={45} width={115} /> */}
+          </div>
+          <h3 className="text-black/80 text-sm">Wellcome back !!!</h3>
+          <div className="flex gap-1 flex-col">
+            <label
+              htmlFor="email"
+              className="text-sm text-black cursor-pointer"
+            >
+              Email
+            </label>
             <Input
+              size="sm"
+              variant="faded"
               isRequired
               radius="sm"
               label="Email"
-              placeholder="Enter your email"
               type="email"
               name="email"
               value={userFormData.email}
               onChange={formInputFieldChange}
               endContent={
-                <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                <MailIcon className="text-2xl mb-1 text-default-400 pointer-events-none flex-shrink-0" />
               }
             />
+          </div>
+          <div className="flex gap-1 flex-col">
+            <div className="flex justify-between">
+              <label
+                htmlFor="email"
+                className="text-sm text-black cursor-pointer"
+              >
+                Password
+              </label>
+              <Link
+                to={"/"}
+                className="text-xs text-blue-400 hover:text-blue-500 duration-150"
+              >
+                Forget Password?
+              </Link>
+            </div>
             <Input
+              size="sm"
+              variant="faded"
               label="Password"
               radius="sm"
-              placeholder="Enter your password"
               name="password"
               value={userFormData.password}
               onChange={formInputFieldChange}
@@ -77,41 +102,43 @@ export default function Login() {
                   onClick={toggleVisibility}
                 >
                   {isVisible ? (
-                    <EyeSlashFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    <EyeSlashFilledIcon className="text-2xl mb-1 text-default-400 pointer-events-none" />
                   ) : (
-                    <EyeFilledIcon className="text-2xl text-default-400 pointer-events-none" />
+                    <EyeFilledIcon className="text-2xl mb-1 text-default-400 pointer-events-none" />
                   )}
                 </button>
               }
               type={isVisible ? "text" : "password"}
-              className="max-w-xs"
+              className="w-full"
             />
-            <p className="text-start text-small">
-              Need to create an account?{" "}
-              <span
-                className="cursor-pointer text-sm text-blue-700"
-                onClick={() => navigate("/register")}
+          </div>
+          <div className="flex gap-2 justify-end">
+            <Button
+              fullWidth
+              color="primary"
+              radius="none"
+              className="rounded-sm"
+              type="submit"
+              endContent={<IoArrowForwardOutline />}
+            >
+              Signin
+            </Button>
+          </div>
+          <div>
+            <p className="text-xs text-black/80 tracking-wider  pb-2">
+              Dont have account?{" "}
+              <Link
+                to={"/register"}
+                className="text-blue-400 hover:text-blue-500 duration-150"
               >
-                Sign up
-              </span>
+                Register
+              </Link>
             </p>
-            <div className="flex gap-2 justify-end">
-              <Button
-                fullWidth
-                color="primary"
-                radius="none"
-                className="rounded-sm"
-                type="submit"
-              >
-                Login
-              </Button>
-            </div>
-          </form>
-        </CardBody>
-      </Card>
-      <p className="text-xs  mt-2 text-slate-500 text-start">
-        Thank you for using subhalabha!!!
-      </p>
+          </div>
+        </Card>
+      </div>
     </div>
   );
-}
+};
+
+export default Login;
