@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import { Input, Button, Card, CardBody } from "@nextui-org/react";
-import { EyeFilledIcon } from "./EyeFilledIcon";
-import { EyeSlashFilledIcon } from "./EyeSlashFilledIcon";
-import { MailIcon } from "./MailIcon";
+import { EyeFilledIcon } from "../../common/assets/jsx/EyeFilledIcon";
+import { EyeSlashFilledIcon } from "../../common/assets/jsx/EyeSlashFilledIcon";
+import { MailIcon } from "../../common/assets/jsx/MailIcon";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
