@@ -15,7 +15,7 @@ const Services = () => {
   }, []);
   const datas = useParams();
   return (
-    <div className="min-h-[70vh] px-3">
+    <div className="min-h-[70vh]">
       <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
         {datas.category} Websites
       </div>

@@ -6,8 +6,8 @@ import { IoSearchSharp } from "react-icons/io5";
 
 const Products = ({ heading }) => {
   return (
-    <div className="px-2">
-      <div className="flex items-center px-2 justify-between gap-2 font-poppins border-b pb-2 border-black/15 text-black/80">
+    <div>
+      <div className="flex items-center justify-between gap-2 font-poppins border-b pb-2 border-black/15 text-black/80">
         <div className="text-sm capitalize">50 Items found</div>
         <div className="flex gap-2">
           <div className="w-[250px] flex items-center h-[35px] border  border-black/20 rounded-sm relative">
