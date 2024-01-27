@@ -6,6 +6,7 @@ import { MdLocationPin } from "react-icons/md";
 import { RiLinkedinBoxLine, RiYoutubeLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import { Button, Card, Input, Textarea } from "@nextui-org/react";
 
 const Contact = () => {
   const scrollUP = () => {
@@ -18,7 +19,7 @@ const Contact = () => {
     scrollUP();
   }, []);
   return (
-    <div className="min-h-screen px-3">
+    <div className="min-h-screen px-5">
       <div className="relative h-full w-full">
         <div className="absolute top-0 h-[400px] rounded-b-md w-full border border-t-0 bg-[#0f1019] border-black/10 bgOpactity1"></div>
         <div className="grid grid-cols-2 gap-10">
@@ -87,45 +88,55 @@ const Contact = () => {
             </div>
           </div>
           <div className="col-span-1 min-h-[400px] flex justify-center items-center mt-[100px] z-10">
-            <div>
-              <div className="w-[450px] font-poppins rounded bg-white border border-black/10 shadow h-full p-6 flex gap-4 flex-col">
+            <Card className="rounded-sm">
+              <div className="w-[450px] font-poppins rounded bg-white border border-black/10 shadow h-full p-6 flex gap-3 flex-col">
                 <h2 className="font-semibold uppercase text-blakc/80">
                   Contact Form
                 </h2>
-                <input
-                  type="text"
+                <Input
                   name="name"
-                  id="name"
-                  placeholder="Your Name*"
-                  className="bgOpactity1 border border-black/20 text-blakc/80 text-sm outline-none rounded-sm py-[.6rem] px-3"
+                  size="sm"
+                  className="rounded-sm"
+                  variant="faded"
+                  type="text"
+                  label="Your Name"
+                  radius="none"
                 />
-                <input
-                  type="email"
+                <Input
                   name="email"
-                  id="email"
-                  placeholder="Your Email*"
-                  className="bgOpactity1 border border-black/20 text-blakc/80 text-sm outline-none rounded-sm py-[.6rem] px-3"
+                  size="sm"
+                  variant="faded"
+                  type="email"
+                  label="Your email"
+                  radius="none"
                 />
-                <input
-                  type="text"
+                <Input
                   name="title"
-                  id="title"
-                  placeholder="Message Title*"
-                  className="bgOpactity1 border border-black/20 text-blakc/80 text-sm outline-none rounded-sm py-[.6rem] px-3"
-                />
-                <textarea
+                  size="sm"
+                  variant="faded"
                   type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Your Name*"
-                  className="bgOpactity1 border border-black/20 text-blakc/80 text-sm outline-none rounded-sm h-[150px] py-[.6rem] px-3 resize-none"
-                ></textarea>
-                <button className="border bgOpactity1 border-[#ea580c] flex items-center justify-center text-[#ea580c] font-semibold mb-2 text-sm py-[.7rem] hover:bg-[#ea580c] duration-200 hover:text-slate-100 hover:tracking-wider rounded capitalize tracking-wide">
+                  label="Your Title"
+                  radius="none"
+                />
+                <Textarea
+                  variant="faded"
+                  size="lg"
+                  label="Your Message"
+                  name="message"
+                  radius="none"
+                />
+
+                <Button
+                  endContent={
+                    <IoArrowForwardOutline className="text-xl scale-95 pt-[1px]" />
+                  }
+                  color="primary"
+                  className="rounded-sm mb-2"
+                >
                   Submit your message{" "}
-                  <IoArrowForwardOutline className="text-xl scale-95 pt-[1px]" />
-                </button>
+                </Button>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ import { Button, Card } from "@nextui-org/react";
 const Page = () => {
   const navigate = useNavigate();
   return (
-    <div className="px-4 my-5">
+    <div className="px-5 my-5">
       <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
         Checkout Websites
       </div>

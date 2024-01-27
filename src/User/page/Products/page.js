@@ -4,7 +4,7 @@ import Services from "../Services/Services";
 
 const Page = () => {
   return (
-    <div className="mx-4">
+    <div className="mx-5">
       <Services />
     </div>
   );

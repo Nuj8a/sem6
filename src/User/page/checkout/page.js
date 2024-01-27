@@ -4,12 +4,13 @@ import { Button, Card, Checkbox, Input } from "@nextui-org/react";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 // import { IoBag } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { PiShoppingCartFill } from "react-icons/pi";
 
 const Page = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="px-4 min-h-[70vh]">
+      <div className="px-5 min-h-[70vh]">
         <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
           Checkout Websites
         </div>
@@ -149,73 +150,15 @@ const Page = () => {
               <Button
                 className="w-full mt-4 !rounded-sm"
                 color="primary"
-                // endContent={
-                //   // <ShoppingCartCheckoutIcon className="scale-110 text-base mb-[2px]" />
-                // }
+                endContent={
+                  <PiShoppingCartFill className="scale-110 text-base mb-[2px]" />
+                }
                 onClick={() => navigate("/checkout")}
               >
                 Place Order
               </Button>
             </Card>
           </div>
-          {/* <div className="col-span-5">
-            <div className="col-span-4 mx-10">
-              <h2 className="text-lg uppercase font-semibold text-slate-700 tracking-wide mb-2">
-                CART SUMMARY
-              </h2>
-              <div className="mx-2">
-                <div className="flex w-full justify-between">
-                  <span>Product Name 1</span>
-                  <span>Rs.150</span>
-                </div>
-                <div className="flex w-full justify-between">
-                  <span>Product Name 2</span>
-                  <span>Rs.150</span>
-                </div>
-                <div className="flex w-full justify-between">
-                  <span>Product Name 3</span>
-                  <span>Rs.150</span>
-                </div>
-                <div className="flex w-full justify-between">
-                  <span>Product Name 4</span>
-                  <span>Rs.150</span>
-                </div>
-                <hr />
-                <div className="mt-1">
-                  <div className="flex w-full justify-between">
-                    <span>Subtotal</span>
-                    <span>Rs.150</span>
-                  </div>
-                  <div className="flex w-full justify-between">
-                    <span>Shipping</span>
-                    <span>Rs.150</span>
-                  </div>
-                </div>
-                <hr />
-                <div className="flex w-full justify-between mt-1">
-                  <span>Total</span>
-                  <span>Rs.150</span>
-                </div>
-              </div>
-            </div>
-            <div className="col-span-4 mx-10 mt-4">
-              <h2 className="text-lg uppercase font-semibold text-slate-700 tracking-wide mb-2">
-                Payment method
-              </h2>
-              <div className="flex px-2 gap-2 flex-col">
-                <Checkbox>E-Sewa</Checkbox>
-                <Checkbox>Khalti</Checkbox>
-              </div>
-              <Button
-                
-                color="primary"
-                className="mt-5 w-full rounded-sm"
-              >
-                Place Order
-                <ShoppingCartCheckoutIcon className="text-xl -ml-1 mt-[2px]" />
-              </Button>
-            </div>
-          </div> */}
         </div>
       </div>
     </>
