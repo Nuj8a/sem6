@@ -10,10 +10,10 @@ const Services = () => {
   return (
     <div className="h-full py-5">
       <div className="flex items-center gap-2 mt-5 mb-8">
-        <span className="uppercase text-nowrap text-[var(--text-light-color)] font-Orbitron tracking-wider">
+        <span className="uppercase text-nowrap text-black/80 font-Orbitron tracking-wider">
           Key Highlights
         </span>
-        <div className="w-full h-[1px] border-b border-dashed border-[var(--border-dark-color)]"></div>
+        <div className="w-full h-[1px] border-b border-dashed border-black/30"></div>
       </div>
       <Swiper
         slidesPerView={6}

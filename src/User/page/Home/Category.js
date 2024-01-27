@@ -3,8 +3,8 @@ import EachCategory from "../../common/Components/EachCategory";
 
 const Category = () => {
   return (
-    <div className=" mt-5">
-      <div className="row px-xl-5 pb-3 grid-containerCard ">
+    <div className="mt-5">
+      <div className="row px-xl-5 grid-containerCard ">
         <EachCategory />
         <EachCategory />
         <EachCategory />

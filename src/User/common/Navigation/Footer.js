@@ -14,8 +14,8 @@ const Footer = () => {
   const date = new Date();
 
   return !isDashboard ? (
-    <footer className="shadow border-t border-[var(--border-light-color)]">
-      <div className={`mt-0 pt-3 bg-[var(--background-color)]`}>
+    <footer className="shadow border-t border-black/5 bg-slate-50 mt-10">
+      <div className={`mt-0 pt-3`}>
         <div className="container mx-auto px-5 pt-5 mb-2">
           <div className="lg:grid lg:grid-cols-12 lg:gap-8">
             <div className={`col-span-4 lg:col-span-4 mb-2 pr-3 lg:pr-5`}>
@@ -148,7 +148,7 @@ const Footer = () => {
           </div>
         </div>
         <div
-          className={`w-full flex justify-center items-center border-t border-dashed border-[var(--border-light-color)] mt-4 mx-auto`}
+          className={`w-full flex justify-center items-center border-t border-dashed border-black/20 mt-4 mx-auto`}
         >
           <p className="pt-2 pb-4 text-center font-poppins !py-5 text-sm text-[var(--text-light-color)] tracking-wide">
             Copyright © {date.getFullYear()} WebUpaya. All rights reserved.

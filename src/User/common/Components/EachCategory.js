@@ -19,9 +19,11 @@ const EachCategory = () => {
               alt=""
             />
           </div>
-          <div className="flex flex-col justify-start pl-3">
-            <h6 className="font-semibold text-gray-800">Category Name</h6>
-            <small className="text-gray-600 text-start w-full">
+          <div className="flex flex-col font-poppins justify-start pl-3">
+            <h6 className="font-semibold text-sm text-gray-800">
+              Category Name
+            </h6>
+            <small className="text-gray-600 text-xs text-start w-full">
               100 Products
             </small>
           </div>

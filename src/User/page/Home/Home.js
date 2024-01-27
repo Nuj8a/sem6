@@ -8,21 +8,18 @@ import Services from "../../common/page/Services";
 
 const Home = () => {
   return (
-    <div className="mx-2">
+    <>
       <Carousel />
-      <Category />
-      <Services />
-      <hr />
-      <Product />
-      <hr />
-      <Reatured />
-      <hr />
-      <Product />
-      <hr />
-      <CardCollection />
-      <hr />
-      <Product />
-    </div>
+      <div className="mx-4">
+        <Category />
+        <Services />
+        <Product />
+        <Reatured />
+        <Product />
+        <CardCollection />
+        <Product />
+      </div>
+    </>
   );
 };
 
