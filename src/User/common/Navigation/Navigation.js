@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
-// import Logo from "../assets/js/Logo";
+import Logo from "../../../assets/icons/logo.svg";
 import { Card } from "@nextui-org/react";
 import Subcategory from "./Subcategory";
 // import ThemeChange from "../../../ThemeChange";
@@ -35,8 +35,7 @@ const Navigation = ({ setColorChange, colorChange }) => {
           <div className="flex w-[95%] pt-1 mx-auto justify-between items-center h-full">
             <div className="flex gap-20  h-full">
               <div className="logo flex justify-center items-center h-full">
-                {/* <Logo height={45} width={115} /> */}
-                <h1>LOGO</h1>
+                <img src={Logo} height={40} width={115} alt="logo" />
               </div>
               <ul className="flex text-sm justify-center gap-5 items-center">
                 <li>
@@ -202,13 +201,13 @@ const Navigation = ({ setColorChange, colorChange }) => {
         <Card
           variant="ghost"
           color="primary"
-          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] bg-[var(--border-light-color)] hover:bg-transparent right-[6%] font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-full-dark hover:border-[var(--border-light-color)] text-sm tracking-wider hover:tracking-widest"
+          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] text-white bg-[#0f1019] hover:bg-[#000000] right-10 font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-full-dark text-sm tracking-wider hover:tracking-widest"
           radius="none"
           shadow="none"
           isPressable
           onClick={scrollUP}
         >
-          <div className="flex text-primary-color justify-center gap-1 border-dark-color  duration-150 items-center">
+          <div className="flex text-white justify-center gap-1 border-dark-color  duration-150 items-center">
             <IoIosArrowDown className="text-xl" />
           </div>
         </Card>
