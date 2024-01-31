@@ -113,24 +113,30 @@ const Navigation = ({ setColorChange, colorChange }) => {
               <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link
                 to={"/login"}
-                className={`login !text-xs w-1/3 ${
+                className={`login py-[.6rem] !text-xs w-1/3 relative ${
                   Location.toLowerCase().includes("login")
                     ? "text-black"
                     : "text-black/80"
                 } `}
               >
                 Login
+                {Location.toLowerCase() === "/login" && (
+                  <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                )}
               </Link>
               <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link
                 to={"/register"}
-                className={`login !text-xs w-1/3 ${
+                className={`login py-[.6rem] !text-xs w-1/3 relative ${
                   Location.toLowerCase().includes("register")
                     ? "text-black"
                     : "text-black/80"
                 } `}
               >
                 Signup
+                {Location.toLowerCase() === "/register" && (
+                  <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                )}
               </Link>
               <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link to={"/cart"} className="w-1/3">
@@ -153,13 +159,13 @@ const Navigation = ({ setColorChange, colorChange }) => {
         <Card
           variant="ghost"
           color="primary"
-          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] text-white bg-[#0f1019] hover:bg-[#000000] right-10 font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-sm tracking-wider hover:tracking-widest"
+          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] text-white bg-[#0f1019] hover:bg-[#000000] right-10 font-gruppo rounded-none flex border-white/20 justify-center items-center mt-5 border text-sm tracking-wider hover:tracking-widest"
           radius="none"
           shadow="none"
           isPressable
           onClick={scrollUP}
         >
-          <div className="flex text-white justify-center gap-1 border-dark-color  duration-150 items-center">
+          <div className="flex text-white justify-center gap-1 border-white/20  duration-150 items-center">
             <IoIosArrowDown className="text-xl" />
           </div>
         </Card>
