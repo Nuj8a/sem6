@@ -16,15 +16,16 @@ import {
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 import { CKEditor } from "ckeditor4-react";
 
-const metal = [
-  { id: 1, name: "Gold" },
-  { id: 2, name: "Silver" },
-  { id: 3, name: "Panchadhatu" },
+const WebsiteType = [
+  { id: 1, name: "Static Website" },
+  { id: 2, name: "Dynamic Website" },
 ];
 
-function getMetalName(id) {
-  const metalItem = metal.find((item) => String(item.id) === String(id));
-  return metalItem ? metalItem.name : "";
+function getWebsiteName(id) {
+  const WebsiteTypeItem = WebsiteType.find(
+    (item) => String(item.id) === String(id)
+  );
+  return WebsiteTypeItem ? WebsiteTypeItem.name : "";
 }
 
 export default function ModalApp(props) {
@@ -46,12 +47,12 @@ export default function ModalApp(props) {
     productTitle: "",
     categoryId: "",
     subCategoryId: null,
-    productMetal: "",
-    productMetalName: "",
+    websitetype: "",
+    websitetypeName: "",
     productImage: [],
-    productWeight: "",
-    productWestage: "",
+    technologyused: "",
     productDiscount: "",
+    productPrice: "",
     productQuantity: "",
   });
 
@@ -59,10 +60,10 @@ export default function ModalApp(props) {
     productTitle: "",
     categoryId: "",
     productImage: [],
-    productWeight: "",
-    productWestage: "",
+    technologyused: "",
     productDiscount: "",
-    productMetal: "",
+    productPrice: "",
+    websitetype: "",
     productQuantity: "",
   });
 
@@ -71,14 +72,14 @@ export default function ModalApp(props) {
       productTitle: updateData.status ? updateData.data.title : "",
       categoryId: updateData.status ? updateData.data.categoryId : "",
       subCategoryId: updateData.status ? updateData.data.subcategoryId : null,
-      productMetal: updateData.status ? updateData.data.metal : "",
-      productMetalName: updateData.status
-        ? getMetalName(updateData.data.metal)
+      websitetype: updateData.status ? updateData.data.websitetype : "",
+      websitetypeName: updateData.status
+        ? getWebsiteName(updateData.data.websitetype)
         : "",
-      productWeight: updateData.status ? updateData.data.weight : "",
-      productWestage: updateData.status ? updateData.data.westage : "",
+      technologyused: updateData.status ? updateData.data.technologyused : "",
       productDiscount: updateData.status ? updateData.data.discount : "",
       productQuantity: updateData.status ? updateData.data.maxQuantity : "",
+      productPrice: updateData.status ? updateData.data.price : "",
       productImage: updateData.status ? "" : [],
     });
     setDescriptionData(updateData.status ? updateData.data.description : "");
@@ -104,11 +105,11 @@ export default function ModalApp(props) {
         ...productData,
         subCategoryId: e.target.value,
       });
-    } else if (e.target.name === "productMetal") {
+    } else if (e.target.name === "websitetype") {
       setProductData({
         ...productData,
-        productMetal: e.target.value,
-        productMetalName: getMetalName(e.target.value),
+        websitetype: e.target.value,
+        websitetypeName: getWebsiteName(e.target.value),
       });
     } else {
       setProductData({ ...productData, [e.target.name]: e.target.value });
@@ -128,11 +129,11 @@ export default function ModalApp(props) {
       categoryId: "",
       subCategoryId: null,
       productImage: [],
-      productWeight: "",
-      productWestage: "",
+      technologyused: "",
       productDiscount: "",
-      productMetal: "",
+      websitetype: "",
       productQuantity: "",
+      productPrice: "",
     });
     setDescriptionData("");
     setUpdateData({ status: false, data: {} });
@@ -140,11 +141,11 @@ export default function ModalApp(props) {
       productTitle: "",
       categoryId: "",
       productImage: [],
-      productWeight: "",
-      productWestage: "",
+      technologyused: "",
       productDiscount: "",
-      productMetal: "",
+      websitetype: "",
       productQuantity: "",
+      productPrice: "",
       productDescription: "",
     });
   };
@@ -180,15 +181,9 @@ export default function ModalApp(props) {
       }
     }
 
-    // Validate Product Weight
-    if (!productData.productWeight) {
-      newValidationErrors.productWeight = "Product Weight is required";
-      isValid = false;
-    }
-
     // Validate Product Westage
-    if (!productData.productWestage) {
-      newValidationErrors.productWestage = "Product Westage is required";
+    if (!productData.technologyused) {
+      newValidationErrors.technologyused = "Product Westage is required";
       isValid = false;
     }
 
@@ -198,9 +193,15 @@ export default function ModalApp(props) {
       isValid = false;
     }
 
-    // Validate Product Metal
-    if (!productData.productMetal) {
-      newValidationErrors.productMetal = "Metal Name is required";
+    // Validate Product productPrice
+    if (!productData.productPrice) {
+      newValidationErrors.productPrice = "Product price is required";
+      isValid = false;
+    }
+
+    // Validate Product WebsiteType
+    if (!productData.websitetype) {
+      newValidationErrors.websitetype = "Website Type is required";
       isValid = false;
     }
 
@@ -218,6 +219,8 @@ export default function ModalApp(props) {
         description: discriptionData,
       };
 
+      // console.log(finalData);
+      // return;
       if (updateData.status) {
         handelUpdate({ ...finalData, id: updateData.data._id });
       } else {
@@ -407,19 +410,51 @@ export default function ModalApp(props) {
                         </div>
                       )}
                     </div>
+
                     <div className="flex flex-col w-1/3">
-                      <Input
-                        type="number"
-                        variant="underlined"
-                        label="Product Weight"
-                        radius="sm"
-                        name="productWeight"
-                        value={productData.productWeight}
-                        onChange={productDataChange}
-                      />
-                      {validationErrors.productWeight && (
+                      {updateData.status ? (
+                        <Select
+                          label="Website Type"
+                          className="max-w-xs"
+                          radius="sm"
+                          name="websitetype"
+                          variant="underlined"
+                          value={productData.websitetype}
+                          onChange={productDataChange}
+                          defaultSelectedKeys={[
+                            String(updateData.data.websitetype),
+                          ]}
+                        >
+                          {WebsiteType.map((e) => {
+                            return (
+                              <SelectItem value={e.id} key={e.id} radius="sm">
+                                {e.name}
+                              </SelectItem>
+                            );
+                          })}
+                        </Select>
+                      ) : (
+                        <Select
+                          label="Website Type"
+                          className="max-w-xs"
+                          radius="sm"
+                          name="websitetype"
+                          variant="underlined"
+                          value={productData.websitetype}
+                          onChange={productDataChange}
+                        >
+                          {WebsiteType.map((e) => {
+                            return (
+                              <SelectItem value={e.id} key={e.id} radius="sm">
+                                {e.name}
+                              </SelectItem>
+                            );
+                          })}
+                        </Select>
+                      )}
+                      {validationErrors.websitetype && (
                         <div className="text-red-500 errorFront !mt-[1px]">
-                          {validationErrors.productWeight}
+                          {validationErrors.websitetype}
                         </div>
                       )}
                     </div>
@@ -427,15 +462,15 @@ export default function ModalApp(props) {
                       <Input
                         variant="underlined"
                         type="number"
-                        label="Product Westage"
+                        label="Product Price"
                         radius="sm"
-                        name="productWestage"
-                        value={productData.productWestage}
+                        name="productPrice"
+                        value={productData.productPrice}
                         onChange={productDataChange}
                       />
-                      {validationErrors.productWestage && (
+                      {validationErrors.productPrice && (
                         <div className="text-red-500 errorFront !mt-[1px]">
-                          {validationErrors.productWestage}
+                          {validationErrors.productPrice}
                         </div>
                       )}
                     </div>
@@ -458,51 +493,6 @@ export default function ModalApp(props) {
                       )}
                     </div>
                     <div className="flex flex-col w-1/3">
-                      {updateData.status ? (
-                        <Select
-                          label="Metal Name"
-                          className="max-w-xs"
-                          radius="sm"
-                          name="productMetal"
-                          variant="underlined"
-                          value={productData.productMetal}
-                          onChange={productDataChange}
-                          defaultSelectedKeys={[String(updateData.data.metal)]}
-                        >
-                          {metal.map((e) => {
-                            return (
-                              <SelectItem value={e.id} key={e.id} radius="sm">
-                                {e.name}
-                              </SelectItem>
-                            );
-                          })}
-                        </Select>
-                      ) : (
-                        <Select
-                          label="Metal Name"
-                          className="max-w-xs"
-                          radius="sm"
-                          name="productMetal"
-                          variant="underlined"
-                          value={productData.productMetal}
-                          onChange={productDataChange}
-                        >
-                          {metal.map((e) => {
-                            return (
-                              <SelectItem value={e.id} key={e.id} radius="sm">
-                                {e.name}
-                              </SelectItem>
-                            );
-                          })}
-                        </Select>
-                      )}
-                      {validationErrors.productMetal && (
-                        <div className="text-red-500 errorFront !mt-[1px]">
-                          {validationErrors.productMetal}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col w-1/3">
                       <Input
                         type="number"
                         variant="underlined"
@@ -515,6 +505,22 @@ export default function ModalApp(props) {
                       {validationErrors.productQuantity && (
                         <div className="text-red-500 errorFront !mt-[1px]">
                           {validationErrors.productQuantity}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-col w-1/3">
+                      <Input
+                        type="text"
+                        variant="underlined"
+                        label="Technology Used"
+                        radius="sm"
+                        name="technologyused"
+                        value={productData.technologyused}
+                        onChange={productDataChange}
+                      />
+                      {validationErrors.technologyused && (
+                        <div className="text-red-500 errorFront !mt-[1px]">
+                          {validationErrors.technologyused}
                         </div>
                       )}
                     </div>
