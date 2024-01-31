@@ -4,6 +4,7 @@ import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 // import Logo from "../assets/js/Logo";
 import { Card } from "@nextui-org/react";
+import Subcategory from "./Subcategory";
 // import ThemeChange from "../../../ThemeChange";
 
 const Navigation = ({ setColorChange, colorChange }) => {
@@ -76,13 +77,15 @@ const Navigation = ({ setColorChange, colorChange }) => {
                         : "text-slate-700"
                     } hover:text-black flex relative justify-start py-2  items-center gap-[1px] itemHover`}
                   >
-                    Services <IoIosArrowDown className="mt-[3px] text-base" />
+                    Services{" "}
+                    <IoIosArrowDown className="mt-[3px] text-base group-hover:rotate-180 duration-150" />
                     {Location.toLowerCase().includes("/services") && (
                       <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
                   <div className="hidden group-hover:block">
-                    <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-slate-700 py-1 flex flex-col">
+                    <Subcategory />
+                    {/* <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-slate-700 py-1 flex flex-col">
                       <li>
                         <Link
                           className={`text-nowrap ${
@@ -131,7 +134,7 @@ const Navigation = ({ setColorChange, colorChange }) => {
                           Social Media
                         </Link>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </li>
                 <li>
