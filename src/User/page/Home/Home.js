@@ -10,7 +10,8 @@ const Home = () => {
   return (
     <>
       <Carousel />
-      <div className="mx-4">
+
+      <div className="mx-4 mt-[100px]">
         <Category />
         <Services />
         <Product />
