@@ -6,6 +6,7 @@ import { EyeSlashFilledIcon } from "../../common/assets/jsx/EyeSlashFilledIcon";
 import { MailIcon } from "../../common/assets/jsx/MailIcon";
 import PersonIcon from "@mui/icons-material/Person";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import Logo from "../../../assets/icons/logo.svg";
 // import { useDispatch } from "react-redux";
 // import { registerUser } from "../../../redux/slices/authSlice";
 // import { useNavigate } from "react-router-dom";
@@ -53,13 +54,14 @@ const Register = () => {
           radius="none"
           className="rounded-sm flex gap-5 flex-col p-8 font-poppins"
         >
-          <div className="flex justify-between pb-1 items-center">
+          <div className="flex justify-between items-center">
             <h3 className="text-[var(--text-dark-color)] font-semibold tracking-wider text-2xl font-Orbitron">
               Sign Up
             </h3>
+            <img src={Logo} height={40} width={125} alt="logo" />
           </div>
 
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3 -mt-1">
             <div className="flex gap-1 flex-col">
               <label
                 htmlFor="name"

@@ -5,6 +5,7 @@ import { Input, Button, Card } from "@nextui-org/react";
 import { EyeFilledIcon } from "../../common/assets/jsx/EyeFilledIcon";
 import { EyeSlashFilledIcon } from "../../common/assets/jsx/EyeSlashFilledIcon";
 import { MailIcon } from "../../common/assets/jsx/MailIcon";
+import Logo from "../../../assets/icons/logo.svg";
 // import { useDispatch } from "react-redux";
 // import { loginUser } from "../../../redux/slices/authSlice";
 // import { useNavigate } from "react-router-dom";
@@ -43,14 +44,14 @@ const Login = () => {
           radius="none"
           className="rounded-sm flex gap-5 flex-col p-8 font-poppins"
         >
-          <div className="flex justify-between pb-2 items-center">
+          <div className="flex justify-between items-center">
             <h3 className="text-black font-semibold tracking-wider text-2xl font-Orbitron">
               Sign In
             </h3>
-            {/* <Logo height={45} width={115} /> */}
+            <img src={Logo} height={40} width={125} alt="logo" />
           </div>
           <h3 className="text-black/80 text-sm">Wellcome back !!!</h3>
-          <div className="flex gap-1 flex-col">
+          <div className="flex gap-1 -mt-1 flex-col">
             <label
               htmlFor="email"
               className="text-sm text-black cursor-pointer"
