@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import ThemeSwitcher from "@/app/theme/ThemeSwitcher";
-import ThemeSwitcher from "../../../theme/ThemeSwitcher";
+// import ThemeSwitcher from "../../../theme/ThemeSwitcher";
 import Message from "../components/Message";
 import Profile from "../components/Profile";
 
@@ -53,19 +53,13 @@ const TopNavContent = (props) => {
               ></div>
             </div>
           </div>
-          <div className="font-semibold text-lg ml-10 text-slate-700 tracking-wide dark:text-slate-300">
+          <div className="font-semibold font-poppins ml-10 text-slate-700 tracking-wide dark:text-slate-300">
             Hello Admin, {greeting}
           </div>
         </div>
-        <div className="w-[230px] mr-2 flex justify-around items-center">
-          <div className="flex gap-1 items-center">
-            <ThemeSwitcher />
-            <Message unreadMsg={unreadMsg} />
-            {/* <Notification /> */}
-          </div>
-          <div className="pofile">
-            <Profile loginData={loginData} />
-          </div>
+        <div className="flex justify-center items-center gap-5 absolute right-10">
+          <Message unreadMsg={unreadMsg} />
+          <Profile loginData={loginData} />
         </div>
       </div>
     </>

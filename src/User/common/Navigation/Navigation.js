@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import Logo from "../../../assets/icons/logo.svg";
 import { Card } from "@nextui-org/react";
 import Subcategory from "./Subcategory";
-// import ThemeChange from "../../../ThemeChange";
+import Profile from "../Components/Profile";
 
 const Navigation = ({ setColorChange, colorChange }) => {
   const Location = useLocation().pathname;
@@ -84,56 +84,6 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   </Link>
                   <div className="hidden group-hover:block">
                     <Subcategory />
-                    {/* <ul className="absolute rounded-sm overflow-hidden border border-black/5 bg-slate-50 shadow text-xs top-9 text-slate-700 py-1 flex flex-col">
-                      <li>
-                        <Link
-                          className={`text-nowrap ${
-                            Location.toLowerCase().includes(
-                              "/services/e-commerce"
-                            ) && "bg-blue-200 text-black"
-                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
-                          to={"/services/e-commerce"}
-                        >
-                          E-Commerce
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className={`text-nowrap ${
-                            Location.toLowerCase().includes(
-                              "/services/educational"
-                            ) && "bg-blue-200 text-black"
-                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
-                          to={"/services/educational"}
-                        >
-                          Educational
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className={`text-nowrap ${
-                            Location.toLowerCase().includes(
-                              "/services/news-and-media"
-                            ) && "bg-blue-200 text-black"
-                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
-                          to={"/services/news-and-media"}
-                        >
-                          News and Media
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          className={`text-nowrap ${
-                            Location.toLowerCase().includes(
-                              "/services/social-media"
-                            ) && "bg-blue-200 text-black"
-                          } hover:bg-blue-200 hover:text-black duration-200 w-full inline-block py-[.6rem] px-4`}
-                          to={"/services/social-media"}
-                        >
-                          Social Media
-                        </Link>
-                      </li>
-                    </ul> */}
                   </div>
                 </li>
                 <li>
@@ -160,38 +110,40 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   colorChange={colorChange}
                 /> */}
               </div>
-              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link
                 to={"/login"}
                 className={`login !text-xs w-1/3 ${
                   Location.toLowerCase().includes("login")
-                    ? "text-full-dark"
-                    : "text-light-color"
+                    ? "text-black"
+                    : "text-black/80"
                 } `}
               >
                 Login
               </Link>
-              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link
                 to={"/register"}
                 className={`login !text-xs w-1/3 ${
                   Location.toLowerCase().includes("register")
-                    ? "text-full-dark"
-                    : "text-light-color"
+                    ? "text-black"
+                    : "text-black/80"
                 } `}
               >
                 Signup
               </Link>
-              <div className="h-[20px] w-[1px] border-r border-light-color" />
+              <div className="h-[20px] w-[1px] border-r border-black/15" />
               <Link to={"/cart"} className="w-1/3">
                 <IoMdCart
-                  className={`login text-xl ${
+                  className={`login text-2xl ${
                     Location.toLowerCase().includes("cart")
-                      ? "text-full-dark"
-                      : "text-light-color"
+                      ? "text-black"
+                      : "text-black/70"
                   } `}
                 />
               </Link>
+              <div className="h-[20px] w-[1px] border-r border-black/15" />
+              <Profile />
             </div>
           </div>
         </div>
@@ -201,7 +153,7 @@ const Navigation = ({ setColorChange, colorChange }) => {
         <Card
           variant="ghost"
           color="primary"
-          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] text-white bg-[#0f1019] hover:bg-[#000000] right-10 font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-full-dark text-sm tracking-wider hover:tracking-widest"
+          className="uppercase z-[1000000] fixed w-[35px] rotate-180 h-[35px] bottom-[40vh] text-white bg-[#0f1019] hover:bg-[#000000] right-10 font-gruppo rounded-none flex border-dark-color justify-center items-center mt-5 border text-sm tracking-wider hover:tracking-widest"
           radius="none"
           shadow="none"
           isPressable

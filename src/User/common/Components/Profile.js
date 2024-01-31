@@ -11,16 +11,14 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import HomeIcon from "@mui/icons-material/Home";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import SwitchAccountIcon from "@mui/icons-material/SwitchAccount";
 import Confirmlogout from "./ConFirmlogout";
-import SwitchAccountModal from "./SwitchAccountModal";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile(props) {
   const { loginData } = props;
   const [isLogin, setIsLogin] = useState({ data: "", isLogged: false });
   const btnRef = useRef();
-  const switchAccountRef = useRef();
+  // const switchAccountRef = useRef();
   const listBtnRef = useRef();
   const navigate = useNavigate();
 
@@ -36,37 +34,41 @@ export default function Profile(props) {
     listBtnRef.current.click();
     navigate("/");
   };
-  const switchAccountClick = () => {
-    listBtnRef.current.click();
-    switchAccountRef.current.click();
-  };
+  // const switchAccountClick = () => {
+  //   listBtnRef.current.click();
+  //   switchAccountRef.current.click();
+  // };
   console.log(isLogin);
   return (
     <>
       <Popover placement="bottom" showArrow={true} className="!rounded-[3px]">
         <PopoverTrigger>
-          <Avatar
-            className="shadow"
-            as="button"
-            src={loginData.data.image}
-            showFallback
-            classNames={{
-              icon: "text-black/50",
-            }}
-            ref={listBtnRef}
-          />
+          <div className="scale-110">
+            <Avatar
+              size="sm"
+              as="button"
+              src={loginData?.data?.image}
+              showFallback
+              classNames={{
+                icon: "text-black/50",
+              }}
+              ref={listBtnRef}
+            />
+          </div>
         </PopoverTrigger>
-        <PopoverContent className="!rounded-[3px]">
+        <PopoverContent className="!rounded-[3px] py-2">
           <Listbox variant="faded" aria-label="Listbox menu with icons">
             <ListboxItem
               className="hover:!border-transparent p-0 m-0 cursor-text hover:!bg-transparent"
               textValue="Signed in as"
             >
               <div className="p-0 m-0">
-                <div className="text-base font-semibold">Signed in as</div>
-                <div>
-                  {loginData.data.email
-                    ? loginData.data.email
+                <div className="text-sm font-semibold font-poppins">
+                  Signed in as
+                </div>
+                <div className="text-xs font-poppins">
+                  {loginData?.data?.email
+                    ? loginData?.data?.email
                     : "zoey@example.com"}
                 </div>
               </div>
@@ -91,17 +93,17 @@ export default function Profile(props) {
                 textValue="Go Home"
                 onClick={goHomeClick}
               >
-                <div className="!text-xs !font-semibold">Go Home</div>
+                <div className="!text-xs !font-semibold">My Orders</div>
               </ListboxItem>
               <ListboxItem
-                key="switch account"
+                key="gohome"
                 startContent={
-                  <SwitchAccountIcon className="text-slate-600 text-lg ml-[5px] dark:text-slate-200" />
+                  <HomeIcon className="text-slate-600 text-lg ml-[5px] dark:text-slate-200" />
                 }
-                textValue="switch account"
-                onClick={switchAccountClick}
+                textValue="Go Home"
+                onClick={goHomeClick}
               >
-                <div className="!text-xs !font-semibold">Switch Account</div>
+                <div className="!text-xs !font-semibold">Go Home</div>
               </ListboxItem>
             </ListboxSection>
 
@@ -122,7 +124,6 @@ export default function Profile(props) {
         </PopoverContent>
       </Popover>
       <Confirmlogout btnRef={btnRef} setIsLogin={setIsLogin} />
-      <SwitchAccountModal btnRef={switchAccountRef} />
     </>
   );
 }

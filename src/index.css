@@ -28,12 +28,6 @@ input::-webkit-outer-spin-button {
   height: 90% !important;
 }
 
-body {
-  position: relative;
-  max-width: 1650px;
-  margin: auto;
-}
-
 @layer base {
   * {
     scrollbar-width: thin;
