@@ -30,6 +30,7 @@ const PageUser = () => {
               element={<EachSite />}
             />
             <Route path="/:category/:subcategory" element={<Products />} />
+            <Route path="/:category" element={<Products />} />
           </Routes>
           <Footer />
         </div>

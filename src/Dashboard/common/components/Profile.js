@@ -45,16 +45,18 @@ export default function Profile(props) {
     <>
       <Popover placement="bottom" showArrow={true} className="!rounded-[3px]">
         <PopoverTrigger>
-          <Avatar
-            className="shadow"
-            as="button"
-            src={loginData.data.image}
-            showFallback
-            classNames={{
-              icon: "text-black/50",
-            }}
-            ref={listBtnRef}
-          />
+          <div className="scale-95">
+            <Avatar
+              className="shadow"
+              as="button"
+              src={loginData.data.image}
+              showFallback
+              classNames={{
+                icon: "text-black/50",
+              }}
+              ref={listBtnRef}
+            />
+          </div>
         </PopoverTrigger>
         <PopoverContent className="!rounded-[3px]">
           <Listbox variant="faded" aria-label="Listbox menu with icons">
