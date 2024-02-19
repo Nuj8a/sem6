@@ -17,6 +17,7 @@ import { MailIcon } from "../../../User/common/assets/jsx/MailIcon";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/slices/authSlice";
 import { Toaster, toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 export default function SwitchAccountModal({ btnRef }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -27,19 +28,25 @@ export default function SwitchAccountModal({ btnRef }) {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
 
+  const navigate = useNavigate();
+
   const handelLogin = async (data) => {
     try {
       const response = await dispatch(loginUser(data));
       if (response.payload?.msg) {
-        toast.success("User registered successfully");
+        localStorage.setItem("isLogged", true);
+        localStorage.setItem("data", JSON.stringify(response.payload.user));
+        localStorage.setItem("token", JSON.stringify(response.payload.token));
         btnref.current.click();
+        toast.success("User registered successfully");
+        navigate("/dashboard/");
       } else if (response.payload?.error) {
         toast.error(response.payload?.error);
       } else {
         toast.error("Cannot register user");
       }
     } catch (error) {
-      toast.error("Some error occurred");
+      toast.error("Some error occurred " + error);
     }
   };
 

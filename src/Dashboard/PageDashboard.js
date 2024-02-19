@@ -1,6 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useState } from "react";
-import Dashboard from "./Pages/dashboard/Dashboard";
+import Dashboard from "./Pages/dashboard/page";
 import Category from "./Pages/Lists/category/Category";
 import Subcategory from "./Pages/Lists/subcategory/Page";
 import Banner from "./Pages/Lists/banner/Page";
