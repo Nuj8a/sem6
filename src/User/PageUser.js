@@ -9,14 +9,30 @@ import Cart from "./page/Cart/page";
 import Checkout from "./page/Checkout/page";
 import EachSite from "./page/EachSite/EachSite";
 import Contact from "./page/Contact/Contact";
+import { useEffect, useState } from "react";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
+  const [userData, setUserData] = useState({ isLogin: false, data: {} });
+  useEffect(() => {
+    if (localStorage.getItem("data")) {
+      setUserData({
+        isLogin: true,
+        data: JSON.parse(localStorage.getItem("data")),
+      });
+    } else {
+      setUserData({
+        isLogin: false,
+        data: {},
+      });
+    }
+    // eslint-disable-next-line
+  }, [localStorage.getItem("data")]);
   return (
     <>
       {!Location.includes("/dashboard") && (
         <div className="max-w-[1600px] mx-auto">
-          <Navigation />
+          <Navigation userData={userData} />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

@@ -49,7 +49,7 @@ export default function Profile(props) {
             <Avatar
               className="shadow"
               as="button"
-              src={loginData.data.image}
+              src={loginData?.image}
               showFallback
               classNames={{
                 icon: "text-black/50",
@@ -67,9 +67,7 @@ export default function Profile(props) {
               <div className="p-0 m-0">
                 <div className="text-base font-semibold">Signed in as</div>
                 <div>
-                  {loginData.data.email
-                    ? loginData.data.email
-                    : "zoey@example.com"}
+                  {loginData?.email ? loginData?.email : "zoey@example.com"}
                 </div>
               </div>
             </ListboxItem>

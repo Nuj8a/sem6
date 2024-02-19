@@ -7,7 +7,7 @@ import { Card } from "@nextui-org/react";
 import Subcategory from "./Subcategory";
 import Profile from "../Components/Profile";
 
-const Navigation = ({ setColorChange, colorChange }) => {
+const Navigation = ({ userData }) => {
   const Location = useLocation().pathname;
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
@@ -110,46 +110,53 @@ const Navigation = ({ setColorChange, colorChange }) => {
                   colorChange={colorChange}
                 /> */}
               </div>
-              <div className="h-[20px] w-[1px] border-r border-black/15" />
-              <Link
-                to={"/login"}
-                className={`login py-[.6rem] !text-xs w-1/3 relative ${
-                  Location.toLowerCase().includes("login")
-                    ? "text-black"
-                    : "text-black/80"
-                } `}
-              >
-                Login
-                {Location.toLowerCase() === "/login" && (
-                  <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
-                )}
-              </Link>
-              <div className="h-[20px] w-[1px] border-r border-black/15" />
-              <Link
-                to={"/register"}
-                className={`login py-[.6rem] !text-xs w-1/3 relative ${
-                  Location.toLowerCase().includes("register")
-                    ? "text-black"
-                    : "text-black/80"
-                } `}
-              >
-                Signup
-                {Location.toLowerCase() === "/register" && (
-                  <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
-                )}
-              </Link>
-              <div className="h-[20px] w-[1px] border-r border-black/15" />
-              <Link to={"/cart"} className="w-1/3">
-                <IoMdCart
-                  className={`login text-2xl ${
-                    Location.toLowerCase().includes("cart")
-                      ? "text-black"
-                      : "text-black/70"
-                  } `}
-                />
-              </Link>
-              <div className="h-[20px] w-[1px] border-r border-black/15" />
-              <Profile />
+              {!userData.isLogin ? (
+                <>
+                  <div className="h-[20px] w-[1px] border-r border-black/15" />
+                  <Link
+                    to={"/login"}
+                    className={`login py-[.6rem] !text-xs w-1/3 relative ${
+                      Location.toLowerCase().includes("login")
+                        ? "text-black"
+                        : "text-black/80"
+                    } `}
+                  >
+                    Login
+                    {Location.toLowerCase() === "/login" && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                  <div className="h-[20px] w-[1px] border-r border-black/15" />
+                  <Link
+                    to={"/register"}
+                    className={`login py-[.6rem] !text-xs w-1/3 relative ${
+                      Location.toLowerCase().includes("register")
+                        ? "text-black"
+                        : "text-black/80"
+                    } `}
+                  >
+                    Signup
+                    {Location.toLowerCase() === "/register" && (
+                      <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                    )}
+                  </Link>
+                  <div className="h-[20px] w-[1px] border-r border-black/15" />
+                </>
+              ) : (
+                <>
+                  <Link to={"/cart"} className="w-1/3">
+                    <IoMdCart
+                      className={`login text-2xl ${
+                        Location.toLowerCase().includes("cart")
+                          ? "text-black"
+                          : "text-black/70"
+                      } `}
+                    />
+                  </Link>
+                  <div className="h-[20px] w-[1px] border-r border-black/15" />
+                  <Profile userData={userData} />
+                </>
+              )}
             </div>
           </div>
         </div>

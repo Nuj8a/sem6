@@ -1,19 +1,27 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import SideNav from "./SideNav";
 // import { usePathname, useRouter } from "next/navigation";
 import TopNavContent from "./TopNavContent";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnreadMsg } from "../../../redux/slices/messageSlice";
-import { useLocation } from "react-router-dom";
-// import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const TopNav = (props) => {
+  let userdata = JSON.parse(localStorage.getItem("data"));
+  const naviga = useNavigate();
+  useEffect(() => {
+    if (userdata === null) {
+      naviga("/");
+    }
+    if (Number(userdata?.privilege) < 1) {
+      naviga("/");
+    }
+  }, [naviga, userdata]);
   const pathname = useLocation().pathname;
   const isDashboard = pathname.includes("dashboard");
   const { hamClick, setHamClick } = props;
   const dispatch = useDispatch();
-  // const push = useNavigate();
   const { unreadMsg } = useSelector((state) => state.messageReducer);
   const userRef = useRef(false);
   useEffect(() => {
@@ -25,50 +33,11 @@ const TopNav = (props) => {
     };
   }, [dispatch]);
 
-  // !==========================================
-
-  const [isLogin, setIsLogin] = useState({ data: "", isLogged: false });
-  const { userData, authToken } = useSelector((state) => state.authReducer);
-
-  useEffect(() => {
-    if (userData !== null && authToken !== null) {
-      localStorage.setItem("userData", JSON.stringify(userData));
-      localStorage.setItem("token", JSON.stringify(authToken));
-    }
-  }, [userData, authToken]);
-
-  let dataLocalstorage = "";
-
-  if (typeof window !== "undefined" && window.localStorage) {
-    const userDataItem = window.localStorage.getItem("userData");
-    if (userDataItem) {
-      dataLocalstorage = userDataItem;
-    }
-  }
-
-  useEffect(() => {
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      setIsLogin({
-        data: JSON.parse(storedUserData),
-        isLogged: true,
-      });
-    }
-  }, [dataLocalstorage, userData]);
-
-  // useEffect(() => {
-  //   if (Number(isLogin.data.privilege) < 1) {
-  //     push("/");
-  //   }
-  // }, [isLogin, userData]);
-
-  // !==========================================
-
   return isDashboard ? (
     <nav className="w-full overflow-auto h-[55px] ">
       <div className="w-full h-[55px] flex shadow dark:shadow-slate-600 bg-white dark:bg-[#121212] z-50 fixed top-0 left-0 right-0">
         <TopNavContent
-          loginData={isLogin}
+          loginData={userdata}
           setHamClick={setHamClick}
           hamClick={hamClick}
           unreadMsg={unreadMsg}

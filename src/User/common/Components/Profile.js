@@ -14,8 +14,8 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import Confirmlogout from "./ConFirmlogout";
 import { useNavigate } from "react-router-dom";
 
-export default function Profile() {
-  const data = JSON.parse(localStorage.getItem("data"));
+export default function Profile({ userData }) {
+  const { data } = userData;
   const btnRef = useRef();
   const listBtnRef = useRef();
   const navigate = useNavigate();
