@@ -7,13 +7,13 @@ import { MailIcon } from "../../common/assets/jsx/MailIcon";
 import PersonIcon from "@mui/icons-material/Person";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import Logo from "../../../assets/icons/logo.svg";
-// import { useDispatch } from "react-redux";
-// import { registerUser } from "../../../redux/slices/authSlice";
-// import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { registerUser } from "../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = React.useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -36,16 +36,19 @@ const Register = () => {
     }
   };
 
-  // const handelLogin = async (data) => {
-  //   try {
-  //     const response = await dispatch(registerUser(data));
-  //     if (response.payload.token) {
-  //       navigate("/");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error creating post:", error);
-  //   }
-  // };
+  const handelRegister = async () => {
+    try {
+      const response = await dispatch(registerUser(formRegisterData));
+      if (response.payload.token) {
+        localStorage.setItem("isLogged", true);
+        localStorage.setItem("data", JSON.stringify(response.payload.user));
+        localStorage.setItem("token", JSON.stringify(response.payload.token));
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
 
   return (
     <div className="min-h-[70vh] my-10 gap-2 flex flex-col justify-center items-center">
@@ -171,6 +174,7 @@ const Register = () => {
               radius="none"
               className="rounded-sm"
               type="submit"
+              onClick={handelRegister}
               endContent={<IoArrowForwardOutline />}
             >
               Sign up

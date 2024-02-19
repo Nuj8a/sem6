@@ -12,14 +12,13 @@ import CircleNotificationsIcon from "@mui/icons-material/CircleNotifications";
 import { useNavigate } from "react-router-dom";
 
 export default function ConFirmlogout(props) {
-  const { btnRef, setIsLogin } = props;
+  const { btnRef } = props;
   const navigate = useNavigate();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const logoutContent = () => {
     localStorage.clear();
-    setIsLogin({ data: "", isLogged: false });
-    navigate("/");
+    navigate("/login");
   };
   return (
     <>
