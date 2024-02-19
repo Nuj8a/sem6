@@ -118,13 +118,15 @@ const Contact = () => {
                   label="Your Title"
                   radius="none"
                 />
-                <Textarea
-                  variant="faded"
-                  size="lg"
-                  label="Your Message"
-                  name="message"
-                  radius="none"
-                />
+                <div id="textarea1">
+                  <Textarea
+                    variant="faded"
+                    // size="lg"
+                    label="Your Message"
+                    name="message"
+                    radius="none"
+                  />
+                </div>
 
                 <Button
                   endContent={

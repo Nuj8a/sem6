@@ -37,6 +37,7 @@ const INITIAL_VISIBLE_COLUMNS = [
   "image",
   "actions",
 ];
+
 const columns = [
   { name: "SN", uid: "sn" },
   { name: "ID", uid: "_id", sortable: true },
@@ -44,8 +45,8 @@ const columns = [
   { name: "DESCRIPTION", uid: "description" },
   { name: "CATEGORY NAME", uid: "categoryName", sortable: true },
   { name: "SUBCATEGORY NAME", uid: "subCategoryName", sortable: true },
-  { name: "WEBSITE TYPE", uid: "websitetype" },
-  { name: "TECHNOLOGY USED", uid: "technologyused" },
+  { name: "GENDER TYPE", uid: "gendertype" },
+  { name: "PRODUCT COLOR", uid: "productcolor" },
   { name: "PRICE", uid: "price" },
   { name: "IMAGE", uid: "image" },
   { name: "DISCOUNT", uid: "discount" },
@@ -62,9 +63,19 @@ const metal = [
   { id: 3, name: "Panchadhatu" },
 ];
 
+const gendertype = [
+  { id: 1, name: "Men" },
+  { id: 2, name: "Women" },
+  { id: 3, name: "Unisex" },
+];
+
 function getMetalName(id) {
   const metalItem = metal.find((item) => String(item.id) === String(id));
   return metalItem ? metalItem.name : "";
+}
+function getGenderName(id) {
+  const genderItem = gendertype.find((item) => String(item.id) === String(id));
+  return genderItem ? genderItem.name : "";
 }
 
 export default function Tablepage(props) {
@@ -170,6 +181,8 @@ export default function Tablepage(props) {
         return <div>{user.likeId.length}</div>;
       case "metal":
         return <div>{getMetalName(user.metal)}</div>;
+      case "gendertype":
+        return <div>{getGenderName(user.gendertype)}</div>;
       case "title":
         return (
           <div>

@@ -16,16 +16,17 @@ import {
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 import { CKEditor } from "ckeditor4-react";
 
-const WebsiteType = [
-  { id: 1, name: "Static Website" },
-  { id: 2, name: "Dynamic Website" },
+const gendertype = [
+  { id: 1, name: "Men" },
+  { id: 2, name: "Women" },
+  { id: 3, name: "Unisex" },
 ];
 
-function getWebsiteName(id) {
-  const WebsiteTypeItem = WebsiteType.find(
+function getGenderName(id) {
+  const gendertypeItem = gendertype.find(
     (item) => String(item.id) === String(id)
   );
-  return WebsiteTypeItem ? WebsiteTypeItem.name : "";
+  return gendertypeItem ? gendertypeItem.name : "";
 }
 
 export default function ModalApp(props) {
@@ -43,14 +44,15 @@ export default function ModalApp(props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [discriptionData, setDescriptionData] = useState("");
   const closeBtn = useRef();
+  const [productColor, setProductColor] = useState("");
   const [productData, setProductData] = useState({
     productTitle: "",
     categoryId: "",
     subCategoryId: null,
-    websitetype: "",
-    websitetypeName: "",
+    gendertype: "",
+    gendertypeName: "",
     productImage: [],
-    technologyused: "",
+    productcolor: "",
     productDiscount: "",
     productPrice: "",
     productQuantity: "",
@@ -60,10 +62,10 @@ export default function ModalApp(props) {
     productTitle: "",
     categoryId: "",
     productImage: [],
-    technologyused: "",
+    productcolor: "",
     productDiscount: "",
     productPrice: "",
-    websitetype: "",
+    gendertype: "",
     productQuantity: "",
   });
 
@@ -72,17 +74,18 @@ export default function ModalApp(props) {
       productTitle: updateData.status ? updateData.data.title : "",
       categoryId: updateData.status ? updateData.data.categoryId : "",
       subCategoryId: updateData.status ? updateData.data.subcategoryId : null,
-      websitetype: updateData.status ? updateData.data.websitetype : "",
-      websitetypeName: updateData.status
-        ? getWebsiteName(updateData.data.websitetype)
+      gendertype: updateData.status ? updateData.data.gendertype : "",
+      gendertypeName: updateData.status
+        ? getGenderName(updateData.data.gendertype)
         : "",
-      technologyused: updateData.status ? updateData.data.technologyused : "",
+      productcolor: updateData.status ? updateData.data.productcolor : "",
       productDiscount: updateData.status ? updateData.data.discount : "",
       productQuantity: updateData.status ? updateData.data.maxQuantity : "",
       productPrice: updateData.status ? updateData.data.price : "",
       productImage: updateData.status ? "" : [],
     });
     setDescriptionData(updateData.status ? updateData.data.description : "");
+    setProductColor(updateData.status ? updateData.data.productcolor : "");
   }, [updateData]);
 
   const productDataChange = (e) => {
@@ -105,11 +108,11 @@ export default function ModalApp(props) {
         ...productData,
         subCategoryId: e.target.value,
       });
-    } else if (e.target.name === "websitetype") {
+    } else if (e.target.name === "gendertype") {
       setProductData({
         ...productData,
-        websitetype: e.target.value,
-        websitetypeName: getWebsiteName(e.target.value),
+        gendertype: e.target.value,
+        gendertypeName: getGenderName(e.target.value),
       });
     } else {
       setProductData({ ...productData, [e.target.name]: e.target.value });
@@ -123,15 +126,19 @@ export default function ModalApp(props) {
     setDescriptionData(event.editor.getData());
   };
 
+  const colorchange = (data) => {
+    setProductColor(data);
+  };
+
   const clearData = () => {
     setProductData({
       productTitle: "",
       categoryId: "",
       subCategoryId: null,
       productImage: [],
-      technologyused: "",
+      productcolor: "",
       productDiscount: "",
-      websitetype: "",
+      gendertype: "",
       productQuantity: "",
       productPrice: "",
     });
@@ -141,13 +148,14 @@ export default function ModalApp(props) {
       productTitle: "",
       categoryId: "",
       productImage: [],
-      technologyused: "",
+      productcolor: "",
       productDiscount: "",
-      websitetype: "",
+      gendertype: "",
       productQuantity: "",
       productPrice: "",
       productDescription: "",
     });
+    setProductColor("");
   };
 
   const formsubmit = (e) => {
@@ -181,12 +189,6 @@ export default function ModalApp(props) {
       }
     }
 
-    // Validate Product Westage
-    if (!productData.technologyused) {
-      newValidationErrors.technologyused = "Product Westage is required";
-      isValid = false;
-    }
-
     // Validate Product Discount
     if (!productData.productDiscount) {
       newValidationErrors.productDiscount = "Product Discount is required";
@@ -199,15 +201,20 @@ export default function ModalApp(props) {
       isValid = false;
     }
 
-    // Validate Product WebsiteType
-    if (!productData.websitetype) {
-      newValidationErrors.websitetype = "Website Type is required";
+    // Validate Product gendertype
+    if (!productData.gendertype) {
+      newValidationErrors.gendertype = "Suit Gender is required";
       isValid = false;
     }
 
     // Validate Product Quantity
     if (!productData.productQuantity) {
       newValidationErrors.productQuantity = "Total Quantity is required";
+      isValid = false;
+    }
+    // Validate Product Quantity
+    if (productColor.length < 1) {
+      newValidationErrors.productColor = "Product color is required";
       isValid = false;
     }
 
@@ -217,9 +224,9 @@ export default function ModalApp(props) {
       const finalData = {
         ...productData,
         description: discriptionData,
+        productcolor: productColor,
       };
 
-      // console.log(finalData);
       // return;
       if (updateData.status) {
         handelUpdate({ ...finalData, id: updateData.data._id });
@@ -414,18 +421,18 @@ export default function ModalApp(props) {
                     <div className="flex flex-col w-1/3">
                       {updateData.status ? (
                         <Select
-                          label="Website Type"
+                          label="Suit Gender"
                           className="max-w-xs"
                           radius="sm"
-                          name="websitetype"
+                          name="gendertype"
                           variant="underlined"
-                          value={productData.websitetype}
+                          value={productData.gendertype}
                           onChange={productDataChange}
                           defaultSelectedKeys={[
-                            String(updateData.data.websitetype),
+                            String(updateData.data.gendertype),
                           ]}
                         >
-                          {WebsiteType.map((e) => {
+                          {gendertype.map((e) => {
                             return (
                               <SelectItem value={e.id} key={e.id} radius="sm">
                                 {e.name}
@@ -435,15 +442,15 @@ export default function ModalApp(props) {
                         </Select>
                       ) : (
                         <Select
-                          label="Website Type"
+                          label="Suit Gender"
                           className="max-w-xs"
                           radius="sm"
-                          name="websitetype"
+                          name="gendertype"
                           variant="underlined"
-                          value={productData.websitetype}
+                          value={productData.gendertype}
                           onChange={productDataChange}
                         >
-                          {WebsiteType.map((e) => {
+                          {gendertype.map((e) => {
                             return (
                               <SelectItem value={e.id} key={e.id} radius="sm">
                                 {e.name}
@@ -452,12 +459,63 @@ export default function ModalApp(props) {
                           })}
                         </Select>
                       )}
-                      {validationErrors.websitetype && (
+                      {validationErrors.gendertype && (
                         <div className="text-red-500 errorFront !mt-[1px]">
-                          {validationErrors.websitetype}
+                          {validationErrors.gendertype}
                         </div>
                       )}
                     </div>
+                    <div className="flex flex-col w-1/3">
+                      <p className="text-sm px-1 text-black/70">
+                        Product Color
+                      </p>
+                      <div className="px-2 h-full w-full flex gap-2 border-b-2 -mb-[1px] pb-1 items-center">
+                        <div
+                          onClick={() => colorchange("black")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("white")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("red")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("blue")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("green")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("pink")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("gray")}
+                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-sm"
+                        ></div>
+                        <div
+                          onClick={() => colorchange("other")}
+                          className="h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-sm overflow-hidden flex-wrap flex"
+                        >
+                          <div className="h-1/2 bg-red-500 w-1/2 rounded-tl-sm"></div>
+                          <div className="h-1/2 bg-black w-1/2 rounded-tr-sm"></div>
+                          <div className="h-1/2 bg-yellow-500 w-1/2 rounded-bl-sm"></div>
+                          <div className="h-1/2 bg-blue-500 w-1/2 rounded-br-sm"></div>
+                        </div>
+                      </div>
+                      {validationErrors.productColor && (
+                        <div className="text-red-500 errorFront !mt-[1px]">
+                          {validationErrors.productColor}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="flex gap-3 w-full">
                     <div className="flex flex-col w-1/3">
                       <Input
                         variant="underlined"
@@ -474,8 +532,6 @@ export default function ModalApp(props) {
                         </div>
                       )}
                     </div>
-                  </div>
-                  <div className="flex gap-3 w-full">
                     <div className="flex flex-col w-1/3">
                       <Input
                         type="number"
@@ -505,22 +561,6 @@ export default function ModalApp(props) {
                       {validationErrors.productQuantity && (
                         <div className="text-red-500 errorFront !mt-[1px]">
                           {validationErrors.productQuantity}
-                        </div>
-                      )}
-                    </div>
-                    <div className="flex flex-col w-1/3">
-                      <Input
-                        type="text"
-                        variant="underlined"
-                        label="Technology Used"
-                        radius="sm"
-                        name="technologyused"
-                        value={productData.technologyused}
-                        onChange={productDataChange}
-                      />
-                      {validationErrors.technologyused && (
-                        <div className="text-red-500 errorFront !mt-[1px]">
-                          {validationErrors.technologyused}
                         </div>
                       )}
                     </div>

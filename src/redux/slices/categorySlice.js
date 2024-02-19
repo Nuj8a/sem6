@@ -46,7 +46,6 @@ export const postCategory = createAsyncThunk(
       formData,
       config
     );
-    console.log(response);
     return response.data;
   }
 );

@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import SideNav from "./SideNav";
-// import { usePathname, useRouter } from "next/navigation";
 import TopNavContent from "./TopNavContent";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnreadMsg } from "../../../redux/slices/messageSlice";

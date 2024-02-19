@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   Popover,
   PopoverTrigger,
@@ -18,7 +18,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Profile(props) {
   const { loginData } = props;
-  const [isLogin, setIsLogin] = useState({ data: "", isLogged: false });
   const btnRef = useRef();
   const switchAccountRef = useRef();
   const listBtnRef = useRef();
@@ -40,7 +39,7 @@ export default function Profile(props) {
     listBtnRef.current.click();
     switchAccountRef.current.click();
   };
-  console.log(isLogin);
+  // console.log(isLogin);
   return (
     <>
       <Popover placement="bottom" showArrow={true} className="!rounded-[3px]">
@@ -121,7 +120,7 @@ export default function Profile(props) {
           </Listbox>
         </PopoverContent>
       </Popover>
-      <Confirmlogout btnRef={btnRef} setIsLogin={setIsLogin} />
+      <Confirmlogout btnRef={btnRef} />
       <SwitchAccountModal btnRef={switchAccountRef} />
     </>
   );

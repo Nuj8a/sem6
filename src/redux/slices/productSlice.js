@@ -28,9 +28,9 @@ export const postproduct = createAsyncThunk(
     formData.append("maxQuantity", productDataForm.productQuantity);
     formData.append("address", "Macchapokhari, Kathmandu");
     formData.append("phNumber", "9810325922");
-    formData.append("websitetype", productDataForm.websitetype);
+    formData.append("gendertype", productDataForm.gendertype);
     formData.append("price", productDataForm.productPrice);
-    formData.append("technologyused", productDataForm.technologyused);
+    formData.append("productcolor", productDataForm.productcolor);
     formData.append("discount", productDataForm.productDiscount);
     // formData.append("image", productDataForm.productImage[0]);
     for (var i = 0; i < productDataForm.productImage.length; i++) {
@@ -80,9 +80,9 @@ export const updateproduct = createAsyncThunk(
       formData.append("maxQuantity", productDataForm.productQuantity);
       formData.append("address", "Macchapokhari, Kathmandu");
       formData.append("phNumber", "9810325922");
-      formData.append("websitetype", productDataForm.websitetype);
+      formData.append("gendertype", productDataForm.gendertype);
       formData.append("price", productDataForm.productPrice);
-      formData.append("technologyused", productDataForm.technologyused);
+      formData.append("productcolor", productDataForm.productcolor);
       formData.append("discount", productDataForm.productDiscount);
       if (productDataForm.productImage) {
         // formData.append(
