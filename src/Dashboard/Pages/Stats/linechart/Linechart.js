@@ -55,7 +55,7 @@ export default class Example extends PureComponent {
         <div className="font-semibold tracking-wide opacity-60 ml-10">
           Six Month Data
         </div>
-        <ResponsiveContainer width="100%" aspect={2 / 0.95}>
+        <ResponsiveContainer width="100%" aspect={2 / 0.87}>
           <LineChart
             width={500}
             height={300}

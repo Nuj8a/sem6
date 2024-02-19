@@ -23,7 +23,7 @@ const Page = () => {
     <>
       <FilledChart
         title="Last 6 Months (Revenue)"
-        aspect={2 / 0.95}
+        aspect={2 / 0.87}
         data={sixMonthData}
       />
     </>

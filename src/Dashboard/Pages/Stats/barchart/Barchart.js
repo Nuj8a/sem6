@@ -60,7 +60,7 @@ export default class Barchart extends PureComponent {
         <div className="font-semibold tracking-wide opacity-60 mb-2 ml-10">
           Six Month Data
         </div>
-        <ResponsiveContainer width="100%" aspect={2 / 0.93}>
+        <ResponsiveContainer width="100%" aspect={2 / 0.87}>
           <BarChart
             width={500}
             height={300}
