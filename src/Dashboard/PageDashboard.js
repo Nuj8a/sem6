@@ -13,7 +13,7 @@ import Profile from "./Pages/User/profile/Page";
 import Users from "./Pages/User/users/Page";
 import Message from "./Pages/Useful/message/Page";
 import Orders from "./Pages/Useful/orders/Page";
-import Delivery from "./Pages/Useful/delivery/Page";
+import Delivery from "./Pages/Useful/delivery/page";
 import Finished from "./Pages/Useful/finished/Page";
 
 const PageDashboard = ({ setProgress }) => {
