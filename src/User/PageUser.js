@@ -29,6 +29,7 @@ const PageUser = () => {
     }
     // eslint-disable-next-line
   }, [localStorage.getItem("data")]);
+
   return (
     <>
       {!Location.includes("/dashboard") && (
