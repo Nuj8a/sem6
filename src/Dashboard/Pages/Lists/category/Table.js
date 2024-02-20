@@ -33,6 +33,7 @@ const INITIAL_VISIBLE_COLUMNS = [
   "displayOrder",
   "image",
   "active",
+  "showTop",
   "actions",
 ];
 const columns = [
