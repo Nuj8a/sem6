@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
@@ -6,9 +6,13 @@ import Logo from "../../../assets/icons/logo.svg";
 import { Card } from "@nextui-org/react";
 import Subcategory from "./Subcategory";
 import Profile from "../Components/Profile";
+import { useDispatch, useSelector } from "react-redux";
+import { getCategorys } from "../../../redux/slices/categorySlice";
+import { getsubcategorys } from "../../../redux/slices/subCategorySlice";
 
 const Navigation = ({ userData }) => {
   const Location = useLocation().pathname;
+  const dispatch = useDispatch();
   const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
     const handleScroll = () => {
@@ -28,6 +32,35 @@ const Navigation = ({ userData }) => {
     });
   };
 
+  // ===================== get all data from backend =========================
+
+  const { data } = useSelector((state) => state.categoryReducer);
+  const { subcatData } = useSelector((state) => state.subcategoryReducer);
+
+  const userRef = useRef(false);
+
+  useEffect(() => {
+    if (userRef.current === false) {
+      dispatch(getsubcategorys());
+      dispatch(getCategorys());
+    }
+    return () => {
+      userRef.current = true;
+    };
+  }, [dispatch]);
+
+  const navData = data
+    .filter((e) => e.categoryName.toLowerCase() !== "home")
+    .map((category) => {
+      const subcategories = subcatData.filter(
+        (subcategory) => subcategory.categoryId === category._id
+      );
+      return {
+        ...category,
+        subcategories,
+      };
+    });
+
   return (
     <>
       <div className="sticky bg-slate-50 shadow font-poppins top-0 z-50">
@@ -38,7 +71,7 @@ const Navigation = ({ userData }) => {
                 <img src={Logo} height={40} width={115} alt="logo" />
               </div>
               <ul className="flex text-sm justify-center gap-5 items-center">
-                <li>
+                {/* <li>
                   <Link
                     className={`${
                       Location.toLowerCase() === "/"
@@ -67,26 +100,61 @@ const Navigation = ({ userData }) => {
                       <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
-                </li>
-                <li className="relative group">
+                </li> */}
+                <li>
                   <Link
                     className={` ${
-                      Location.toLowerCase().includes("/services")
+                      Location.toLowerCase() === "/"
                         ? "text-black"
                         : "text-slate-700"
-                    } hover:text-black flex relative justify-start py-2  items-center gap-[1px] itemHover`}
+                    } hover:text-black relative py-2 `}
+                    to={"/"}
                   >
-                    Services{" "}
-                    <IoIosArrowDown className="mt-[3px] text-base group-hover:rotate-180 duration-150" />
-                    {Location.toLowerCase().includes("/services") && (
+                    Home
+                    {Location.toLowerCase() === "/" && (
                       <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
-                  <div className="hidden group-hover:block">
-                    <Subcategory />
-                  </div>
                 </li>
-                <li>
+                {navData
+                  .sort((a, b) => a.displayOrder - b.displayOrder)
+                  .map((e) => {
+                    return (
+                      <li className="relative group" key={e._id}>
+                        <Link
+                          to={
+                            e.subcategories.length <= 0
+                              ? `/${e.categoryName.toLowerCase()}`
+                              : false
+                          }
+                          className={`${
+                            Location.toLowerCase().includes(
+                              `/${e.categoryName.toLowerCase()}`
+                            )
+                              ? "text-black"
+                              : "text-slate-700"
+                          } hover:text-black flex relative justify-start py-2  items-center gap-[1px] itemHover`}
+                        >
+                          {e.categoryName}
+                          {e.subcategories.length > 0 && (
+                            <IoIosArrowDown className="mt-[3px] text-base group-hover:rotate-180 duration-150" />
+                          )}
+                          {Location.toLowerCase().includes(
+                            `/${e.categoryName.toLowerCase()}`
+                          ) && (
+                            <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
+                          )}
+                        </Link>
+                        {e.subcategories.length > 0 && (
+                          <div className="hidden group-hover:block">
+                            <Subcategory />
+                          </div>
+                        )}
+                      </li>
+                    );
+                  })}
+
+                {/* <li>
                   <Link
                     className={` ${
                       Location.toLowerCase() === "/contact"
@@ -100,7 +168,7 @@ const Navigation = ({ userData }) => {
                       <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                     )}
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="profile text-sm flex justify-center items-center gap-5">
