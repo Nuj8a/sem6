@@ -9,7 +9,7 @@ const Page = () => {
 
   useEffect(() => {
     const updateUserFromLocalStorage = () => {
-      const userDataString = localStorage.getItem("userData");
+      const userDataString = localStorage.getItem("data");
       if (userDataString) {
         const userData = JSON.parse(userDataString);
         setUserDatalocal(userData);

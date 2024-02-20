@@ -104,6 +104,7 @@ export default function ModalApp(props) {
         subCategoryId: null,
       });
     } else if (e.target.name === "subCategoryId") {
+      console.log("first");
       setProductData({
         ...productData,
         subCategoryId: e.target.value,
@@ -226,6 +227,7 @@ export default function ModalApp(props) {
         description: discriptionData,
         productcolor: productColor,
       };
+      console.log(finalData);
 
       // return;
       if (updateData.status) {
@@ -366,7 +368,6 @@ export default function ModalApp(props) {
                           name="subCategoryId"
                           value={productData.subCategoryId}
                           onChange={productDataChange}
-                          defaultSelectedKeys={null}
                         >
                           <SelectItem value={null} key={null} radius="sm">
                             None
@@ -472,35 +473,35 @@ export default function ModalApp(props) {
                       <div className="px-2 h-full w-full flex gap-2 border-b-2 -mb-[1px] pb-1 items-center">
                         <div
                           onClick={() => colorchange("black")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-sm"
+                          className={`${productColor === "black" && "scale-125"} h-[20px] border border-black/15  cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("white")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-sm"
+                          className={`${productColor === "white" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("red")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-sm"
+                          className={`${productColor === "red" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("blue")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-sm"
+                          className={`${productColor === "blue" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("green")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-sm"
+                          className={`${productColor === "green" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("pink")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-sm"
+                          className={`${productColor === "pink" && "scale-125"}  h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("gray")}
-                          className="h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-sm"
+                          className={`${productColor === "gray" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("other")}
-                          className="h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-sm overflow-hidden flex-wrap flex"
+                          className={`${productColor === "other" && "scale-125"} h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-sm overflow-hidden flex-wrap flex`}
                         >
                           <div className="h-1/2 bg-red-500 w-1/2 rounded-tl-sm"></div>
                           <div className="h-1/2 bg-black w-1/2 rounded-tr-sm"></div>

@@ -21,7 +21,7 @@ export const postproduct = createAsyncThunk(
     formData.append("categoryId", productDataForm.categoryId);
     formData.append(
       "subcategoryId",
-      productDataForm.subcategoryId ? productDataForm.subcategoryId : ""
+      productDataForm.subCategoryId ? productDataForm.subCategoryId : ""
     );
     formData.append("title", productDataForm.productTitle);
     formData.append("description", productDataForm.description);
