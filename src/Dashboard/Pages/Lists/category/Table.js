@@ -16,7 +16,6 @@ import {
   Chip,
   Pagination,
   Tooltip,
-  User,
 } from "@nextui-org/react";
 import { SearchIcon } from "../../../common/components/Tables/Icons/SearchIcon";
 import { ChevronDownIcon } from "../../../common/components/Tables/Icons/ChevronDownIcon";
@@ -134,9 +133,19 @@ export default function Tablepage(props) {
     switch (columnKey) {
       case "image":
         return (
-          <User avatarProps={{ radius: "lg", src: user.image }}>
-            {user.categoryName}
-          </User>
+          <>
+            {String(user.image).length < 2 ? (
+              "-"
+            ) : (
+              <img
+                height={28}
+                width={28}
+                className="h-[28px] w-[28px] rounded-md object-cover"
+                src={user.image}
+                alt={user.categoryName}
+              />
+            )}
+          </>
         );
       case "date":
         return <div>{dateConverter(user.date)}</div>;

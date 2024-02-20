@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IoCallSharp, IoLogoInstagram } from "react-icons/io5";
 import { LiaFacebookSquare } from "react-icons/lia";
 import { MdEmail } from "react-icons/md";
@@ -7,8 +7,12 @@ import { RiLinkedinBoxLine, RiYoutubeLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { Button, Card, Input, Textarea } from "@nextui-org/react";
+import { useDispatch } from "react-redux";
+import { postContacts } from "../../../redux/slices/messageSlice";
+import { toast } from "sonner";
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const scrollUP = () => {
     window.scrollTo({
       top: 0,
@@ -18,6 +22,77 @@ const Contact = () => {
   useEffect(() => {
     scrollUP();
   }, []);
+
+  const [contactData, setContactData] = useState({
+    name: "",
+    email: "",
+    title: "",
+    msg: "",
+  });
+  const [validationErrors, setValidationErrors] = useState({});
+  const handelChange = (e) => {
+    setContactData({ ...contactData, [e.target.name]: e.target.value });
+  };
+
+  const handelPostContacts = async (data) => {
+    try {
+      const response = await dispatch(postContacts(data));
+      if (response.payload?.success) {
+        toast.success("Message sent successfully");
+      } else if (response.payload?.error) {
+        toast.error(response.payload?.error);
+      } else {
+        toast.error("Cannot add Message");
+      }
+    } catch (error) {
+      toast.error("Some error occurred");
+    }
+  };
+
+  const validateForm = () => {
+    let isValid = true;
+    const newValidationErrors = {
+      name: "",
+      email: "",
+      title: "",
+      msg: "",
+    };
+
+    if (!contactData.name.trim()) {
+      newValidationErrors.name = "Name is required.";
+      isValid = false;
+    }
+    if (!contactData.email.trim()) {
+      newValidationErrors.email = "Email is required.";
+      isValid = false;
+    }
+    if (contactData.title.trim().length < 5) {
+      newValidationErrors.title = "Title must be at least 5 characters long.";
+      isValid = false;
+    }
+    if (contactData.msg.trim().length < 10) {
+      newValidationErrors.msg = "Message must be at least 10 characters long.";
+      isValid = false;
+    }
+
+    setValidationErrors(newValidationErrors);
+
+    return isValid;
+  };
+
+  const formSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      handelPostContacts(contactData);
+      setContactData({
+        name: "",
+        email: "",
+        title: "",
+        msg: "",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen px-5">
       <div className="relative h-full w-full">
@@ -88,57 +163,80 @@ const Contact = () => {
             </div>
           </div>
           <div className="col-span-1 min-h-[400px] flex justify-center items-center mt-[100px] z-10">
-            <Card className="rounded-sm">
-              <div className="w-[450px] font-poppins rounded bg-white border border-black/10 shadow h-full p-6 flex gap-3 flex-col">
-                <h2 className="font-semibold uppercase text-blakc/80">
-                  Contact Form
-                </h2>
-                <Input
-                  name="name"
-                  size="sm"
-                  className="rounded-sm"
-                  variant="faded"
-                  type="text"
-                  label="Your Name"
-                  radius="none"
-                />
-                <Input
-                  name="email"
-                  size="sm"
-                  variant="faded"
-                  type="email"
-                  label="Your email"
-                  radius="none"
-                />
-                <Input
-                  name="title"
-                  size="sm"
-                  variant="faded"
-                  type="text"
-                  label="Your Title"
-                  radius="none"
-                />
-                <div id="textarea1">
-                  <Textarea
+            <form onSubmit={formSubmit}>
+              <Card className="rounded-sm">
+                <div className="w-[450px] font-poppins rounded bg-white border border-black/10 shadow h-full p-6 flex gap-3 flex-col">
+                  <h2 className="font-semibold uppercase text-blakc/80">
+                    Contact Form
+                  </h2>
+                  <Input
+                    name="name"
+                    size="sm"
+                    className="rounded-sm"
                     variant="faded"
-                    // size="lg"
-                    label="Your Message"
-                    name="message"
+                    type="text"
+                    label="Your Name"
                     radius="none"
+                    value={contactData.name}
+                    onChange={handelChange}
+                    errorMessage={
+                      validationErrors.name && validationErrors.name
+                    }
                   />
-                </div>
+                  <Input
+                    name="email"
+                    size="sm"
+                    variant="faded"
+                    type="email"
+                    label="Your email"
+                    radius="none"
+                    value={contactData.email}
+                    onChange={handelChange}
+                    errorMessage={
+                      validationErrors.email && validationErrors.email
+                    }
+                  />
+                  <Input
+                    name="title"
+                    size="sm"
+                    variant="faded"
+                    type="text"
+                    label="Your Title"
+                    radius="none"
+                    value={contactData.title}
+                    onChange={handelChange}
+                    errorMessage={
+                      validationErrors.title && validationErrors.title
+                    }
+                  />
+                  <div id="textarea1">
+                    <Textarea
+                      variant="faded"
+                      // size="lg"
+                      label="Your Message"
+                      name="msg"
+                      radius="none"
+                      value={contactData.msg}
+                      onChange={handelChange}
+                      errorMessage={
+                        validationErrors.msg && validationErrors.msg
+                      }
+                    />
+                  </div>
 
-                <Button
-                  endContent={
-                    <IoArrowForwardOutline className="text-xl scale-95 pt-[1px]" />
-                  }
-                  color="primary"
-                  className="rounded-sm mb-2"
-                >
-                  Submit your message{" "}
-                </Button>
-              </div>
-            </Card>
+                  <Button
+                    endContent={
+                      <IoArrowForwardOutline className="text-xl scale-95 pt-[1px]" />
+                    }
+                    color="primary"
+                    className="rounded-sm mb-2"
+                    type="submit"
+                  >
+                    Submit your message{" "}
+                  </Button>
+                </div>
+              </Card>
+            </form>
           </div>
         </div>
       </div>

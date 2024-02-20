@@ -10,6 +10,7 @@ import Checkout from "./page/Checkout/page";
 import EachSite from "./page/EachSite/EachSite";
 import Contact from "./page/Contact/Contact";
 import { useEffect, useState } from "react";
+import { Toaster } from "sonner";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -51,6 +52,7 @@ const PageUser = () => {
           <Footer />
         </div>
       )}
+      <Toaster richColors position="top-right" closeButton />
     </>
   );
 };
