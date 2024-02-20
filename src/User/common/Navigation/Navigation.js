@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getsubcategorys } from "../../../redux/slices/subCategorySlice";
 import SubcategorySmall from "./SubcategorySmall";
+import URLConverter from "../../../libs/URLConverter";
 
 const Navigation = ({ userData }) => {
   const Location = useLocation().pathname;
@@ -61,10 +62,6 @@ const Navigation = ({ userData }) => {
         subcategories,
       };
     });
-
-  const urlMaker = (name) => {
-    return name.toLowerCase().replace(/\s+/g, "-");
-  };
 
   return (
     <>
@@ -129,12 +126,12 @@ const Navigation = ({ userData }) => {
                         <Link
                           to={
                             e.subcategories.length <= 0
-                              ? `/${urlMaker(e.categoryName)}`
+                              ? `/${URLConverter(e.categoryName)}`
                               : false
                           }
                           className={`${
                             Location.toLowerCase().includes(
-                              `/${urlMaker(e.categoryName)}`
+                              `/${URLConverter(e.categoryName)}`
                             )
                               ? "text-black"
                               : "text-slate-700"
@@ -145,7 +142,7 @@ const Navigation = ({ userData }) => {
                             <IoIosArrowDown className="mt-[3px] text-base group-hover:rotate-180 duration-150" />
                           )}
                           {Location.toLowerCase().includes(
-                            `/${urlMaker(e.categoryName)}`
+                            `/${URLConverter(e.categoryName)}`
                           ) && (
                             <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                           )}
@@ -155,7 +152,6 @@ const Navigation = ({ userData }) => {
                             <SubcategorySmall
                               category={e.categoryName}
                               subcategories={e.subcategories}
-                              urlMaker={urlMaker}
                             />
                           </div>
                         )}

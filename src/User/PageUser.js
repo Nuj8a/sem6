@@ -47,6 +47,7 @@ const PageUser = () => {
               path="/each/:category/:subcategory/:id"
               element={<EachSite />}
             />
+            <Route path="/each/:category/:id" element={<EachSite />} />
             <Route path="/:category/:subcategory" element={<Products />} />
             <Route path="/:category" element={<Products />} />
           </Routes>

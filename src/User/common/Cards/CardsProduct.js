@@ -3,13 +3,14 @@ import { Card, CardFooter, Image, CardBody } from "@nextui-org/react";
 import { MdShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import formatRS from "../../../libs/FormatRS";
+import URLConverter from "../../../libs/URLConverter";
 
 export default function CardsProduct({ data = {} }) {
   console.log(data);
   const finalPrice = data?.price - (data?.price * data?.discount) / 100;
   return (
     <Link
-      to={`/each/services/e-commerce/${data?._id}`}
+      to={`/each/${URLConverter(data?.categoryName || "")}/${data?._id}`}
       className="cursor-pointer hover:scale-[1.02] rounded  duration-100 group"
       id="mainCardLink"
     >

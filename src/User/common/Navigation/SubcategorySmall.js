@@ -1,7 +1,8 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import URLConverter from "../../../libs/URLConverter";
 
-const SubcategorySmall = ({ category, subcategories, urlMaker }) => {
+const SubcategorySmall = ({ category, subcategories }) => {
   const location = useLocation().pathname;
 
   return (
@@ -12,8 +13,8 @@ const SubcategorySmall = ({ category, subcategories, urlMaker }) => {
             return (
               <li key={index} className="flex justify-start w-full">
                 <Link
-                  className={`text-nowrap capitalize py-2 text-sm px-3 w-full ${location.toLocaleLowerCase().endsWith(urlMaker(subcategory.subCategoryName)) ? "bg-slate-300" : ""}`}
-                  to={`/${urlMaker(category)}/${urlMaker(subcategory.subCategoryName)}`}
+                  className={`text-nowrap capitalize py-2 text-sm px-3 w-full ${location.toLocaleLowerCase().endsWith(URLConverter(subcategory.subCategoryName)) ? "bg-slate-300" : ""}`}
+                  to={`/${URLConverter(category)}/${URLConverter(subcategory.subCategoryName)}`}
                 >
                   {subcategory.subCategoryName}
                 </Link>
