@@ -12,7 +12,7 @@ const SubcategorySmall = ({ category, subcategories, urlMaker }) => {
             return (
               <li key={index} className="flex justify-start w-full">
                 <Link
-                  className={`text-nowrap py-2 text-sm px-3 w-full ${location.toLocaleLowerCase().endsWith(urlMaker(subcategory.subCategoryName)) ? "bg-slate-300" : ""}`}
+                  className={`text-nowrap capitalize py-2 text-sm px-3 w-full ${location.toLocaleLowerCase().endsWith(urlMaker(subcategory.subCategoryName)) ? "bg-slate-300" : ""}`}
                   to={`/${urlMaker(category)}/${urlMaker(subcategory.subCategoryName)}`}
                 >
                   {subcategory.subCategoryName}

@@ -105,9 +105,9 @@ const Contact = () => {
               </h3>
               <h2 className="font-gruppo font-semibold text-white/90 text-3xl">
                 <span className="text-[#ea580c] font-semibold text-[2.3rem] mr-2">
-                  WebUpaya:
+                  Vastra Vikalpa:
                 </span>
-                Merge innovation with budget-friendly solutions for a standout
+                Fuse creativity with pocket-friendly solutions for a remarkable
                 online presence.
               </h2>
               <p className="text-sm font-poppins text-white/80">

@@ -32,7 +32,7 @@ const Footer = () => {
                 </h6>
                 <div className="flex space-x-3 -mt-2 ">
                   <Link
-                    href={
+                    to={
                       "https://www.facebook.com/profile.php?id=61554100722430"
                     }
                     target="blank"
@@ -41,19 +41,19 @@ const Footer = () => {
                   </Link>
 
                   <Link
-                    href={"https://www.instagram.com/desnepal2080/"}
+                    to={"https://www.instagram.com/desnepal2080/"}
                     target="blank"
                   >
                     <FaInstagramSquare className="text-2xl text-[var(--primary-color)] cursor-pointer" />
                   </Link>
                   <Link
-                    href={"https://www.youtube.com/@DESNepal."}
+                    to={"https://www.youtube.com/@DESNepal."}
                     target="blank"
                   >
                     <FaYoutubeSquare className="text-2xl text-[var(--primary-color)] cursor-pointer" />
                   </Link>
                   <Link
-                    href={
+                    to={
                       "https://www.linkedin.com/in/des-nepal-undefined-3a73642a5/"
                     }
                     target="blank"
@@ -71,25 +71,25 @@ const Footer = () => {
                   </h5>
                   <div className="flex flex-col">
                     <Link
-                      href="/our-mission"
+                      to="/shirts-for-men"
                       className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1" />
-                      Our Initiatives
+                      Shirts for Men
                     </Link>
                     <Link
-                      href="/news-and-events"
+                      to="/shoose-for-men"
                       className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs  mr-1" />
-                      Digital Programs
+                      Shoes for Men
                     </Link>
                     <Link
-                      href="/projects"
+                      to="/pants-for-men"
                       className={` flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1" />
-                      Projects
+                      Pants for Men
                     </Link>
                   </div>
                 </div>
@@ -99,25 +99,25 @@ const Footer = () => {
                   </h5>
                   <div className="flex flex-col">
                     <Link
-                      href="/contact"
+                      to="/contact"
                       className={`flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
                       Contact Us
                     </Link>
                     <Link
-                      href="/leadership"
+                      to="https://www.google.com/maps/place/Suvalaav+Jewellers/@27.7410232,85.3101737,49m/data=!3m1!1e3!4m14!1m7!3m6!1s0x39eb1924434e767b:0x50b0d5a9db419ade!2sSuvalaav+Jewellers!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc!3m5!1s0x39eb1924434e767b:0x50b0d5a9db419ade!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc?entry=ttu"
                       className={` flex w-[200px] text-sm font-poppins text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
-                      Leadership
+                      Reach Out to Us
                     </Link>
                     <Link
-                      href="/news-and-events"
+                      to={"https://www.instagram.com/desnepal2080/"}
                       className={` flex w-[160px] font-poppins text-sm  text-[var(--text-light-color)] items-center`}
                     >
                       <MdOutlineKeyboardArrowRight className="!text-xs mr-1 " />
-                      News and Events
+                      Social Media
                     </Link>
                   </div>
                 </div>
@@ -128,18 +128,18 @@ const Footer = () => {
                   <div className="flex flex-col space-y-1 ml-1 mt-1">
                     <p className=" flex font-poppins text-sm text-[var(--text-light-color)] items-center">
                       <MdEmail className="text-[var(--primary-color)] mr-3" />
-                      info@webupaya.org.np
+                      info@vastravikalpa.org.np
                     </p>
                     <p className="mb-0 flex font-poppins text-sm text-[var(--text-light-color)] items-center">
                       <BsTelephoneFill className="text-[var(--primary-color)] scale-90 mr-3" />
-                      +977 9767485800
+                      +977 9810325922
                     </p>
                     <Link
-                      href="https://www.google.com/maps/place/Suvalaav+Jewellers/@27.7410232,85.3101737,49m/data=!3m1!1e3!4m14!1m7!3m6!1s0x39eb1924434e767b:0x50b0d5a9db419ade!2sSuvalaav+Jewellers!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc!3m5!1s0x39eb1924434e767b:0x50b0d5a9db419ade!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc?entry=ttu"
+                      to="https://www.google.com/maps/place/Suvalaav+Jewellers/@27.7410232,85.3101737,49m/data=!3m1!1e3!4m14!1m7!3m6!1s0x39eb1924434e767b:0x50b0d5a9db419ade!2sSuvalaav+Jewellers!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc!3m5!1s0x39eb1924434e767b:0x50b0d5a9db419ade!8m2!3d27.7410876!4d85.310239!16s%2Fg%2F11tss8cwyc?entry=ttu"
                       className={`tracking-wide font-poppins flex text-sm text-[var(--text-light-color)] items-center`}
                     >
                       <ImLocation className="text-[var(--primary-color)] mr-3" />
-                      kupandol-10 Lalitpur, Nepal
+                      Macchapokhari-10 Lalitpur, Nepal
                     </Link>
                   </div>
                 </div>

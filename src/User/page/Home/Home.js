@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "./Carousel";
 import Category from "./Category";
 import Product from "./Products";
@@ -7,6 +7,15 @@ import CardCollection from "./CardsCollection";
 import Services from "../../common/page/Services";
 
 const Home = () => {
+  const scrollUP = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    scrollUP();
+  }, []);
   return (
     <>
       <Carousel />

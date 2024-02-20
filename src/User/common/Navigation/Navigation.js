@@ -129,7 +129,7 @@ const Navigation = ({ userData }) => {
                         <Link
                           to={
                             e.subcategories.length <= 0
-                              ? `/${e.categoryName.toLowerCase()}`
+                              ? `/${urlMaker(e.categoryName)}`
                               : false
                           }
                           className={`${
@@ -138,7 +138,7 @@ const Navigation = ({ userData }) => {
                             )
                               ? "text-black"
                               : "text-slate-700"
-                          } hover:text-black flex relative justify-start py-2  items-center gap-[1px] itemHover`}
+                          } hover:text-black capitalize flex relative justify-start py-2  items-center gap-[1px] itemHover`}
                         >
                           {e.categoryName}
                           {e.subcategories.length > 0 && (

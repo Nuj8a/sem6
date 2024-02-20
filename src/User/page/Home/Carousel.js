@@ -27,15 +27,15 @@ const Carousel = () => {
           <div className="col-span-7 flex justify-center mt-5 items-center h-full">
             <div className="w-[80%] mt-4 ml-[10%] flex gap-1 flex-col">
               <h3 className="font-Orbitron tracking-wider text-white text-base font-semibold">
-                Power Your Online Presence with,
+                Revamp Your Wardrobe with,
               </h3>
-              <div className="font-Orbitron text-[#ea580c] tracking-wider uppercase text-[3rem] font-semibold">
+              <div className="font-Orbitron text-[#ea580c] tracking-wider uppercase text-[2.5rem] font-semibold">
                 <Typewriter
                   words={[
-                    "Quick-Build",
-                    "Mobile-Ease",
-                    "Easy-CMS",
-                    "SEO-Boost",
+                    "Stylish Picks",
+                    "Authentic Designs",
+                    "Affordable Choices",
+                    "Nepali Fashion",
                   ]}
                   loop={Infinity}
                   cursor
@@ -43,15 +43,14 @@ const Carousel = () => {
                   typeSpeed={200}
                   deleteSpeed={100}
                   delaySpeed={1000}
-                  // onLoopDone={handleDone}
-                  // onType={handleType}
                 />
               </div>
               <p className="font-poppins w-[95%] text-sm text-white/80">
-                Discover WebUpaye for budget-friendly, responsive websites.
-                Elevate your online presence with our services, offering quality
-                design at a low cost.
+                Explore Vastra Vikalpa for trendy, authentic, and affordable
+                Nepali fashion. Elevate your style with our curated collections,
+                delivering quality designs at budget-friendly prices.
               </p>
+
               <div>
                 <Card
                   variant="ghost"
