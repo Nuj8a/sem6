@@ -41,6 +41,7 @@ const columns = [
   { name: "NAME", uid: "categoryName", sortable: true },
   { name: "DISPLAY ORDER", uid: "displayOrder", sortable: true },
   { name: "ACTIVE", uid: "active" },
+  { name: "VIEW IN", uid: "showTop" },
   { name: "IMAGE", uid: "image" },
   { name: "DATE", uid: "date" },
   { name: "ACTIONS", uid: "actions" },
@@ -158,6 +159,17 @@ export default function Tablepage(props) {
             variant="flat"
           >
             {user.active ? "Active" : "Inactive"}
+          </Chip>
+        );
+      case "showTop":
+        return (
+          <Chip
+            className="capitalize"
+            color={user.showTop ? "success" : "warning"}
+            size="sm"
+            variant="flat"
+          >
+            {user.showTop ? "TOP" : "BOTTOM"}
           </Chip>
         );
       case "sn":

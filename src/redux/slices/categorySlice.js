@@ -24,6 +24,7 @@ export const postCategory = createAsyncThunk(
     formData.append("categoryName", post.categoryName);
     formData.append("displayOrder", post.displayOrder);
     formData.append("active", post.active);
+    formData.append("showTop", post.showTop);
     formData.append("image", post.image);
 
     const config = {
@@ -56,6 +57,7 @@ export const updateCategory = createAsyncThunk(
     formData.append("categoryName", updatedPost.categoryName);
     formData.append("displayOrder", updatedPost.displayOrder);
     formData.append("active", updatedPost.active);
+    formData.append("showTop", updatedPost.showTop);
     formData.append("image", updatedPost.image);
 
     const config = {

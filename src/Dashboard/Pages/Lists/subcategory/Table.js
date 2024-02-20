@@ -30,9 +30,9 @@ import BredCrumbFun from "../../../common/Navigation/BredCrumb";
 const INITIAL_VISIBLE_COLUMNS = [
   "sn",
   "subCategoryName",
-  "description",
   "categoryName",
   "active",
+  "date",
   "actions",
 ];
 const columns = [
@@ -41,7 +41,6 @@ const columns = [
   { name: "SUBCATEGORY NAME", uid: "subCategoryName", sortable: true },
   { name: "CATEGORY NAME", uid: "categoryName", sortable: true },
   { name: "CATEGORY ACTIVE", uid: "active" },
-  { name: "DESCRIPTION", uid: "description" },
   { name: "DATE", uid: "date" },
   { name: "ACTIONS", uid: "actions" },
 ];

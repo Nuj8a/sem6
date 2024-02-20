@@ -10,7 +10,6 @@ import {
   Input,
   Select,
   SelectItem,
-  Textarea,
   Progress,
 } from "@nextui-org/react";
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
@@ -31,11 +30,9 @@ export default function ModalApp(props) {
   const [subCategoryData, setSubCategoryData] = useState({
     subCategoryName: "",
     categoryId: "",
-    description: "",
   });
   const [validationErrors, setValidationErrors] = useState({
     subCategoryName: "",
-    description: "",
     categoryId: "",
   });
 
@@ -43,7 +40,6 @@ export default function ModalApp(props) {
     setSubCategoryData({
       subCategoryName: updateData.status ? updateData.data.subCategoryName : "",
       categoryId: updateData.status ? updateData.data.categoryId : "",
-      description: updateData.status ? updateData.data.description : "",
     });
   }, [updateData]);
 
@@ -55,17 +51,11 @@ export default function ModalApp(props) {
     let isValid = true;
     const newValidationErrors = {
       subCategoryName: "",
-      description: "",
       categoryId: "",
     };
 
     if (!subCategoryData.subCategoryName.trim()) {
       newValidationErrors.subCategoryName = "Subcategory Name is required";
-      isValid = false;
-    }
-
-    if (!subCategoryData.description.trim()) {
-      newValidationErrors.description = "Description is required";
       isValid = false;
     }
 
@@ -102,12 +92,10 @@ export default function ModalApp(props) {
     setSubCategoryData({
       subCategoryName: "",
       categoryId: "",
-      description: "",
     });
     setUpdateData({ status: false, data: {} });
     setValidationErrors({
       subCategoryName: "",
-      description: "",
     });
   };
 
@@ -195,20 +183,6 @@ export default function ModalApp(props) {
                   </div>
                 )}
 
-                <Textarea
-                  type="text"
-                  name="description"
-                  value={subCategoryData.description}
-                  onChange={subCategoryDataChange}
-                  variant="underlined"
-                  placeholder="Enter Subcategory Description"
-                  className="-mt-1"
-                />
-                {validationErrors.description && (
-                  <div className="errorFront">
-                    {validationErrors.description}
-                  </div>
-                )}
                 {postUpload > 0 && (
                   <Progress
                     aria-label="Downloading..."
