@@ -7,14 +7,14 @@ const Filter = () => {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <span className="uppercase text-nowrap text-black font-Orbitron tracking-wider">
-            {"Price Range"}
+            {"Filter with Price"}
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2">
           <div className=" flex justify-between items-center w-full">
             <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Website</div>
+              <div className="text-black/80 font-poppins">All Products</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -113,14 +113,14 @@ const Filter = () => {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <span className="uppercase text-nowrap text-black font-Orbitron tracking-wider">
-            {"Technology Used"}
+            {"Filter with Gender"}
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2">
           <div className=" flex justify-between items-center w-full">
             <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Website</div>
+              <div className="text-black/80 font-poppins">All Products</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -132,7 +132,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Dynamic</div>
+              <div className="text-black/80 font-poppins">For Men</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -144,7 +144,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Static</div>
+              <div className="text-black/80 font-poppins">For Women</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -156,9 +156,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                Content Management System
-              </div>
+              <div className="text-black/80 font-poppins">For Unisex</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -168,31 +166,19 @@ const Filter = () => {
               <div className="font-poppins font-semibold">150</div>
             </Chip>
           </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Others</div>
-            </Checkbox>
-            <Chip
-              size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
-            >
-              <div className="font-poppins font-semibold">500</div>
-            </Chip>
-          </div>
         </div>
       </div>
       <div>
         <div className="flex items-center gap-2 mb-2">
           <span className="uppercase text-nowrap text-black font-Orbitron tracking-wider">
-            {"Industry Vertical"}
+            {"Filter with Color"}
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2">
           <div className=" flex justify-between items-center w-full">
             <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Website</div>
+              <div className="text-black/80 font-poppins">All Products</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -204,7 +190,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">E-commerce</div>
+              <div className="text-black/80 font-poppins">Black</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -216,7 +202,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Educational</div>
+              <div className="text-black/80 font-poppins">White</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -228,7 +214,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">News and Media</div>
+              <div className="text-black/80 font-poppins">Red</div>
             </Checkbox>
             <Chip
               size="sm"
@@ -240,7 +226,7 @@ const Filter = () => {
           </div>
           <div className=" flex justify-between items-center w-full">
             <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Social Media</div>
+              <div className="text-black/80 font-poppins">Gray</div>
             </Checkbox>
             <Chip
               size="sm"

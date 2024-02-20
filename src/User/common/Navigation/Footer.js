@@ -151,7 +151,8 @@ const Footer = () => {
           className={`w-full flex justify-center items-center border-t border-dashed border-black/20 mt-4 mx-auto`}
         >
           <p className="pt-2 pb-4 text-center font-poppins !py-5 text-sm text-[var(--text-light-color)] tracking-wide">
-            Copyright © {date.getFullYear()} WebUpaya. All rights reserved.
+            Copyright © {date.getFullYear()} Vastra-Vikalpa. All rights
+            reserved.
           </p>
         </div>
       </div>
