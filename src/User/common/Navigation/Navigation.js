@@ -4,11 +4,12 @@ import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from "../../../assets/icons/logo.svg";
 import { Card } from "@nextui-org/react";
-import Subcategory from "./Subcategory";
+// import Subcategory from "./Subcategory";
 import Profile from "../Components/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getsubcategorys } from "../../../redux/slices/subCategorySlice";
+import SubcategorySmall from "./SubcategorySmall";
 
 const Navigation = ({ userData }) => {
   const Location = useLocation().pathname;
@@ -60,6 +61,10 @@ const Navigation = ({ userData }) => {
         subcategories,
       };
     });
+
+  const urlMaker = (name) => {
+    return name.toLowerCase().replace(/\s+/g, "-");
+  };
 
   return (
     <>
@@ -129,7 +134,7 @@ const Navigation = ({ userData }) => {
                           }
                           className={`${
                             Location.toLowerCase().includes(
-                              `/${e.categoryName.toLowerCase()}`
+                              `/${urlMaker(e.categoryName)}`
                             )
                               ? "text-black"
                               : "text-slate-700"
@@ -140,14 +145,18 @@ const Navigation = ({ userData }) => {
                             <IoIosArrowDown className="mt-[3px] text-base group-hover:rotate-180 duration-150" />
                           )}
                           {Location.toLowerCase().includes(
-                            `/${e.categoryName.toLowerCase()}`
+                            `/${urlMaker(e.categoryName)}`
                           ) && (
                             <div className="h-[2px] absolute bottom-1 bg-black/80 rounded-r w-[20px]"></div>
                           )}
                         </Link>
                         {e.subcategories.length > 0 && (
                           <div className="hidden group-hover:block">
-                            <Subcategory />
+                            <SubcategorySmall
+                              category={e.categoryName}
+                              subcategories={e.subcategories}
+                              urlMaker={urlMaker}
+                            />
                           </div>
                         )}
                       </li>
