@@ -9,6 +9,7 @@ import Logo from "../../../assets/icons/logo.svg";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,9 +25,14 @@ const Login = () => {
         localStorage.setItem("data", JSON.stringify(response.payload.user));
         localStorage.setItem("token", JSON.stringify(response.payload.token));
         navigate("/");
+        toast.success("User logged in successfully.");
+      }
+      if (response.payload?.error) {
+        toast.error(response.payload.error);
       }
     } catch (error) {
-      console.error("Error creating post:", error);
+      toast.error("Some error accuired, try again later");
+      // console.error("Error creating post:", error);
     }
   };
 

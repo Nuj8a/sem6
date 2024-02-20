@@ -10,6 +10,7 @@ import Logo from "../../../assets/icons/logo.svg";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -44,9 +45,14 @@ const Register = () => {
         localStorage.setItem("data", JSON.stringify(response.payload.user));
         localStorage.setItem("token", JSON.stringify(response.payload.token));
         navigate("/");
+        toast.success("User registered successfully");
+      }
+      if (response.payload?.error) {
+        toast.error(response.payload.error);
       }
     } catch (error) {
-      console.error("Error creating post:", error);
+      toast.error("Some error accuired, try again later");
+      // console.error("Error creating post:", error);
     }
   };
 
