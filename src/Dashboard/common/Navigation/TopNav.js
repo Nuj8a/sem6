@@ -24,7 +24,6 @@ const TopNav = (props) => {
   }, [localStorage.getItem("data")]);
   const naviga = useNavigate();
   useEffect(() => {
-    console.log(userData);
     if (!userData.isLogin) {
       naviga("/");
     }

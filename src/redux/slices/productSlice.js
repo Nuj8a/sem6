@@ -13,6 +13,14 @@ export const getproducts = createAsyncThunk("get/products", async () => {
   const response = await axios.get(`${API_BASE_URL}/api/post/blogs`, config);
   return response.data;
 });
+export const getSingleProduct = createAsyncThunk("get/product", async (id) => {
+  const config = { headers: {} };
+  const response = await axios.get(
+    `${API_BASE_URL}/api/post/blog/${id}`,
+    config
+  );
+  return response.data;
+});
 
 export const postproduct = createAsyncThunk(
   "post/product",

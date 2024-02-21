@@ -104,7 +104,6 @@ export default function ModalApp(props) {
         subCategoryId: null,
       });
     } else if (e.target.name === "subCategoryId") {
-      console.log("first");
       setProductData({
         ...productData,
         subCategoryId: e.target.value,

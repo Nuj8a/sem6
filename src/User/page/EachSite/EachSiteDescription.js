@@ -3,32 +3,52 @@ import React from "react";
 import { IoMdCart } from "react-icons/io";
 import { BsBagCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
+import formatRS from "../../../libs/FormatRS";
+import FindGender from "../../../libs/FindGender";
 
-const EachSiteDescription = () => {
+const EachSiteDescription = ({ data }) => {
+  console.log(data);
+
+  const finalPrice = Math.round(
+    data.price - (data.price * data.discount) / 100
+  );
+
   return (
     <div className="p-3 px-5 relative !font-poppins">
       <div className="flex gap-3 flex-col font-poppins">
-        <h3 className="text-[#ea580c]">Gaurab Sunar</h3>
+        <h3 className="text-[#ea580c]">{data?.categoryName}</h3>
         <h2 className="text-3xl font-semibold text-black">
-          E-Commerce Website
+          {data?.title?.slice(0, 1).toUpperCase() + data?.title?.slice(1)}
         </h2>
-        <p className="text-black/80 line-clamp-4">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-          Perspiciatis, aspernatur alias? Est inventore officiis iste voluptates
-          delectus saepe tempora autem, sit, at repellat aliquam quis pariatur
-          recusandae officia totam cupiditate?
-        </p>
+        <div
+          className="text-black/80 line-clamp-4"
+          dangerouslySetInnerHTML={{ __html: data?.description }}
+        ></div>
+
         <div className="my-3">
           <div className="flex gap-5">
-            <div className="text-black text-lg">RS. 67,000</div>
-            <Chip color="success" size="sm" className="scale-85" radius="sm">
-              40% OFF
+            <div className="text-black text-lg">{formatRS(finalPrice)}</div>
+            <Chip
+              color="success"
+              size="sm"
+              className="scale-85 text-white"
+              radius="sm"
+            >
+              {data?.discount}% OFF
             </Chip>
           </div>
-          <div className="line-through text-xs text-red-500">RS. 80,000</div>
+          <div className="line-through text-xs text-red-500">
+            {formatRS(data?.price)}
+          </div>
         </div>
         <div className="text-sm flex gap-2 flex-col">
-          <div className="text-black/80">Website Type: Dynamic</div>
+          <div className="text-black/80">
+            {FindGender(data?.gendertype).toLocaleLowerCase() === "men"
+              ? `Man Up Your Style: Shop Our Men's Collection Now!`
+              : FindGender(data?.gendertype).toLocaleLowerCase() === "women"
+                ? "Level Up Your Style: Shop Our Women's Collection Now!"
+                : "Elevate Your Look: Explore Our Unisex Collection Today!"}
+          </div>
           <div className="text-black/80">Technology Used: ReactJs, NodeJS</div>
         </div>
         <div className="mt-4 flex gap-5">

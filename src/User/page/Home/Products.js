@@ -2,7 +2,6 @@ import React from "react";
 import Cards from "../../common/Cards/CardsProduct";
 
 const Products = ({ heading, data }) => {
-  console.log(data);
   return (
     <>
       {data.length > 0 && (

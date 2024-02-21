@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import BreadCrumbs from "../../common/Navigation/BreadCrumb";
 import EachSiteContent from "./EachSiteContent";
 import { Tab, Tabs } from "@nextui-org/react";
 import Related from "../../common/page/Related";
+import { useDispatch } from "react-redux";
+import { getSingleProduct } from "../../../redux/slices/productSlice";
 
 const EachSite = () => {
   const data = useParams();
@@ -16,6 +18,24 @@ const EachSite = () => {
   useEffect(() => {
     scrollUP();
   }, []);
+  const dispatch = useDispatch();
+  const userRef = useRef(false);
+
+  const [productDataFinal, setProductDataFinal] = useState({});
+  const singledata = useCallback(async () => {
+    let singleData = await dispatch(getSingleProduct(data.id));
+    setProductDataFinal(singleData.payload);
+  }, [dispatch, data.id]);
+
+  useEffect(() => {
+    if (userRef.current === false) {
+      singledata();
+    }
+    return () => {
+      userRef.current = true;
+    };
+  }, [singledata]);
+
   return (
     <>
       <div className="min-h-[50vh] flex gap-5 flex-col w-full px-4">
@@ -30,7 +50,7 @@ const EachSite = () => {
               subcategory={data.subcategory}
             />
           </div>
-          <EachSiteContent />
+          <EachSiteContent data={productDataFinal} />
         </div>
         <div className="min-h-[400px] mt-3 flex-row">
           <div className="flex items-center justify-start gap-5">

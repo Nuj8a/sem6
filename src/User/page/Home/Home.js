@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getsubcategorys } from "../../../redux/slices/subCategorySlice";
 // import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getproducts } from "../../../redux/slices/productSlice";
+import FindGender from "../../../libs/FindGender";
 
 const Home = () => {
   const scrollUP = () => {
@@ -45,21 +46,21 @@ const Home = () => {
         <Category />
         <Services />
         <Product
-          heading={"FOR UNISEX"}
+          heading={`Trendy ${FindGender(1)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 1)
             .slice(0, 10)}
         />
         <Reatured />
         <Product
-          heading={"FOR MEN"}
+          heading={`Trendy ${FindGender(2)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 2)
             .slice(0, 10)}
         />
         <CardCollection />
         <Product
-          heading={"FOR WOMEN"}
+          heading={`Trendy ${FindGender(3)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 3)
             .slice(0, 10)}

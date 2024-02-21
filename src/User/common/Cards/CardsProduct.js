@@ -6,7 +6,6 @@ import formatRS from "../../../libs/FormatRS";
 import URLConverter from "../../../libs/URLConverter";
 
 export default function CardsProduct({ data = {} }) {
-  console.log(data);
   const finalPrice = data?.price - (data?.price * data?.discount) / 100;
   return (
     <Link
