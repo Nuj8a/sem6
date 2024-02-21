@@ -58,11 +58,11 @@ const EachSite = () => {
           <div className="flex items-center justify-start gap-5">
             <div>
               <Tabs radius="none" variant="bordered" aria-label="Tabs variants">
-                <Tab key="details" title="Product Details">
-                  <ProductDescription />
-                </Tab>
                 <Tab key="comments" title="Product Comments">
                   <ProductComments />
+                </Tab>
+                <Tab key="details" title="Product Details">
+                  <ProductDescription />
                 </Tab>
               </Tabs>
             </div>
