@@ -1,16 +1,70 @@
 import { Button, Chip } from "@nextui-org/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdCart } from "react-icons/io";
 import { BsBagCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import formatRS from "../../../libs/FormatRS";
 import FindGender from "../../../libs/FindGender";
 import ColorsShow from "../../../libs/ColorsShow";
+import axios from "axios";
+import { API_BASE_URL } from "../../../redux/config";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EachSiteDescription = ({ data }) => {
+  const navigate = useNavigate();
+
+  const { id } = useParams();
   const finalPrice = Math.round(
     data.price - (data.price * data.discount) / 100
   );
+
+  console.log(data);
+
+  const [liked, setLiked] = useState({
+    likedBool: false,
+    likeNumber: 0,
+  });
+  useEffect(() => {
+    setLiked({
+      likedBool: data?.likeId?.includes(
+        JSON.parse(localStorage.getItem("data"))?._id
+      ),
+      likeNumber: data?.likeId?.length || 0,
+    });
+  }, [data]);
+  const likeOrDislikeBlog = async (blogId) => {
+    try {
+      const response = await axios.patch(
+        `${API_BASE_URL}/api/post/blogs/like/${blogId}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": `${JSON.parse(localStorage.getItem("token"))}`,
+          },
+        }
+      );
+      return response.data.success;
+    } catch (error) {
+      console.error("Error liking/disliking blog:", error);
+      throw error;
+    }
+  };
+
+  const likeBtnPress = async () => {
+    if (localStorage.getItem("data")) {
+      setLiked((prevState) => ({
+        likedBool: !prevState.likedBool,
+        likeNumber: prevState.likedBool
+          ? prevState.likeNumber - 1
+          : prevState.likeNumber + 1,
+      }));
+      let resData = await likeOrDislikeBlog(id);
+      console.log(resData);
+    } else {
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="p-3 px-5 relative !font-poppins">
@@ -75,7 +129,15 @@ const EachSiteDescription = ({ data }) => {
           </Button>
         </div>
       </div>
-      <FaHeart className="absolute top-0 text-black/80 cursor-pointer right-10 text-xl" />
+      <div
+        onClick={likeBtnPress}
+        className={`absolute flex gap-2 items-end font-semibold justify-center top-0 ${liked.likedBool ? "text-blue-700" : "text-black/80"}  cursor-pointer right-10 text-xl`}
+      >
+        {liked.likeNumber > 0 && (
+          <div className="text-xs">{liked.likeNumber}</div>
+        )}
+        <FaHeart />
+      </div>
     </div>
   );
 };
