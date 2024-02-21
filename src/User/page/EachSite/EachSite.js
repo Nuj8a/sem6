@@ -6,6 +6,8 @@ import { Tab, Tabs } from "@nextui-org/react";
 import Related from "../../common/page/Related";
 import { useDispatch } from "react-redux";
 import { getSingleProduct } from "../../../redux/slices/productSlice";
+import ProductComments from "./Tabs/ProductComments";
+import ProductDescription from "./Tabs/ProductDescription";
 
 const EachSite = () => {
   const data = useParams();
@@ -52,15 +54,18 @@ const EachSite = () => {
           </div>
           <EachSiteContent data={productDataFinal} />
         </div>
-        <div className="min-h-[400px] mt-3 flex-row">
+        <div className="min-h-[300px] mt-3 flex-row">
           <div className="flex items-center justify-start gap-5">
             <div>
               <Tabs radius="none" variant="bordered" aria-label="Tabs variants">
-                <Tab key="Description" title="Description" />
-                <Tab key="Specification" title="Specification" />
+                <Tab key="details" title="Product Details">
+                  <ProductDescription />
+                </Tab>
+                <Tab key="comments" title="Product Comments">
+                  <ProductComments />
+                </Tab>
               </Tabs>
             </div>
-            <div className="border-t w-full h-[1px] border-[var(--border-dark-color)] border-dashed"></div>
           </div>
         </div>
         <Related />

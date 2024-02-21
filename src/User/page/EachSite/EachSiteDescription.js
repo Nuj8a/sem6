@@ -18,8 +18,6 @@ const EachSiteDescription = ({ data }) => {
     data.price - (data.price * data.discount) / 100
   );
 
-  console.log(data);
-
   const [liked, setLiked] = useState({
     likedBool: false,
     likeNumber: 0,
@@ -47,7 +45,6 @@ const EachSiteDescription = ({ data }) => {
       return response.data.success;
     } catch (error) {
       console.error("Error liking/disliking blog:", error);
-      throw error;
     }
   };
 
@@ -59,8 +56,7 @@ const EachSiteDescription = ({ data }) => {
           ? prevState.likeNumber - 1
           : prevState.likeNumber + 1,
       }));
-      let resData = await likeOrDislikeBlog(id);
-      console.log(resData);
+      await likeOrDislikeBlog(id);
     } else {
       navigate("/login");
     }
