@@ -62,7 +62,7 @@ const EachSite = () => {
                   <ProductComments />
                 </Tab>
                 <Tab key="details" title="Product Details">
-                  <ProductDescription />
+                  <ProductDescription data={productDataFinal} />
                 </Tab>
               </Tabs>
             </div>

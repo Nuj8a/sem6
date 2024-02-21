@@ -24,11 +24,7 @@ const ProductComments = () => {
                     Michael Gough
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    <time
-                      pubdate
-                      datetime="2022-02-08"
-                      title="February 8th, 2022"
-                    >
+                    <time dateTime="2022-02-08" title="February 8th, 2022">
                       Feb. 8, 2022
                     </time>
                   </p>
@@ -54,9 +50,9 @@ const ProductComments = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
                     />
                   </svg>
@@ -76,11 +72,7 @@ const ProductComments = () => {
                     Jese Leos
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    <time
-                      pubdate
-                      datetime="2022-02-12"
-                      title="February 12th, 2022"
-                    >
+                    <time dateTime="2022-02-12" title="February 12th, 2022">
                       Feb. 12, 2022
                     </time>
                   </p>
@@ -103,9 +95,9 @@ const ProductComments = () => {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"
                     />
                   </svg>
@@ -117,7 +109,7 @@ const ProductComments = () => {
 
           <form className="pt-5 -mb-2">
             <div className="py-2 px-4 bg-white rounded-lg rounded-t-lg ">
-              <label HTMLFor="comment" className="sr-only">
+              <label htmlFor="comment" className="sr-only">
                 Your comment
               </label>
               <div className="flex gap-4">

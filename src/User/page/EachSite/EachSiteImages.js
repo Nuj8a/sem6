@@ -1,10 +1,11 @@
 import { Image } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const EachSiteImages = ({ data }) => {
-  const [mainImageURI, setMainPageURI] = useState(
-    data?.length > 0 ? data[0] : ""
-  );
+  const [mainImageURI, setMainPageURI] = useState("");
+  useEffect(() => {
+    setMainPageURI(data?.length > 0 ? data[0] : "");
+  }, [data]);
   return (
     <div className="flex h-full mb-5 overflow-hidden flex-col gap-5">
       <div className="w-full p-1 h-[380px] begorecontent border rounded border-black/10 flex justify-center items-center">
