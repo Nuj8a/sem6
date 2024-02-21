@@ -44,7 +44,7 @@ export default function ModalApp(props) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [discriptionData, setDescriptionData] = useState("");
   const closeBtn = useRef();
-  const [productColor, setProductColor] = useState("");
+  const [productColor, setProductColor] = useState([]);
   const [productData, setProductData] = useState({
     productTitle: "",
     categoryId: "",
@@ -52,7 +52,7 @@ export default function ModalApp(props) {
     gendertype: "",
     gendertypeName: "",
     productImage: [],
-    productcolor: "",
+    productcolor: [],
     productDiscount: "",
     productPrice: "",
     productQuantity: "",
@@ -62,7 +62,7 @@ export default function ModalApp(props) {
     productTitle: "",
     categoryId: "",
     productImage: [],
-    productcolor: "",
+    productcolor: [],
     productDiscount: "",
     productPrice: "",
     gendertype: "",
@@ -78,14 +78,14 @@ export default function ModalApp(props) {
       gendertypeName: updateData.status
         ? getGenderName(updateData.data.gendertype)
         : "",
-      productcolor: updateData.status ? updateData.data.productcolor : "",
+      productcolor: updateData.status ? updateData.data.productcolor : [],
       productDiscount: updateData.status ? updateData.data.discount : "",
       productQuantity: updateData.status ? updateData.data.maxQuantity : "",
       productPrice: updateData.status ? updateData.data.price : "",
       productImage: updateData.status ? "" : [],
     });
     setDescriptionData(updateData.status ? updateData.data.description : "");
-    setProductColor(updateData.status ? updateData.data.productcolor : "");
+    setProductColor(updateData.status ? updateData.data.productcolor : []);
   }, [updateData]);
 
   const productDataChange = (e) => {
@@ -127,7 +127,15 @@ export default function ModalApp(props) {
   };
 
   const colorchange = (data) => {
-    setProductColor(data);
+    const colorIndex = productColor.indexOf(data);
+
+    if (colorIndex !== -1) {
+      const updatedColorArray = [...productColor];
+      updatedColorArray.splice(colorIndex, 1);
+      setProductColor(updatedColorArray);
+    } else {
+      setProductColor([...productColor, data]);
+    }
   };
 
   const clearData = () => {
@@ -136,7 +144,7 @@ export default function ModalApp(props) {
       categoryId: "",
       subCategoryId: null,
       productImage: [],
-      productcolor: "",
+      productcolor: [],
       productDiscount: "",
       gendertype: "",
       productQuantity: "",
@@ -148,14 +156,14 @@ export default function ModalApp(props) {
       productTitle: "",
       categoryId: "",
       productImage: [],
-      productcolor: "",
+      productcolor: [],
       productDiscount: "",
       gendertype: "",
       productQuantity: "",
       productPrice: "",
       productDescription: "",
     });
-    setProductColor("");
+    setProductColor([]);
   };
 
   const formsubmit = (e) => {
@@ -465,6 +473,7 @@ export default function ModalApp(props) {
                         </div>
                       )}
                     </div>
+                    {/* <Input type="color" /> */}
                     <div className="flex flex-col w-1/3">
                       <p className="text-sm px-1 text-black/70">
                         Product Color
@@ -472,35 +481,35 @@ export default function ModalApp(props) {
                       <div className="px-2 h-full w-full flex gap-2 border-b-2 -mb-[1px] pb-1 items-center">
                         <div
                           onClick={() => colorchange("black")}
-                          className={`${productColor === "black" && "scale-125"} h-[20px] border border-black/15  cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-sm`}
+                          className={`${productColor.includes("black") && "scale-125"} h-[20px] border border-black/15  cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("white")}
-                          className={`${productColor === "white" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-sm`}
+                          className={`${productColor.includes("white") && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("red")}
-                          className={`${productColor === "red" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-sm`}
+                          className={`${productColor.includes("red") && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("blue")}
-                          className={`${productColor === "blue" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-sm`}
+                          className={`${productColor.includes("blue") && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("green")}
-                          className={`${productColor === "green" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-sm`}
+                          className={`${productColor.includes("green") && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("pink")}
-                          className={`${productColor === "pink" && "scale-125"}  h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-sm`}
+                          className={`${productColor.includes("pink") && "scale-125"}  h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("gray")}
-                          className={`${productColor === "gray" && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-sm`}
+                          className={`${productColor.includes("gray") && "scale-125"} h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-sm`}
                         ></div>
                         <div
                           onClick={() => colorchange("other")}
-                          className={`${productColor === "other" && "scale-125"} h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-sm overflow-hidden flex-wrap flex`}
+                          className={`${productColor.includes("other") && "scale-125"} h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-sm overflow-hidden flex-wrap flex`}
                         >
                           <div className="h-1/2 bg-red-500 w-1/2 rounded-tl-sm"></div>
                           <div className="h-1/2 bg-black w-1/2 rounded-tr-sm"></div>
