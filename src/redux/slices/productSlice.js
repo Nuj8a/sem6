@@ -38,11 +38,14 @@ export const postproduct = createAsyncThunk(
     formData.append("phNumber", "9810325922");
     formData.append("gendertype", productDataForm.gendertype);
     formData.append("price", productDataForm.productPrice);
-    formData.append("productcolor", productDataForm.productcolor);
     formData.append("discount", productDataForm.productDiscount);
+    // formData.append("productcolor", productDataForm.productcolor);
+    for (var i = 0; i < productDataForm.productcolor.length; i++) {
+      formData.append("productcolor", productDataForm.productcolor[i]);
+    }
     // formData.append("image", productDataForm.productImage[0]);
-    for (var i = 0; i < productDataForm.productImage.length; i++) {
-      formData.append("image", productDataForm.productImage[i]);
+    for (var j = 0; j < productDataForm.productImage.length; j++) {
+      formData.append("image", productDataForm.productImage[j]);
     }
 
     try {
@@ -90,15 +93,18 @@ export const updateproduct = createAsyncThunk(
       formData.append("phNumber", "9810325922");
       formData.append("gendertype", productDataForm.gendertype);
       formData.append("price", productDataForm.productPrice);
-      formData.append("productcolor", productDataForm.productcolor);
       formData.append("discount", productDataForm.productDiscount);
+      // formData.append("productcolor", productDataForm.productcolor);
+      for (var i = 0; i < productDataForm.productcolor.length; i++) {
+        formData.append("productcolor", productDataForm.productcolor[i]);
+      }
       if (productDataForm.productImage) {
         // formData.append(
         //   "image",
         //   productDataForm.productImage[0] ? productDataForm.productImage[0] : ""
         // );
-        for (var i = 0; i < productDataForm.productImage.length; i++) {
-          formData.append("image", productDataForm.productImage[i]);
+        for (var ii = 0; ii < productDataForm.productImage.length; ii++) {
+          formData.append("image", productDataForm.productImage[ii]);
         }
       }
 

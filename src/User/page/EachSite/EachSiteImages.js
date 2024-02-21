@@ -1,14 +1,17 @@
 import { Image } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 
 const EachSiteImages = ({ data }) => {
+  const [mainImageURI, setMainPageURI] = useState(
+    data?.length > 0 ? data[0] : ""
+  );
   return (
     <div className="flex h-full mb-5 overflow-hidden flex-col gap-5">
-      <div className="w-full h-[380px] begorecontent border rounded border-black/10 flex justify-center items-center">
+      <div className="w-full p-1 h-[380px] begorecontent border rounded border-black/10 flex justify-center items-center">
         <Image
           radius="none"
           className="object-contain rounded shadow-lg"
-          src={data?.length > 0 ? data[0] : ""}
+          src={mainImageURI}
           style={{ maxHeight: "360px" }}
         />
       </div>
@@ -20,6 +23,9 @@ const EachSiteImages = ({ data }) => {
               key={index}
             >
               <img
+                onMouseOver={() => {
+                  setMainPageURI(e);
+                }}
                 src={e}
                 alt=""
                 height={55}
@@ -30,16 +36,6 @@ const EachSiteImages = ({ data }) => {
             </div>
           );
         })}
-        {/* <div className="h-[55px] rounded-sm w-[50px] border overflow-hidden border-black/20">
-          <img
-            src="https://images.pexels.com/photos/13882426/pexels-photo-13882426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-            height={55}
-            width={50}
-            style={{ height: "55px", width: "50px" }}
-            className="object-cover cursor-pointer hover:scale-110 duration-150"
-          />
-        </div> */}
       </div>
     </div>
   );

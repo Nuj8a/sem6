@@ -234,7 +234,6 @@ export default function ModalApp(props) {
         description: discriptionData,
         productcolor: productColor,
       };
-      console.log(finalData);
 
       // return;
       if (updateData.status) {

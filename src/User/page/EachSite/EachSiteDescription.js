@@ -5,10 +5,9 @@ import { BsBagCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
 import formatRS from "../../../libs/FormatRS";
 import FindGender from "../../../libs/FindGender";
+import ColorsShow from "../../../libs/ColorsShow";
 
 const EachSiteDescription = ({ data }) => {
-  console.log(data);
-
   const finalPrice = Math.round(
     data.price - (data.price * data.discount) / 100
   );
@@ -49,7 +48,10 @@ const EachSiteDescription = ({ data }) => {
                 ? "Level Up Your Style: Shop Our Women's Collection Now!"
                 : "Elevate Your Look: Explore Our Unisex Collection Today!"}
           </div>
-          <div className="text-black/80">Technology Used: ReactJs, NodeJS</div>
+          <div className="text-black/80 flex">
+            <div>Choose Color:</div>
+            <ColorsShow productColor={data.productcolor || []} />
+          </div>
         </div>
         <div className="mt-4 flex gap-5">
           <Button
