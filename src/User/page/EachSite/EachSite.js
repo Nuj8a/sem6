@@ -55,8 +55,8 @@ const EachSite = () => {
           <EachSiteContent data={productDataFinal} />
         </div>
         <div className="min-h-[300px] mt-3 flex-row">
-          <div className="flex items-center justify-start gap-5">
-            <div>
+          <div className="flex items-center gap-5">
+            <div className="w-full">
               <Tabs radius="none" variant="bordered" aria-label="Tabs variants">
                 <Tab key="comments" title="Product Comments">
                   <ProductComments />
