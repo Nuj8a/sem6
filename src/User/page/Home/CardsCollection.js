@@ -1,7 +1,14 @@
 import React from "react";
 import { Card, CardHeader, CardFooter, Image, Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+import URLConverter from "../../../libs/URLConverter";
 
-export default function CardCollection() {
+export default function CardCollection({ productData }) {
+  // console.log(productData);
+  const navigate = useNavigate();
+  const finalPrice = (price, discount) => {
+    return price - Math.round((price * discount) / 100);
+  };
   return (
     <div className="max-w-[1600px] gap-2 grid grid-cols-12 grid-rows-2 px-1 my-10">
       <Card
@@ -10,10 +17,10 @@ export default function CardCollection() {
       >
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white tracking-wider uppercase font-bold">
-            What to watch
+            Avilable from Now...
           </p>
-          <h4 className="text-white font-medium tracking-wide text-large">
-            Stream the Acme event
+          <h4 className="text-white capitalize line-clamp-1 font-medium tracking-wide text-large">
+            {productData[0]?.title}
           </h4>
         </CardHeader>
         <Image
@@ -21,21 +28,28 @@ export default function CardCollection() {
           removeWrapper
           isZoomed
           alt="Card background"
-          className="z-0 w-full !opacity-70 h-full object-cover"
-          src="https://images.unsplash.com/photo-1682687220247-9f786e34d472?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80"
+          className="z-0 w-full !opacity-60 h-full object-cover"
+          src={productData[0]?.image[0]}
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <div className="flex flex-col">
-              <p className="text-white/80 text-base">Category Name</p>
-              <p className="text-tiny text-white/80">Avilable from Now...</p>
+              <p className="text-white/80 capitalize text-base">
+                {productData[0]?.categoryName}
+              </p>
+              <p className="text-tiny text-white/80">{`Avilable from Rs. ${finalPrice(productData[0]?.price, productData[0]?.discount)}`}</p>
             </div>
           </div>
           <Button
             size="sm"
             className="px-4 py-2 hover:text-white rounded-sm hover:bg-blue-900 text-black bg-blue-300"
+            onClick={() =>
+              navigate(
+                `/each/${URLConverter(productData[0]?.categoryName)}/${productData[0]?._id}`
+              )
+            }
           >
-            Get Now
+            View More
           </Button>
         </CardFooter>
       </Card>
@@ -46,10 +60,10 @@ export default function CardCollection() {
       >
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white tracking-wider uppercase font-bold">
-            What to watch
+            Avilable from Now...
           </p>
-          <h4 className="text-white font-medium tracking-wide text-large">
-            Stream the Acme event
+          <h4 className="text-white capitalize line-clamp-1 font-medium tracking-wide text-large">
+            {productData[1]?.title}
           </h4>
         </CardHeader>
         <Image
@@ -57,21 +71,28 @@ export default function CardCollection() {
           removeWrapper
           isZoomed
           alt="Card background"
-          className="z-0 w-full !opacity-70 h-full object-cover"
-          src="https://images.unsplash.com/photo-1682687220247-9f786e34d472?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80"
+          className="z-0 w-full !opacity-60 h-full object-cover"
+          src={productData[1]?.image[0]}
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <div className="flex flex-col">
-              <p className="text-white/80 text-base">Category Name</p>
-              <p className="text-tiny text-white/80">Avilable from Now...</p>
+              <p className="text-white/80 capitalize line-clamp-1 text-base">
+                {productData[1]?.categoryName}
+              </p>
+              <p className="text-tiny text-white/80">{`Avilable from Rs. ${finalPrice(productData[1]?.price, productData[1]?.discount)}`}</p>
             </div>
           </div>
           <Button
             size="sm"
             className="px-4 py-2 hover:text-white rounded-sm hover:bg-blue-900 text-black bg-blue-300"
+            onClick={() =>
+              navigate(
+                `/each/${URLConverter(productData[1]?.categoryName)}/${productData[1]?._id}`
+              )
+            }
           >
-            Get Now
+            View More
           </Button>
         </CardFooter>
       </Card>
@@ -81,10 +102,10 @@ export default function CardCollection() {
       >
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white tracking-wider uppercase font-bold">
-            What to watch
+            Avilable from Now...
           </p>
-          <h4 className="text-white font-medium tracking-wide text-large">
-            Stream the Acme event
+          <h4 className="text-white line-clamp-1 capitalize font-medium tracking-wide text-large">
+            {productData[2]?.title}
           </h4>
         </CardHeader>
         <Image
@@ -92,21 +113,28 @@ export default function CardCollection() {
           removeWrapper
           isZoomed
           alt="Card background"
-          className="z-0 w-full !opacity-70 h-full object-cover"
-          src="https://images.unsplash.com/photo-1682687220247-9f786e34d472?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80"
+          className="z-0 w-full !opacity-60 h-full object-cover"
+          src={productData[2]?.image[0]}
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <div className="flex flex-col">
-              <p className="text-white/80 text-base">Category Name</p>
-              <p className="text-tiny text-white/80">Avilable from Now...</p>
+              <p className="text-white/80 line-clamp-1 capitalize text-base">
+                {productData[2]?.categoryName}
+              </p>
+              <p className="text-tiny text-white/80">{`Avilable from Rs. ${finalPrice(productData[2]?.price, productData[2]?.discount)}`}</p>
             </div>
           </div>
           <Button
             size="sm"
             className="px-4 py-2 hover:text-white rounded-sm hover:bg-blue-900 text-black bg-blue-300"
+            onClick={() =>
+              navigate(
+                `/each/${URLConverter(productData[2]?.categoryName)}/${productData[2]?._id}`
+              )
+            }
           >
-            Get Now
+            View More
           </Button>
         </CardFooter>
       </Card>
@@ -116,10 +144,10 @@ export default function CardCollection() {
       >
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white tracking-wider uppercase font-bold">
-            What to watch
+            Avilable from Now...
           </p>
-          <h4 className="text-white font-medium tracking-wide text-large">
-            Stream the Acme event
+          <h4 className="text-white font-medium line-clamp-1 capitalize tracking-wide text-large">
+            {productData[3]?.title}
           </h4>
         </CardHeader>
         <Image
@@ -127,21 +155,28 @@ export default function CardCollection() {
           removeWrapper
           isZoomed
           alt="Relaxing app background"
-          className="z-0 w-full !opacity-70 h-full object-cover"
-          src="https://images.unsplash.com/photo-1682687220247-9f786e34d472?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80"
+          className="z-0 w-full !opacity-60 h-full object-cover"
+          src={productData[3]?.image[0]}
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <div className="flex flex-col">
-              <p className="text-white/80 text-base">Category Name</p>
-              <p className="text-tiny text-white/80">Avilable from Now...</p>
+              <p className="text-white/80 line-clamp-1 capitalize text-base">
+                {productData[3]?.categoryName}
+              </p>
+              <p className="text-tiny text-white/80">{`Avilable from Rs. ${finalPrice(productData[3]?.price, productData[3]?.discount)}`}</p>
             </div>
           </div>
           <Button
             size="sm"
             className="px-4 py-2 hover:text-white rounded-sm hover:bg-blue-900 text-black bg-blue-300"
+            onClick={() =>
+              navigate(
+                `/each/${URLConverter(productData[3]?.categoryName)}/${productData[3]?._id}`
+              )
+            }
           >
-            Get Now
+            View More
           </Button>
         </CardFooter>
       </Card>
@@ -151,10 +186,10 @@ export default function CardCollection() {
       >
         <CardHeader className="absolute z-10 top-1 flex-col !items-start">
           <p className="text-tiny text-white tracking-wider uppercase font-bold">
-            What to watch
+            Avilable from Now...
           </p>
-          <h4 className="text-white font-medium tracking-wide text-large">
-            Stream the Acme event
+          <h4 className="text-white line-clamp-1 capitalize font-medium tracking-wide text-large">
+            {productData[4]?.title}
           </h4>
         </CardHeader>
         <Image
@@ -162,21 +197,28 @@ export default function CardCollection() {
           removeWrapper
           isZoomed
           alt="Relaxing app background"
-          className="z-0 w-full h-full !opacity-70 object-cover"
-          src="https://images.unsplash.com/photo-1682687220247-9f786e34d472?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80"
+          className="z-0 w-full h-full !opacity-60 object-cover"
+          src={productData[4]?.image[0]}
         />
-        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+        <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
             <div className="flex flex-col">
-              <p className="text-white/80 text-base">Category Name</p>
-              <p className="text-tiny text-white/80">Avilable from Now...</p>
+              <p className="text-white/80 line-clamp-1 capitalize text-base">
+                {productData[4]?.categoryName}
+              </p>
+              <p className="text-tiny text-white/80">{`Avilable from Rs. ${finalPrice(productData[4]?.price, productData[4]?.discount)}`}</p>
             </div>
           </div>
           <Button
             size="sm"
             className="px-4 py-2 hover:text-white rounded-sm hover:bg-blue-900 text-black bg-blue-300"
+            onClick={() =>
+              navigate(
+                `/each/${URLConverter(productData[4]?.categoryName)}/${productData[4]?._id}`
+              )
+            }
           >
-            Get Now
+            View More
           </Button>
         </CardFooter>
       </Card>

@@ -6,7 +6,7 @@ import Cards from "../Cards/CardsService";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 SwiperCore.use([Navigation, Pagination]);
 
-const Services = () => {
+const Services = ({ data = [] }) => {
   return (
     <div className="h-full py-5">
       <div className="flex items-center gap-2 mt-5 mb-8">
@@ -25,7 +25,14 @@ const Services = () => {
         }}
         modules={[Autoplay, Pagination]}
       >
-        <SwiperSlide>
+        {data.map((e) => {
+          return (
+            <SwiperSlide key={e._id}>
+              <Cards data={e} />
+            </SwiperSlide>
+          );
+        })}
+        {/* <SwiperSlide>
           <Cards />
         </SwiperSlide>
         <SwiperSlide>
@@ -42,10 +49,7 @@ const Services = () => {
         </SwiperSlide>
         <SwiperSlide>
           <Cards />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Cards />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

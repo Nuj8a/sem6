@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Carousel from "./Carousel";
 import Category from "./Category";
 import Product from "./Products";
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getproducts } from "../../../redux/slices/productSlice";
 import FindGender from "../../../libs/FindGender";
+import GetHighlights from "../../../libs/GetHighlights";
 
 const Home = () => {
   const scrollUP = () => {
@@ -37,6 +38,16 @@ const Home = () => {
       userRef.current = true;
     };
   }, [dispatch]);
+  const [hightlightsData, setHighlightsData] = useState([]);
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const getdata = async () => {
+    const data = await GetHighlights();
+    setHighlightsData(data);
+  };
 
   return (
     <>
@@ -44,7 +55,7 @@ const Home = () => {
 
       <div className="mx-4 mt-[100px]">
         <Category />
-        <Services />
+        <Services data={hightlightsData} />
         <Product
           heading={`Trendy ${FindGender(1)}'s Options`}
           data={productData
@@ -58,7 +69,7 @@ const Home = () => {
             .filter((e) => Number(e.gendertype) === 2)
             .slice(0, 10)}
         />
-        <CardCollection />
+        <CardCollection productData={productData} />
         <Product
           heading={`Trendy ${FindGender(3)}'s Options`}
           data={productData
