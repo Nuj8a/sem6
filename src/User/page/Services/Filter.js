@@ -1,4 +1,4 @@
-import { Chip, Radio, RadioGroup } from "@nextui-org/react";
+import { Radio, RadioGroup } from "@nextui-org/react";
 import React from "react";
 
 const Filter = ({ filterData, setFilterData }) => {
@@ -12,7 +12,7 @@ const Filter = ({ filterData, setFilterData }) => {
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2 w-full">
-          <RadioGroup className="w-[200px]">
+          <RadioGroup className="w-[200px]" defaultValue={filterData.price}>
             <Radio
               size="sm"
               value="all"
@@ -22,13 +22,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">All Products</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">1000</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -44,13 +44,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   Above - RS.1,00,000
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">20</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
 
@@ -67,13 +67,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   RS.1,00,000 - RS.80,000
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">200</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -87,13 +87,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   RS.80,000 - RS.60,000
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">500</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -107,13 +107,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   RS.60,000 - RS.40,000
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">150</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -127,13 +127,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   RS.40,000 - RS.20,000
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">100</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -149,13 +149,13 @@ const Filter = ({ filterData, setFilterData }) => {
                 <div className="text-black/80 font-poppins">
                   RS.20,000 - Below
                 </div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">200</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
           </RadioGroup>
@@ -169,7 +169,7 @@ const Filter = ({ filterData, setFilterData }) => {
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2 w-full">
-          <RadioGroup className="w-[200px]">
+          <RadioGroup className="w-[200px]" defaultValue={filterData.gender}>
             <Radio
               size="sm"
               value="all"
@@ -179,13 +179,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">All Products</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">1000</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -197,13 +197,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">For men</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">20</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
 
@@ -216,13 +216,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">For women</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">200</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -234,13 +234,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">For unisex</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">500</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
           </RadioGroup>
@@ -254,7 +254,7 @@ const Filter = ({ filterData, setFilterData }) => {
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
         <div className="flex flex-col gap-2 px-2 w-full">
-          <RadioGroup className="w-[200px]">
+          <RadioGroup className="w-[200px]" defaultValue={filterData.color}>
             <Radio
               size="sm"
               value="all"
@@ -264,13 +264,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">All Products</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">1000</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -282,13 +282,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">White Color</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">20</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
 
@@ -301,13 +301,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">Black Color</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">200</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -319,13 +319,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">Red Color</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">500</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -337,13 +337,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">Green Color</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">500</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
             <Radio
@@ -355,13 +355,13 @@ const Filter = ({ filterData, setFilterData }) => {
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">Other Color</div>
-                <Chip
+                {/* <Chip
                   size="sm"
                   radius="none"
                   className=" rounded-sm scale-75 -mr-1 bg-slate-200"
                 >
                   <div className="font-poppins font-semibold">500</div>
-                </Chip>
+                </Chip> */}
               </div>
             </Radio>
           </RadioGroup>

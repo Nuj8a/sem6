@@ -49,7 +49,6 @@ const EachSite = () => {
       behavior: "smooth",
     });
   }, [id]);
-  // eslint-disable-next-line
   const GetRelatedData = async (catId) => {
     if (catId) {
       const data = await GetRelatedProductCategory(catId);
@@ -62,7 +61,8 @@ const EachSite = () => {
     if (productDataFinal) {
       GetRelatedData(productDataFinal.categoryId);
     }
-  }, [productDataFinal, id, GetRelatedData]);
+    // eslint-disable-next-line
+  }, [productDataFinal, id]);
 
   return (
     <>

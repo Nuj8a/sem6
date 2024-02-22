@@ -5,7 +5,6 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 
 const Products = ({ heading, data }) => {
-  console.log(data);
   return (
     <div>
       <div className="flex items-center justify-between gap-2 font-poppins border-b pb-2 border-black/15 text-black/80">

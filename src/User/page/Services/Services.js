@@ -20,21 +20,68 @@ const Services = ({ data }) => {
     color: "all",
     gender: "all",
   });
+
+  console.log(filterData);
   const [afterFilter, setAfterFilter] = useState([]);
 
   useEffect(() => {
     const filteredData = data.filter((item) => {
-      const priceMatch =
-        filterData.price === "all" || item.price === filterData.price;
-      const colorMatch =
-        filterData.color === "all" || item.color === filterData.color;
-      const genderMatch =
-        filterData.gender === "all" || item.gender === filterData.gender;
+      const priceFilter = () => {
+        switch (filterData.price) {
+          case "above-100K":
+            return item.price > 100000;
+          case "100K-80K":
+            return item.price >= 80000 && item.price < 100000;
+          case "80K-60K":
+            return item.price >= 60000 && item.price < 80000;
+          case "60K-40K":
+            return item.price >= 40000 && item.price < 60000;
+          case "40K-20K":
+            return item.price >= 20000 && item.price < 40000;
+          case "20K-below":
+            return item.price < 20000;
+          default:
+            return true;
+        }
+      };
 
-      return priceMatch && colorMatch && genderMatch;
+      const genderFilter = () => {
+        switch (filterData.gender) {
+          case "men":
+            return Number(item.gendertype) === 1;
+          case "women":
+            return Number(item.gendertype) === 2;
+          case "unisex":
+            return Number(item.gendertype) === 3;
+          default:
+            return true;
+        }
+      };
+      const colorFilter = () => {
+        switch (filterData.color) {
+          case "white":
+            return item.productcolor.includes("white");
+          case "black":
+            return item.productcolor.includes("black");
+          case "red":
+            return item.productcolor.includes("red");
+          case "green":
+            return item.productcolor.includes("green");
+          case "other":
+            return (
+              !item.productcolor.includes("white") &&
+              !item.productcolor.includes("black") &&
+              !item.productcolor.includes("red") &&
+              !item.productcolor.includes("green")
+            );
+          default:
+            return true;
+        }
+      };
+
+      return priceFilter() && genderFilter() && colorFilter();
     });
 
-    // Update the state with the filtered data
     setAfterFilter(filteredData);
   }, [filterData, data]);
 
