@@ -3,7 +3,6 @@ import CardsProduct from "../../common/Cards/CardsProduct";
 import { Pagination } from "@nextui-org/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
-import FindGender from "../../../libs/FindGender";
 
 const Products = ({
   heading,
@@ -13,8 +12,8 @@ const Products = ({
   maxPage,
   searchSrt,
   setSearchStr,
-  genderDrop,
-  setGenderDrop,
+  sortDrop,
+  setsortDrop,
 }) => {
   return (
     <div>
@@ -37,38 +36,45 @@ const Products = ({
           </div>
           <div className="w-[150px] group relative pb-1 text-xs  rounded-sm">
             <div className="h-[35px] flex justify-between px-3 cursor-pointer border font-poppins border-gray-500 rounded-sm items-center w-full">
-              {Number(genderDrop) === -1
-                ? "Filter Gender"
-                : Number(genderDrop) === 0
-                  ? "All"
-                  : FindGender(Number(genderDrop))}
+              {Number(sortDrop) === -1
+                ? "Sort Product"
+                : Number(sortDrop) === 0
+                  ? "Normal"
+                  : Number(sortDrop) === 1
+                    ? "Aa-Zz"
+                    : Number(sortDrop) === 2
+                      ? "Zz-Aa"
+                      : Number(sortDrop) === 3
+                        ? "Price Assending"
+                        : "Price Desending"}
+
               <IoIosArrowDown />
             </div>
             <div className="absolute z-50 top-[37px] bg-slate-50 border border-black/15 rounded-sm hidden group-hover:block w-full right-0">
               <ul>
                 <li
                   className="p-2 px-3 cursor-pointer hover:bg-blue-200"
-                  onClick={() => setGenderDrop(0)}
+                  onClick={() => setsortDrop(1)}
                 >
-                  All
+                  Aa-Zz
                 </li>
                 <li
                   className="p-2 px-3 cursor-pointer hover:bg-blue-200"
-                  onClick={() => setGenderDrop(1)}
+                  onClick={() => setsortDrop(2)}
                 >
-                  Men
+                  Zz-Aa
                 </li>
                 <li
                   className="p-2 px-3 cursor-pointer hover:bg-blue-200"
-                  onClick={() => setGenderDrop(2)}
+                  onClick={() => setsortDrop(3)}
                 >
-                  Women
+                  Price Ascending
                 </li>
                 <li
                   className="p-2 px-3 cursor-pointer hover:bg-blue-200"
-                  onClick={() => setGenderDrop(3)}
+                  onClick={() => setsortDrop(4)}
                 >
-                  Unisex
+                  Price Descending
                 </li>
               </ul>
             </div>

@@ -9,7 +9,7 @@ const ServiceLayout = ({ data, filterData, setFilterData }) => {
 
   // =================== for filter (start)================
   const [searchSrt, setSearchStr] = useState("");
-  const [genderDrop, setGenderDrop] = useState(-1);
+  const [sortDrop, setsortDrop] = useState(-1);
 
   const afterSearch =
     searchSrt.length > 2
@@ -18,10 +18,30 @@ const ServiceLayout = ({ data, filterData, setFilterData }) => {
         )
       : data;
 
-  const lastSearch =
-    Number(genderDrop) !== 0 && Number(genderDrop) !== -1
-      ? afterSearch.filter((e) => Number(e.gendertype) === Number(genderDrop))
-      : afterSearch;
+  const sortAscending = (a, b) => a.title.localeCompare(b.title);
+  const sortDescending = (a, b) => b.title.localeCompare(a.title);
+  const sortByPriceAscending = (a, b) => a.price - b.price;
+  const sortByPriceDescending = (a, b) => b.price - a.price;
+
+  let lastSearch;
+
+  if (Number(sortDrop) !== -1) {
+    if (Number(sortDrop) === 0) {
+      lastSearch = afterSearch;
+    } else if (Number(sortDrop) === 1) {
+      lastSearch = afterSearch.sort(sortAscending);
+    } else if (Number(sortDrop) === 2) {
+      lastSearch = afterSearch.sort(sortDescending);
+    } else if (Number(sortDrop) === 3) {
+      lastSearch = afterSearch.sort(sortByPriceAscending);
+    } else if (Number(sortDrop) === 4) {
+      lastSearch = afterSearch.sort(sortByPriceDescending);
+    } else {
+      lastSearch = afterSearch.sort((a, b) => b.date - a.date);
+    }
+  } else {
+    lastSearch = afterSearch;
+  }
 
   // =================== for filter (end)================
 
@@ -47,8 +67,8 @@ const ServiceLayout = ({ data, filterData, setFilterData }) => {
           maxPage={maxPage}
           searchSrt={searchSrt}
           setSearchStr={setSearchStr}
-          genderDrop={genderDrop}
-          setGenderDrop={setGenderDrop}
+          sortDrop={sortDrop}
+          setsortDrop={setsortDrop}
         />
       </div>
       <div className="col-span-11">
