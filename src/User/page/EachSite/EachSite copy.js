@@ -1,18 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import BreadCrumbs from "../../common/Navigation/BreadCrumb";
 import EachSiteContent from "./EachSiteContent";
 import { Tab, Tabs } from "@nextui-org/react";
 import Related from "../../common/page/Related";
+import { useDispatch } from "react-redux";
+import { getSingleProduct } from "../../../redux/slices/productSlice";
 import ProductComments from "./Tabs/ProductComments";
 import ProductDescription from "./Tabs/ProductDescription";
 import GetRelatedProductCategory from "../../../libs/GetRelatedProductCategory";
-import { API_BASE_URL } from "../../../redux/config";
-import axios from "axios";
 
 const EachSite = () => {
-  const { id, category, subcategory } = useParams();
+  const data = useParams();
+  const scrollUP = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    scrollUP();
+  }, []);
+  const dispatch = useDispatch();
+  const userRef = useRef(false);
   const [relatedData, setRelatedData] = useState([]);
+
   const [productDataFinal, setProductDataFinal] = useState({
     address: "",
     categoryId: "",
@@ -33,34 +45,31 @@ const EachSite = () => {
     title: "",
     _id: "",
   });
+  console.log(productDataFinal);
+  const singledata = useCallback(async () => {
+    let singleData = await dispatch(getSingleProduct(data.id));
+    setProductDataFinal(singleData.payload);
+  }, [dispatch, data.id]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/api/post/blog/${id}`);
-        setProductDataFinal(response.data);
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
+    if (userRef.current === false) {
+      singledata();
+    }
+    return () => {
+      userRef.current = true;
     };
-    fetchData();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, [id]);
+  }, [singledata]);
 
   useEffect(() => {
     if (productDataFinal) {
-      GetRelatedData(productDataFinal.categoryId);
+      GetRelatedData(productDataFinal ? productDataFinal?.categoryId : "");
     }
   }, [productDataFinal]);
 
   const GetRelatedData = async (id) => {
     if (id) {
-      const data = await GetRelatedProductCategory(id);
-      const finalData = data.filter((e) => String(e._id) !== String(data.id));
-      setRelatedData(finalData || []);
+      const data = await GetRelatedProductCategory(id ? id : "");
+      setRelatedData(data ? data : []);
     }
   };
 
@@ -69,13 +78,13 @@ const EachSite = () => {
       <div className="min-h-[50vh] flex gap-5 flex-col w-full px-4">
         <div>
           <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
-            {subcategory || category} Product
+            {data.subcategory || data.category} Product
           </div>
           <div className="flex justify-between items-center">
             <BreadCrumbs
-              category={category}
-              categoryLink={category}
-              subcategory={subcategory}
+              category={data.category}
+              categoryLink={data.category}
+              subcategory={data.subcategory}
             />
           </div>
           <EachSiteContent data={productDataFinal} />

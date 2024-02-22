@@ -15,7 +15,7 @@ const EachSiteDescription = ({ data }) => {
 
   const { id } = useParams();
   const finalPrice = Math.round(
-    data.price - (data.price * data.discount) / 100
+    data?.price - (data?.price * data?.discount) / 100
   );
 
   const [liked, setLiked] = useState({
@@ -100,7 +100,7 @@ const EachSiteDescription = ({ data }) => {
           </div>
           <div className="text-black/80 flex">
             <div>Choose Color:</div>
-            <ColorsShow productColor={data.productcolor || []} />
+            <ColorsShow productColor={data?.productcolor || []} />
           </div>
         </div>
         <div className="mt-4 flex gap-5">
