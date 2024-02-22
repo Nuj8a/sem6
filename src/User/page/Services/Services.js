@@ -3,7 +3,7 @@ import ServiceLayout from "./ServiceLayout";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 
-const Services = () => {
+const Services = ({ data }) => {
   const scrollUP = () => {
     window.scrollTo({
       top: 0,
@@ -27,7 +27,7 @@ const Services = () => {
         />
       </div>
       <div>
-        <ServiceLayout />
+        <ServiceLayout data={data} />
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ import { Pagination } from "@nextui-org/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSearchSharp } from "react-icons/io5";
 
-const Products = ({ heading }) => {
+const Products = ({ heading, data }) => {
+  console.log(data);
   return (
     <div>
       <div className="flex items-center justify-between gap-2 font-poppins border-b pb-2 border-black/15 text-black/80">
@@ -44,18 +45,9 @@ const Products = ({ heading }) => {
         </div>
       </div>
       <div className="mt-5 grid-container px-1">
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
-        <CardsProduct />
+        {data.map((e) => {
+          return <CardsProduct key={e._id} data={e} />;
+        })}
       </div>
       <div className="mt-10 float-right" id="pagination">
         <Pagination isCompact showControls total={10} initialPage={1} />

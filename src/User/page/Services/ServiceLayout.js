@@ -4,7 +4,7 @@ import Products from "./Products";
 import Services from "../../common/page/Services";
 import Related from "../../common/page/Related";
 
-const ServiceLayout = () => {
+const ServiceLayout = ({ data }) => {
   return (
     <div className="grid gap-7 px-2 grid-cols-11">
       <div className="w-full flex flex-col col-span-3 ">
@@ -13,14 +13,14 @@ const ServiceLayout = () => {
         </div>
       </div>
       <div className="w-full col-span-8">
-        <Products />
+        <Products data={data} />
       </div>
       <div className="col-span-11">
         <div>
           <Services />
         </div>
         <div>
-          <Related />
+          <Related data={[]} />
         </div>
       </div>
     </div>
