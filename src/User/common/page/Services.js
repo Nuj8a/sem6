@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import Cards from "../Cards/CardsService";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import GetHighlights from "../../../libs/GetHighlights";
 SwiperCore.use([Navigation, Pagination]);
 
-const Services = ({ data = [] }) => {
+const Services = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getdata();
+  }, []);
+
+  const getdata = async () => {
+    const datares = await GetHighlights();
+    setData(datares);
+  };
+
   return (
     <div className="h-full py-5">
       <div className="flex items-center gap-2 mt-5 mb-8">
