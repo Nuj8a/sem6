@@ -34,8 +34,8 @@ const Products = ({
             />
             <IoSearchSharp className="absolute right-1 text-xl text-black/80 hover:text-[var(--text-dark-color)] cursor-pointer" />
           </div>
-          <div className="w-[150px] group relative pb-1 text-xs  rounded-sm">
-            <div className="h-[35px] flex justify-between px-3 cursor-pointer border font-poppins border-gray-500 rounded-sm items-center w-full">
+          <div className="w-[160px] group relative pb-1 text-xs  rounded-sm">
+            <div className="h-[35px] flex justify-between pl-3 pr-2 cursor-pointer border font-poppins border-gray-500 rounded-sm items-center w-full">
               {Number(sortDrop) === -1
                 ? "Sort Product"
                 : Number(sortDrop) === 0
