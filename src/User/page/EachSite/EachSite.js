@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { getSingleProduct } from "../../../redux/slices/productSlice";
 import ProductComments from "./Tabs/ProductComments";
 import ProductDescription from "./Tabs/ProductDescription";
+import GetRelatedProductCategory from "../../../libs/GetRelatedProductCategory";
 
 const EachSite = () => {
   const data = useParams();
@@ -19,11 +20,31 @@ const EachSite = () => {
   };
   useEffect(() => {
     scrollUP();
-  }, []);
+  }, [data.id]);
   const dispatch = useDispatch();
   const userRef = useRef(false);
+  const [relatedData, setRelatedData] = useState([]);
 
-  const [productDataFinal, setProductDataFinal] = useState({});
+  const [productDataFinal, setProductDataFinal] = useState({
+    address: "",
+    categoryId: "",
+    categoryName: "",
+    comment: [],
+    date: "",
+    description: "",
+    discount: 0,
+    gendertype: ``,
+    image: [""],
+    like: false,
+    likeId: [],
+    maxQuantity: 0,
+    phNumber: 0,
+    price: 0,
+    productcolor: [""],
+    subcategoryId: null,
+    title: "",
+    _id: "",
+  });
   const singledata = useCallback(async () => {
     let singleData = await dispatch(getSingleProduct(data.id));
     setProductDataFinal(singleData.payload);
@@ -36,7 +57,21 @@ const EachSite = () => {
     return () => {
       userRef.current = true;
     };
-  }, [singledata]);
+  }, [singledata, data.id]);
+
+  useEffect(() => {
+    if (productDataFinal) {
+      GetRelatedData(productDataFinal ? productDataFinal?.categoryId : "");
+    }
+  }, [productDataFinal, data.id]);
+
+  const GetRelatedData = async (id) => {
+    if (id) {
+      const data = await GetRelatedProductCategory(id ? id : "");
+      const finalData = data.filter((e) => String(e._id) !== String(data.id));
+      setRelatedData(finalData ? finalData : []);
+    }
+  };
 
   return (
     <>
@@ -68,7 +103,7 @@ const EachSite = () => {
             </div>
           </div>
         </div>
-        <Related />
+        <Related data={relatedData} />
       </div>
     </>
   );
