@@ -35,6 +35,7 @@ const INITIAL_VISIBLE_COLUMNS = [
   "category",
   "image",
   "active",
+  "bannerHighlights",
   "actions",
 ];
 const columns = [
@@ -44,6 +45,7 @@ const columns = [
   { name: "DESCRIPTION", uid: "description", sortable: true },
   { name: "CATEGORY", uid: "category", sortable: true },
   { name: "ACTIVE", uid: "active" },
+  { name: "HIGHLIGHTS", uid: "bannerHighlights" },
   { name: "IMAGE", uid: "image" },
   { name: "DATE", uid: "date" },
   { name: "ACTIONS", uid: "actions" },
@@ -154,6 +156,17 @@ export default function Tablepage(props) {
             variant="flat"
           >
             {user.active ? "Active" : "Inactive"}
+          </Chip>
+        );
+      case "bannerHighlights":
+        return (
+          <Chip
+            className="capitalize"
+            color={user.bannerHighlights ? "success" : "danger"}
+            size="sm"
+            variant="flat"
+          >
+            {user.bannerHighlights ? "Active" : "Inactive"}
           </Chip>
         );
       case "sn":

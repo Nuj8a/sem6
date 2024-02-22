@@ -35,6 +35,7 @@ export default function ModalApp(props) {
     bannerCategoryName: "",
     bannerDescription: "",
     bannerActive: true,
+    bannerHighlights: true,
     bannerImage: null,
   });
 
@@ -49,6 +50,9 @@ export default function ModalApp(props) {
       bannerCategoryId: updateData.status ? updateData.data.category : "",
       bannerDescription: updateData.status ? updateData.data.description : "",
       bannerActive: updateData.status ? updateData.data.active : true,
+      bannerHighlights: updateData.status
+        ? updateData.data.bannerHighlights
+        : true,
       bannerImage: updateData.status ? updateData.data.image : null,
     });
   }, [updateData]);
@@ -65,6 +69,8 @@ export default function ModalApp(props) {
       setBannerData({ ...bannerData, bannerImage: e.target.files[0] });
     } else if (e.target.name === "bannerActive") {
       setBannerData({ ...bannerData, bannerActive: e.target.checked });
+    } else if (e.target.name === "bannerHighlights") {
+      setBannerData({ ...bannerData, bannerHighlights: e.target.checked });
     } else if (e.target.name === "bannerCategoryId") {
       setBannerData({
         ...bannerData,
@@ -83,6 +89,7 @@ export default function ModalApp(props) {
       bannerCategoryName: "",
       bannerDescription: "",
       bannerActive: true,
+      bannerHighlights: true,
       bannerImage: null,
     });
     setUpdateData({ status: false, data: {} });
@@ -230,48 +237,6 @@ export default function ModalApp(props) {
                       </div>
                     )}
                   </div>
-
-                  {/* <div className="flex flex-col w-1/2">
-                    {updateData.status ? (
-                      <Select
-                        variant="underlined"
-                        label="Banner Cateogry"
-                        className="w-full"
-                        radius="sm"
-                        name="bannerCategoryId"
-                        value={bannerData.bannerCategoryId}
-                        onChange={bannerDataChange}
-                        defaultSelectedKeys={[updateData.data.category]}
-                      >
-                        {bannerCategoryData.map((e) => (
-                          <SelectItem value={e._id} key={e._id}>
-                            {e.bannerCategoryName}
-                          </SelectItem>
-                        ))}
-                      </Select>
-                    ) : (
-                      <Select
-                        variant="underlined"
-                        label="Banner Cateogry"
-                        className="w-full"
-                        radius="sm"
-                        name="bannerCategoryId"
-                        value={bannerData.bannerCategoryId}
-                        onChange={bannerDataChange}
-                      >
-                        {bannerCategoryData.map((e) => (
-                          <SelectItem value={e._id} key={e._id}>
-                            {e.bannerCategoryName}
-                          </SelectItem>
-                        ))}
-                      </Select>
-                    )}
-                    {validationErrors.bannerCategoryId && (
-                      <div className="text-red-500 !mt-1 errorFront">
-                        {validationErrors.bannerCategoryId}
-                      </div>
-                    )}
-                  </div> */}
                   <div className="w-1/2">
                     <Input
                       type="file"
@@ -303,30 +268,58 @@ export default function ModalApp(props) {
                     {validationErrors.bannerDescription}
                   </div>
                 )}
-
-                {updateData.status ? (
-                  <Checkbox
-                    defaultSelected={updateData.data.active}
-                    size="md"
-                    className="mt-1"
-                    name="bannerActive"
-                    value={bannerData.bannerActive}
-                    onChange={bannerDataChange}
-                  >
-                    Active Banner
-                  </Checkbox>
-                ) : (
-                  <Checkbox
-                    defaultSelected={bannerData.bannerActive}
-                    size="md"
-                    className="mt-1"
-                    name="bannerActive"
-                    value={bannerData.bannerActive}
-                    onChange={bannerDataChange}
-                  >
-                    Active Banner
-                  </Checkbox>
-                )}
+                <div className="flex w-full">
+                  <div className="w-1/2">
+                    {updateData.status ? (
+                      <Checkbox
+                        defaultSelected={updateData.data.active}
+                        size="md"
+                        className="mt-1"
+                        name="bannerActive"
+                        value={bannerData.bannerActive}
+                        onChange={bannerDataChange}
+                      >
+                        Active Banner
+                      </Checkbox>
+                    ) : (
+                      <Checkbox
+                        defaultSelected={bannerData.bannerActive}
+                        size="md"
+                        className="mt-1"
+                        name="bannerActive"
+                        value={bannerData.bannerActive}
+                        onChange={bannerDataChange}
+                      >
+                        Active Banner
+                      </Checkbox>
+                    )}
+                  </div>
+                  <div className="w-1/2">
+                    {updateData.status ? (
+                      <Checkbox
+                        defaultSelected={updateData.data.bannerHighlights}
+                        size="md"
+                        className="mt-1"
+                        name="bannerHighlights"
+                        value={bannerData.bannerHighlights}
+                        onChange={bannerDataChange}
+                      >
+                        Show Highlights
+                      </Checkbox>
+                    ) : (
+                      <Checkbox
+                        defaultSelected={bannerData.bannerHighlights}
+                        size="md"
+                        className="mt-1"
+                        name="bannerHighlights"
+                        value={bannerData.bannerHighlights}
+                        onChange={bannerDataChange}
+                      >
+                        Show Highlights
+                      </Checkbox>
+                    )}
+                  </div>
+                </div>
                 {postUpload > 0 && (
                   <Progress
                     aria-label="Downloading..."

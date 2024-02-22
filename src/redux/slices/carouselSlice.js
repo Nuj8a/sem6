@@ -25,6 +25,7 @@ export const postcarousel = createAsyncThunk(
     formData.append("description", post.bannerDescription);
     formData.append("image", post.bannerImage);
     formData.append("active", post.bannerActive);
+    formData.append("bannerHighlights", post.bannerHighlights);
     formData.append("category", post.bannerCategoryId);
 
     try {
@@ -64,6 +65,7 @@ export const updatecarousel = createAsyncThunk(
       formData.append("description", updatedPost.bannerDescription);
       formData.append("image", updatedPost.bannerImage);
       formData.append("active", updatedPost.bannerActive);
+      formData.append("bannerHighlights", updatedPost.bannerHighlights);
       formData.append("category", updatedPost.bannerCategoryId);
 
       const config = {
