@@ -50,8 +50,14 @@ const columns = [
 ];
 
 export default function Tablepage(props) {
-  const { handelPost, catouselData, handelDelete, handelUpdate, postUpload } =
-    props;
+  const {
+    handelPost,
+    catouselData,
+    handelDelete,
+    handelUpdate,
+    postUpload,
+    categoryDataDropdown,
+  } = props;
   const [filterValue, setFilterValue] = React.useState("");
   const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
@@ -137,6 +143,8 @@ export default function Tablepage(props) {
         );
       case "date":
         return <div>{dateConverter(user.date)}</div>;
+      case "category":
+        return <div>{user.categoryData?.categoryName}</div>;
       case "active":
         return (
           <Chip
@@ -342,6 +350,7 @@ export default function Tablepage(props) {
         updateData={updateData}
         setUpdateData={setUpdateData}
         postUpload={postUpload}
+        categoryDataDropdown={categoryDataDropdown}
       />
     </>
   );

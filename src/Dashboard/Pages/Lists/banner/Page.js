@@ -8,6 +8,7 @@ import {
   deletecarousel,
   updatecarousel,
 } from "../../../../redux/slices/carouselSlice";
+import { getCategorys } from "../../../../redux/slices/categorySlice";
 import {
   // percentCompletedValue,
   setOnProgressChangeCallback,
@@ -20,10 +21,22 @@ const Page = () => {
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
   const { carData } = useSelector((state) => state.carouselReducer);
+  const { data } = useSelector((state) => state.categoryReducer);
+
+  const joinedData = finalData.map((banner) => {
+    const matchingCategory = data.find(
+      (category) => category._id === banner.category
+    );
+    return {
+      ...banner,
+      categoryData: matchingCategory,
+    };
+  });
 
   useEffect(() => {
     if (userRef.current === false) {
       dispatch(getcarousels());
+      dispatch(getCategorys());
     }
     return () => {
       userRef.current = true;
@@ -96,11 +109,12 @@ const Page = () => {
   return (
     <>
       <TablePage
-        catouselData={finalData[0]?.sn ? finalData : []}
+        catouselData={joinedData[0]?.sn ? joinedData : []}
         handelPost={handelpostcarousel}
         handelDelete={handelDelete}
         handelUpdate={handelUpdate}
         postUpload={postUpload}
+        categoryDataDropdown={data}
       />
     </>
   );

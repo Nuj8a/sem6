@@ -16,14 +16,6 @@ import {
 } from "@nextui-org/react";
 import { PlusIcon } from "../../../common/components/Tables/Icons/PlusIcon";
 
-const bannerCategoryData = [
-  { _id: 1, bannerCategoryName: "Banner Cat A" },
-  { _id: 2, bannerCategoryName: "Banner Cat B" },
-  { _id: 3, bannerCategoryName: "Banner Cat C" },
-  { _id: 4, bannerCategoryName: "Banner Cat D" },
-  { _id: 5, bannerCategoryName: "Banner Cat E" },
-];
-
 export default function ModalApp(props) {
   const {
     handelPost,
@@ -32,6 +24,7 @@ export default function ModalApp(props) {
     updateData,
     setUpdateData,
     postUpload,
+    categoryDataDropdown,
   } = props;
   const closeBtnRef = useRef();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -61,10 +54,10 @@ export default function ModalApp(props) {
   }, [updateData]);
 
   function getBannerCategoryNameById(id) {
-    const category = bannerCategoryData.find(
-      (item) => Number(item._id) === Number(id)
+    const category = categoryDataDropdown.find(
+      (item) => String(item._id) === String(id)
     );
-    return category ? category.bannerCategoryName : "Category Not Found";
+    return category ? category.categoryName : "Category Not Found";
   }
 
   const bannerDataChange = (e) => {
@@ -200,6 +193,48 @@ export default function ModalApp(props) {
                     {updateData.status ? (
                       <Select
                         variant="underlined"
+                        label="Select Category"
+                        className="w-full"
+                        radius="sm"
+                        name="bannerCategoryId"
+                        value={bannerData.categoryId}
+                        onChange={bannerDataChange}
+                        defaultSelectedKeys={[updateData.data.category]}
+                      >
+                        {categoryDataDropdown.map((e) => (
+                          <SelectItem value={e._id} key={e._id}>
+                            {e.categoryName}
+                          </SelectItem>
+                        ))}
+                      </Select>
+                    ) : (
+                      <Select
+                        variant="underlined"
+                        label="Select Category"
+                        className="w-full"
+                        radius="sm"
+                        name="bannerCategoryId"
+                        value={bannerData.categoryId}
+                        onChange={bannerDataChange}
+                      >
+                        {categoryDataDropdown.map((e) => (
+                          <SelectItem value={e._id} key={e._id}>
+                            {e.categoryName}
+                          </SelectItem>
+                        ))}
+                      </Select>
+                    )}
+                    {validationErrors.bannerCategoryId && (
+                      <div className="text-red-500 !mt-1 errorFront">
+                        {validationErrors.bannerCategoryId}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* <div className="flex flex-col w-1/2">
+                    {updateData.status ? (
+                      <Select
+                        variant="underlined"
                         label="Banner Cateogry"
                         className="w-full"
                         radius="sm"
@@ -236,7 +271,7 @@ export default function ModalApp(props) {
                         {validationErrors.bannerCategoryId}
                       </div>
                     )}
-                  </div>
+                  </div> */}
                   <div className="w-1/2">
                     <Input
                       type="file"
