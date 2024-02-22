@@ -85,8 +85,8 @@ const Page = (props) => {
 
   const handelUpdate = async (data) => {
     try {
-      const response = await dispatch(updateunreadcontent(data));
-      console.log(response);
+      await dispatch(updateunreadcontent(data));
+      // console.log(response);
     } catch (error) {
       console.error("Error creating post:", error);
     }

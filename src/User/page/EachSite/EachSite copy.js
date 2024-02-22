@@ -45,7 +45,6 @@ const EachSite = () => {
     title: "",
     _id: "",
   });
-  console.log(productDataFinal);
   const singledata = useCallback(async () => {
     let singleData = await dispatch(getSingleProduct(data.id));
     setProductDataFinal(singleData.payload);

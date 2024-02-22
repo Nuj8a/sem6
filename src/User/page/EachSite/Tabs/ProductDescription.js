@@ -4,7 +4,6 @@ import FindGender from "../../../../libs/FindGender";
 import ColorsShow from "../../../../libs/ColorsShow";
 
 const ProductDescription = ({ data }) => {
-  console.log(data);
   const finalPrice = Math.round(
     data.price - (data.price * data.discount) / 100
   );

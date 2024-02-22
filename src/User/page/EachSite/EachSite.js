@@ -49,20 +49,20 @@ const EachSite = () => {
       behavior: "smooth",
     });
   }, [id]);
+  // eslint-disable-next-line
+  const GetRelatedData = async (catId) => {
+    if (catId) {
+      const data = await GetRelatedProductCategory(catId);
+      const finalData = data.filter((e) => String(e._id) !== String(id));
+      setRelatedData(finalData || []);
+    }
+  };
 
   useEffect(() => {
     if (productDataFinal) {
       GetRelatedData(productDataFinal.categoryId);
     }
-  }, [productDataFinal]);
-
-  const GetRelatedData = async (id) => {
-    if (id) {
-      const data = await GetRelatedProductCategory(id);
-      const finalData = data.filter((e) => String(e._id) !== String(data.id));
-      setRelatedData(finalData || []);
-    }
-  };
+  }, [productDataFinal, id, GetRelatedData]);
 
   return (
     <>
