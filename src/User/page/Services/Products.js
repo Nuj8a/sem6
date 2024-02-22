@@ -81,11 +81,19 @@ const Products = ({
           </div>
         </div>
       </div>
-      <div className="mt-5 grid-container px-1">
-        {data.map((e) => {
-          return <CardsProduct key={e._id} data={e} />;
-        })}
-      </div>
+      {data.length > 0 ? (
+        <>
+          <div className="mt-5 grid-container px-1">
+            {data.map((e) => {
+              return <CardsProduct key={e._id} data={e} />;
+            })}
+          </div>
+        </>
+      ) : (
+        <h3 className="w-full text-center mt-32 text-xl font-poppins text-gray-500 font-semibold">
+          Sorry!!! Product Not Found
+        </h3>
+      )}
       {maxPage > 1 && (
         <div className="mt-10 float-right" id="pagination">
           <Pagination
