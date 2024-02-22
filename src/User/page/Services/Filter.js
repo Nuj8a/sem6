@@ -1,7 +1,7 @@
-import { Checkbox, Chip } from "@nextui-org/react";
+import { Chip, Radio, RadioGroup } from "@nextui-org/react";
 import React from "react";
 
-const Filter = () => {
+const Filter = ({ filterData, setFilterData }) => {
   return (
     <div className="w-full flex  flex-col gap-8 h-full">
       <div>
@@ -11,103 +11,154 @@ const Filter = () => {
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
-        <div className="flex flex-col gap-2 px-2">
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Products</div>
-            </Checkbox>
-            <Chip
+        <div className="flex flex-col gap-2 px-2 w-full">
+          <RadioGroup className="w-[200px]">
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="all"
+              width={100}
+              className="w-[300px]"
+              onClick={() => setFilterData({ ...filterData, price: "all" })}
             >
-              <div className="font-poppins font-semibold">1000</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                Above - RS.1,00,000
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">All Products</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">1000</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="above-100K"
+              width={100}
+              className="w-[300px]"
+              onClick={() =>
+                setFilterData({ ...filterData, price: "above-100K" })
+              }
             >
-              <div className="font-poppins font-semibold">20</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                RS.1,00,000 - RS.80,000
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  Above - RS.1,00,000
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">20</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              width={100}
+              className="w-[300px]"
+              value="100K-80K"
+              onClick={() =>
+                setFilterData({ ...filterData, price: "100K-80K" })
+              }
             >
-              <div className="font-poppins font-semibold">200</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                RS.80,000 - RS.60,000
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  RS.1,00,000 - RS.80,000
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">200</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              width={100}
+              className="w-[300px]"
+              value="80K-60K"
+              onClick={() => setFilterData({ ...filterData, price: "80K-60K" })}
             >
-              <div className="font-poppins font-semibold">500</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                RS.60,000 - RS.40,000
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  RS.80,000 - RS.60,000
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">500</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              width={100}
+              className="w-[300px]"
+              value="60K-40K"
+              onClick={() => setFilterData({ ...filterData, price: "60K-40K" })}
             >
-              <div className="font-poppins font-semibold">150</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                RS.40,000 - RS.20,000
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  RS.60,000 - RS.40,000
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">150</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              width={100}
+              className="w-[300px]"
+              value="40K-20K"
+              onClick={() => setFilterData({ ...filterData, price: "40K-20K" })}
             >
-              <div className="font-poppins font-semibold">100</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">
-                RS.20,000 - Below
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  RS.40,000 - RS.20,000
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">100</div>
+                </Chip>
               </div>
-            </Checkbox>
-            <Chip
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              width={100}
+              className="w-[300px]"
+              value="20K-below"
+              onClick={() =>
+                setFilterData({ ...filterData, price: "20K-below" })
+              }
             >
-              <div className="font-poppins font-semibold">200</div>
-            </Chip>
-          </div>
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">
+                  RS.20,000 - Below
+                </div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">200</div>
+                </Chip>
+              </div>
+            </Radio>
+          </RadioGroup>
         </div>
       </div>
       <div>
@@ -117,55 +168,82 @@ const Filter = () => {
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
-        <div className="flex flex-col gap-2 px-2">
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Products</div>
-            </Checkbox>
-            <Chip
+        <div className="flex flex-col gap-2 px-2 w-full">
+          <RadioGroup className="w-[200px]">
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="all"
+              onClick={() => setFilterData({ ...filterData, gender: "all" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">1000</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">For Men</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">All Products</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">1000</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="men"
+              onClick={() => setFilterData({ ...filterData, gender: "men" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">100</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">For Women</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">For men</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">20</div>
+                </Chip>
+              </div>
+            </Radio>
+
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="women"
+              onClick={() => setFilterData({ ...filterData, gender: "women" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">200</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">For Unisex</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">For women</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">200</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="unisex"
+              onClick={() => setFilterData({ ...filterData, gender: "unisex" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">150</div>
-            </Chip>
-          </div>
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">For unisex</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">500</div>
+                </Chip>
+              </div>
+            </Radio>
+          </RadioGroup>
         </div>
       </div>
       <div>
@@ -175,79 +253,118 @@ const Filter = () => {
           </span>
           <div className="w-full h-[1px] border-t border-dashed border-[var(--border-dark-color)]"></div>
         </div>
-        <div className="flex flex-col gap-2 px-2">
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox defaultSelected size="sm">
-              <div className="text-black/80 font-poppins">All Products</div>
-            </Checkbox>
-            <Chip
+        <div className="flex flex-col gap-2 px-2 w-full">
+          <RadioGroup className="w-[200px]">
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="all"
+              onClick={() => setFilterData({ ...filterData, color: "all" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">1000</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Black</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">All Products</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" absolute right-0 rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">1000</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="white"
+              onClick={() => setFilterData({ ...filterData, color: "white" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">300</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">White</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">White Color</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">20</div>
+                </Chip>
+              </div>
+            </Radio>
+
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="black"
+              onClick={() => setFilterData({ ...filterData, color: "black" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">200</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Red</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">Black Color</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">200</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="red"
+              onClick={() => setFilterData({ ...filterData, color: "red" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">150</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Gray</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">Red Color</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">500</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="green"
+              onClick={() => setFilterData({ ...filterData, color: "green" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">250</div>
-            </Chip>
-          </div>
-          <div className=" flex justify-between items-center w-full">
-            <Checkbox size="sm">
-              <div className="text-black/80 font-poppins">Others</div>
-            </Checkbox>
-            <Chip
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">Green Color</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">500</div>
+                </Chip>
+              </div>
+            </Radio>
+            <Radio
               size="sm"
-              radius="none"
-              className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+              value="other"
+              onClick={() => setFilterData({ ...filterData, color: "other" })}
+              width={100}
+              className="w-[300px]"
             >
-              <div className="font-poppins font-semibold">100</div>
-            </Chip>
-          </div>
+              <div className="relative flex justify-between items-center w-[320px]">
+                <div className="text-black/80 font-poppins">Other Color</div>
+                <Chip
+                  size="sm"
+                  radius="none"
+                  className=" rounded-sm scale-75 -mr-1 bg-slate-200"
+                >
+                  <div className="font-poppins font-semibold">500</div>
+                </Chip>
+              </div>
+            </Radio>
+          </RadioGroup>
         </div>
       </div>
     </div>
