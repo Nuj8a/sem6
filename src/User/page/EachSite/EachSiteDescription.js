@@ -65,12 +65,18 @@ const EachSiteDescription = ({ data }) => {
       navigate("/login");
     }
   };
+  const [pColor, setPColor] = useState("");
 
   const [productQuantity, setProductQuantity] = useState(1);
 
   const addtocartClk = (e) => {
     let userId = JSON.parse(localStorage.getItem("data"))?._id;
-    const data = { productId: e._id, userId, quantity: productQuantity };
+    const data = {
+      productId: e._id,
+      userId,
+      quantity: productQuantity,
+      pColor,
+    };
     setOrderData([...orderData, data]);
   };
 
@@ -112,7 +118,11 @@ const EachSiteDescription = ({ data }) => {
           </div>
           <div className="text-black/80 flex">
             <div>Choose Color:</div>
-            <ColorsShow productColor={data?.productcolor || []} />
+            <ColorsShow
+              productColor={data?.productcolor || []}
+              pColor={pColor}
+              setPColor={setPColor}
+            />
           </div>
         </div>
         <div className="font-poppins flex w-[150px] border shadow">

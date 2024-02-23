@@ -9,7 +9,7 @@ const ProductState = (props) => {
   const combineObjects = (arr) => {
     const combined = {};
     arr.forEach((obj) => {
-      const key = obj.productId + obj.userId;
+      const key = obj.productId + obj.userId + obj.pColor;
       if (combined[key]) {
         combined[key].quantity += obj.quantity;
       } else {

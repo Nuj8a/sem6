@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
-const ColorsShow = ({ productColor }) => {
-  const [pColor, setPColor] = useState("");
+const ColorsShow = ({ productColor, pColor, setPColor }) => {
   const colorchange = (data) => {
-    setPColor(data);
+    setPColor(pColor.includes(data) ? "" : data);
   };
+  useEffect(() => {
+    if (pColor === "") {
+      setPColor(productColor[0]);
+    }
+  }, [productColor, pColor, setPColor]);
   return (
     <div className="ml-2">
       <div className="px-2 h-full w-full flex gap-3 -mb-[1px] pb-1 items-center">
