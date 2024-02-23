@@ -3,7 +3,7 @@ import ServiceLayout from "./ServiceLayout";
 import { useParams } from "react-router-dom";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 
-const Services = ({ data }) => {
+const Services = ({ data, relatedData }) => {
   const scrollUP = () => {
     window.scrollTo({
       top: 0,
@@ -101,6 +101,7 @@ const Services = ({ data }) => {
           data={afterFilter}
           filterData={filterData}
           setFilterData={setFilterData}
+          relatedData={relatedData}
         />
       </div>
     </div>

@@ -53,6 +53,7 @@ const EachSite = () => {
     if (catId) {
       const data = await GetRelatedProductCategory(catId);
       const finalData = data.filter((e) => String(e._id) !== String(id));
+      console.log(finalData);
       setRelatedData(finalData || []);
     }
   };

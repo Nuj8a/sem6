@@ -4,7 +4,10 @@ import Products from "./Products";
 import Services from "../../common/page/Services";
 import Related from "../../common/page/Related";
 
-const ServiceLayout = ({ data, filterData, setFilterData }) => {
+const ServiceLayout = ({ data, filterData, setFilterData, relatedData }) => {
+  const finalrelatedData = relatedData
+    .sort((a, b) => b.date - a.date)
+    .slice(0, 7);
   const [page, setPage] = useState(1);
 
   // =================== for filter (start)================
@@ -76,7 +79,7 @@ const ServiceLayout = ({ data, filterData, setFilterData }) => {
           <Services />
         </div>
         <div>
-          <Related data={[]} />
+          <Related data={finalrelatedData || []} />
         </div>
       </div>
     </div>

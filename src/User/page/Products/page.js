@@ -6,9 +6,7 @@ import { useParams } from "react-router-dom";
 import URLConverter from "../../../libs/URLConverter";
 
 const Page = () => {
-  const data = useParams();
-  console.log(data);
-  const { category, subcategory } = data;
+  const { category, subcategory } = useParams();
   const [relatedData, setRelatedData] = useState([]);
   const GetRelatedData = async () => {
     const data = await GetRelatedProductAll();
@@ -33,7 +31,7 @@ const Page = () => {
 
   return (
     <div className="mx-5">
-      <Services data={filterdata} />
+      <Services data={filterdata} relatedData={relatedData} />
     </div>
   );
 };
