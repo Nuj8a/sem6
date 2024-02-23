@@ -13,7 +13,6 @@ import ProductContext from "../../../context/productContext/ProductContext";
 
 const EachSiteDescription = ({ data }) => {
   const { setOrderData, orderData } = useContext(ProductContext);
-  console.log(orderData);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -71,13 +70,17 @@ const EachSiteDescription = ({ data }) => {
 
   const addtocartClk = (e) => {
     let userId = JSON.parse(localStorage.getItem("data"))?._id;
-    const data = {
-      productId: e._id,
-      userId,
-      quantity: productQuantity,
-      pColor,
-    };
-    setOrderData([...orderData, data]);
+    if (!userId) {
+      navigate("/login");
+    } else {
+      const data = {
+        productId: e._id,
+        userId,
+        quantity: productQuantity,
+        pColor,
+      };
+      setOrderData([...orderData, data]);
+    }
   };
 
   return (

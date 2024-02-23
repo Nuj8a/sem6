@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useMemo, useContext } from "react";
 import {
   Table,
   TableHeader,
@@ -7,116 +7,80 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Chip,
-  User,
   Tooltip,
+  Image,
 } from "@nextui-org/react";
-import { EyeIcon } from "../../../Dashboard/common/components/Tables/Icons/EyeIcon";
-import { EditIcon } from "../../../Dashboard/common/components/Tables/Icons/EditIcons";
 import { DeleteIcon } from "../../../Dashboard/common/components/Tables/Icons/DeleteIcon";
+import FormatRS from "../../../libs/FormatRS";
+import ProductContext from "../../../context/productContext/ProductContext";
 
-import {
-  columns,
-  users,
-} from "../../../Dashboard/common/components/Tables/data";
+const columns = [
+  { name: "PRODUCT NAME ", uid: "productname", sortable: true },
+  { name: "PRODUCT PRICE", uid: "productprice", sortable: true },
+  { name: "PRODUCT COLOR", uid: "color" },
+  { name: "ADD PRODUCT", uid: "addrem" },
+  { name: "ACTIONS", uid: "actions" },
+];
 
-const statusColorMap = {
-  active: "success",
-  paused: "danger",
-  vacation: "warning",
-};
+const INITIAL_VISIBLE_COLUMNS = [
+  "productname",
+  "productprice",
+  "color",
+  "addrem",
+  "actions",
+];
 
-const INITIAL_VISIBLE_COLUMNS = ["name", "role", "status", "actions"];
-
-export default function TablePage() {
-  // eslint-disable-next-line
-  const [visibleColumns, setVisibleColumns] = React.useState(
-    new Set(INITIAL_VISIBLE_COLUMNS)
-  );
-  const [sortDescriptor, setSortDescriptor] = React.useState({
+export default function TablePage({ cartData }) {
+  const { setOrderData } = useContext(ProductContext);
+  const [sortDescriptor, setSortDescriptor] = useState({
     column: "age",
     direction: "ascending",
   });
-  const headerColumns = React.useMemo(() => {
-    if (visibleColumns === "all") return columns;
 
+  let finalpriceData = (price, discount) => {
+    return FormatRS(price - Math.round((price * discount) / 100));
+  };
+
+  const headerColumns = useMemo(() => {
     return columns.filter((column) =>
-      Array.from(visibleColumns).includes(column.uid)
+      INITIAL_VISIBLE_COLUMNS.includes(column.uid)
     );
-  }, [visibleColumns]);
-
-  const items = React.useMemo(() => {
-    return users;
   }, []);
 
-  const sortedItems = React.useMemo(() => {
-    return [...items].sort((a, b) => {
+  const sortedItems = useMemo(() => {
+    return [...cartData].sort((a, b) => {
       const first = a[sortDescriptor.column];
       const second = b[sortDescriptor.column];
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === "descending" ? -cmp : cmp;
     });
-  }, [sortDescriptor, items]);
+  }, [cartData, sortDescriptor]);
 
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const decreaseQuantity = (data) => {
+    const updatedOrderData = cartData.map((item) => {
+      if (item.productId === data.productId) {
+        const newQuantity = Math.max(item.quantity - 1, 1);
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setOrderData(updatedOrderData);
+  };
 
-    switch (columnKey) {
-      case "name":
-        return (
-          <User
-            avatarProps={{ radius: "lg", src: user.avatar }}
-            description={user.email}
-            name={cellValue}
-          >
-            {user.email}
-          </User>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
-      case "status":
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[user.status]}
-            size="sm"
-            variant="flat"
-          >
-            {cellValue}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Details">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            <Tooltip content="Edit user">
-              <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <EditIcon />
-              </span>
-            </Tooltip>
-            <Tooltip color="danger" content="Delete user">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+  const increaseQuantity = (data) => {
+    const updatedOrderData = cartData.map((item) => {
+      if (item.productId === data.productId) {
+        const newQuantity = Math.min(
+          item.quantity + 1,
+          item.product.maxQuantity
+        ); // Ensure quantity doesn't exceed max quantity
+        return { ...item, quantity: newQuantity };
+      }
+      return item;
+    });
+    setOrderData(updatedOrderData);
+  };
 
   return (
     <Table
@@ -145,14 +109,78 @@ export default function TablePage() {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={"No users found"} items={sortedItems}>
-        {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => (
-              <TableCell>{renderCell(item, columnKey)}</TableCell>
-            )}
-          </TableRow>
-        )}
+      <TableBody emptyContent={"No Cart Data Found"} items={sortedItems}>
+        {sortedItems.map((e, index) => {
+          return (
+            <TableRow key={index}>
+              <TableCell>
+                <div>
+                  <div className="flex gap-2 items-center">
+                    <div>
+                      <Image
+                        src={e?.product?.image[0]}
+                        alt={e?.product?.title}
+                        height={40}
+                        width={40}
+                        className="w-[40px] border h-[40px] rounded shadow"
+                      />
+                    </div>
+                    <div className="flex flex-col font-poppins text-sm">
+                      <div className="capitalize font-semibold line-clamp-1">
+                        {e?.product?.title}
+                      </div>
+                      <div
+                        className="line-clamp-1 font-poppins text-xs"
+                        dangerouslySetInnerHTML={{
+                          __html: e?.product?.description,
+                        }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex font-poppins flex-col">
+                  {finalpriceData(
+                    e?.product?.price || 1,
+                    e?.product?.discount || 1
+                  )}
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="flex flex-col capitalize">{e?.pColor}</div>
+              </TableCell>
+              <TableCell>
+                <div className="font-poppins flex w-[90px] border shadow">
+                  <div
+                    className="w-1/3 text-center py-[7px] duration-100 hover:bg-gray-200 cursor-pointer font-semibold scale-110 select-none"
+                    onClick={() => decreaseQuantity(e)}
+                  >
+                    -
+                  </div>
+                  <div className="w-1/3 text-center py-[7px] border-x">
+                    {e.quantity}
+                  </div>
+                  <div
+                    className="w-1/3 text-center py-[7px] duration-100 hover:bg-gray-200 cursor-pointer select-none"
+                    onClick={() => increaseQuantity(e)}
+                  >
+                    +
+                  </div>
+                </div>
+              </TableCell>
+              <TableCell>
+                <div className="relative flex items-center max-w-[45%] justify-center gap-2">
+                  <Tooltip color="danger" content="Delete Product">
+                    <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                      <DeleteIcon />
+                    </span>
+                  </Tooltip>
+                </div>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

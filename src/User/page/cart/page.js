@@ -1,13 +1,49 @@
 "use client";
-import React from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import TablePage from "./Table";
 import { useNavigate } from "react-router-dom";
 import { IoBag } from "react-icons/io5";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 import { Button, Card } from "@nextui-org/react";
+import ProductContext from "../../../context/productContext/ProductContext";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../../redux/slices/authSlice";
+import { getproducts } from "../../../redux/slices/productSlice";
 
 const Page = () => {
   const navigate = useNavigate();
+  const { orderData } = useContext(ProductContext);
+  const dispatch = useDispatch();
+  const userRef = useRef(false);
+  const { allUserData } = useSelector((state) => state.authReducer);
+  const { productData } = useSelector((state) => state.productReducer);
+
+  const [finalTable, setFinalTable] = useState([]);
+
+  useEffect(() => {
+    const joinedData = orderData.map((order, index) => {
+      const users = allUserData.find((user) => user._id === order.userId);
+      const product = productData.find((prod) => prod._id === order.productId);
+      return {
+        ...order,
+        user: users,
+        product: product,
+        sn: index + 1,
+      };
+    });
+    setFinalTable(joinedData);
+  }, [allUserData, productData, orderData]);
+
+  useEffect(() => {
+    if (userRef.current === false) {
+      dispatch(getUsers());
+      dispatch(getproducts());
+    }
+    return () => {
+      userRef.current = true;
+    };
+  }, [dispatch]);
+
   return (
     <div className="px-5 my-5">
       <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
@@ -18,7 +54,7 @@ const Page = () => {
       </div>
       <div className="grid mt-5 px-2 gap-8 grid-cols-12">
         <div className="col-span-8">
-          <TablePage />
+          <TablePage cartData={finalTable} />
         </div>
         <div className="col-span-4 font-poppins h-full  ">
           <Card shadow="sm" className="px-7 py-5 rounded">
