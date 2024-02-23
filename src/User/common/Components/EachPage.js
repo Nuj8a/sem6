@@ -1,12 +1,12 @@
 import React from "react";
-const EachPage = () => {
+const EachPage = ({ data }) => {
   return (
     <div className="h-[350px] ml-10 w-[450px] relative bg-black">
       <img
-        className="position-absolute w-full h-full opacity-40"
-        src="https://t4.ftcdn.net/jpg/04/61/47/03/360_F_461470323_6TMQSkCCs9XQoTtyer8VCsFypxwRiDGU.webp"
+        className="position-absolute w-full h-full opacity-80"
+        src={data?.image}
         style={{ objectFit: "cover" }}
-        alt="gaurab"
+        alt={data?.title}
       />
     </div>
   );

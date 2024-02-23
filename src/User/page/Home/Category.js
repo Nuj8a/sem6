@@ -1,18 +1,13 @@
 import React from "react";
 import EachCategory from "../../common/Components/EachCategory";
 
-const Category = () => {
+const Category = ({ data }) => {
   return (
     <div className="mt-5">
       <div className="row px-xl-5 grid-containerCard ">
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
-        <EachCategory />
+        {data.map((e, index) => {
+          return <EachCategory data={e} key={index} />;
+        })}
       </div>
     </div>
   );

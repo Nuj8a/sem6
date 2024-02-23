@@ -13,13 +13,17 @@ import { IoLogoInstagram } from "react-icons/io5";
 import { RiYoutubeLine, RiLinkedinBoxLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
-const Carousel = () => {
+const Carousel = ({ data }) => {
+  let final = data
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 4);
   const scrollDown = () => {
     window.scrollTo({
       top: 700,
       behavior: "smooth",
     });
   };
+
   return (
     <>
       <div className="container-fluid relative">
@@ -96,15 +100,13 @@ const Carousel = () => {
                 // modules={[Autoplay, Pagination]}
                 className="mySwiper w-full"
               >
-                <SwiperSlide>
-                  <EachPage />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <EachPage />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <EachPage />
-                </SwiperSlide>
+                {final.map((e) => {
+                  return (
+                    <SwiperSlide key={e._id}>
+                      <EachPage data={e} />
+                    </SwiperSlide>
+                  );
+                })}
               </Swiper>
             </div>
           </div>
