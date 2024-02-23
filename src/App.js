@@ -7,6 +7,7 @@ import makeStore from "./redux/store";
 // import LoadingBar from "react-top-loading-bar";
 import PageUser from "./User/PageUser";
 import PageDashboard from "./Dashboard/PageDashboard";
+import ProductState from "./context/productContext/ProductState";
 
 // const loadingBarColor = "#3b82f6";
 
@@ -15,19 +16,21 @@ function App() {
 
   return (
     <React.Fragment>
-      <Provider store={makeStore()}>
-        <BrowserRouter>
-          {/* <LoadingBar
+      <ProductState>
+        <Provider store={makeStore()}>
+          <BrowserRouter>
+            {/* <LoadingBar
             color={loadingBarColor}
             progress={progress}
             onLoaderFinished={() => setProgress(0)}
           /> */}
-          {/* <PageUser setProgress={setProgress} />
+            {/* <PageUser setProgress={setProgress} />
           <PageDashboard setProgress={setProgress} /> */}
-          <PageUser />
-          <PageDashboard />
-        </BrowserRouter>
-      </Provider>
+            <PageUser />
+            <PageDashboard />
+          </BrowserRouter>
+        </Provider>
+      </ProductState>
     </React.Fragment>
   );
 }

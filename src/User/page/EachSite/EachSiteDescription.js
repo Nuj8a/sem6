@@ -1,5 +1,5 @@
 import { Button, Chip } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoMdCart } from "react-icons/io";
 import { BsBagCheckFill } from "react-icons/bs";
 import { FaHeart } from "react-icons/fa";
@@ -9,8 +9,11 @@ import ColorsShow from "../../../libs/ColorsShow";
 import axios from "axios";
 import { API_BASE_URL } from "../../../redux/config";
 import { useNavigate, useParams } from "react-router-dom";
+import ProductContext from "../../../context/productContext/ProductContext";
 
 const EachSiteDescription = ({ data }) => {
+  const { setOrderData, orderData } = useContext(ProductContext);
+  console.log(orderData);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -29,6 +32,7 @@ const EachSiteDescription = ({ data }) => {
       ),
       likeNumber: data?.likeId?.length || 0,
     });
+    setProductQuantity(1);
   }, [data]);
   const likeOrDislikeBlog = async (blogId) => {
     try {
@@ -63,6 +67,12 @@ const EachSiteDescription = ({ data }) => {
   };
 
   const [productQuantity, setProductQuantity] = useState(1);
+
+  const addtocartClk = (e) => {
+    let userId = JSON.parse(localStorage.getItem("data"))?._id;
+    const data = { productId: e._id, userId, quantity: productQuantity };
+    setOrderData([...orderData, data]);
+  };
 
   return (
     <div className="p-3 px-5 relative !font-poppins">
@@ -142,6 +152,7 @@ const EachSiteDescription = ({ data }) => {
             className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
             variant="bordered"
             startContent={<IoMdCart className="scale-110" />}
+            onClick={() => addtocartClk(data)}
           >
             <div>Add to cart</div>
           </Button>

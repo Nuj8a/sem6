@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { IoMdCart } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from "../../../assets/icons/logo.svg";
-import { Card } from "@nextui-org/react";
+import { Badge, Card } from "@nextui-org/react";
 // import Subcategory from "./Subcategory";
 import Profile from "../Components/Profile";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,10 @@ import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getsubcategorys } from "../../../redux/slices/subCategorySlice";
 import SubcategorySmall from "./SubcategorySmall";
 import URLConverter from "../../../libs/URLConverter";
+import ProductContext from "../../../context/productContext/ProductContext";
 
 const Navigation = ({ userData }) => {
+  const { orderData } = useContext(ProductContext);
   const Location = useLocation().pathname;
   const dispatch = useDispatch();
   const [scrollY, setScrollY] = useState(0);
@@ -218,13 +220,19 @@ const Navigation = ({ userData }) => {
               ) : (
                 <>
                   <Link to={"/cart"} className="w-1/3">
-                    <IoMdCart
-                      className={`login text-2xl ${
-                        Location.toLowerCase().includes("cart")
-                          ? "text-black"
-                          : "text-black/70"
-                      } `}
-                    />
+                    <Badge
+                      content={orderData.length || 0}
+                      size="sm"
+                      color="danger"
+                    >
+                      <IoMdCart
+                        className={`login text-2xl ${
+                          Location.toLowerCase().includes("cart")
+                            ? "text-black"
+                            : "text-black/70"
+                        } `}
+                      />
+                    </Badge>
                   </Link>
                   <div className="h-[20px] w-[1px] border-r border-black/15" />
                   <Profile userData={userData} />
