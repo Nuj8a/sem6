@@ -62,6 +62,8 @@ const EachSiteDescription = ({ data }) => {
     }
   };
 
+  const [productQuantity, setProductQuantity] = useState(1);
+
   return (
     <div className="p-3 px-5 relative !font-poppins">
       <div className="flex gap-3 flex-col font-poppins">
@@ -103,6 +105,25 @@ const EachSiteDescription = ({ data }) => {
             <ColorsShow productColor={data?.productcolor || []} />
           </div>
         </div>
+        <div className="font-poppins flex w-[150px] border shadow">
+          <div
+            className="w-1/3 text-center py-[7px] duration-100 hover:bg-gray-200 cursor-pointer font-semibold scale-110 select-none"
+            onClick={() => setProductQuantity((p) => (p > 1 ? p - 1 : p))}
+          >
+            -
+          </div>
+          <div className="w-1/3 text-center py-[7px] border-x">
+            {productQuantity}
+          </div>
+          <div
+            className="w-1/3 text-center py-[7px] duration-100 hover:bg-gray-200 cursor-pointer select-none"
+            onClick={() =>
+              setProductQuantity((p) => (p < data?.maxQuantity ? p + 1 : p))
+            }
+          >
+            +
+          </div>
+        </div>
         <div className="mt-4 flex gap-5">
           <Button
             isPressable
@@ -110,6 +131,7 @@ const EachSiteDescription = ({ data }) => {
             className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
             startContent={<BsBagCheckFill />}
             color="primary"
+            onClick={() => navigate(`/checkout/${id}`)}
           >
             Order Now
           </Button>

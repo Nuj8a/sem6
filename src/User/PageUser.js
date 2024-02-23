@@ -42,6 +42,7 @@ const PageUser = () => {
             <Route path="/about-us" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
             <Route path="/contact" element={<Contact />} />
             <Route
               path="/each/:category/:subcategory/:id"
