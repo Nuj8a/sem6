@@ -3,7 +3,6 @@ import { API_BASE_URL } from "../redux/config";
 
 export default async function GetHighlights() {
   try {
-    console.log("first");
     const response = await axios.get(
       `${API_BASE_URL}/api/carousel/carousels/highlight`
     );

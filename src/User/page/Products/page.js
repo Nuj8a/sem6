@@ -2,8 +2,13 @@
 import React, { useEffect, useState } from "react";
 import Services from "../Services/Services";
 import GetRelatedProductAll from "../../../libs/GetRelatedProductAll";
+import { useParams } from "react-router-dom";
+import URLConverter from "../../../libs/URLConverter";
 
 const Page = () => {
+  const data = useParams();
+  console.log(data);
+  const { category, subcategory } = data;
   const [relatedData, setRelatedData] = useState([]);
   const GetRelatedData = async () => {
     const data = await GetRelatedProductAll();
@@ -13,9 +18,22 @@ const Page = () => {
     GetRelatedData();
   }, []);
 
+  let filterdata = [];
+  if (subcategory) {
+    filterdata = relatedData.filter(
+      (e) =>
+        URLConverter(e.subcategoryName) === subcategory &&
+        URLConverter(e.categoryName) === category
+    );
+  } else {
+    filterdata = relatedData.filter(
+      (e) => URLConverter(e.categoryName) === category
+    );
+  }
+
   return (
     <div className="mx-5">
-      <Services data={relatedData} />
+      <Services data={filterdata} />
     </div>
   );
 };

@@ -89,6 +89,12 @@ export default function Tablepage(props) {
     postUpload,
   } = props;
 
+  let categoryDataDropdownFinal = categoryDataDropdown.filter(
+    (e) =>
+      e.categoryName.toLowerCase() !== "home" &&
+      e.categoryName.toLowerCase() !== "contact"
+  );
+
   const [filterValue, setFilterValue] = React.useState("");
   const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(INITIAL_VISIBLE_COLUMNS)
@@ -398,7 +404,7 @@ export default function Tablepage(props) {
         updateBtnRef={updateBtnRef}
         updateData={updateData}
         setUpdateData={setUpdateData}
-        categoryDataDropdown={categoryDataDropdown}
+        categoryDataDropdown={categoryDataDropdownFinal}
         subcategoryDataDropdown={subcategoryDataDropdown}
         postUpload={postUpload}
       />

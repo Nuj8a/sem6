@@ -21,7 +21,6 @@ const Services = ({ data }) => {
     gender: "all",
   });
 
-  console.log(filterData);
   const [afterFilter, setAfterFilter] = useState([]);
 
   useEffect(() => {
