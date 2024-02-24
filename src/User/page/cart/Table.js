@@ -16,7 +16,7 @@ import ProductContext from "../../../context/productContext/ProductContext";
 
 const columns = [
   { name: "PRODUCT NAME ", uid: "productname", sortable: true },
-  { name: "PRODUCT PRICE", uid: "productprice", sortable: true },
+  { name: "PER PRODUCT PRICE", uid: "productprice", sortable: true },
   { name: "PRODUCT COLOR", uid: "color" },
   { name: "ADD PRODUCT", uid: "addrem" },
   { name: "ACTIONS", uid: "actions" },
@@ -114,15 +114,15 @@ export default function TablePage({ cartData }) {
           return (
             <TableRow key={index}>
               <TableCell>
-                <div>
-                  <div className="flex gap-2 items-center">
-                    <div>
+                <div className="line-clamp-1 max-w-[250px]">
+                  <div className="flex gap-2 w-full items-center">
+                    <div className="w-[40px]">
                       <Image
                         src={e?.product?.image[0]}
                         alt={e?.product?.title}
                         height={40}
                         width={40}
-                        className="w-[40px] border h-[40px] rounded shadow"
+                        className="w-[40px] border object-cover h-[40px] rounded shadow"
                       />
                     </div>
                     <div className="flex flex-col font-poppins text-sm">
@@ -140,7 +140,7 @@ export default function TablePage({ cartData }) {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex font-poppins flex-col">
+                <div className="flex font-poppins max-w-[100px] line-clamp-1 flex-col">
                   {finalpriceData(
                     e?.product?.price || 1,
                     e?.product?.discount || 1
@@ -148,7 +148,9 @@ export default function TablePage({ cartData }) {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex flex-col capitalize">{e?.pColor}</div>
+                <div className="flex flex-col capitalize line-clamp-1 max-w-[100px]">
+                  {e?.pColor}
+                </div>
               </TableCell>
               <TableCell>
                 <div className="font-poppins flex w-[90px] border shadow">
