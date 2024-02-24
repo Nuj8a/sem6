@@ -28,9 +28,16 @@ const ProductState = (props) => {
     setOrderData(combinedData);
   };
 
+  const [summaryData, setSummaryData] = useState([]);
+
   return (
     <ProductContext.Provider
-      value={{ setOrderData: handleSetOrderData, orderData }}
+      value={{
+        setOrderData: handleSetOrderData,
+        orderData,
+        setSummaryData,
+        summaryData,
+      }}
     >
       {props.children}
     </ProductContext.Provider>

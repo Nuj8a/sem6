@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import TablePage from "./Table";
 import { useDispatch, useSelector } from "react-redux";

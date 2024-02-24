@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import Widget from "./widget";
 import Featured from "./Feachured";

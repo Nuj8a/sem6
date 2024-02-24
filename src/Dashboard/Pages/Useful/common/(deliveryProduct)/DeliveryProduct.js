@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import TableOrder from "./TableOrder";
 import { useDispatch, useSelector } from "react-redux";

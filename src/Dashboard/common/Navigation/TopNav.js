@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
 import SideNav from "./SideNav";
 import TopNavContent from "./TopNavContent";

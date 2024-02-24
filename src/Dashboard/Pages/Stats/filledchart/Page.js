@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import FilledChart from "./Filledchart";
 import { useDispatch, useSelector } from "react-redux";

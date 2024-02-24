@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import Linechart from "./Linechart";
 import { useDispatch, useSelector } from "react-redux";

@@ -6,7 +6,7 @@ import Login from "./page/Login/page";
 import Register from "./page/Register/page";
 import Products from "./page/Products/page";
 import Cart from "./page/Cart/page";
-import Checkout from "./page/Checkout/page";
+import Checkout from "./page/Checkout/Checkout";
 import EachSite from "./page/EachSite/EachSite";
 import Contact from "./page/Contact/Contact";
 import { useEffect, useState } from "react";

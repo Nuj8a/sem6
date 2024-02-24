@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import Services from "../Services/Services";
 import GetRelatedProductAll from "../../../libs/GetRelatedProductAll";

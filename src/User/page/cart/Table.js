@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useMemo, useContext } from "react";
 import {
   Table,

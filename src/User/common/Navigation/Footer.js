@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { AiFillFacebook } from "react-icons/ai";
 import { FaInstagramSquare, FaLinkedin, FaYoutubeSquare } from "react-icons/fa";
