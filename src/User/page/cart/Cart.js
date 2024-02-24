@@ -71,7 +71,7 @@ const Cart = ({ finalTable, subtotal, shipping, navigate }) => {
                 endContent={<IoBag className="scale-110 text-base mb-[2px]" />}
                 onClick={() => navigate("/checkout")}
               >
-                Proceed to checkout ( 1 )
+                Proceed to checkout ( {finalTable.length} )
               </Button>
             </Card>
           </div>
