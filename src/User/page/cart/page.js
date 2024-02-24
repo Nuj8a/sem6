@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ProductContext from "../../../context/productContext/ProductContext";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../../redux/slices/authSlice";
@@ -8,6 +8,7 @@ import Cart from "./Cart";
 import Checkout from "../Checkout/Checkout";
 
 const Page = () => {
+  const path = useLocation().pathname;
   const navigate = useNavigate();
   const { orderData, setSummaryData } = useContext(ProductContext);
   const dispatch = useDispatch();
@@ -65,13 +66,16 @@ const Page = () => {
 
   return (
     <>
-      <Cart
-        finalTable={finalTable}
-        navigate={navigate}
-        subtotal={subtotal}
-        shipping={shipping}
-      />
-      <Checkout />
+      {path.includes("cart") ? (
+        <Cart
+          finalTable={finalTable}
+          navigate={navigate}
+          subtotal={subtotal}
+          shipping={shipping}
+        />
+      ) : (
+        <Checkout finalTable={finalTable} />
+      )}
     </>
   );
 };

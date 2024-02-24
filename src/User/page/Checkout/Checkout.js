@@ -7,9 +7,10 @@ import ProductContext from "../../../context/productContext/ProductContext";
 import formatRS from "../../../libs/FormatRS";
 import UserData from "./UserData";
 
-const Checkout = () => {
+const Checkout = ({ finalTable }) => {
   const navigate = useNavigate();
   const { summaryData } = useContext(ProductContext);
+  console.log(finalTable);
 
   let subtotal = summaryData.reduce((acc, cur) => acc + cur.price, 0);
   let shipping = 100;

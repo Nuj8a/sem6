@@ -6,7 +6,6 @@ import Login from "./page/Login/page";
 import Register from "./page/Register/page";
 import Products from "./page/Products/page";
 import Cart from "./page/Cart/page";
-import Checkout from "./page/Checkout/Checkout";
 import EachSite from "./page/EachSite/EachSite";
 import Contact from "./page/Contact/Contact";
 import { useEffect, useState } from "react";
@@ -41,8 +40,8 @@ const PageUser = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/about-us" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/:id" element={<Checkout />} />
+            <Route path="/checkout" element={<Cart />} />
+            <Route path="/checkout/:id" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
             <Route
               path="/each/:category/:subcategory/:id"
