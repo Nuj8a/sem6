@@ -31,7 +31,7 @@ const INITIAL_VISIBLE_COLUMNS = [
 ];
 
 export default function TablePage({ cartData }) {
-  const { setOrderData } = useContext(ProductContext);
+  const { orderData, setOrderData } = useContext(ProductContext);
   const [sortDescriptor, setSortDescriptor] = useState({
     column: "age",
     direction: "ascending",
@@ -80,6 +80,19 @@ export default function TablePage({ cartData }) {
       return item;
     });
     setOrderData(updatedOrderData);
+  };
+
+  const deleteBtnClk = (e) => {
+    const { pColor, productId, userId } = e;
+    const newData = orderData.filter(
+      (order) =>
+        !(
+          order.pColor === pColor &&
+          order.productId === productId &&
+          order.userId === userId
+        )
+    );
+    setOrderData(newData);
   };
 
   return (
@@ -172,7 +185,10 @@ export default function TablePage({ cartData }) {
                 </div>
               </TableCell>
               <TableCell>
-                <div className="relative flex items-center max-w-[45%] justify-center gap-2">
+                <div
+                  className="relative flex items-center max-w-[45%] justify-center gap-2"
+                  onClick={() => deleteBtnClk(e)}
+                >
                   <Tooltip color="danger" content="Delete Product">
                     <span className="text-lg text-danger cursor-pointer active:opacity-50">
                       <DeleteIcon />

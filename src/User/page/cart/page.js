@@ -107,13 +107,13 @@ const Page = () => {
                 </div>
                 <div className="w-ful flex justify-between items-center">
                   <div>Shipping:</div>
-                  <div>+ {formatRS(shipping)}</div>
+                  <div>+ {formatRS(subtotal === 0 ? 0 : shipping)}</div>
                 </div>
               </div>
               <div className="text-sm flex border-dashed justify-between border-y py-3 border-black/15 mt-3 my-2 text-black/80">
                 <div className="uppercase font-semibold">Total:</div>
                 <div className="text-[#ea580c] font-semibold text-base">
-                  {formatRS(subtotal + shipping)}
+                  {formatRS(subtotal + (subtotal === 0 ? 0 : shipping))}
                 </div>
               </div>
             </div>
