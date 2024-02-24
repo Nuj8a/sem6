@@ -3,7 +3,8 @@ import ProductContext from "../../../context/productContext/ProductContext";
 import UserData from "./UserData";
 
 const Checkout = () => {
-  const { summaryData } = useContext(ProductContext);
+  const { summaryData, postOrderAddresses, setRender } =
+    useContext(ProductContext);
 
   let subtotal = summaryData.reduce((acc, cur) => acc + cur.price, 0);
   let shipping = 100;
@@ -27,8 +28,8 @@ const Checkout = () => {
 
   const placeOrderBtnclk = () => {
     if (validateForm()) {
-      console.log(deliveryData);
-    } else {
+      postOrderAddresses(deliveryData);
+      setRender((p) => !p);
     }
   };
 
