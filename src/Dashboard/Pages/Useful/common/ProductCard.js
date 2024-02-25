@@ -3,6 +3,7 @@ import React from "react";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 
 export default function ProductCard({ data }) {
+  console.log(data);
   return (
     <Card
       shadow="sm"
@@ -17,18 +18,16 @@ export default function ProductCard({ data }) {
           width="100%"
           alt="Jhumka"
           className="w-full !rounded-sm object-cover h-[140px]"
-          src={data.image[0]}
+          src={data?.productId?.image[0]}
         />
       </CardBody>
       <CardFooter className="text-small justify-between">
-        <b>
-          {data.title.length > 15
-            ? data.title.slice(0, 15) + "..."
-            : data.title}
+        <b className="capitalize">
+          {data?.productId.title.length > 15
+            ? data?.productId.title.slice(0, 15) + "..."
+            : data?.productId.title}
         </b>
-        <p className="text-default-500">
-          RS {Number(data.total) / Number(data.quntity)}
-        </p>
+        <p className="text-default-500">RS {Number(data.productId.price)}</p>
       </CardFooter>
     </Card>
   );

@@ -15,7 +15,6 @@ const DeliveryProduct = ({ PageFrom }) => {
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
   const { orderData } = useSelector((state) => state.orderReducer);
-  console.log(orderData);
 
   useEffect(() => {
     if (userRef.current === false) {

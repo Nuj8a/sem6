@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Modal,
@@ -9,6 +9,8 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
+import FindGender from "../../../../libs/FindGender";
+import FormatRS from "../../../../libs/FormatRS";
 
 import UserDetails from "./UserDetails";
 import ProductDetails from "./ProductDetails";
@@ -18,16 +20,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 export default function ModalFun(props) {
   const { btnRef, viewDetal, PageFrom, handelUpdate, PageType } = props;
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const metal = [
-    { id: 1, name: "Gold" },
-    { id: 2, name: "Silver" },
-    { id: 3, name: "Panchadhatu" },
-  ];
-
-  function getMetalName(id) {
-    const metalItem = metal.find((item) => String(item.id) === String(id));
-    return metalItem ? metalItem.name : "";
-  }
 
   function dateConverter(isoDate) {
     const date = new Date(isoDate);
@@ -36,6 +28,17 @@ export default function ModalFun(props) {
   const updateData = (data) => {
     handelUpdate(data);
   };
+
+  const [productOne, setProductOne] = useState({});
+  useEffect(() => {
+    if (viewDetal.products && viewDetal.products.length > 0) {
+      const { productId, quantity } = viewDetal.products[0];
+      const productObject = { productId, quantity };
+      setProductOne(productObject);
+    }
+  }, [viewDetal]);
+
+  console.log(productOne);
 
   return (
     <>
@@ -47,7 +50,7 @@ export default function ModalFun(props) {
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col capitalize gap-1 py-0 pt-3">
-                Order From {viewDetal.userName}
+                Order From {viewDetal.userId.name}
               </ModalHeader>
               <ModalBody className="!flex !gap-5 !flex-row -mt-2">
                 <div className="flex w-full pt-1 relative !text-sm ">
@@ -56,60 +59,60 @@ export default function ModalFun(props) {
                       <div className="flex gap-1">
                         <span className="capitalize">Name:</span>
                         <span className="capitalize">
-                          {viewDetal.user?.name}
+                          {viewDetal.userId?.name}
                         </span>
                       </div>
                       <div>
                         <UserDetails
-                          data={{ ...viewDetal.user, ...viewDetal.userDetail }}
+                          data={{ ...viewDetal.userId, ...viewDetal.detailId }}
                         />
                       </div>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Email:</span>
                       <span className="capitalize">
-                        {viewDetal.user?.email}
+                        {viewDetal.userId?.email}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Address:</span>
                       <span className="capitalize">
-                        {viewDetal.userDetail?.address}
+                        {viewDetal.detailId?.address}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">City:</span>
                       <span className="capitalize">
-                        {viewDetal.userDetail?.city}
+                        {viewDetal.detailId?.city}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Area:</span>
                       <span className="capitalize">
-                        {viewDetal.userDetail?.area}
+                        {viewDetal.detailId?.area}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Landmark:</span>
                       <span className="capitalize">
-                        {viewDetal.userDetail?.landmark}
+                        {viewDetal.detailId?.landmark}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Mobile Number:</span>
                       <span className="capitalize">
-                        {viewDetal.userDetail?.mobileNumber}
+                        {viewDetal.detailId?.mobileNumber}
                       </span>
                     </div>
                     <div className="flex gap-1">
                       <span className="capitalize">Order Quntity:</span>
-                      <span className="capitalize">{viewDetal.quntity}</span>
+                      <span className="capitalize">{100}</span>
                     </div>
                     {PageType ? (
                       <Link
                         className="text-blue-600"
                         size="sm"
-                        href={`user/${viewDetal.user._id}`}
+                        href={`user/${viewDetal.userId._id}`}
                       >
                         Visit user for more detail
                       </Link>
@@ -119,90 +122,114 @@ export default function ModalFun(props) {
                   </div>
                   <div className="w-[0.01rem] h-full top-0 mx-2 bg-slate-300"></div>
                   <div className="w-1/2">
-                    <div className="flex gap-3 mt-2 mb-1 items-center">
+                    <div className="w-full h-[20px] flex gap-1 mb-3">
+                      {viewDetal.products.map((e, index) => {
+                        return (
+                          <div
+                            onClick={() =>
+                              setProductOne({
+                                productId: e.productId,
+                                quantity: e.quantity,
+                              })
+                            }
+                            key={index}
+                            className="rounded-full shadow border px-3 cursor-pointer hover:bg-blue-700 hover:text-white duration-150 pb-[1px]"
+                          >
+                            P{index + 1}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div className="flex gap-3 justify-between mt-2 mb-1 items-center">
                       <div className="flex gap-1">
-                        <span className="capitalize">Name:</span>
-                        <span className="capitalize">
-                          {viewDetal.product.description.slice(0, 20)}
-                        </span>
+                        <span className="capitalize font-semibold">Name:</span>
+                        <div className="capitalize">
+                          {productOne?.productId?.title}
+                        </div>
                       </div>
+
                       <div>
-                        <ProductDetails
-                          data={{
-                            ...viewDetal.product,
-                            total: viewDetal.prize,
-                            quntity: viewDetal.quntity,
-                          }}
-                        />
+                        <ProductDetails data={productOne} />
                       </div>
                     </div>
-                    <div className="text-justify">
-                      <span className="capitalize mr-1">Description:</span>
+
+                    <div className="text-justify flex">
+                      <span className="capitalize mr-1 font-semibold">
+                        Description:
+                      </span>
                       <div className="capitalize !text-justify">
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: viewDetal.product.description.slice(0, 50),
+                            __html: productOne?.productId?.description?.slice(
+                              0,
+                              50
+                            ),
                           }}
                         />
                       </div>
                     </div>
-                    {/* <div className="flex gap-1">
-                      <span className="capitalize">Category:</span>
-                      <span className="capitalize">Ring</span>
-                    </div>
-                    <div className="flex gap-1">
-                      <span className="capitalize">Subcategory:</span>
-                      <span className="capitalize">Gold Ring</span>
-                    </div> */}
                     <div className="w-full flex gap-5">
                       <div className="flex gap-1 w-[40%]">
-                        <span className="capitalize">Weight:</span>
+                        <span className="capitalize">Category:</span>
                         <span className="capitalize">
-                          {viewDetal.product.weight} tola
+                          {productOne?.productId?.categoryName}
                         </span>
                       </div>
                       <div className="flex gap-1">
-                        <span className="capitalize">Westage:</span>
+                        <span className="capitalize">Gender Type:</span>
                         <span className="capitalize">
-                          {viewDetal.product.westage} tola
+                          {FindGender(productOne?.productId?.gendertype)}
                         </span>
                       </div>
                     </div>
                     <div className="w-full flex gap-5">
                       <div className="flex gap-1 w-[40%]">
-                        <span className="capitalize">Metal:</span>
+                        <span className="capitalize">Order Quantity:</span>
                         <span className="capitalize">
-                          {getMetalName(viewDetal.product.metal)}
+                          {productOne?.quantity}
                         </span>
                       </div>
-                      <div className="flex gap-1">
-                        <span className="capitalize">Discount:</span>
-                        <span className="capitalize">
-                          {viewDetal.product.discount}%
-                        </span>
-                      </div>
-                    </div>
-                    <div className="w-full flex gap-5">
                       <div className="flex gap-1 w-[40%]">
                         <span className="capitalize">Price:</span>
-                        <span className="capitalize">Rs.{viewDetal.prize}</span>
-                      </div>
-                      <div className="flex gap-1">
-                        <span className="capitalize">Quntity:</span>
-                        <span className="capitalize">{viewDetal.quntity}</span>
+                        <span className="capitalize">
+                          {FormatRS(productOne?.productId?.price)}
+                        </span>
                       </div>
                     </div>
                     <div className="w-full flex gap-5">
                       <div className="flex gap-1 w-[40%]">
-                        <span className="capitalize">Gold Price:</span>
+                        <span className="capitalize">Discount:</span>
                         <span className="capitalize">
-                          Rs.{viewDetal.goldRate}
+                          {productOne?.productId?.discount}%
+                        </span>
+                      </div>
+
+                      <div className="flex gap-1 w-[40%]">
+                        <span className="capitalize">Total Price:</span>
+                        <span className="capitalize">
+                          {productOne?.productId?.price * productOne?.quantity -
+                            (productOne?.productId?.price *
+                              productOne?.quantity *
+                              productOne?.productId?.discount) /
+                              100}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="w-full flex gap-5">
+                      <div className="flex gap-1 w-[40%]">
+                        <span className="capitalize">Avilable Quantity:</span>
+                        <span className="capitalize">
+                          {productOne?.productId?.maxQuantity}
                         </span>
                       </div>
                       <div className="flex gap-1">
-                        <span className="capitalize">Silver Price:</span>
+                        <span className="capitalize">Colors:</span>
                         <span className="capitalize">
-                          Rs.{viewDetal.silverRate}
+                          {productOne?.productId?.productcolor.map(
+                            (color, index) => (
+                              <span key={index}>{color}</span>
+                            )
+                          )}
                         </span>
                       </div>
                     </div>
@@ -210,7 +237,7 @@ export default function ModalFun(props) {
                       <Link
                         className="text-blue-600"
                         size="sm"
-                        href={`user/${viewDetal.product._id}`}
+                        href={`user/${productOne.productId?._id}`}
                       >
                         Visit product for more detail
                       </Link>
