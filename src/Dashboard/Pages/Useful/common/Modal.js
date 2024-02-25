@@ -30,6 +30,7 @@ export default function ModalFun(props) {
   };
 
   const [productOne, setProductOne] = useState({});
+  const [productNumber, setProdutNumber] = useState(1);
   useEffect(() => {
     if (viewDetal.products && viewDetal.products.length > 0) {
       const { productId, quantity } = viewDetal.products[0];
@@ -37,8 +38,10 @@ export default function ModalFun(props) {
       setProductOne(productObject);
     }
   }, [viewDetal]);
-
-  console.log(productOne);
+  const productVisibleclk = (data, ind) => {
+    setProductOne(data);
+    setProdutNumber(ind);
+  };
 
   return (
     <>
@@ -127,13 +130,16 @@ export default function ModalFun(props) {
                         return (
                           <div
                             onClick={() =>
-                              setProductOne({
-                                productId: e.productId,
-                                quantity: e.quantity,
-                              })
+                              productVisibleclk(
+                                {
+                                  productId: e.productId,
+                                  quantity: e.quantity,
+                                },
+                                index + 1
+                              )
                             }
                             key={index}
-                            className="rounded-full shadow border px-3 cursor-pointer hover:bg-blue-700 hover:text-white duration-150 pb-[1px]"
+                            className={`rounded-full shadow border px-3 cursor-pointer ${productNumber === index + 1 && "bg-blue-600 text-white"} hover:bg-blue-700 hover:text-white duration-150 pb-[1px]`}
                           >
                             P{index + 1}
                           </div>
@@ -225,9 +231,9 @@ export default function ModalFun(props) {
                       <div className="flex gap-1">
                         <span className="capitalize">Colors:</span>
                         <span className="capitalize">
-                          {productOne?.productId?.productcolor.map(
+                          {productOne?.productId?.productcolor?.map(
                             (color, index) => (
-                              <span key={index}>{color}</span>
+                              <span key={index}>{color + ", "}</span>
                             )
                           )}
                         </span>
