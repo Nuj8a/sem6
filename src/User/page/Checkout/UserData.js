@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, Checkbox } from "@nextui-org/react";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 import { PiShoppingCartFill } from "react-icons/pi";
 import formatRS from "../../../libs/FormatRS";
 import Inputfield from "./Inputfield";
+import { IoMdPin } from "react-icons/io";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const UserData = ({
   deliveryData,
@@ -14,6 +16,7 @@ const UserData = ({
   shipping,
   placeOrderBtnclk,
 }) => {
+  const [showAddress, setShowAddress] = useState(true);
   return (
     <div>
       <div className="px-5 min-h-[70vh]">
@@ -24,21 +27,60 @@ const UserData = ({
           <Breadcrumb category={"services"} categoryLink={"services"} />
         </div>
         <div className="grid gap-8 px-2 grid-cols-12">
-          <div className="col-span-8">
+          <div className="col-span-7 flex flex-col gap-4">
             <Card shadow="sm" className="p-7 font-poppins rounded">
-              <h3 className="text-xl mb-5 text-black/80 font-semibold">
-                Billing Address
-              </h3>
+              <div className="flex justify-between items-center pb-2">
+                <h3 className="text-xl mb-5 flex gap-1 items-center text-blue-700 font-semibold">
+                  <IoMdPin /> Billing Address
+                </h3>
+                {!showAddress && (
+                  <div
+                    onClick={() => setShowAddress(true)}
+                    className="flex select-none shadow px-5 p-1.5 text-sm border rounded-full items-center gap-1 hover:bg-blue-700 hover:text-white text-blue-700 cursor-pointer duration-150"
+                  >
+                    <FaArrowLeftLong /> Use old address.
+                  </div>
+                )}
+              </div>
               <div>
-                <Inputfield
-                  deliveryData={deliveryData}
-                  inputvalueChange={inputvalueChange}
-                  errors={errors}
-                />
+                {showAddress ? (
+                  <div className="md:flex">
+                    <div className="p-5 -mt-3">
+                      <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+                        Address Summary
+                      </div>
+                      <p className="mt-2 text-gray-500 text-sm">
+                        Full Name: Gaurab
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        Mobile Number: Gaurab
+                      </p>
+                      <p className="text-gray-500 text-sm">Area: Gaurab</p>
+                      <p className="text-gray-500 text-sm">Landmark: Gaurab</p>
+                      <p className="text-gray-500 text-sm">City: Gaurab</p>
+                      <p className="text-gray-500 text-sm">Province: Gaurab</p>
+                    </div>
+                  </div>
+                ) : (
+                  <Inputfield
+                    deliveryData={deliveryData}
+                    inputvalueChange={inputvalueChange}
+                    errors={errors}
+                  />
+                )}
               </div>
             </Card>
+            {showAddress && (
+              <div
+                onClick={() => setShowAddress(false)}
+                className="w-full flex justify-center items-center py-2 gap-2 cursor-pointer hover:bg-blue-500 hover:text-white duration-200 border shadow rounded"
+              >
+                <div className="text-xl mb-1 font-semibold">+</div>
+                <div>Add New Address</div>
+              </div>
+            )}
           </div>
-          <div className="col-span-4 font-poppins h-full  ">
+          <div className="col-span-5 font-poppins h-full  ">
             <Card shadow="sm" className="px-7 py-5 rounded">
               <h3 className="text-xl text-black/80 font-semibold mb-1">
                 CART SUMMARY
