@@ -9,37 +9,17 @@ import {
 } from "../../../../../redux/slices/orderSlice";
 
 import { toast } from "sonner";
-import { getproducts } from "../../../../../redux/slices/productSlice";
-import { getUsers } from "../../../../../redux/slices/authSlice";
-import { getdetail } from "../../../../../redux/slices/userDetailSlice";
 
 const DeliveryProduct = ({ PageFrom }) => {
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const [finalData, setFinalData] = useState([]);
   const { orderData } = useSelector((state) => state.orderReducer);
-  const { productData } = useSelector((state) => state.productReducer);
-  const { allUserData } = useSelector((state) => state.authReducer);
-  const { detailData } = useSelector((state) => state.userDetailReducer);
-
-  const joinedData = orderData.map((order) => {
-    const matchingProducts = productData.find((e) => e._id === order.productId);
-    const matchingUsers = allUserData.find((e) => e._id === order.userId);
-    const matchingUsersDetal = detailData.find((e) => e._id === order.detailId);
-    return {
-      ...order,
-      product: matchingProducts,
-      user: matchingUsers,
-      userDetail: matchingUsersDetal,
-    };
-  });
+  console.log(orderData);
 
   useEffect(() => {
     if (userRef.current === false) {
       dispatch(getOrders());
-      dispatch(getproducts());
-      dispatch(getUsers());
-      dispatch(getdetail());
     }
     return () => {
       userRef.current = true;
@@ -105,17 +85,18 @@ const DeliveryProduct = ({ PageFrom }) => {
 
   const finalPageData =
     PageFrom.toLowerCase() === "order"
-      ? joinedData.filter((e) => Number(e.orderSuccess) === 0)
+      ? orderData.filter((e) => Number(e.orderSuccess) === 0)
       : PageFrom.toLowerCase() === "delivery"
-        ? joinedData.filter((e) => Number(e.orderSuccess) === 1)
-        : joinedData.filter((e) => Number(e.orderSuccess) === 2);
+        ? orderData.filter((e) => Number(e.orderSuccess) === 1)
+        : orderData.filter((e) => Number(e.orderSuccess) === 2);
   useEffect(() => {
     let finalorderData = finalPageData.map((item, index) => ({
       ...item,
       sn: index + 1,
     }));
     setFinalData(finalorderData);
-  }, [finalPageData, allUserData, detailData, productData, orderData]);
+    // eslint-disable-next-line
+  }, [orderData]);
 
   return (
     <>
@@ -124,7 +105,6 @@ const DeliveryProduct = ({ PageFrom }) => {
         handelpostOrder={handelpostOrder}
         handelDelete={handelDelete}
         handelUpdate={handelUpdate}
-        categoryDataDropdown={productData}
         PageFrom={PageFrom}
         PageType={true}
       />

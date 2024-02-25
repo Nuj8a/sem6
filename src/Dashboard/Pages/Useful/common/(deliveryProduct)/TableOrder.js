@@ -37,12 +37,10 @@ const columns = [
   { name: "ID", uid: "_id", sortable: true },
   { name: "USER", uid: "user", sortable: true },
   { name: "PRODUCT NAME", uid: "product", sortable: true },
-  { name: "PRODUCT DESCRIPTION", uid: "productId" },
-  { name: "TOTAL PRICE", uid: "totalPrize" },
-  { name: "QUNTITY", uid: "quntity" },
-  { name: "METAL", uid: "productmetal" },
-  { name: "GOLD PRICE", uid: "goldRate" },
-  { name: "SILVER PRICE", uid: "silverRate" },
+  { name: "PRODUCT DESCRIPTION", uid: "productdes" },
+  { name: "TOTAL PRODUCTS", uid: "totalProducts" },
+  { name: "TOTAL PRICE", uid: "totalPrice" },
+  { name: "QUANTITY", uid: "quantity" },
   { name: "DELIVER ADDRESS", uid: "detailId" },
   { name: "DATE", uid: "date" },
   { name: "ACTIONS", uid: "actions" },
@@ -52,9 +50,9 @@ const INITIAL_VISIBLE_COLUMNS = [
   "sn",
   "user",
   "product",
-  "quntity",
-  "totalPrize",
-  "productmetal",
+  "totalProducts",
+  "quantity",
+  "totalPrice",
   "detailId",
   "actions",
 ];
@@ -150,11 +148,11 @@ export default function TableOrder(props) {
       case "user":
         return (
           <User
-            avatarProps={{ radius: "lg", src: user.user?.image }}
-            description={user.user?.email}
-            name={user.user?.name}
+            avatarProps={{ radius: "lg", src: user.userId?.image }}
+            description={user.userId?.email}
+            name={user.userId?.name}
           >
-            {user.user?.email}
+            {user.userId?.email}
           </User>
         );
       case "role":
@@ -167,14 +165,35 @@ export default function TableOrder(props) {
           </div>
         );
       case "product":
-        return <div>{user.product?.title}</div>;
-      case "productmetal":
-        return <div>{getMetalName(user.product?.metal)}</div>;
+        return (
+          <div className="line-clamp-1">
+            {user.products[0].productId?.title}
+          </div>
+        );
+      case "productdes":
+        return (
+          <div
+            className="line-clamp-1"
+            dangerouslySetInnerHTML={{
+              __html: user.products[0].productId?.description,
+            }}
+          ></div>
+        );
+
+      case "totalProducts":
+        return <div className="line-clamp-1">{user.products.length}</div>;
+      case "color":
+        return <div>{getMetalName(user.products[0].productId?.color)}</div>;
+      case "quantity":
+        const quantities = user.products.map((product) => product.quantity);
+        const quantityString = quantities.join(", ");
+        return <div>{quantityString}</div>;
+
       case "productId":
-        return <div>{user.product?.description}</div>;
+        return <div>{user.products[0]?.description}</div>;
       case "detailId":
         return (
-          <div>{user.userDetail?.area + ", " + user.userDetail?.landmark}</div>
+          <div>{user.detailId?.area + ", " + user.detailId?.landmark}</div>
         );
       case "date":
         return <div>{dateConverter(user.date)}</div>;

@@ -12,6 +12,7 @@ const ProductState = (props) => {
   const [render, setRender] = useState(false);
 
   const [alluserAddress, setAllUserAddress] = useState([]);
+  const [userOrderData, setUserOrderData] = useState([]);
 
   const combineObjects = (arr) => {
     const combined = {};
@@ -46,6 +47,21 @@ const ProductState = (props) => {
         }
       );
       setAllUserAddress(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const fetchOrderData = async () => {
+    try {
+      const response = await axios.get(
+        `${API_BASE_URL}/api/order/product/orders/eachuser`,
+        {
+          headers: {
+            "auth-token": `${JSON.parse(localStorage.getItem("token"))}`,
+          },
+        }
+      );
+      setUserOrderData(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -86,6 +102,7 @@ const ProductState = (props) => {
 
   useEffect(() => {
     fetchOrderAddresses();
+    fetchOrderData();
   }, [render]);
   const [finalPostData, setFinalPostData] = useState({});
 
@@ -93,9 +110,13 @@ const ProductState = (props) => {
     if (data.products[0]) {
       setFinalPostData(data);
       const resData = await postOrderData(data);
+      localStorage.removeItem("cartData");
+      setOrderData([]);
+      setSummaryData([]);
       console.log(resData);
     }
   };
+  console.log(userOrderData);
 
   return (
     <ProductContext.Provider
