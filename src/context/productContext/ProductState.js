@@ -116,7 +116,6 @@ const ProductState = (props) => {
       console.log(resData);
     }
   };
-  console.log(userOrderData);
 
   return (
     <ProductContext.Provider
@@ -132,6 +131,7 @@ const ProductState = (props) => {
         alluserAddress,
         finalOrder,
         finalPostData,
+        userOrderData,
       }}
     >
       {props.children}

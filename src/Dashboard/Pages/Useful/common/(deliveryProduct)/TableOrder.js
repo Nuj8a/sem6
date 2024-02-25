@@ -25,26 +25,13 @@ import { DeleteIcon } from "../../../../common/components/Tables/Icons/DeleteIco
 import ConFirm from "../../../../common/components/ConFirm";
 import ModalFun from "../Modal";
 import BredCrumbFun from "../../../../common/Navigation/BredCrumb";
+import { useLocation } from "react-router-dom";
 
 const statusColorMap = {
   active: "success",
   paused: "danger",
   vacation: "warning",
 };
-
-const columns = [
-  { name: "SN", uid: "sn" },
-  { name: "ID", uid: "_id", sortable: true },
-  { name: "USER", uid: "user", sortable: true },
-  { name: "PRODUCT NAME", uid: "product", sortable: true },
-  { name: "PRODUCT DESCRIPTION", uid: "productdes" },
-  { name: "TOTAL PRODUCTS", uid: "totalProducts" },
-  { name: "TOTAL PRICE", uid: "totalPrice" },
-  { name: "QUANTITY", uid: "quantity" },
-  { name: "DELIVER ADDRESS", uid: "detailId" },
-  { name: "DATE", uid: "date" },
-  { name: "ACTIONS", uid: "actions" },
-];
 
 const INITIAL_VISIBLE_COLUMNS = [
   "sn",
@@ -73,6 +60,7 @@ function getMetalName(id) {
 }
 
 export default function TableOrder(props) {
+  const path = useLocation().pathname;
   const { orderData, PageFrom, handelUpdate, PageType, handelDelete } = props;
   const [filterValue, setFilterValue] = React.useState("");
   const [visibleColumns, setVisibleColumns] = React.useState(
@@ -84,6 +72,36 @@ export default function TableOrder(props) {
     direction: "ascending",
   });
   const [Page, setPage] = React.useState(1);
+
+  let columns;
+  if (path.includes("dashboard")) {
+    columns = [
+      { name: "SN", uid: "sn" },
+      { name: "ID", uid: "_id", sortable: true },
+      { name: "USER", uid: "user", sortable: true },
+      { name: "PRODUCT NAME", uid: "product", sortable: true },
+      { name: "PRODUCT DESCRIPTION", uid: "productdes" },
+      { name: "TOTAL PRODUCTS", uid: "totalProducts" },
+      { name: "TOTAL PRICE", uid: "totalPrice" },
+      { name: "QUANTITY", uid: "quantity" },
+      { name: "DELIVER ADDRESS", uid: "detailId" },
+      { name: "DATE", uid: "date" },
+      { name: "ACTIONS", uid: "actions" },
+    ];
+  } else {
+    columns = [
+      { name: "SN", uid: "sn" },
+      { name: "ID", uid: "_id", sortable: true },
+      { name: "USER", uid: "user", sortable: true },
+      { name: "PRODUCT NAME", uid: "product", sortable: true },
+      { name: "PRODUCT DESCRIPTION", uid: "productdes" },
+      { name: "TOTAL PRODUCTS", uid: "totalProducts" },
+      { name: "TOTAL PRICE", uid: "totalPrice" },
+      { name: "QUANTITY", uid: "quantity" },
+      { name: "DELIVER ADDRESS", uid: "detailId" },
+      { name: "DATE", uid: "date" },
+    ];
+  }
 
   const hasSearchFilter = Boolean(filterValue);
   const btnRef = useRef();
@@ -107,6 +125,7 @@ export default function TableOrder(props) {
     return columns.filter((column) =>
       Array.from(visibleColumns).includes(column.uid)
     );
+    // eslint-disable-next-line
   }, [visibleColumns]);
 
   const filteredItems = React.useMemo(() => {
@@ -141,100 +160,105 @@ export default function TableOrder(props) {
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((user, columnKey) => {
-    const cellValue = user[columnKey];
+  const renderCell = React.useCallback(
+    (user, columnKey) => {
+      const cellValue = user[columnKey];
 
-    switch (columnKey) {
-      case "user":
-        return (
-          <User
-            avatarProps={{ radius: "lg", src: user.userId?.image }}
-            description={user.userId?.email}
-            name={user.userId?.name}
-          >
-            {user.userId?.email}
-          </User>
-        );
-      case "role":
-        return (
-          <div className="flex flex-col">
-            <p className="text-bold text-small capitalize">{cellValue}</p>
-            <p className="text-bold text-tiny capitalize text-default-400">
-              {user.team}
-            </p>
-          </div>
-        );
-      case "product":
-        return (
-          <div className="line-clamp-1">
-            {user.products[0].productId?.title}
-          </div>
-        );
-      case "productdes":
-        return (
-          <div
-            className="line-clamp-1"
-            dangerouslySetInnerHTML={{
-              __html: user.products[0].productId?.description,
-            }}
-          ></div>
-        );
+      switch (columnKey) {
+        case "user":
+          return (
+            <User
+              avatarProps={{ radius: "lg", src: user.userId?.image }}
+              description={user.userId?.email}
+              name={user.userId?.name}
+            >
+              {user.userId?.email}
+            </User>
+          );
+        case "role":
+          return (
+            <div className="flex flex-col">
+              <p className="text-bold text-small capitalize">{cellValue}</p>
+              <p className="text-bold text-tiny capitalize text-default-400">
+                {user.team}
+              </p>
+            </div>
+          );
+        case "product":
+          return (
+            <div className="line-clamp-1">
+              {user.products[0].productId?.title}
+            </div>
+          );
+        case "productdes":
+          return (
+            <div
+              className="line-clamp-1"
+              dangerouslySetInnerHTML={{
+                __html: user.products[0].productId?.description,
+              }}
+            ></div>
+          );
 
-      case "totalProducts":
-        return <div className="line-clamp-1">{user.products.length}</div>;
-      case "color":
-        return <div>{getMetalName(user.products[0].productId?.color)}</div>;
-      case "quantity":
-        const quantities = user.products.map((product) => product.quantity);
-        const quantityString = quantities.join(", ");
-        return <div>{quantityString}</div>;
+        case "totalProducts":
+          return <div className="line-clamp-1">{user.products.length}</div>;
+        case "color":
+          return <div>{getMetalName(user.products[0].productId?.color)}</div>;
+        case "quantity":
+          const quantities = user.products.map((product) => product.quantity);
+          const quantityString = quantities.join(", ");
+          return <div>{quantityString}</div>;
 
-      case "productId":
-        return <div>{user.products[0]?.description}</div>;
-      case "detailId":
-        return (
-          <div>{user.detailId?.area + ", " + user.detailId?.landmark}</div>
-        );
-      case "date":
-        return <div>{dateConverter(user.date)}</div>;
-      case "status":
-        return (
-          <Chip
-            className="capitalize"
-            color={statusColorMap[user.status]}
-            size="sm"
-            variant="flat"
-          >
-            {cellValue}
-          </Chip>
-        );
-      case "actions":
-        return (
-          <div className="relative flex items-center gap-2">
-            <Tooltip content="Details">
-              <span
-                className="text-lg text-default-400 cursor-pointer active:opacity-50"
-                onClick={() => viewBtnClk(user)}
-              >
-                <EyeIcon />
-              </span>
-            </Tooltip>
-            {/* <Tooltip content="Edit user">
+        case "productId":
+          return <div>{user.products[0]?.description}</div>;
+        case "detailId":
+          return (
+            <div>{user.detailId?.area + ", " + user.detailId?.landmark}</div>
+          );
+        case "date":
+          return <div>{dateConverter(user.date)}</div>;
+        case "status":
+          return (
+            <Chip
+              className="capitalize"
+              color={statusColorMap[user.status]}
+              size="sm"
+              variant="flat"
+            >
+              {cellValue}
+            </Chip>
+          );
+        case "actions":
+          return (
+            path.includes("dashboard") && (
+              <div className="relative flex items-center gap-2">
+                <Tooltip content="Details">
+                  <span
+                    className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                    onClick={() => viewBtnClk(user)}
+                  >
+                    <EyeIcon />
+                  </span>
+                </Tooltip>
+                {/* <Tooltip content="Edit user">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <EditIcon />
               </span>
             </Tooltip> */}
-            <Tooltip color="danger" content="Delete user">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon onClick={() => deleteBtnClk(user._id)} />
-              </span>
-            </Tooltip>
-          </div>
-        );
-      default:
-        return cellValue;
-    }
-  }, []);
+                <Tooltip color="danger" content="Delete user">
+                  <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                    <DeleteIcon onClick={() => deleteBtnClk(user._id)} />
+                  </span>
+                </Tooltip>
+              </div>
+            )
+          );
+        default:
+          return cellValue;
+      }
+    },
+    [path]
+  );
 
   const onRowsPerPageChange = React.useCallback((e) => {
     setRowsPerPage(Number(e.target.value));
@@ -340,7 +364,7 @@ export default function TableOrder(props) {
     onRowsPerPageChange,
     orderData.length,
     onSearchChange,
-
+    columns,
     PageFrom,
     onClear,
   ]);
