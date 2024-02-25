@@ -3,7 +3,6 @@ import React from "react";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 
 export default function ProductCard({ data }) {
-  console.log(data);
   return (
     <Card
       shadow="sm"

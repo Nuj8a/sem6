@@ -31,7 +31,6 @@ const Page = ({ userId }) => {
   const { sixMonthDataTwoDiffUser } = useSelector(
     (state) => state.statisticsReducer
   );
-  // console.log(sixMonthDataTwoDiffUser);
 
   const userDetail = detailData.find(
     (detail) => detail.userId === oneUserData._id
@@ -55,7 +54,7 @@ const Page = ({ userId }) => {
   };
 
   const finalOrder = joinedData.filter(
-    (e) => String(e.userId) === String(userId)
+    (e) => String(e.userId?._id) === String(userId)
   );
 
   useEffect(() => {
@@ -66,7 +65,8 @@ const Page = ({ userId }) => {
       user: oneUserData,
     }));
     setFinalData(finalorderData);
-  }, [orderData, productData, userDetail, oneUserData, userId, finalOrder]);
+    // eslint-disable-next-line
+  }, [userId, orderData, productData, userDetail, oneUserData]);
 
   return (
     <>
