@@ -115,7 +115,7 @@ export default function ModalFun(props) {
                       <Link
                         className="text-blue-600"
                         size="sm"
-                        href={`user/${viewDetal.userId._id}`}
+                        to={`/dashboard/profile/${viewDetal.userId._id}`}
                       >
                         Visit user for more detail
                       </Link>
@@ -230,7 +230,7 @@ export default function ModalFun(props) {
                       </div>
                       <div className="flex gap-1">
                         <span className="capitalize">Colors:</span>
-                        <span className="capitalize">
+                        <span className="capitalize line-clamp-1">
                           {productOne?.productId?.productcolor?.map(
                             (color, index) => (
                               <span key={index}>{color + ", "}</span>
@@ -239,17 +239,17 @@ export default function ModalFun(props) {
                         </span>
                       </div>
                     </div>
-                    {PageType ? (
+                    {/* {PageType ? (
                       <Link
                         className="text-blue-600"
                         size="sm"
-                        href={`user/${productOne.productId?._id}`}
+                        to={`/dashboard/user/${productOne.productId?._id}`}
                       >
                         Visit product for more detail
                       </Link>
                     ) : (
                       ""
-                    )}
+                    )} */}
                   </div>
                 </div>
               </ModalBody>

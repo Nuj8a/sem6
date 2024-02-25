@@ -1,8 +1,8 @@
 import React from "react";
 import Pagesab from "../Page";
-import { useParams } from "next/navigation";
+import { useParams } from "react-router-dom";
 
-const Page = () => {
+const EachMsg = () => {
   const params = useParams();
   return (
     <div>
@@ -11,4 +11,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default EachMsg;

@@ -26,7 +26,8 @@ export default function ModalFun(props) {
       handelUpdate(msgData._id);
       updateURLWithoutSegment(window.location.href, "message");
     }
-  }, [msgData._id, handelUpdate]);
+    // eslint-disable-next-line
+  }, [msgData._id]);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const clearCategoryData = () => {
     setMsgData({});

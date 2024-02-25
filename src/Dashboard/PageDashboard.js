@@ -15,6 +15,8 @@ import Message from "./Pages/Useful/message/Page";
 import Orders from "./Pages/Useful/orders/Page";
 import Delivery from "./Pages/Useful/delivery/page";
 import Finished from "./Pages/Useful/finished/Page";
+import EachMsg from "./Pages/Useful/message/EachMsg/EachMsg";
+import Profileid from "./Pages/User/profile/Profileid/Profileid";
 
 const PageDashboard = ({ setProgress }) => {
   const [hamClick, setHamClick] = useState(false);
@@ -71,8 +73,16 @@ const PageDashboard = ({ setProgress }) => {
                 element={<Profile setProgress={setProgress} />}
               />
               <Route
+                path="/dashboard/profile/:id"
+                element={<Profileid setProgress={setProgress} />}
+              />
+              <Route
                 path="/dashboard/message"
                 element={<Message setProgress={setProgress} />}
+              />
+              <Route
+                path="/dashboard/message/:id"
+                element={<EachMsg setProgress={setProgress} />}
               />
               <Route
                 path="/dashboard/orders"

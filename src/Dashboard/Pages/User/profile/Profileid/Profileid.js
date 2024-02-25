@@ -1,8 +1,8 @@
 import React from "react";
-import { useParams } from "next/navigation";
 import Main from "../Main";
+import { useParams } from "react-router-dom";
 
-const Page = () => {
+const Profileid = () => {
   const params = useParams();
   return (
     <>
@@ -11,4 +11,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default Profileid;

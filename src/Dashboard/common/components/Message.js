@@ -35,23 +35,19 @@ export default function Message(props) {
           </Button>
         </PopoverTrigger>
         {unreadMsg.length > 0 && (
-          <PopoverContent className="!rounded-[3px] !px-0">
+          <PopoverContent className="!rounded-[3px] w-[200px] !px-0">
             {unreadMsg.map((e) => {
               return (
                 <Link
                   key={e._id}
-                  className=" py-2 hover:bg-[#e7e7e7] dark:hover:bg-[#2d2a3d] w-full px-4 select-none cursor-pointer"
-                  href={`/dashboard/message/${e._id}`}
+                  className=" py-2 hover:bg-[#e7e7e7] border-b dark:hover:bg-[#2d2a3d] w-full px-4 select-none cursor-pointer"
+                  to={`/dashboard/message/${e._id}`}
                   onClick={() => btnref.current.click()}
                 >
-                  <div className="text-small capitalize font-bold">
-                    {e.title.length > 25
-                      ? e.title.slice(0, 25) + "..."
-                      : e.title}
+                  <div className="text-small capitalize font-bold line-clamp-1">
+                    {e.title}
                   </div>
-                  <div className="text-tiny">
-                    {e.msg.length > 40 ? e.msg.slice(0, 40) + "..." : e.msg}
-                  </div>
+                  <div className="text-tiny line-clamp-1">{e.msg}</div>
                 </Link>
               );
             })}
