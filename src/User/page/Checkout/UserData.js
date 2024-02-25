@@ -16,6 +16,7 @@ const UserData = ({
   subtotal,
   shipping,
   placeOrderBtnclk,
+  setDeliveryData,
 }) => {
   const [showAddress, setShowAddress] = useState(false);
   const { alluserAddress } = useContext(ProductContext);
@@ -39,6 +40,20 @@ const UserData = ({
       setShowAddress(false);
     }
   }, [oneUserAddress]);
+
+  useEffect(() => {
+    setDeliveryData({
+      ...deliveryData,
+      fName: oneUserAddress.fName,
+      email: oneUserAddress.email,
+      mobileNumber: oneUserAddress.mobileNumber,
+      area: oneUserAddress.area,
+      address: oneUserAddress.address,
+      landmark: oneUserAddress.landmark,
+      city: oneUserAddress.city,
+      province: oneUserAddress.province,
+    });
+  }, [oneUserAddress, deliveryData, setDeliveryData]);
 
   return (
     <div>

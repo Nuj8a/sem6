@@ -89,6 +89,7 @@ const Checkout = () => {
         subtotal={subtotal}
         shipping={shipping}
         placeOrderBtnclk={placeOrderBtnclk}
+        setDeliveryData={setDeliveryData}
       />
     </>
   );
