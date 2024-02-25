@@ -9,10 +9,10 @@ import {
   Avatar,
 } from "@nextui-org/react";
 import PersonIcon from "@mui/icons-material/Person";
-import HomeIcon from "@mui/icons-material/Home";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import Confirmlogout from "./ConFirmlogout";
 import { useNavigate } from "react-router-dom";
+import { IoGitBranch } from "react-icons/io5";
 
 export default function Profile({ userData }) {
   const { data } = userData;
@@ -23,10 +23,6 @@ export default function Profile({ userData }) {
   const logoutbtnClk = () => {
     btnRef.current.click();
     listBtnRef.current.click();
-  };
-  const linkClick = () => {
-    listBtnRef.current.click();
-    navigate("/dashboard/profile");
   };
 
   return (
@@ -69,18 +65,27 @@ export default function Profile({ userData }) {
                   <PersonIcon className="text-slate-600 relative text-xl ml-[3px] dark:text-slate-200" />
                 }
                 textValue="My Account"
-                onClick={linkClick}
+                onClick={() =>
+                  navigate(
+                    `/myaccount/${JSON.parse(localStorage.getItem("data"))._id}`
+                  )
+                }
               >
+                {/* <Link
+                  to={`/myaccount/${JSON.parse(localStorage.getItem("data"))._id}`}
+                >
+                </Link> */}
                 <div className="!text-xs !font-semibold">My Account</div>
               </ListboxItem>
               <ListboxItem
                 key="gohome"
                 startContent={
-                  <HomeIcon className="text-slate-600 text-lg ml-[5px] dark:text-slate-200" />
+                  <IoGitBranch className="text-slate-600 text-2xl ml-[5px] dark:text-slate-200" />
                 }
                 textValue="Go Home"
+                onClick={() => navigate(`/ordertrack`)}
               >
-                <div className="!text-xs !font-semibold">My Orders</div>
+                <div className="!text-xs !font-semibold">Order Track</div>
               </ListboxItem>
             </ListboxSection>
 

@@ -10,6 +10,8 @@ import EachSite from "./page/EachSite/EachSite";
 import Contact from "./page/Contact/Contact";
 import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
+import MyAccount from "./page/myaccount/MyAccount";
+import OrderTrack from "./page/OrderTrack/OrderTrack";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -41,6 +43,8 @@ const PageUser = () => {
             <Route path="/about-us" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Cart />} />
+            <Route path="/myaccount/:id" element={<MyAccount />} />
+            <Route path="/ordertrack" element={<OrderTrack />} />
             <Route path="/checkout/:id" element={<Cart />} />
             <Route path="/contact" element={<Contact />} />
             <Route
