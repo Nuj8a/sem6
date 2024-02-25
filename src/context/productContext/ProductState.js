@@ -74,8 +74,6 @@ const ProductState = (props) => {
     fetchOrderAddresses();
   }, [render]);
 
-  // console.log(userAddress);
-  console.log(alluserAddress);
   return (
     <ProductContext.Provider
       value={{
@@ -87,6 +85,7 @@ const ProductState = (props) => {
         userAddress,
         postOrderAddresses,
         setRender,
+        alluserAddress,
       }}
     >
       {props.children}

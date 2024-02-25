@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Card, Checkbox } from "@nextui-org/react";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 import { PiShoppingCartFill } from "react-icons/pi";
@@ -6,6 +6,7 @@ import formatRS from "../../../libs/FormatRS";
 import Inputfield from "./Inputfield";
 import { IoMdPin } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import ProductContext from "../../../context/productContext/ProductContext";
 
 const UserData = ({
   deliveryData,
@@ -16,7 +17,29 @@ const UserData = ({
   shipping,
   placeOrderBtnclk,
 }) => {
-  const [showAddress, setShowAddress] = useState(true);
+  const [showAddress, setShowAddress] = useState(false);
+  const { alluserAddress } = useContext(ProductContext);
+  const [oneUserAddress, setOneUserAddress] = useState({});
+
+  useEffect(() => {
+    if (alluserAddress[0]) {
+      let userId = JSON.parse(localStorage.getItem("data"))?._id || null;
+      let mydata = alluserAddress.find(
+        (e) => String(e.userId) === String(userId)
+      );
+      setOneUserAddress(mydata);
+    }
+  }, [alluserAddress, oneUserAddress]);
+
+  console.log(oneUserAddress);
+  useEffect(() => {
+    if (oneUserAddress?.fName) {
+      setShowAddress(true);
+    } else {
+      setShowAddress(false);
+    }
+  }, [oneUserAddress]);
+
   return (
     <div>
       <div className="px-5 min-h-[70vh]">
@@ -33,7 +56,7 @@ const UserData = ({
                 <h3 className="text-xl mb-5 flex gap-1 items-center text-blue-700 font-semibold">
                   <IoMdPin /> Billing Address
                 </h3>
-                {!showAddress && (
+                {oneUserAddress?.fName && !showAddress && (
                   <div
                     onClick={() => setShowAddress(true)}
                     className="flex select-none shadow px-5 p-1.5 text-sm border rounded-full items-center gap-1 hover:bg-blue-700 hover:text-white text-blue-700 cursor-pointer duration-150"
@@ -50,15 +73,26 @@ const UserData = ({
                         Address Summary
                       </div>
                       <p className="mt-2 text-gray-500 text-sm">
-                        Full Name: Gaurab
+                        Full Name: {oneUserAddress?.fName}
                       </p>
                       <p className="text-gray-500 text-sm">
-                        Mobile Number: Gaurab
+                        Mobile Number: {oneUserAddress?.mobileNumber}
                       </p>
-                      <p className="text-gray-500 text-sm">Area: Gaurab</p>
-                      <p className="text-gray-500 text-sm">Landmark: Gaurab</p>
-                      <p className="text-gray-500 text-sm">City: Gaurab</p>
-                      <p className="text-gray-500 text-sm">Province: Gaurab</p>
+                      <p className="text-gray-500 text-sm">
+                        Email: {oneUserAddress?.email}
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        Area: {oneUserAddress?.area}
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        Landmark: {oneUserAddress?.landmark}
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        City: {oneUserAddress?.city}
+                      </p>
+                      <p className="text-gray-500 text-sm">
+                        Province: {oneUserAddress?.province}
+                      </p>
                     </div>
                   </div>
                 ) : (
