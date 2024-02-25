@@ -74,6 +74,9 @@ const ProductState = (props) => {
     fetchOrderAddresses();
   }, [render]);
 
+  const [orderDataFinal, setOrderDataFinal] = useState({});
+  console.log(orderDataFinal);
+
   return (
     <ProductContext.Provider
       value={{
@@ -86,6 +89,7 @@ const ProductState = (props) => {
         postOrderAddresses,
         setRender,
         alluserAddress,
+        setOrderDataFinal,
       }}
     >
       {props.children}

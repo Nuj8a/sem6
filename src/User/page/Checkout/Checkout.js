@@ -3,7 +3,7 @@ import ProductContext from "../../../context/productContext/ProductContext";
 import UserData from "./UserData";
 
 const Checkout = () => {
-  const { summaryData, postOrderAddresses, setRender } =
+  const { summaryData, postOrderAddresses, setRender, setOrderDataFinal } =
     useContext(ProductContext);
 
   let subtotal = summaryData.reduce((acc, cur) => acc + cur.price, 0);
@@ -29,6 +29,7 @@ const Checkout = () => {
   const placeOrderBtnclk = () => {
     if (validateForm()) {
       postOrderAddresses(deliveryData);
+      setOrderDataFinal({});
       setRender((p) => !p);
     }
   };
@@ -53,24 +54,24 @@ const Checkout = () => {
     if (!mobilePattern.test(deliveryData.mobileNumber)) {
       newErrors.mobileNumber = "Mobile number must start with 97 or 98";
       isValid = false;
-    } else if (deliveryData.mobileNumber.length !== 10) {
+    } else if (deliveryData.mobileNumber?.length !== 10) {
       newErrors.mobileNumber = "Mobile number must be 10 digits";
       isValid = false;
     }
 
-    if (deliveryData.city.length < 3) {
+    if (deliveryData.city?.length < 3) {
       newErrors.city = "City must be at least 3 characters";
       isValid = false;
     }
-    if (deliveryData.area.length < 3) {
+    if (deliveryData.area?.length < 3) {
       newErrors.area = "Area must be at least 3 characters";
       isValid = false;
     }
-    if (deliveryData.address.length < 3) {
+    if (deliveryData.address?.length < 3) {
       newErrors.address = "Full Address must be at least 3 characters";
       isValid = false;
     }
-    if (deliveryData.landmark.length < 3) {
+    if (deliveryData.landmark?.length < 3) {
       newErrors.landmark = "Landmark must be at least 3 characters";
       isValid = false;
     }

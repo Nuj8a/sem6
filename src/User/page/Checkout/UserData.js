@@ -42,18 +42,21 @@ const UserData = ({
   }, [oneUserAddress]);
 
   useEffect(() => {
-    setDeliveryData({
-      ...deliveryData,
-      fName: oneUserAddress.fName,
-      email: oneUserAddress.email,
-      mobileNumber: oneUserAddress.mobileNumber,
-      area: oneUserAddress.area,
-      address: oneUserAddress.address,
-      landmark: oneUserAddress.landmark,
-      city: oneUserAddress.city,
-      province: oneUserAddress.province,
-    });
-  }, [oneUserAddress, deliveryData, setDeliveryData]);
+    if (oneUserAddress.fName) {
+      setDeliveryData({
+        ...deliveryData,
+        fName: oneUserAddress.fName,
+        email: oneUserAddress.email,
+        mobileNumber: oneUserAddress.mobileNumber,
+        area: oneUserAddress.area,
+        address: oneUserAddress.address,
+        landmark: oneUserAddress.landmark,
+        city: oneUserAddress.city,
+        province: oneUserAddress.province,
+      });
+    }
+    // eslint-disable-next-line
+  }, [oneUserAddress]);
 
   return (
     <div>
