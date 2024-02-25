@@ -62,9 +62,23 @@ const ProductState = (props) => {
           },
         }
       );
-      if (response.data) {
-        console.log("Address added");
-      }
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const postOrderData = async (data) => {
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/api/order/product/order`,
+        data,
+        {
+          headers: {
+            "auth-token": JSON.parse(localStorage.getItem("token")),
+          },
+        }
+      );
+      return response.data;
     } catch (error) {
       console.log(error);
     }
@@ -73,9 +87,15 @@ const ProductState = (props) => {
   useEffect(() => {
     fetchOrderAddresses();
   }, [render]);
+  const [finalPostData, setFinalPostData] = useState({});
 
-  const [orderDataFinal, setOrderDataFinal] = useState({});
-  console.log(orderDataFinal);
+  const finalOrder = async (data) => {
+    if (data.products[0]) {
+      setFinalPostData(data);
+      const resData = await postOrderData(data);
+      console.log(resData);
+    }
+  };
 
   return (
     <ProductContext.Provider
@@ -89,7 +109,8 @@ const ProductState = (props) => {
         postOrderAddresses,
         setRender,
         alluserAddress,
-        setOrderDataFinal,
+        finalOrder,
+        finalPostData,
       }}
     >
       {props.children}

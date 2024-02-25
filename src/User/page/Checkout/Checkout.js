@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductContext from "../../../context/productContext/ProductContext";
 import UserData from "./UserData";
 
-const Checkout = () => {
-  const { summaryData, postOrderAddresses, setRender, setOrderDataFinal } =
+const Checkout = ({ finalTable }) => {
+  const { summaryData, postOrderAddresses, setRender, finalOrder } =
     useContext(ProductContext);
 
   let subtotal = summaryData.reduce((acc, cur) => acc + cur.price, 0);
@@ -26,11 +26,68 @@ const Checkout = () => {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const placeOrderBtnclk = () => {
+  const [showAddress, setShowAddress] = useState(false);
+  const { alluserAddress } = useContext(ProductContext);
+  const [oneUserAddress, setOneUserAddress] = useState({});
+
+  useEffect(() => {
+    if (alluserAddress.length > 0) {
+      let userId = JSON.parse(localStorage.getItem("data"))?._id || null;
+      let reversedAddresses = [...alluserAddress].reverse(); // Reversing the array
+      let mydata = reversedAddresses.find(
+        (e) => String(e.userId) === String(userId)
+      );
+      setOneUserAddress(mydata);
+    }
+  }, [alluserAddress, oneUserAddress]);
+
+  useEffect(() => {
+    if (oneUserAddress?.fName) {
+      setShowAddress(true);
+    } else {
+      setShowAddress(false);
+    }
+  }, [oneUserAddress]);
+
+  useEffect(() => {
+    if (oneUserAddress?.fName) {
+      setDeliveryData({
+        ...deliveryData,
+        fName: oneUserAddress.fName,
+        email: oneUserAddress.email,
+        mobileNumber: oneUserAddress.mobileNumber,
+        area: oneUserAddress.area,
+        address: oneUserAddress.address,
+        landmark: oneUserAddress.landmark,
+        city: oneUserAddress.city,
+        province: oneUserAddress.province,
+      });
+    }
+    // eslint-disable-next-line
+  }, [oneUserAddress]);
+
+  const placeOrderBtnclk = async () => {
     if (validateForm()) {
-      postOrderAddresses(deliveryData);
-      setOrderDataFinal({});
-      setRender((p) => !p);
+      let addressId = "";
+      if (!showAddress) {
+        let res = await postOrderAddresses(deliveryData);
+        addressId = res?.addId;
+        setRender((p) => !p);
+      } else {
+        addressId = oneUserAddress._id;
+      }
+      const result = finalTable.map((item) => ({
+        productId: item.productId,
+        quantity: item.quantity,
+      }));
+
+      const orderFinal = {
+        products: result,
+        detailId: addressId,
+        billing: false,
+      };
+
+      finalOrder(orderFinal);
     }
   };
 
@@ -54,10 +111,8 @@ const Checkout = () => {
     if (!mobilePattern.test(deliveryData.mobileNumber)) {
       newErrors.mobileNumber = "Mobile number must start with 97 or 98";
       isValid = false;
-    } else if (deliveryData.mobileNumber?.length !== 10) {
-      newErrors.mobileNumber = "Mobile number must be 10 digits";
-      isValid = false;
     }
+    newErrors.mobileNumber = deliveryData.mobileNumber;
 
     if (deliveryData.city?.length < 3) {
       newErrors.city = "City must be at least 3 characters";
@@ -91,6 +146,9 @@ const Checkout = () => {
         shipping={shipping}
         placeOrderBtnclk={placeOrderBtnclk}
         setDeliveryData={setDeliveryData}
+        oneUserAddress={oneUserAddress}
+        showAddress={showAddress}
+        setShowAddress={setShowAddress}
       />
     </>
   );

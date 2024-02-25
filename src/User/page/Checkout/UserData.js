@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Button, Card, Checkbox } from "@nextui-org/react";
 import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 import { PiShoppingCartFill } from "react-icons/pi";
@@ -6,7 +6,6 @@ import formatRS from "../../../libs/FormatRS";
 import Inputfield from "./Inputfield";
 import { IoMdPin } from "react-icons/io";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import ProductContext from "../../../context/productContext/ProductContext";
 
 const UserData = ({
   deliveryData,
@@ -16,48 +15,10 @@ const UserData = ({
   subtotal,
   shipping,
   placeOrderBtnclk,
-  setDeliveryData,
+  oneUserAddress,
+  showAddress,
+  setShowAddress,
 }) => {
-  const [showAddress, setShowAddress] = useState(false);
-  const { alluserAddress } = useContext(ProductContext);
-  const [oneUserAddress, setOneUserAddress] = useState({});
-
-  useEffect(() => {
-    if (alluserAddress[0]) {
-      let userId = JSON.parse(localStorage.getItem("data"))?._id || null;
-      let mydata = alluserAddress.find(
-        (e) => String(e.userId) === String(userId)
-      );
-      setOneUserAddress(mydata);
-    }
-  }, [alluserAddress, oneUserAddress]);
-
-  console.log(oneUserAddress);
-  useEffect(() => {
-    if (oneUserAddress?.fName) {
-      setShowAddress(true);
-    } else {
-      setShowAddress(false);
-    }
-  }, [oneUserAddress]);
-
-  useEffect(() => {
-    if (oneUserAddress.fName) {
-      setDeliveryData({
-        ...deliveryData,
-        fName: oneUserAddress.fName,
-        email: oneUserAddress.email,
-        mobileNumber: oneUserAddress.mobileNumber,
-        area: oneUserAddress.area,
-        address: oneUserAddress.address,
-        landmark: oneUserAddress.landmark,
-        city: oneUserAddress.city,
-        province: oneUserAddress.province,
-      });
-    }
-    // eslint-disable-next-line
-  }, [oneUserAddress]);
-
   return (
     <div>
       <div className="px-5 min-h-[70vh]">
