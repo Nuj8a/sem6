@@ -105,16 +105,25 @@ const ProductState = (props) => {
     fetchOrderData();
   }, [render]);
   const [finalPostData, setFinalPostData] = useState({});
+  const [isOrderNow, setIsOrderNow] = useState(false);
+  const [orderNowData, setOrderNowData] = useState([]);
 
   const finalOrder = async (data) => {
-    if (data.products[0]) {
-      setFinalPostData(data);
-      const resData = await postOrderData(data);
-      localStorage.removeItem("cartData");
-      setOrderData([]);
-      setSummaryData([]);
+    if (isOrderNow) {
+      let finaldata = { ...data, products: orderNowData };
+      setFinalPostData(finaldata);
+      const resData = await postOrderData(finaldata);
       console.log(resData);
+    } else {
+      if (data.products[0]) {
+        setFinalPostData(data);
+        const resData = await postOrderData(data);
+        localStorage.removeItem("cartData");
+        setOrderData([]);
+        console.log(resData);
+      }
     }
+    // setSummaryData([]);
   };
 
   return (
@@ -132,6 +141,9 @@ const ProductState = (props) => {
         finalOrder,
         finalPostData,
         userOrderData,
+        setIsOrderNow,
+        isOrderNow,
+        setOrderNowData,
       }}
     >
       {props.children}

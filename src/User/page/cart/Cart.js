@@ -5,7 +5,20 @@ import Breadcrumb from "../../../Dashboard/common/Navigation/BredCrumb";
 import { Button, Card } from "@nextui-org/react";
 import formatRS from "../../../libs/FormatRS";
 
-const Cart = ({ finalTable, subtotal, shipping, navigate }) => {
+const Cart = ({
+  finalTable,
+  subtotal,
+  shipping,
+  navigate,
+  setIsOrderNow,
+  updateSummary,
+  setSummaryData,
+}) => {
+  const cartBtnclk = () => {
+    navigate("/checkout");
+    setSummaryData(updateSummary);
+    setIsOrderNow(false);
+  };
   return (
     <div>
       <div className="px-5 my-5">
@@ -69,7 +82,7 @@ const Cart = ({ finalTable, subtotal, shipping, navigate }) => {
                 className="w-full mt-4 !rounded-sm"
                 color="primary"
                 endContent={<IoBag className="scale-110 text-base mb-[2px]" />}
-                onClick={() => navigate("/checkout")}
+                onClick={cartBtnclk}
               >
                 Proceed to checkout ( {finalTable.length} )
               </Button>

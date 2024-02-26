@@ -12,7 +12,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import ProductContext from "../../../context/productContext/ProductContext";
 
 const EachSiteDescription = ({ data }) => {
-  const { setOrderData, orderData } = useContext(ProductContext);
+  const {
+    setOrderData,
+    orderData,
+    setSummaryData,
+    setOrderNowData,
+    setIsOrderNow,
+  } = useContext(ProductContext);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -81,6 +87,17 @@ const EachSiteDescription = ({ data }) => {
       };
       setOrderData([...orderData, data]);
     }
+  };
+
+  const ordernowBtnClk = (data) => {
+    let price =
+      data.price * productQuantity -
+      (data.price * productQuantity * data.discount) / 100;
+    let final = [{ price, productName: data.title }];
+    setSummaryData(final);
+    setOrderNowData([{ productId: data._id, quantity: productQuantity }]);
+    setIsOrderNow(true);
+    navigate(`/checkout/${id}`);
   };
 
   return (
@@ -154,7 +171,7 @@ const EachSiteDescription = ({ data }) => {
             className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
             startContent={<BsBagCheckFill />}
             color="primary"
-            onClick={() => navigate(`/checkout/${id}`)}
+            onClick={() => ordernowBtnClk(data)}
           >
             Order Now
           </Button>

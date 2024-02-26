@@ -19,6 +19,7 @@ const UserData = ({
   showAddress,
   setShowAddress,
 }) => {
+  console.log(summaryData);
   return (
     <div>
       <div className="px-5 min-h-[70vh]">

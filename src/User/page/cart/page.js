@@ -10,7 +10,8 @@ import Checkout from "../Checkout/Checkout";
 const Page = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
-  const { orderData, setSummaryData } = useContext(ProductContext);
+  const { orderData, setSummaryData, isOrderNow, setIsOrderNow } =
+    useContext(ProductContext);
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const { allUserData } = useSelector((state) => state.authReducer);
@@ -18,6 +19,8 @@ const Page = () => {
 
   const [finalTable, setFinalTable] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
+  const [updateSummary, setUpdateSummary] = useState([]);
+
   const shipping = 100;
 
   useEffect(() => {
@@ -56,8 +59,11 @@ const Page = () => {
       return { productName: e?.product?.title, price: afterDiscount };
     });
     setSubtotal(newSubtotal);
-    setSummaryData(newSummaryData);
-  }, [finalTable, setSummaryData]);
+    setUpdateSummary(newSummaryData);
+    if (!isOrderNow) {
+      setSummaryData(newSummaryData);
+    }
+  }, [finalTable, setSummaryData, isOrderNow]);
 
   const getActualVal = (price, quantity, discount) => {
     let totalprice = price * quantity;
@@ -72,6 +78,10 @@ const Page = () => {
           navigate={navigate}
           subtotal={subtotal}
           shipping={shipping}
+          setIsOrderNow={setIsOrderNow}
+          updateSummary={updateSummary}
+          isOrderNow={isOrderNow}
+          setSummaryData={setSummaryData}
         />
       ) : (
         <Checkout finalTable={finalTable} />
