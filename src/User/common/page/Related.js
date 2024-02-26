@@ -3,7 +3,7 @@ import CardsProduct from "../Cards/CardsProduct";
 
 const Related = ({ heading, data }) => {
   return (
-    <div className="min-h-[500px] py-10">
+    <div className="min-h-[300px] py-10">
       <div className="flex items-center gap-2 mt-0 mb-8">
         <span className="uppercase text-nowrap text-[var(--text-light-color)] font-Orbitron tracking-wider">
           {heading || "Related"}

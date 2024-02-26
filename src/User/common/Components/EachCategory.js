@@ -20,12 +20,13 @@ const EachCategory = ({ data }) => {
               alt={data?.categoryName}
             />
           </div>
-          <div className="flex flex-col font-poppins justify-start pl-3">
+          <div className="flex flex-col font-poppins justify-start items-start pl-3">
             <h6 className="font-semibold text-sm text-gray-800">
               {data?.categoryName}
             </h6>
             <small className="text-gray-600 text-xs text-start w-full">
               {data?.productCount}
+              {data?.productCount <= 1 ? " Product" : " Products"}
             </small>
           </div>
         </div>

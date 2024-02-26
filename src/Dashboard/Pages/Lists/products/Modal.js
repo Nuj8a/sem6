@@ -412,7 +412,7 @@ export default function ModalApp(props) {
                         placeholder="E"
                         radius="sm"
                         className="!p-0 paddintyzero"
-                        accept=".jpg, .jpeg, .png, .gif, .bmp, .webp"
+                        accept=".jpg, .jpeg, .png "
                         multiple
                         name="productImage"
                         onChange={productDataChange}

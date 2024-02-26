@@ -15,56 +15,56 @@ const ColorsShow = ({ productColor, pColor, setPColor }) => {
         <div
           onClick={() => colorchange("black")}
           className={`${productColor.includes("black") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "black" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "black" && "scale-125"}
           
           h-[20px] border border-black/15  cursor-pointer hover:scale-105 w-[20px] bg-black shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("white")}
           className={`${productColor.includes("white") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "white" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "white" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-white shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("red")}
           className={`${productColor.includes("red") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "red" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "red" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-red-500 shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("blue")}
           className={`${productColor.includes("blue") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "blue" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "blue" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-blue-500 shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("green")}
           className={`${productColor.includes("green") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "green" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "green" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-green-500 shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("pink")}
           className={`${productColor.includes("pink") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "pink" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "pink" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-pink-500 shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("gray")}
           className={`${productColor.includes("gray") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "gray" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "gray" && "scale-125"}
           
           h-[20px] border border-black/15 cursor-pointer hover:scale-105 w-[20px] bg-gray-500 shadow rounded-full`}
         ></div>
         <div
           onClick={() => colorchange("other")}
           className={`${productColor.includes("other") ? "block" : "hidden"}
-          ${pColor.toLocaleLowerCase() === "other" && "scale-125"}
+          ${pColor?.toLocaleLowerCase() === "other" && "scale-125"}
           
           h-[20px] border cursor-pointer scale-105 hover:scale-110 w-[20px] rounded-full overflow-hidden flex-wrap flex`}
         >

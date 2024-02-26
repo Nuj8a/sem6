@@ -32,7 +32,7 @@ const ProductDescription = ({ data }) => {
           <div className="flex gap-5">
             <h4 className="flex gap-1 text-black/80">
               <span className="font-semibold">Avilable Colors:</span>{" "}
-              <ColorsShow productColor={data.productcolor || []} />
+              <ColorsShow productColor={data?.productcolor || []} />
             </h4>
           </div>
           <div className="flex gap-5 mb-1">

@@ -130,9 +130,9 @@ const EachSiteDescription = ({ data }) => {
         </div>
         <div className="text-sm flex gap-2 flex-col">
           <div className="text-black/80">
-            {FindGender(data?.gendertype).toLocaleLowerCase() === "men"
+            {FindGender(data?.gendertype)?.toLocaleLowerCase() === "men"
               ? `Man Up Your Style: Shop Our Men's Collection Now!`
-              : FindGender(data?.gendertype).toLocaleLowerCase() === "women"
+              : FindGender(data?.gendertype)?.toLocaleLowerCase() === "women"
                 ? "Level Up Your Style: Shop Our Women's Collection Now!"
                 : "Elevate Your Look: Explore Our Unisex Collection Today!"}
           </div>

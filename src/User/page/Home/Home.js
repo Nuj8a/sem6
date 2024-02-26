@@ -87,21 +87,21 @@ const Home = () => {
           heading={`Trendy ${FindGender(1)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 1)
-            .slice(0, 10)}
+            .slice(0, 15)}
         />
         <Reatured />
         <Product
           heading={`Trendy ${FindGender(2)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 2)
-            .slice(0, 10)}
+            .slice(0, 15)}
         />
         <CardCollection productData={productData} />
         <Product
           heading={`Trendy ${FindGender(3)}'s Options`}
           data={productData
             .filter((e) => Number(e.gendertype) === 3)
-            .slice(0, 10)}
+            .slice(0, 15)}
         />
       </div>
     </>

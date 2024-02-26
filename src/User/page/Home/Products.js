@@ -5,7 +5,7 @@ const Products = ({ heading, data }) => {
   return (
     <>
       {data.length > 0 && (
-        <div className="min-h-[500px]">
+        <div className="min-h-[300px]">
           <div className="flex items-center text-black/80 gap-2 mt-5 mb-8">
             <span className="uppercase text-nowrap font-Orbitron tracking-wider">
               {heading || "Related"}
