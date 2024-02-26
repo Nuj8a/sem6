@@ -29,7 +29,11 @@ export default function CardCollection({ productData }) {
           isZoomed
           alt="Card background"
           className="z-0 w-full !opacity-60 h-full object-cover"
-          src={productData[0]?.image[0]}
+          src={
+            productData[productData.length - 1]?.image[1]
+              ? productData[productData.length - 1]?.image[1]
+              : productData[productData.length - 1]?.image[0]
+          }
         />
         <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
@@ -72,7 +76,11 @@ export default function CardCollection({ productData }) {
           isZoomed
           alt="Card background"
           className="z-0 w-full !opacity-60 h-full object-cover"
-          src={productData[1]?.image[0]}
+          src={
+            productData[productData.length - 2]?.image[1]
+              ? productData[productData.length - 2]?.image[1]
+              : productData[productData.length - 2]?.image[0]
+          }
         />
         <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
@@ -114,7 +122,11 @@ export default function CardCollection({ productData }) {
           isZoomed
           alt="Card background"
           className="z-0 w-full !opacity-60 h-full object-cover"
-          src={productData[2]?.image[0]}
+          src={
+            productData[productData.length - 3]?.image[1]
+              ? productData[productData.length - 3]?.image[1]
+              : productData[productData.length - 3]?.image[0]
+          }
         />
         <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
@@ -156,7 +168,11 @@ export default function CardCollection({ productData }) {
           isZoomed
           alt="Relaxing app background"
           className="z-0 w-full !opacity-60 h-full object-cover"
-          src={productData[3]?.image[0]}
+          src={
+            productData[productData.length - 4]?.image[1]
+              ? productData[productData.length - 4]?.image[1]
+              : productData[productData.length - 4]?.image[0]
+          }
         />
         <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">
@@ -198,7 +214,11 @@ export default function CardCollection({ productData }) {
           isZoomed
           alt="Relaxing app background"
           className="z-0 w-full h-full !opacity-60 object-cover"
-          src={productData[4]?.image[0]}
+          src={
+            productData[productData.length - 5]?.image[1]
+              ? productData[productData.length - 5]?.image[1]
+              : productData[productData.length - 5]?.image[0]
+          }
         />
         <CardFooter className="absolute bg-black/60 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
           <div className="flex flex-grow gap-2 items-center">

@@ -26,7 +26,7 @@ export default function CardsProduct({ data = {} }) {
             height={190}
             alt={"gaurab"}
             className={`w-full absolute ${data?.image?.length > 1 && "mainImage1"}  object-cover !h-[190px] image-transition`}
-            src={data?.image && data?.image[0]}
+            src={data?.image[1] ? data?.image[1] : data?.image[0]}
             style={{ height: "190px" }}
           />
           {data?.image?.length > 1 && (
@@ -39,7 +39,7 @@ export default function CardsProduct({ data = {} }) {
               alt={"gaurab"}
               className={`w-full absolute   mainImage2 object-cover !h-[190px] image-transition`}
               style={{ height: "190px" }}
-              src={data?.image?.length > 1 && data?.image[1]}
+              src={data?.image?.length > 1 && data?.image[0]}
             />
           )}
         </CardBody>
