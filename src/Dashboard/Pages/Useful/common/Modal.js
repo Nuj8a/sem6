@@ -149,7 +149,7 @@ export default function ModalFun(props) {
                     <div className="flex gap-3 justify-between mt-2 mb-1 items-center">
                       <div className="flex gap-1">
                         <span className="capitalize font-semibold">Name:</span>
-                        <div className="capitalize">
+                        <div className="capitalize line-clamp-1">
                           {productOne?.productId?.title}
                         </div>
                       </div>
@@ -163,8 +163,9 @@ export default function ModalFun(props) {
                       <span className="capitalize mr-1 font-semibold">
                         Description:
                       </span>
-                      <div className="capitalize !text-justify">
+                      <div className="capitalize !text-justify line-clamp-1">
                         <div
+                          categoryName="line-clamp-1"
                           dangerouslySetInnerHTML={{
                             __html: productOne?.productId?.description?.slice(
                               0,

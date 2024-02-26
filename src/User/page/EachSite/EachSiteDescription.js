@@ -75,29 +75,42 @@ const EachSiteDescription = ({ data }) => {
   const [productQuantity, setProductQuantity] = useState(1);
 
   const addtocartClk = (e) => {
-    let userId = JSON.parse(localStorage.getItem("data"))?._id;
-    if (!userId) {
+    const userdataLocal = localStorage.getItem("data");
+    if (userdataLocal == null) {
       navigate("/login");
     } else {
-      const data = {
-        productId: e._id,
-        userId,
-        quantity: productQuantity,
-        pColor,
-      };
-      setOrderData([...orderData, data]);
+      console.log(userdataLocal);
+      let userId = JSON.parse(localStorage.getItem("data"))?._id;
+      if (!userId) {
+        navigate("/login");
+      } else {
+        const data = {
+          productId: e._id,
+          userId,
+          quantity: productQuantity,
+          pColor,
+        };
+        setOrderData([...orderData, data]);
+      }
     }
   };
 
   const ordernowBtnClk = (data) => {
-    let price =
-      data.price * productQuantity -
-      (data.price * productQuantity * data.discount) / 100;
-    let final = [{ price, productName: data.title }];
-    setSummaryData(final);
-    setOrderNowData([{ productId: data._id, quantity: productQuantity }]);
-    setIsOrderNow(true);
-    navigate(`/checkout/${id}`);
+    const userdataLocal = localStorage.getItem("data");
+    if (userdataLocal == null) {
+      navigate("/login");
+    } else {
+      console.log(userdataLocal);
+
+      let price =
+        data.price * productQuantity -
+        (data.price * productQuantity * data.discount) / 100;
+      let final = [{ price, productName: data.title }];
+      setSummaryData(final);
+      setOrderNowData([{ productId: data._id, quantity: productQuantity }]);
+      setIsOrderNow(true);
+      navigate(`/checkout/${id}`);
+    }
   };
 
   return (
