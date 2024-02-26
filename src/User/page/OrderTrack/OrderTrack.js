@@ -5,7 +5,6 @@ import ProductContext from "../../../context/productContext/ProductContext";
 
 const OrderTrack = () => {
   const { userOrderData } = useContext(ProductContext);
-  console.log(userOrderData);
 
   return (
     <div className="container mx-auto py-8 w-[90%]">

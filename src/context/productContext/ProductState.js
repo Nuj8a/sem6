@@ -123,6 +123,7 @@ const ProductState = (props) => {
         console.log(resData);
       }
     }
+    setRender((p) => !p);
     // setSummaryData([]);
   };
 

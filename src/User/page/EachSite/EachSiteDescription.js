@@ -165,27 +165,31 @@ const EachSiteDescription = ({ data }) => {
           </div>
         </div>
         <div className="mt-4 flex gap-5">
-          <Button
-            isPressable
-            radius="none"
-            className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
-            startContent={<BsBagCheckFill />}
-            color="primary"
-            onClick={() => ordernowBtnClk(data)}
-          >
-            Order Now
-          </Button>
-          <Button
-            radius="none"
-            isPressable
-            color="primary"
-            className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
-            variant="bordered"
-            startContent={<IoMdCart className="scale-110" />}
-            onClick={() => addtocartClk(data)}
-          >
-            <div>Add to cart</div>
-          </Button>
+          <>
+            <Button
+              isPressable
+              radius="none"
+              className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
+              startContent={<BsBagCheckFill />}
+              color="primary"
+              onClick={() => ordernowBtnClk(data)}
+              isDisabled={data.maxQuantity <= 0}
+            >
+              {data.maxQuantity > 0 ? "Order Now" : "Out of stock"}
+            </Button>
+            <Button
+              radius="none"
+              isPressable
+              color="primary"
+              className="font-poppins flex justify-center px-10 items-center rounded-sm duration-300 font-semibold"
+              variant="bordered"
+              startContent={<IoMdCart className="scale-110" />}
+              onClick={() => addtocartClk(data)}
+              isDisabled={data.maxQuantity <= 0}
+            >
+              {data.maxQuantity > 0 ? "Add to cart" : "Out of stock"}
+            </Button>
+          </>
         </div>
       </div>
       <div

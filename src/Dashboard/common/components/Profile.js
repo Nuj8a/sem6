@@ -39,7 +39,6 @@ export default function Profile(props) {
     listBtnRef.current.click();
     switchAccountRef.current.click();
   };
-  // console.log(isLogin);
   return (
     <>
       <Popover placement="bottom" showArrow={true} className="!rounded-[3px]">
