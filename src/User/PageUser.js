@@ -12,6 +12,8 @@ import { useEffect, useState } from "react";
 import { Toaster } from "sonner";
 import MyAccount from "./page/myaccount/MyAccount";
 import OrderTrack from "./page/OrderTrack/OrderTrack";
+import PaymentSuccess from "./page/esewa/PaymentSuccess";
+import PaymentFailed from "./page/esewa/PaymentFailed";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -39,6 +41,9 @@ const PageUser = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/esewa_payment_success" element={<PaymentSuccess />} />
+            <Route path="/esewa_payment_failed" element={<PaymentFailed />} />
             <Route path="/register" element={<Register />} />
             <Route path="/about-us" element={<Products />} />
             <Route path="/cart" element={<Cart />} />

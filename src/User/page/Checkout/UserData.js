@@ -150,6 +150,7 @@ const UserData = ({
                   <PiShoppingCartFill className="scale-110 text-base mb-[2px]" />
                 }
                 onClick={placeOrderBtnclk}
+                isDisabled={subtotal + (subtotal === 0 ? 0 : shipping) <= 0}
               >
                 Place Order
               </Button>

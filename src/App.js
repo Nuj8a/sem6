@@ -19,13 +19,6 @@ function App() {
       <ProductState>
         <Provider store={makeStore()}>
           <BrowserRouter>
-            {/* <LoadingBar
-            color={loadingBarColor}
-            progress={progress}
-            onLoaderFinished={() => setProgress(0)}
-          /> */}
-            {/* <PageUser setProgress={setProgress} />
-          <PageDashboard setProgress={setProgress} /> */}
             <PageUser />
             <PageDashboard />
           </BrowserRouter>

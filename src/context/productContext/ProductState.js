@@ -109,23 +109,102 @@ const ProductState = (props) => {
   const [isOrderNow, setIsOrderNow] = useState(false);
   const [orderNowData, setOrderNowData] = useState([]);
 
+  // ======================== for update payment ================
+  const updateOrderBilling = async (pid, totalAmount, scd) => {
+    try {
+      const response = await axios.put(
+        `${API_BASE_URL}/api/order/order/payment-success/${pid}/${totalAmount}/${scd}`,
+        null,
+        {
+          headers: {
+            "auth-token": JSON.parse(localStorage.getItem("token")),
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error; // Re-throw the error to handle it outside of this function if needed
+    }
+  };
+
+  // ======================== for delete order ================
+  const deleteOrder = async (orderId) => {
+    try {
+      const response = await axios.delete(
+        `${API_BASE_URL}/api/order/product/order/each/${orderId}`,
+        {
+          headers: {
+            "auth-token": JSON.parse(localStorage.getItem("token")),
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      throw error; // Re-throw the error to handle it outside of this function if needed
+    }
+  };
+
+  // ======================== for esewa ======================
+
+  function PaymentPost(path, params) {
+    var form = document.createElement("form");
+    form.setAttribute("method", "POST");
+    form.setAttribute("action", path);
+
+    for (var key in params) {
+      var hiddenField = document.createElement("input");
+      hiddenField.setAttribute("type", "hidden");
+      hiddenField.setAttribute("name", key);
+      hiddenField.setAttribute("value", params[key]);
+      form.appendChild(hiddenField);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+  }
+
+  const finalOrderDeliver = async (data, isnstant) => {
+    console.log(data);
+
+    const resData = await postOrderData(data);
+    console.log(resData);
+    if (resData.data) {
+      const path = "https://uat.esewa.com.np/epay/main";
+      let params = {
+        amt: resData.data.totalPrice - 100,
+        psc: 0,
+        pdc: 100,
+        txAmt: 0,
+        tAmt: resData.data.totalPrice,
+        pid: resData.data?._id,
+        scd: "EPAYTEST",
+        su: "http://localhost:3000/esewa_payment_success",
+        fu: "http://localhost:3000/esewa_payment_failed",
+      };
+
+      PaymentPost(path, params);
+    }
+
+    setRender((p) => !p);
+    if (!isnstant) {
+      localStorage.removeItem("cartData");
+      setOrderData([]);
+    }
+  };
+
   const finalOrder = async (data) => {
     if (isOrderNow) {
       let finaldata = { ...data, products: orderNowData };
       setFinalPostData(finaldata);
-      const resData = await postOrderData(finaldata);
-      console.log(resData);
+      finalOrderDeliver(finaldata, true);
     } else {
       if (data.products[0]) {
         setFinalPostData(data);
-        const resData = await postOrderData(data);
-        localStorage.removeItem("cartData");
-        setOrderData([]);
-        console.log(resData);
+        finalOrderDeliver(data, false);
       }
     }
-    setRender((p) => !p);
-    // setSummaryData([]);
   };
 
   return (
@@ -148,6 +227,8 @@ const ProductState = (props) => {
         setOrderNowData,
         setCheckoutPop,
         checkoutPop,
+        updateOrderBilling,
+        deleteOrder,
       }}
     >
       {props.children}
