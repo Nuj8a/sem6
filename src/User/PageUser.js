@@ -14,6 +14,7 @@ import MyAccount from "./page/myaccount/MyAccount";
 import OrderTrack from "./page/OrderTrack/OrderTrack";
 import PaymentSuccess from "./page/esewa/PaymentSuccess";
 import PaymentFailed from "./page/esewa/PaymentFailed";
+import Success from "./page/esewa/Success";
 
 const PageUser = () => {
   const Location = useLocation().pathname;
@@ -43,6 +44,7 @@ const PageUser = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/esewa_payment_success" element={<PaymentSuccess />} />
+            <Route path="/success" element={<Success />} />
             <Route path="/esewa_payment_failed" element={<PaymentFailed />} />
             <Route path="/register" element={<Register />} />
             <Route path="/about-us" element={<Products />} />
