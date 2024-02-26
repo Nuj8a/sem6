@@ -76,6 +76,17 @@ const Home = () => {
     setCarousel(final);
   };
 
+  const [finalShow, setFinalShow] = useState([]);
+
+  useEffect(() => {
+    if (productData && productData.length > 0) {
+      const finalDatashow = [...productData] // Create a new array to avoid modifying the original
+        .sort((a, b) => b.likeId.length - a.likeId.length)
+        .slice(0, 6);
+      setFinalShow(finalDatashow);
+    }
+  }, [productData]);
+
   return (
     <>
       <Carousel data={carousel} />
@@ -96,7 +107,7 @@ const Home = () => {
             .filter((e) => Number(e.gendertype) === 2)
             .slice(0, 15)}
         />
-        <CardCollection productData={productData} />
+        <CardCollection productData={finalShow} />
         <Product
           heading={`Trendy ${FindGender(3)}'s Options`}
           data={productData
