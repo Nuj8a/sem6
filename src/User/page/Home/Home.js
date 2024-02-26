@@ -43,7 +43,7 @@ const Home = () => {
 
   let catfil = [];
   let catfilfil = [];
-  catfilfil = data.filter((e) => e.showTop);
+  catfilfil = data;
   catfil = catfilfil.filter(
     (e) =>
       e.categoryName.toLowerCase() !== "home" &&

@@ -166,10 +166,7 @@ const ProductState = (props) => {
   }
 
   const finalOrderDeliver = async (data, isnstant) => {
-    console.log(data);
-
     const resData = await postOrderData(data);
-    console.log(resData);
     if (resData.data) {
       const path = "https://uat.esewa.com.np/epay/main";
       let params = {

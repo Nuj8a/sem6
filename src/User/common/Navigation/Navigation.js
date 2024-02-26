@@ -58,7 +58,9 @@ const Navigation = ({ userData }) => {
   }, [dispatch]);
 
   const navData = data
-    .filter((e) => e.categoryName.toLowerCase() !== "home")
+    .filter(
+      (e) => e.categoryName.toLowerCase() !== "home" && e.showTop === true
+    )
     .map((category) => {
       const subcategories = subcatData.filter(
         (subcategory) => subcategory.categoryId === category._id

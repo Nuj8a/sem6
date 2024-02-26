@@ -1,7 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import ProductContext from "../../../context/productContext/ProductContext";
-import { Button } from "@nextui-org/react";
-import { FaArrowLeft } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 const PaymentSuccess = () => {
@@ -15,13 +13,10 @@ const PaymentSuccess = () => {
     if (orderId) {
       updateOrderBilling(orderId, amount, "EPAYTEST")
         .then((res) => {
-          console.log(res);
           if (res.resData?.billing) {
-            console.log("Order Success");
             navigae("/success");
           } else {
             deleteOrder(orderId).then((respo) => {
-              console.log(respo);
               navigae("/esewa_payment_failed");
             });
           }
@@ -30,7 +25,7 @@ const PaymentSuccess = () => {
           console.error("Error updating billing:", error);
         });
     }
-  }, [deleteOrder, updateOrderBilling]);
+  }, [deleteOrder, updateOrderBilling, navigae]);
 
   return <div></div>;
 };

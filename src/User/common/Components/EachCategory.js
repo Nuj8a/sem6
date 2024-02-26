@@ -15,7 +15,7 @@ const EachCategory = ({ data }) => {
           <div className="overflow-hidden">
             <Image
               radius="none"
-              className="w-[100px] h-full group-hover:scale-110 group-hover:rotate-6"
+              className="w-[100px] h-[100px] object-cover group-hover:scale-110 group-hover:rotate-6"
               src={data?.image}
               alt={data?.categoryName}
             />
