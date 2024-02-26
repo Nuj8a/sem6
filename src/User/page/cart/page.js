@@ -10,8 +10,13 @@ import Checkout from "../Checkout/Checkout";
 const Page = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
-  const { orderData, setSummaryData, isOrderNow, setIsOrderNow } =
-    useContext(ProductContext);
+  const {
+    orderData,
+    setSummaryData,
+    isOrderNow,
+    setIsOrderNow,
+    setCheckoutPop,
+  } = useContext(ProductContext);
   const dispatch = useDispatch();
   const userRef = useRef(false);
   const { allUserData } = useSelector((state) => state.authReducer);
@@ -49,7 +54,8 @@ const Page = () => {
 
   useEffect(() => {
     let newSubtotal = 0;
-    const newSummaryData = finalTable.map((e) => {
+    let finaltabledata = finalTable?.filter((e) => e?.product?.maxQuantity > 0);
+    const newSummaryData = finaltabledata.map((e) => {
       const afterDiscount = getActualVal(
         e?.product?.price,
         e?.quantity,
@@ -70,11 +76,16 @@ const Page = () => {
     return totalprice - (totalprice * discount) / 100;
   };
 
+  useEffect(() => {
+    let data = finalTable?.filter((e) => e?.product?.maxQuantity <= 0);
+    setCheckoutPop((prevData) => [...prevData, ...data]);
+  }, [finalTable, setCheckoutPop]);
+
   return (
     <>
       {path.includes("cart") ? (
         <Cart
-          finalTable={finalTable}
+          finalTable={finalTable?.filter((e) => e?.product?.maxQuantity > 0)}
           navigate={navigate}
           subtotal={subtotal}
           shipping={shipping}

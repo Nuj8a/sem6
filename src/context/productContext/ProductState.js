@@ -10,6 +10,7 @@ const ProductState = (props) => {
   const [summaryData, setSummaryData] = useState([]);
   const [userAddress, setUserAddress] = useState({});
   const [render, setRender] = useState(false);
+  const [checkoutPop, setCheckoutPop] = useState([]);
 
   const [alluserAddress, setAllUserAddress] = useState([]);
   const [userOrderData, setUserOrderData] = useState([]);
@@ -145,6 +146,8 @@ const ProductState = (props) => {
         setIsOrderNow,
         isOrderNow,
         setOrderNowData,
+        setCheckoutPop,
+        checkoutPop,
       }}
     >
       {props.children}

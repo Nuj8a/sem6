@@ -14,7 +14,11 @@ import URLConverter from "../../../libs/URLConverter";
 import ProductContext from "../../../context/productContext/ProductContext";
 
 const Navigation = ({ userData }) => {
-  const { orderData } = useContext(ProductContext);
+  const { orderData, checkoutPop } = useContext(ProductContext);
+  let finalorderData = orderData.filter(
+    (e) => !checkoutPop.some((popItem) => popItem.productId === e.productId)
+  );
+
   const Location = useLocation().pathname;
   const dispatch = useDispatch();
   const [scrollY, setScrollY] = useState(0);
@@ -221,7 +225,7 @@ const Navigation = ({ userData }) => {
                 <>
                   <Link to={"/cart"} className="w-1/3">
                     <Badge
-                      content={orderData.length || 0}
+                      content={finalorderData.length || 0}
                       size="sm"
                       color="danger"
                     >

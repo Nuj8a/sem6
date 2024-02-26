@@ -19,6 +19,7 @@ const Cart = ({
     setSummaryData(updateSummary);
     setIsOrderNow(false);
   };
+
   return (
     <div>
       <div className="px-5 my-5">
@@ -83,6 +84,7 @@ const Cart = ({
                 color="primary"
                 endContent={<IoBag className="scale-110 text-base mb-[2px]" />}
                 onClick={cartBtnclk}
+                isDisabled={finalTable.length <= 0}
               >
                 Proceed to checkout ( {finalTable.length} )
               </Button>
