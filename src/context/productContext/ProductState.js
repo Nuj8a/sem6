@@ -186,8 +186,9 @@ const ProductState = (props) => {
 
     setRender((p) => !p);
     if (!isnstant) {
-      localStorage.removeItem("cartData");
-      setOrderData([]);
+      setTimeout(() => {
+        setOrderData([]);
+      }, 3000);
     }
   };
 

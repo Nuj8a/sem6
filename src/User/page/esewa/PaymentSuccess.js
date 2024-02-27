@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import ProductContext from "../../../context/productContext/ProductContext";
 import { useNavigate } from "react-router-dom";
+import Success from "./Success";
 
 const PaymentSuccess = () => {
   const { updateOrderBilling, deleteOrder } = useContext(ProductContext);
@@ -14,7 +15,8 @@ const PaymentSuccess = () => {
       updateOrderBilling(orderId, amount, "EPAYTEST")
         .then((res) => {
           if (res.resData?.billing) {
-            navigae("/success");
+            localStorage.removeItem("cartData");
+            // navigae("/success");
           } else {
             deleteOrder(orderId).then((respo) => {
               navigae("/esewa_payment_failed");
@@ -27,7 +29,11 @@ const PaymentSuccess = () => {
     }
   }, [deleteOrder, updateOrderBilling, navigae]);
 
-  return <div></div>;
+  return (
+    <div>
+      <Success />
+    </div>
+  );
 };
 
 export default PaymentSuccess;

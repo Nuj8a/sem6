@@ -58,7 +58,7 @@ export default function UserModal(props) {
                     Create At: {dateConverter(data.date)}
                   </div>
                   <Link
-                    href={`profile/${data._id}`}
+                    to={`/dashboard/profile/${data._id}`}
                     className="text-blue-400 !mt-1 hover:text-blue-600"
                   >
                     More Details

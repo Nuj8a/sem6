@@ -10,7 +10,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { LiaFacebookSquare } from "react-icons/lia";
 import { IoLogoInstagram } from "react-icons/io5";
 import { RiYoutubeLine, RiLinkedinBoxLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Carousel = ({ data }) => {
   let final = data
@@ -22,6 +22,7 @@ const Carousel = ({ data }) => {
       behavior: "smooth",
     });
   };
+  const navigate = useNavigate();
 
   return (
     <>
@@ -62,6 +63,7 @@ const Carousel = ({ data }) => {
                   radius="none"
                   shadow="none"
                   isPressable
+                  onClick={() => navigate("/tshirts")}
                 >
                   <div className="flex text-[#ea580c] justify-center gap-1 border-white/20 font-semibold duration-150 items-center">
                     Let's Go <FaArrowRight />
