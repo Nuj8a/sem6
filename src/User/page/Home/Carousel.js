@@ -27,16 +27,16 @@ const Carousel = ({ data }) => {
   return (
     <>
       <div className="container-fluid relative">
-        <div className="h-[500px] w-full grid grid-cols-12 bg-[#0f1019] relative">
+        <div className="h-[500px] w-full grid grid-cols-12 bg-[#1a1638] relative">
           <div className="col-span-7 flex justify-center mt-5 items-center h-full">
             <div className="w-[80%] mt-4 ml-[10%] flex gap-1 flex-col">
-              <h3 className="font-Orbitron tracking-wider text-white text-base font-semibold">
+              <h3 className=" tracking-wider text-white text-base font-semibold">
                 Revamp Your Wardrobe with,
               </h3>
-              <div className="font-Orbitron text-[#ea580c] tracking-wider uppercase text-[2.5rem] font-semibold">
+              <div className=" text-[#5c4bc9] tracking-wider uppercase text-[2.5rem] font-semibold">
                 <Typewriter
                   words={[
-                    "Stylish Picks",
+                    "Pahiran",
                     "Authentic Designs",
                     "Affordable Choices",
                     "Nepali Fashion",
@@ -50,9 +50,7 @@ const Carousel = ({ data }) => {
                 />
               </div>
               <p className="font-poppins w-[95%] text-sm text-white/80">
-                Explore Vastra Vikalpa for trendy, authentic, and affordable
-                Nepali fashion. Elevate your style with our curated collections,
-                delivering quality designs at budget-friendly prices.
+                Explore Pahiraan for trendy, authentic, and affordable Nepali fashion. Elevate your style with our carefully curated collections, offering quality designs at budget-friendly prices.
               </p>
 
               <div>
@@ -65,8 +63,8 @@ const Carousel = ({ data }) => {
                   isPressable
                   onClick={() => navigate("/tshirts")}
                 >
-                  <div className="flex text-[#ea580c] justify-center gap-1 border-white/20 font-semibold duration-150 items-center">
-                    Let's Go <FaArrowRight />
+                  <div className="flex text-[#ffffff] justify-center gap-1 border-white/20 font-semibold duration-150 items-center">
+                    Shop Now <FaArrowRight />
                   </div>
                 </Card>
                 <br />
@@ -112,22 +110,7 @@ const Carousel = ({ data }) => {
             </div>
           </div>
 
-          <div className=" absolute right-5 top-0 w-[35px] h-[80%] z-[10] mt-12 flex flex-col gap-8 justify-center items-center">
-            <div className="h-1/2 w-[.01rem] bg-white/20"></div>
-            <Link to={"/"}>
-              <LiaFacebookSquare className="text-[#ea580c] hover:text-[#9e5933] text-xl scale-110" />
-            </Link>
-            <Link to={"/"}>
-              <IoLogoInstagram className="text-[#ea580c] hover:text-[#9e5933] text-lg" />
-            </Link>
-            <Link to={"/"}>
-              <RiYoutubeLine className="text-[#ea580c] hover:text-[#9e5933] text-xl" />
-            </Link>
-            <Link to={"/"}>
-              <RiLinkedinBoxLine className="text-[#ea580c] hover:text-[#9e5933] text-xl" />
-            </Link>
-            <div className="h-1/2 w-[.01rem] bg-white/20"></div>
-          </div>
+          
         </div>
         <div className=" custom-shape-divider-bottom-1706682717">
           <svg

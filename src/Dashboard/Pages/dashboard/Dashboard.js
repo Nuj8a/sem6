@@ -76,7 +76,7 @@ const Page = () => {
               dataBack={{ all: allRevenue, oneMonth: oneMonthRevenue }}
             />
           </div>
-          <div className="charts flex flex-wrap">
+          {/* <div className="charts flex flex-wrap">
             <Featured
               data={{
                 all: allRevenue,
@@ -91,7 +91,7 @@ const Page = () => {
               aspect={2 / 1}
               data={sixMonthData}
             />
-          </div>
+          </div> */}
           <div className="listContainer">
             <div className="listTitle">Latest Transactions</div>
             <Table />

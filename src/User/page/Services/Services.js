@@ -27,18 +27,18 @@ const Services = ({ data, relatedData }) => {
     const filteredData = data.filter((item) => {
       const priceFilter = () => {
         switch (filterData.price) {
-          case "above-100K":
-            return item.price > 100000;
-          case "100K-80K":
-            return item.price >= 80000 && item.price < 100000;
-          case "80K-60K":
-            return item.price >= 60000 && item.price < 80000;
-          case "60K-40K":
-            return item.price >= 40000 && item.price < 60000;
-          case "40K-20K":
-            return item.price >= 20000 && item.price < 40000;
-          case "20K-below":
-            return item.price < 20000;
+          case "above-10K":
+            return item.price > 10000;
+          case "10K-8K":
+            return item.price >= 8000 && item.price < 10000;
+          case "8K-6K":
+            return item.price >= 6000 && item.price < 8000;
+          case "6K-4K":
+            return item.price >= 4000 && item.price < 6000;
+          case "4K-2K":
+            return item.price >= 2000 && item.price < 4000;
+          case "2K-below":
+            return item.price < 2000;
           default:
             return true;
         }
@@ -87,7 +87,7 @@ const Services = ({ data, relatedData }) => {
   return (
     <div className="min-h-[70vh]">
       <div className="-mb-3 mt-7 text-black/80 capitalize font-semibold font-poppins text-3xl">
-        {datas.category} Websites
+        {datas.category} Clothes
       </div>
       <div className="flex my-5 justify-between items-center">
         <Breadcrumb

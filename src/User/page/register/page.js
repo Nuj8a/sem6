@@ -52,7 +52,6 @@ const Register = () => {
       }
     } catch (error) {
       toast.error("Some error accuired, try again later");
-      // console.error("Error creating post:", error);
     }
   };
 
@@ -199,9 +198,6 @@ const Register = () => {
           </div>
         </Card>
       </div>
-      <h3 className="text-[var(--text-light-color)] text-sm">
-        Thank you for using web-upaya!!!
-      </h3>
     </div>
   );
 };

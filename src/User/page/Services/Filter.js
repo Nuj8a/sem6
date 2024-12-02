@@ -33,16 +33,16 @@ const Filter = ({ filterData, setFilterData }) => {
             </Radio>
             <Radio
               size="sm"
-              value="above-100K"
+              value="above-10K"
               width={100}
               className="w-[300px]"
               onClick={() =>
-                setFilterData({ ...filterData, price: "above-100K" })
+                setFilterData({ ...filterData, price: "above-10K" })
               }
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  Above - RS.1,00,000
+                  Above - RS.10,000
                 </div>
                 {/* <Chip
                   size="sm"
@@ -58,14 +58,14 @@ const Filter = ({ filterData, setFilterData }) => {
               size="sm"
               width={100}
               className="w-[300px]"
-              value="100K-80K"
+              value="10K-8K"
               onClick={() =>
-                setFilterData({ ...filterData, price: "100K-80K" })
+                setFilterData({ ...filterData, price: "10K-8K" })
               }
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  RS.1,00,000 - RS.80,000
+                  RS.10,000 - RS.8,000
                 </div>
                 {/* <Chip
                   size="sm"
@@ -80,12 +80,12 @@ const Filter = ({ filterData, setFilterData }) => {
               size="sm"
               width={100}
               className="w-[300px]"
-              value="80K-60K"
-              onClick={() => setFilterData({ ...filterData, price: "80K-60K" })}
+              value="8K-6K"
+              onClick={() => setFilterData({ ...filterData, price: "8K-6K" })}
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  RS.80,000 - RS.60,000
+                  RS.8,000 - RS.6,000
                 </div>
                 {/* <Chip
                   size="sm"
@@ -100,12 +100,12 @@ const Filter = ({ filterData, setFilterData }) => {
               size="sm"
               width={100}
               className="w-[300px]"
-              value="60K-40K"
-              onClick={() => setFilterData({ ...filterData, price: "60K-40K" })}
+              value="6K-4K"
+              onClick={() => setFilterData({ ...filterData, price: "6K-4K" })}
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  RS.60,000 - RS.40,000
+                  RS.6,000 - RS.4,000
                 </div>
                 {/* <Chip
                   size="sm"
@@ -120,12 +120,12 @@ const Filter = ({ filterData, setFilterData }) => {
               size="sm"
               width={100}
               className="w-[300px]"
-              value="40K-20K"
-              onClick={() => setFilterData({ ...filterData, price: "40K-20K" })}
+              value="4K-2K"
+              onClick={() => setFilterData({ ...filterData, price: "4K-2K" })}
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  RS.40,000 - RS.20,000
+                  RS.4,000 - RS.2,000
                 </div>
                 {/* <Chip
                   size="sm"
@@ -140,14 +140,14 @@ const Filter = ({ filterData, setFilterData }) => {
               size="sm"
               width={100}
               className="w-[300px]"
-              value="20K-below"
+              value="2K-below"
               onClick={() =>
-                setFilterData({ ...filterData, price: "20K-below" })
+                setFilterData({ ...filterData, price: "2K-below" })
               }
             >
               <div className="relative flex justify-between items-center w-[320px]">
                 <div className="text-black/80 font-poppins">
-                  RS.20,000 - Below
+                  RS.2,000 - Below
                 </div>
                 {/* <Chip
                   size="sm"
@@ -225,6 +225,7 @@ const Filter = ({ filterData, setFilterData }) => {
                 </Chip> */}
               </div>
             </Radio>
+
             <Radio
               size="sm"
               value="unisex"

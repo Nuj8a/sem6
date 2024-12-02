@@ -15,7 +15,7 @@ const FilterProduct = () => {
               <div className="border px-2">1000</div>
             </div>
             <div className="flex justify-between">
-              <Checkbox radius="sm">$1000-$900</Checkbox>
+              <Checkbox radius="sm">$100-$90</Checkbox>
               <div className="border px-2">580</div>
             </div>
             <div className="flex justify-between">

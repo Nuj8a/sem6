@@ -1,21 +1,21 @@
 import { Link, useLocation } from "react-router-dom";
 // import { usePathname } from "next/navigation";
 import React from "react";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import { IoMdCart } from "react-icons/io";
-import StoreIcon from "@mui/icons-material/Store";
-import { FaUsers } from "react-icons/fa";
-import { BiSolidMessageSquareDetail } from "react-icons/bi";
-import { MdCategory } from "react-icons/md";
-import { GiKnightBanner } from "react-icons/gi";
-import { DiSublime } from "react-icons/di";
-import { AiOutlineStock } from "react-icons/ai";
-import BarChartIcon from "@mui/icons-material/BarChart";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
-import { HiMiniUserCircle } from "react-icons/hi2";
+// import DashboardIcon from "@mui/icons-material/Dashboard";
+// import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+// import { IoMdCart } from "react-icons/io";
+// import StoreIcon from "@mui/icons-material/Store";
+// import { FaUsers } from "react-icons/fa";
+// import { BiSolidMessageSquareDetail } from "react-icons/bi";
+// import { MdCategory } from "react-icons/md";
+// import { GiKnightBanner } from "react-icons/gi";
+// import { DiSublime } from "react-icons/di";
+// import { AiOutlineStock } from "react-icons/ai";
+// import BarChartIcon from "@mui/icons-material/BarChart";
+// import AnalyticsIcon from "@mui/icons-material/Analytics";
+// import { HiMiniUserCircle } from "react-icons/hi2";
 import "./css/SideNav.css";
-import NoCrashIcon from "@mui/icons-material/NoCrash";
+// import NoCrashIcon from "@mui/icons-material/NoCrash";
 const SideNav = (props) => {
   const { hamClick } = props;
   const loc = useLocation().pathname;
@@ -36,7 +36,7 @@ const SideNav = (props) => {
             <p
               className={`${hamClick ? "hidden" : "block"} title tracking-wide`}
             >
-              MAIN
+            
             </p>
             <Link to="/dashboard" style={{ textDecoration: "none" }}>
               <li
@@ -46,17 +46,17 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <DashboardIcon className="icon" />
+                {/* <DashboardIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Dashboard
                 </span>
               </li>
             </Link>
-            <p
+            {/* <p
               className={`${hamClick ? "hidden" : "block"} title tracking-wide`}
             >
               USEFUL
-            </p>
+            </p> */}
             <Link to="/dashboard/message" style={{ textDecoration: "none" }}>
               <li
                 className={
@@ -65,7 +65,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <BiSolidMessageSquareDetail className="icon" />
+                {/* <BiSolidMessageSquareDetail className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Message
                 </span>
@@ -95,7 +95,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <IoMdCart className="icon" />
+                {/* <IoMdCart className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Orders
                 </span>
@@ -109,7 +109,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <LocalShippingIcon className="icon" />
+                {/* <LocalShippingIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Delivery
                 </span>
@@ -123,17 +123,17 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <NoCrashIcon className="icon" />
+                {/* <NoCrashIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Finished
                 </span>
               </li>
             </Link>
-            <p
+            {/* <p
               className={`${hamClick ? "hidden" : "block"} title tracking-wide`}
             >
               LISTS
-            </p>
+            </p> */}
 
             <Link to="/dashboard/category" style={{ textDecoration: "none" }}>
               <li
@@ -143,7 +143,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <MdCategory className="icon" />
+                {/* <MdCategory className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Category
                 </span>
@@ -160,7 +160,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <DiSublime className="icon" />
+                {/* <DiSublime className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Subcategory
                 </span>
@@ -174,7 +174,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <GiKnightBanner className="icon" />
+                {/* <GiKnightBanner className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Banner
                 </span>
@@ -188,17 +188,17 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <StoreIcon className="icon" />
+                {/* <StoreIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Products
                 </span>
               </li>
             </Link>
-            <p
+            {/* <p
               className={`${hamClick ? "hidden" : "block"} title tracking-wide`}
             >
               STATS
-            </p>
+            </p> */}
             <Link
               to="/dashboard/filledchart"
               style={{ textDecoration: "none" }}
@@ -210,7 +210,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <AnalyticsIcon className="icon" />
+                {/* <AnalyticsIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Filled Chart
                 </span>
@@ -224,7 +224,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <AiOutlineStock className="icon" />
+                {/* <AiOutlineStock className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Line Chart
                 </span>
@@ -238,17 +238,17 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <BarChartIcon className="icon" />
+                {/* <BarChartIcon className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Bar Chart
                 </span>
               </li>
             </Link>
-            <p
+            {/* <p
               className={`${hamClick ? "hidden" : "block"} title tracking-wide`}
             >
               USER
-            </p>
+            </p> */}
             <Link to="/dashboard/users" style={{ textDecoration: "none" }}>
               <li
                 className={
@@ -257,7 +257,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <FaUsers className="icon" />
+                {/* <FaUsers className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Users
                 </span>
@@ -271,7 +271,7 @@ const SideNav = (props) => {
                     : ""
                 }
               >
-                <HiMiniUserCircle className="icon" />
+                {/* <HiMiniUserCircle className="icon" /> */}
                 <span className={`${hamClick ? "hidden" : "block"}`}>
                   Profile
                 </span>

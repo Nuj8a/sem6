@@ -23,11 +23,11 @@ const TopNavContent = (props) => {
   return (
     <>
       <div className="h-[55px] uppercase font-semibold dark:text-slate-300 border-b absolute left-0 tracking-wide text-[#5f5296] w-[180px] flex justify-center items-center border-r dark:border-slate-800">
-        Dashboard
+        Pahiraan
       </div>
       <div className="w-full  flex justify-between items-center h-full ml-[180px]">
         <div className="flex gap-5 items-center ">
-          <div className="h-full  w-[50px] flex justify-center items-center">
+          {/* <div className="h-full  w-[50px] flex justify-center items-center">
             <div
               className="hambar flex justify-center cursor-pointer ml-5 relative  h-[25px] w-[26px] items-start flex-col gap-[.22rem]"
               onClick={() => setHamClick((p) => !p)}
@@ -52,7 +52,7 @@ const TopNavContent = (props) => {
                 }`}
               ></div>
             </div>
-          </div>
+          </div> */}
           <div className="font-semibold font-poppins ml-10 text-slate-700 tracking-wide dark:text-slate-300">
             Hello Admin, {greeting}
           </div>

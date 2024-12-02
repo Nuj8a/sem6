@@ -73,12 +73,12 @@ const Navigation = ({ userData }) => {
 
   return (
     <>
-      <div className="sticky bg-slate-50 shadow font-poppins top-0 z-50">
+      <div className="sticky bg-[#ffffff] shadow font-poppins top-0 z-50">
         <div className="h-[55px] w-full border-b border-dark-color">
           <div className="flex w-[95%] mx-auto justify-between items-center h-full">
             <div className="flex gap-20  h-full">
               <div className="logo flex justify-center items-center h-full">
-                <img src={Logo} height={40} width={115} alt="logo" />
+                <img src={Logo} height={40} width={115} className="logo-main" alt="Pahiran" />
               </div>
               <ul className="flex text-sm justify-center gap-5 items-center">
                 {/* <li>

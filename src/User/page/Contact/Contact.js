@@ -105,7 +105,7 @@ const Contact = () => {
               </h3>
               <h2 className="font-gruppo font-semibold text-white/90 text-3xl">
                 <span className="text-[#ea580c] font-semibold text-[2.3rem] mr-2">
-                  Vastra Vikalpa:
+                  Pahiran:
                 </span>
                 Fuse creativity with pocket-friendly solutions for a remarkable
                 online presence.
@@ -117,7 +117,7 @@ const Contact = () => {
               <div>
                 <button className="border px-7 py-3 rounded-full mt-2 gap-[2px] hover:cursor-pointer border-[#ea580c] text-[#ea580c] flex items-center hover:bg-[#ea580c] duration-200 hover:text-slate-100 font-semibold font-poppins text-sm">
                   <IoCallSharp className="text-base" />
-                  <span>+977 9810325922</span>
+                  <span>+977 9810000000</span>
                 </button>
               </div>
               <div className="mt-14 flex flex-col gap-7">
@@ -128,35 +128,16 @@ const Contact = () => {
                   <div className="flex flex-col gap-1 px-1">
                     <p className="text-sm flex gap-1 items-center text-blakc/80">
                       <MdEmail />
-                      gaurabsunar0001@gmail.com
+                      info@pahiran.com
                     </p>
                     <p className="text-sm flex gap-1 items-center text-blakc/80">
                       <MdLocationPin />
-                      Kathmandu Nepal
+                      Kathmandu, Nepal
                     </p>
                     <p className="text-sm flex gap-1 items-center text-blakc/80">
                       <IoCallSharp />
-                      +977 9810325922
+                      +977 9810000000
                     </p>
-                  </div>
-                </div>
-                <div>
-                  <h3 className="text-black font-Orbitron font-semibold tracking-wider uppercase">
-                    Social media
-                  </h3>
-                  <div className="flex gap-4 mt-2">
-                    <Link to={"/"}>
-                      <LiaFacebookSquare className="text-primary-color hover:text-[var(--text-full-dark)] scale-125 text-2xl" />
-                    </Link>
-                    <Link to={"/"}>
-                      <IoLogoInstagram className="text-primary-color hover:text-[var(--text-full-dark)] text-2xl" />
-                    </Link>
-                    <Link to={"/"}>
-                      <RiYoutubeLine className="text-primary-color hover:text-[var(--text-full-dark)] scale-125 text-2xl" />
-                    </Link>
-                    <Link to={"/"}>
-                      <RiLinkedinBoxLine className="text-primary-color hover:text-[var(--text-full-dark)] scale-125 text-2xl" />
-                    </Link>
                   </div>
                 </div>
               </div>

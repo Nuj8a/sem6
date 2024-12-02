@@ -11,6 +11,7 @@ import { getCategorys } from "../../../redux/slices/categorySlice";
 import { getproducts } from "../../../redux/slices/productSlice";
 import FindGender from "../../../libs/FindGender";
 import GetCarousel from "../../../libs/GetCarousel";
+import Related from "../../common/page/Related";
 
 const Home = () => {
   const scrollUP = () => {
@@ -87,6 +88,32 @@ const Home = () => {
     }
   }, [productData]);
 
+  const [algoData, setAlgoData] = useState([]);
+
+  const fetchData = async () => {
+    let token = localStorage.getItem("token")?.replace(/^"|"$/g, "");
+    const data = await fetch(
+      `http://localhost:8000/api/recomendation/recommend`,
+      {
+        method: "GET",
+        headers: {
+          "auth-token": token,
+        },
+      }
+    );
+
+    const parseData = await data.json();
+    if (!parseData.error) {
+      setAlgoData(parseData);
+    } else {
+      setAlgoData([]);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <>
       <Carousel data={carousel} />
@@ -101,6 +128,11 @@ const Home = () => {
             .slice(0, 15)}
         />
         <Reatured />
+        {/* Algorithmn */}
+        {algoData.length > 0 && (
+          <Related data={algoData || []} heading={"Recommended for you"} />
+        )}
+        <hr />
         <Product
           heading={`Trendy ${FindGender(2)}'s Options`}
           data={productData

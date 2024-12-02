@@ -31,7 +31,7 @@ input::-webkit-outer-spin-button {
 @layer base {
   * {
     scrollbar-width: thin;
-    scrollbar-color: blue rgb(124, 194, 255);
+    scrollbar-color: rgb(140, 140, 140) rgb(0, 0, 0);
   }
 
   *::-webkit-scrollbar-track {
@@ -116,5 +116,9 @@ body {
 }
 
 .custom-shape-divider-bottom-1706682717 .shape-fill {
-  fill: #0f1019;
+  fill: #1a1638;
+}
+
+.logo-main{
+  padding-top:10px;
 }

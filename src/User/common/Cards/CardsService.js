@@ -33,18 +33,18 @@ export default function CardsService({ data }) {
         }
       /> */}
       <CardFooter className=" before:bg-white/30 border-white/20 rounded border-1 overflow-hidden py-1 absolute bottom-1 w-[calc(100%_-_8px)] shadow-small bg-white/50 ml-1 flex justify-between z-10">
-        <p className="text-xs capitalize font-poppins block !text-start line-clamp-1 pl-1 font-semibold -ml-2 !-tracking-wide font-poppins min-w-[140px]">
+        <p className="text-xs text-center capitalize font-poppins block  line-clamp-1  font-semibold  !-tracking-wide font-poppins min-w-[100%]">
           {data.title}
         </p>
-        <Button
+        {/* <Button
           className="rounded bg-white/40 border border-black/20 tracking-wide !p-3 font-semibold font-poppins text-[.65rem] -mr-2 scale-95"
           variant="flat"
           color="default"
           radius="none"
           size="sm"
-        >
-          Explore
-        </Button>
+        > */}
+          {/* Explore
+        </Button> */}
       </CardFooter>
     </Card>
   );
